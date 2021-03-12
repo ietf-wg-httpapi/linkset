@@ -427,12 +427,12 @@
                                 as prescribed by <xref target="RFC8187"/> is not preserved; instead, the 
                                 content of the internationalized attribute is represented in the character encoding used for the JSON set of links.</t>
                             <t>The value of the internationalized target attribute is an 
-                                array that contains one or more JSON objects. The name of the first member 
+                                array that contains one or more JSON objects. The name of one member 
                                 of such JSON object is "value" 
                                 and its value is the actual content (in its unescaped version) of the internationalized target attribute, i.e. the 
                                 value of the attribute from which 
                                 the encoding and language information are removed. 
-                                The name of the optional second member of such JSON object is "language" and 
+                                The name of another, optional, member of such JSON object is "language" and 
                                 its value is the language tag <xref target="RFC5646"/> 
                                 for the language in which the attribute content is conveyed.
                             </t>
