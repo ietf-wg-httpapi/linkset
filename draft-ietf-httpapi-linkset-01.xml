@@ -615,13 +615,13 @@ Connection: close
              specifying that the media type of the response is "application/linkset". A set of links, including links that pertain 
              to the responding resource, is provided in the response body.
              </t>
-              <figure title="Response to HTTP GET includes a set of links" align="center" anchor="Response1.1">
+            <figure title="Response to HTTP GET includes a set of links" align="center" anchor="Response1.1">
                 <artwork align="left"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:35:51 GMT
 Server: Apache-Coyote/1.1
-Content-Length: 729
-Content-Type: application/linkset
+Content-Length: 855
+Content-Type: application/linkset; charset=UTF-8
 Connection: close
 
 <http://authors.example.net/johndoe>
@@ -645,7 +645,10 @@ Connection: close
    ; anchor="http://example.org/resource41/",
  <http://example.org/resource40>
    ; rel="prev"
-   ; anchor="http://example.org/resource41/"
+   ; anchor="http://example.org/resource41/",
+ <http://authors.example.net/alice>
+   ; rel="author"
+   ; anchor="http://example.org/resource1/items/CB63DA.html#comment-1"
 ]]>
                 </artwork> 
               </figure>
