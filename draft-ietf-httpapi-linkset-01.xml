@@ -767,6 +767,14 @@ Connection: close
                 to version 03 of the "linkset" I-D. GS1 expresses confidence that this will become a normative reference in the
                 next iteration of that specification, likely to be ratified as a GS1 standard around February 2021.</t>
             </section>
+            <section title="FAIR Signposting Profile" anchor="implementation-signposting">
+                <t>The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
+                    of scholarly objects on the web through the use of typed web links pointing at e.g. 
+                    web resources that are part of a specific object, persistent identifiers for the object and its authors, 
+                    license information pertaining to the object. The specification encourages the use of Linksets and 
+                    initial implementations are ongoing, for example, for the open source Dataverse data repository platform 
+                    that was initiated by Harvard University and is meanwhile used by research institutions, worldwide.</t>
+            </section>
             <section title="Open Journal Systems (OJS)" anchor="implementation-ojs">
                 <t>Open Journal Systems (OJS) is an open-source software for the management of peer-reviewed academic journals, and is created by the Public Knowledge Project (PKP), released under the GNU General Public License. Open Journal Systems (OJS) is a journal management and publishing system that has been developed by PKP through its federally funded efforts to expand and improve access to research.</t>
                 <t>The OJS platform has implemented "linkset" support as an alternative way to provide links when there are more than a configured limit (they consider using about 10 as a good default, for testing purpose it is currently set to 8).</t>
