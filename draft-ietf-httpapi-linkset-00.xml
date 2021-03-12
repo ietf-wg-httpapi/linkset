@@ -673,7 +673,7 @@ Content-Length: 802
       "anchor": "https://example.org/article/view/7507",
       "author": [
         {
-          "href": "https://orcid.org/0000-0002-1825-0097"
+          "href": "https://orcid.org/0000-0002-1825-0097",
         }
       ],
       "item": [
