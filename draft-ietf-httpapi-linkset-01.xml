@@ -20,6 +20,9 @@
 <!ENTITY RFC5988 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
 <!ENTITY W3CJSONLD SYSTEM "http://xml.resource.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml">
 <!ENTITY I-D.nottingham-link-hint SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nottingham-link-hint.xml">
+<!ENTITY RFC6690 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6690.xml">
+<!ENTITY RFC0822 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0822.xml">
+<!ENTITY RFC3629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3629.xml">
 ]>
 
 <?rfc compact="yes" ?>
@@ -172,7 +175,9 @@
                 <t>This document format is identical to the payload of the 
                     HTTP "Link" header field as defined in Section 3 of 
                     <xref target="RFC8288"/>, more specifically by  
-                    its ABNF production rule for "Link" and subsequent ones.</t> 
+                    its ABNF production rule for "Link" and subsequent ones. 
+                    Whereas the HTTP "Link" Header field depends on HTTP and hence on <xref target="RFC0822"/> for its
+                    encoding, the format specified here is encoded as UTF-8 <xref target="RFC3629"/>.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
                                 
@@ -188,6 +193,10 @@
                 </list></t>
                 <t>If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
                     which URI is used as context.</t>
+                 <t>It should be noted that the "application/linkset" format specified here is different than the "application/link-format" 
+                    format specified in <xref target="RFC6690"/> in that the former fully matches the 
+                    payload of the HTTP "Link" header as defined in Section 3 of <xref target="RFC8288"/>, whereas 
+                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.</t>
             </section>
             <section title="JSON Document Format: application/linkset+json" anchor="linkset-json">
                 <t>This document format uses JSON <xref target="RFC8259"/> as the syntax to represent 
@@ -418,12 +427,12 @@
                                 as prescribed by <xref target="RFC8187"/> is not preserved; instead, the 
                                 content of the internationalized attribute is represented in the character encoding used for the JSON set of links.</t>
                             <t>The value of the internationalized target attribute is an 
-                                array that contains one or more JSON objects. The name of the first member 
+                                array that contains one or more JSON objects. The name of one member 
                                 of such JSON object is "value" 
                                 and its value is the actual content (in its unescaped version) of the internationalized target attribute, i.e. the 
                                 value of the attribute from which 
                                 the encoding and language information are removed. 
-                                The name of the optional second member of such JSON object is "language" and 
+                                The name of another, optional, member of such JSON object is "language" and 
                                 its value is the language tag <xref target="RFC5646"/> 
                                 for the language in which the attribute content is conveyed.
                             </t>
@@ -606,13 +615,13 @@ Connection: close
              specifying that the media type of the response is "application/linkset". A set of links, including links that pertain 
              to the responding resource, is provided in the response body.
              </t>
-              <figure title="Response to HTTP GET includes a set of links" align="center" anchor="Response1.1">
+            <figure title="Response to HTTP GET includes a set of links" align="center" anchor="Response1.1">
                 <artwork align="left"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:35:51 GMT
 Server: Apache-Coyote/1.1
-Content-Length: 729
-Content-Type: application/linkset
+Content-Length: 855
+Content-Type: application/linkset; charset=UTF-8
 Connection: close
 
 <http://authors.example.net/johndoe>
@@ -636,7 +645,10 @@ Connection: close
    ; anchor="http://example.org/resource41/",
  <http://example.org/resource40>
    ; rel="prev"
-   ; anchor="http://example.org/resource41/"
+   ; anchor="http://example.org/resource41/",
+ <http://authors.example.net/alice>
+   ; rel="author"
+   ; anchor="http://example.org/resource1/items/CB63DA.html#comment-1"
 ]]>
                 </artwork> 
               </figure>
@@ -755,6 +767,14 @@ Connection: close
                 to version 03 of the "linkset" I-D. GS1 expresses confidence that this will become a normative reference in the
                 next iteration of that specification, likely to be ratified as a GS1 standard around February 2021.</t>
             </section>
+            <section title="FAIR Signposting Profile" anchor="implementation-signposting">
+                <t>The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
+                    of scholarly objects on the web through the use of typed web links pointing at e.g. 
+                    web resources that are part of a specific object, persistent identifiers for the object and its authors, 
+                    license information pertaining to the object. The specification encourages the use of Linksets and 
+                    initial implementations are ongoing, for example, for the open source Dataverse data repository platform 
+                    that was initiated by Harvard University and is meanwhile used by research institutions, worldwide.</t>
+            </section>
             <section title="Open Journal Systems (OJS)" anchor="implementation-ojs">
                 <t>Open Journal Systems (OJS) is an open-source software for the management of peer-reviewed academic journals, and is created by the Public Knowledge Project (PKP), released under the GNU General Public License. Open Journal Systems (OJS) is a journal management and publishing system that has been developed by PKP through its federally funded efforts to expand and improve access to research.</t>
                 <t>The OJS platform has implemented "linkset" support as an alternative way to provide links when there are more than a configured limit (they consider using about 10 as a good default, for testing purpose it is currently set to 8).</t>
@@ -856,6 +876,9 @@ Connection: close
 &RFC6838;
 &RFC5646;
 &RFC6982;
+&RFC0822;
+&RFC3629;
+&RFC6690;
 <!--
 &I-D.nottingham-link-hint;
 -->
