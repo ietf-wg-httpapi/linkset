@@ -239,11 +239,11 @@
                         are represented by a JSON object, the link context object. A link context object 
                         adheres to the following rules:</t>
                     <t><list style="symbols"> 
-                        <t>Each link context object MUST have an "anchor" member with a value that represents 
-                            the link context. This value SHOULD be an absolute URI  
-                            as defined in Section 4.3 of <xref target="RFC3986"/>. Cases whereby no value is to be provided 
-                        for the "anchor" member (i.e. the resource providing the set of links is the link context for each link 
-                        in the link context object) MUST be handled by providing an "anchor" member with null value ("anchor": "").</t>
+                        <t>Each link context object MAY have an "anchor" member with a value that represents 
+                            the link context. If present, this value SHOULD be an absolute URI  
+                            as defined in Section 4.3 of <xref target="RFC3986"/>. Cases where the anchor member is present, but no value is provided 
+                        for it (i.e. the resource providing the set of links is the link context for each link 
+                        in the link context object) MUST be handled by providing an "anchor" member with empty string ("anchor": "").</t>
                         <t>For each distinct relation type that the link context has with link targets,  
                             a link context object MUST have an additional member. 
                             This member is an array in which a distinct JSON object 
@@ -269,9 +269,9 @@
                     <t><list style="symbols">
                         <t>Each link target object MUST have an "href" member with a value that represents 
                             the link target. This value SHOULD be an absolute URI  
-                            as defined in Section 4.3 of <xref target="RFC3986"/>. Cases whereby no value is to be provided 
-                            for the "href" member (i.e. the resource providing the set of links is the target of the link 
-                            in the link target object) MUST be handled by providing an "href" member with null value ("href": "").</t>
+                            as defined in Section 4.3 of <xref target="RFC3986"/>. Cases where the href member is present, but no value is provided 
+                            for it (i.e. the resource providing the set of links is the target of the link 
+                            in the link target object) MUST be handled by providing an "href" member with an empty string ("href": "").</t>
                     <t>In many cases, a link target is further qualified by target attributes. 
                         Various types of attributes exist and they are conveyed as additional members of the link target object 
                         as detailed in <xref target="json-target-attributes"/>.</t>
