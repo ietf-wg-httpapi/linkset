@@ -387,7 +387,7 @@
 <link href="#rfc.section.4.2.2" rel="Chapter" title="4.2.2 Link Context Object">
 <link href="#rfc.section.4.2.3" rel="Chapter" title="4.2.3 Link Target Object">
 <link href="#rfc.section.4.2.4" rel="Chapter" title="4.2.4 Link Target Attributes">
-<link href="#rfc.section.4.2.5" rel="Chapter" title="4.2.5 Extensibility">
+<link href="#rfc.section.4.2.5" rel="Chapter" title="4.2.5 JSON Extensibility">
 <link href="#rfc.section.5" rel="Chapter" title='5 The "linkset" Relation Type for Linking to a Set of Links'>
 <link href="#rfc.section.6" rel="Chapter" title="6 Examples">
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 Set of Links Provided as application/linkset">
@@ -500,7 +500,7 @@
 </li>
 <li>4.2.4.   <a href="#rfc.section.4.2.4">Link Target Attributes</a>
 </li>
-<li>4.2.5.   <a href="#rfc.section.4.2.5">Extensibility</a>
+<li>4.2.5.   <a href="#rfc.section.4.2.5">JSON Extensibility</a>
 </li>
 </ul></ul><li>5.   <a href="#rfc.section.5">The "linkset" Relation Type for Linking to a Set of Links</a>
 </li>
@@ -821,9 +821,10 @@
 }                               
                         </pre>
 <h1 id="rfc.section.4.2.5">
-<a href="#rfc.section.4.2.5">4.2.5.</a> <a href="#json-extensibility" id="json-extensibility">Extensibility</a>
+<a href="#rfc.section.4.2.5">4.2.5.</a> <a href="#json-extensibility" id="json-extensibility">JSON Extensibility</a>
 </h1>
-<p id="rfc.section.4.2.5.p.1">The extensibility of the JSON document format for representing a set of links is restricted to the extensibility provided by <a href="#RFC8288" class="xref">[RFC8288]</a>. As such, the format provides for the use of extension target attributes as discussed in <a href="#json-target-attributes-extension" class="xref">Section 4.2.4.3</a>. However, other extensions MUST NOT be used.  This allows to unambiguously round trip between links provided in the HTTP "Link" header, sets of links serialized according to the "application/linkset" format, and set of links serialized according to the "application/linkset+json" format.</p>
+<p id="rfc.section.4.2.5.p.1">The extensibility of the JSON document format for representing a set of links is restricted to the extensibility provided by <a href="#RFC8288" class="xref">[RFC8288]</a>. The Web linking model provides for the use of extension target attributes as discussed in <a href="#json-target-attributes-extension" class="xref">Section 4.2.4.3</a>. Extensions based on the JSON syntax MUST NOT be used, and MUST be ignored when found in a JSON linkset document.</p>
+<p id="rfc.section.4.2.5.p.2">This limitation of the JSON format allows to unambiguously round trip between links provided in the HTTP "Link" header, sets of links serialized according to the "application/linkset" format, and sets of links serialized according to the "application/linkset+json" format.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#linkset-link-relation" id="linkset-link-relation">The "linkset" Relation Type for Linking to a Set of Links</a>
 </h1>
