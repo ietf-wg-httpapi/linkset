@@ -5,8 +5,8 @@
 Network Working Group                                           E. Wilde
 Internet-Draft                                                     Axway
 Intended status: Informational                          H. Van de Sompel
-Expires: September 13, 2021        Data Archiving and Networked Services
-                                                          March 12, 2021
+Expires: December 2, 2021          Data Archiving and Networked Services
+                                                            May 31, 2021
 
 
       Linkset: Media Types and a Link Relation Type for Link Sets
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 13, 2021.
+   This Internet-Draft will expire on December 2, 2021.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 1]
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 1]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
 Copyright Notice
@@ -79,43 +79,45 @@ Table of Contents
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Scenarios . . . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.1.  Third-Party Links . . . . . . . . . . . . . . . . . . . .   4
-     3.2.  Challenges Writing to HTTP Link Header Field  . . . . . .   4
+     3.2.  Challenges Writing to HTTP Link Header Field  . . . . . .   5
      3.3.  Large Number of Links . . . . . . . . . . . . . . . . . .   5
    4.  Document Formats for Sets of Links  . . . . . . . . . . . . .   5
      4.1.  HTTP Link Document Format: application/linkset  . . . . .   6
      4.2.  JSON Document Format: application/linkset+json  . . . . .   6
        4.2.1.  Set of Links  . . . . . . . . . . . . . . . . . . . .   7
-       4.2.2.  Link Context Object . . . . . . . . . . . . . . . . .   7
+       4.2.2.  Link Context Object . . . . . . . . . . . . . . . . .   8
        4.2.3.  Link Target Object  . . . . . . . . . . . . . . . . .   8
-       4.2.4.  Link Target Attributes  . . . . . . . . . . . . . . .   9
-   5.  The "linkset" Relation Type for Linking to a Set of Links . .  13
-   6.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     6.1.  Set of Links Provided as application/linkset  . . . . . .  14
-     6.2.  Set of Links Provided as application/linkset+json . . . .  15
+       4.2.4.  Link Target Attributes  . . . . . . . . . . . . . . .  10
+       4.2.5.  Extensibility . . . . . . . . . . . . . . . . . . . .  14
+   5.  The "linkset" Relation Type for Linking to a Set of Links . .  14
+   6.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     6.1.  Set of Links Provided as application/linkset  . . . . . .  15
+     6.2.  Set of Links Provided as application/linkset+json . . . .  16
      6.3.  Discovering a Link Set via the "linkset" Link Relation
-           Type  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
-   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  18
-     7.1.  GS1 . . . . . . . . . . . . . . . . . . . . . . . . . . .  19
-     7.2.  Open Journal Systems (OJS)  . . . . . . . . . . . . . . .  19
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  19
-     8.1.  Link Relation Type: linkset . . . . . . . . . . . . . . .  19
-     8.2.  Media Type: application/linkset . . . . . . . . . . . . .  20
-       8.2.1.  IANA Considerations . . . . . . . . . . . . . . . . .  20
-     8.3.  Media Type: application/linkset+json  . . . . . . . . . .  21
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  22
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  23
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  24
+           Type  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
+   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  19
+     7.1.  GS1 . . . . . . . . . . . . . . . . . . . . . . . . . . .  20
+     7.2.  FAIR Signposting Profile  . . . . . . . . . . . . . . . .  20
+     7.3.  Open Journal Systems (OJS)  . . . . . . . . . . . . . . .  20
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
+     8.1.  Link Relation Type: linkset . . . . . . . . . . . . . . .  21
+     8.2.  Media Type: application/linkset . . . . . . . . . . . . .  21
+       8.2.1.  IANA Considerations . . . . . . . . . . . . . . . . .  21
+     8.3.  Media Type: application/linkset+json  . . . . . . . . . .  22
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  23
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  24
 
 
 
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 2]
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 2]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
-   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  24
-   Appendix B.  JSON-LD Context  . . . . . . . . . . . . . . . . . .  24
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  24
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  25
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  26
+   Appendix B.  JSON-LD Context  . . . . . . . . . . . . . . . . . .  26
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  29
 
 1.  Introduction
@@ -160,16 +162,16 @@ Internet-Draft                   Linkset                      March 2021
 
    For all scenarios, links could be provided by means of a stand-alone
    document that is formatted according to the JSON-based serialization,
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 3]
+
+Internet-Draft                   Linkset                        May 2021
+
+
    the serialization aligned with the HTTP "Link" header format, or
    both.  The former serialization is motivated by the widespread use of
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 3]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    JSON and related tools, which suggests that handling sets of links
    expressed as JSON documents should be attractive to developers.  The
    latter serialization is provided for compatibility with the existing
@@ -212,20 +214,24 @@ Internet-Draft                   Linkset                      March 2021
    These requirements are addressed in this specification through the
    definition of two media types and a link relation type, respectively.
 
+
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 4]
+
+Internet-Draft                   Linkset                        May 2021
+
+
 3.2.  Challenges Writing to HTTP Link Header Field
 
    In some cases, it is not straightforward to write links to the HTTP
    "Link" header field from an application.  This can, for example, be
    the case because not all required link information is available to
    the application or because the application does not have the
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 4]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    capability to directly write HTTP headers.  In such cases, providing
    links by means of a standalone document can be a solution.  Making
    the resource that provides these links discoverable can be achieved
@@ -268,6 +274,14 @@ Internet-Draft                   Linkset                      March 2021
 
    o  The format defined in Section 4.2 is based on JSON [RFC8259].
 
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 5]
+
+Internet-Draft                   Linkset                        May 2021
+
+
    Note that [RFC8288] deprecates the "rev" construct that was provided
    by [RFC5988] as a means to express links with a directionality that
    is the inverse of direct links that use the "rel" construct.  In both
@@ -275,18 +289,14 @@ Internet-Draft                   Linkset                      March 2021
    represented as direct links using the "rel" construct and by
    switching the position of the resources involved in the link.
 
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 5]
-
-Internet-Draft                   Linkset                      March 2021
-
-
 4.1.  HTTP Link Document Format: application/linkset
 
    This document format is identical to the payload of the HTTP "Link"
    header field as defined in Section 3 of [RFC8288], more specifically
-   by its ABNF production rule for "Link" and subsequent ones.
+   by its ABNF production rule for "Link" and subsequent ones.  Whereas
+   the HTTP "Link" Header field depends on HTTP and hence on [RFC0822]
+   for its encoding, the format specified here is encoded as UTF-8
+   [RFC3629].
 
    The assigned media type for this format is "application/linkset".
 
@@ -306,11 +316,27 @@ Internet-Draft                   Linkset                      March 2021
    "application/linkset" documents will depend on which URI is used as
    context.
 
+   It should be noted that the "application/linkset" format specified
+   here is different than the "application/link-format" format specified
+   in [RFC6690] in that the former fully matches the payload of the HTTP
+   "Link" header as defined in Section 3 of [RFC8288], whereas the
+   latter introduces constraints on that definition to meet requirements
+   for Constrained RESTful Environments.
+
 4.2.  JSON Document Format: application/linkset+json
 
    This document format uses JSON [RFC8259] as the syntax to represent a
    set of links.  The set of links follows the abstract model defined by
    Web Linking [RFC8288].
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 6]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    The assigned media type for this format is "application/
    linkset+json".
@@ -330,13 +356,6 @@ Internet-Draft                   Linkset                      March 2021
    If these recommendations are not followed, interpretation of
    "application/linkset+json" will depend on which URI is used as
    context URI.
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 6]
-
-Internet-Draft                   Linkset                      March 2021
-
 
    The "application/linkset+json" serialization is designed such that it
    can directly be used as the content of a JSON-LD serialization by
@@ -364,19 +383,30 @@ Internet-Draft                   Linkset                      March 2021
       in an array.  Members other than link context objects MUST NOT be
       included in this array.
 
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 7]
+
+Internet-Draft                   Linkset                        May 2021
+
+
 4.2.2.  Link Context Object
 
    In the JSON representation one or more links that have the same link
    context are represented by a JSON object, the link context object.  A
    link context object adheres to the following rules:
 
-   o  Each link context object MUST have an "anchor" member with a value
-      that represents the link context.  This value SHOULD be an
-      absolute URI as defined in Section 4.3 of [RFC3986].  Cases
-      whereby no value is to be provided for the "anchor" member (i.e.
-      the resource providing the set of links is the link context for
-      each link in the link context object) MUST be handled by providing
-      an "anchor" member with null value ("anchor": "").
+   o  Each link context object MAY have an "anchor" member with a value
+      that represents the link context.  If present, this value SHOULD
+      be an absolute URI as defined in Section 4.3 of [RFC3986].  Cases
+      where the anchor member is present, but no value is provided for
+      it (i.e. the resource providing the set of links is the link
+      context for each link in the link context object) MUST be handled
+      by providing an "anchor" member with empty string ("anchor": "").
 
    o  For each distinct relation type that the link context has with
       link targets, a link context object MUST have an additional
@@ -385,14 +415,6 @@ Internet-Draft                   Linkset                      March 2021
       each link target for which the relationship with the link context
       (value of the encompassing anchor member) applies.  The name of
       this member expresses the relation type of the link as follows:
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 7]
-
-Internet-Draft                   Linkset                      March 2021
-
 
    o
 
@@ -414,11 +436,19 @@ Internet-Draft                   Linkset                      March 2021
 
    o  Each link target object MUST have an "href" member with a value
       that represents the link target.  This value SHOULD be an absolute
-      URI as defined in Section 4.3 of [RFC3986].  Cases whereby no
-      value is to be provided for the "href" member (i.e. the resource
-      providing the set of links is the target of the link in the link
-      target object) MUST be handled by providing an "href" member with
-      null value ("href": "").
+      URI as defined in Section 4.3 of [RFC3986].  Cases where the href
+      member is present, but no value is provided for it (i.e. the
+      resource providing the set of links is the target of the link in
+      the link target object) MUST be handled by providing an "href"
+      member with an empty string ("href": "").
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 8]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    o  In many cases, a link target is further qualified by target
       attributes.  Various types of attributes exist and they are
@@ -439,16 +469,6 @@ Internet-Draft                   Linkset                      March 2021
          }
        ]
    }
-
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 8]
-
-Internet-Draft                   Linkset                      March 2021
-
 
    The following example of a JSON-serialized set of links represents
    two links that share link context and relation type but have
@@ -471,6 +491,20 @@ Internet-Draft                   Linkset                      March 2021
    each with a different link context, link target, and relation type.
    One relation type is registered, the other is an extension relation
    type.
+
+
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021                [Page 9]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    {
      "linkset":
@@ -498,14 +532,6 @@ Internet-Draft                   Linkset                      March 2021
    o  Extension attributes defined and used by communities as allowed by
       [RFC8288].
 
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021               [Page 9]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    o  Internationalized versions of the "title" attribute defined by
       [RFC8288] and of extension attributes allowed by [RFC8288].
 
@@ -526,6 +552,15 @@ Internet-Draft                   Linkset                      March 2021
       a string - representing one value of the "hreflang" target
       attribute for a link - which follows the same model as in the
       [RFC8288] syntax.
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 10]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    o  "media": The optional and not repeatable "media" target attribute
       MUST be represented by a "media" member in the link target object,
@@ -552,16 +587,6 @@ Internet-Draft                   Linkset                      March 2021
    the not repeatable "type" target attributes are represented in a link
    target object.
 
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 10]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    {
      "linkset":
        [
@@ -584,6 +609,15 @@ Internet-Draft                   Linkset                      March 2021
    the use of a trailing asterisk in the attribute name, such as
    "title*".  The content model of [RFC8187] uses a string-based
    microsyntax that represents the character encoding, an optional
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 11]
+
+Internet-Draft                   Linkset                        May 2021
+
+
    language tag, and the escaped attribute value encoded according to
    the specified character encoding.
 
@@ -600,46 +634,46 @@ Internet-Draft                   Linkset                      March 2021
       JSON set of links.
 
    o  The value of the internationalized target attribute is an array
-      that contains one or more JSON objects.  The name of the first
-      member of such JSON object is "value" and its value is the actual
-      content (in its unescaped version) of the internationalized target
+      that contains one or more JSON objects.  The name of one member of
+      such JSON object is "value" and its value is the actual content
+      (in its unescaped version) of the internationalized target
       attribute, i.e. the value of the attribute from which the encoding
-      and language information are removed.  The name of the optional
-      second member of such JSON object is "language" and its value is
-      the language tag [RFC5646] for the language in which the attribute
-      content is conveyed.
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 11]
-
-Internet-Draft                   Linkset                      March 2021
-
+      and language information are removed.  The name of another,
+      optional, member of such JSON object is "language" and its value
+      is the language tag [RFC5646] for the language in which the
+      attribute content is conveyed.
 
    The following example illustrates how the "title*" target attribute
    defined by [RFC8288] is represented in a link target object.
 
-{
-  "linkset":
-    [
-      { "anchor": "http://example.net/bar",
-        "next": [
-              {"href":     "http://example.com/foo",
-               "type":     "text/html",
-               "hreflang": [ "en" , "de" ],
-               "title":    "Next chapter",
-               "title*":   [ { "value": "nachstes Kapitel" , "language" : "de" } ]
-              }
-        ]
-      }
-    ]
-}
+   {
+     "linkset":
+       [
+         { "anchor": "http://example.net/bar",
+           "next": [
+                 {"href":     "http://example.com/foo",
+                  "type":     "text/html",
+                  "hreflang": [ "en" , "de" ],
+                  "title":    "Next chapter",
+                  "title*":   [ { "value": "nachstes Kapitel" ,
+                                  "language" : "de" } ]
+                 }
+           ]
+         }
+       ]
+   }
 
    The above example assumes that the German title contains an umlaut
    character (in the native syntax it would be encoded as title*=UTF-
    8'de'n%c3%a4chstes%20Kapitel), which gets encoded in its unescaped
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 12]
+
+Internet-Draft                   Linkset                        May 2021
+
+
    form in the JSON representation.  This is not shown in the above
    example due to the limitations of RFC publication.  Implementations
    MUST properly decode/encode internationalized target attributes that
@@ -649,9 +683,9 @@ Internet-Draft                   Linkset                      March 2021
 4.2.4.3.  Extension Target Attributes
 
    Extension target attributes are attributes that are not defined by
-   RFC 8288 (as listed in Section 4.2.4.1), but are nevertheless used to
-   qualify links.  They can be defined by communities in any way deemed
-   necessary, and it is up to them to make sure their usage is
+   [RFC8288] (as listed in Section 4.2.4.1), but are nevertheless used
+   to qualify links.  They can be defined by communities in any way
+   deemed necessary, and it is up to them to make sure their usage is
    understood by target applications.  However, lacking standardization,
    there is no interoperable understanding of these extension
    attributes.  One important consequence is that their cardinality is
@@ -665,14 +699,6 @@ Internet-Draft                   Linkset                      March 2021
    o  An extension target attribute is represented as a member of the
       link context object with the same name of the attribute, including
       the * if applicable.
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 12]
-
-Internet-Draft                   Linkset                      March 2021
-
 
    o  The value of an extension attribute MUST be represented by an
       array, even if there only is one value to be represented.
@@ -694,21 +720,43 @@ Internet-Draft                   Linkset                      March 2021
    follows the naming rule of [RFC8187] and therefore is encoded
    according to the serialization described in Section 4.2.4.2.
 
- {
-   "linkset":
-     [
-       { "anchor": "http://example.net/bar",
-         "next": [
-               { "href": "http://example.com/foo",
-                 "type": "text/html",
-                 "foo":  [ "foovalue" ],
-                 "bar":  [ "barone", "bartwo" ],
-                 "baz*": [ { "value": "bazvalue" , "language" : "en" } ]
-               }
-         ]
-       }
-     ]
- }
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 13]
+
+Internet-Draft                   Linkset                        May 2021
+
+
+   {
+     "linkset":
+       [
+         { "anchor": "http://example.net/bar",
+           "next": [
+                 { "href": "http://example.com/foo",
+                   "type": "text/html",
+                   "foo":  [ "foovalue" ],
+                   "bar":  [ "barone", "bartwo" ],
+                   "baz*": [ { "value": "bazvalue" ,
+                               "language" : "en" } ]
+                 }
+           ]
+         }
+       ]
+   }
+
+4.2.5.  Extensibility
+
+   The extensibility of the JSON document format for representing a set
+   of links is restricted to the extensibility provided by [RFC8288].
+   As such, the format provides for the use of extension target
+   attributes as discussed in Section 4.2.4.3.  However, other
+   extensions MUST NOT be used.  This allows to unambiguously round trip
+   between links provided in the HTTP "Link" header, sets of links
+   serialized according to the "application/linkset" format, and set of
+   links serialized according to the "application/linkset+json" format.
 
 5.  The "linkset" Relation Type for Linking to a Set of Links
 
@@ -722,14 +770,6 @@ Internet-Draft                   Linkset                      March 2021
 
    A resource MAY provide more than one link with a "linkset" relation
    type.  Multiple such links can refer to the same set of links
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 13]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    expressed using different media types, or to different sets of links,
    potentially provided by different third-party services.
 
@@ -737,6 +777,14 @@ Internet-Draft                   Linkset                      March 2021
    of links provided by the resource that is the target of the link can
    contain links in which the resource that is the context of the link
    does not participate; it MAY decide to ignore those links.
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 14]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    A user agent that follows a "linkset" link and obtains links for
    which anchors and targets are not expressed as absolute URIs MUST
@@ -781,18 +829,25 @@ Internet-Draft                   Linkset                      March 2021
 
 
 
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 14]
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 15]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
    HTTP/1.1 200 OK
    Date: Mon, 12 Aug 2019 10:35:51 GMT
    Server: Apache-Coyote/1.1
-   Content-Length: 729
-   Content-Type: application/linkset
+   Content-Length: 855
+   Content-Type: application/linkset; charset=UTF-8
    Connection: close
-
    <http://authors.example.net/johndoe>
       ; rel="author"
       ; type="application/rdf+xml"
@@ -814,7 +869,10 @@ Internet-Draft                   Linkset                      March 2021
       ; anchor="http://example.org/resource41/",
     <http://example.org/resource40>
       ; rel="prev"
-      ; anchor="http://example.org/resource41/"
+      ; anchor="http://example.org/resource41/",
+    <http://authors.example.net/alice>
+      ; rel="author"
+      ; anchor="http://example.org/resource1/items/CB63DA.html#cmt-1"
 
 
           Figure 2: Response to HTTP GET includes a set of links
@@ -826,6 +884,20 @@ Internet-Draft                   Linkset                      March 2021
    uses an "Accept" header to indicate it prefers a response in the
    "application/linkset+json" format.
 
+
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 16]
+
+Internet-Draft                   Linkset                        May 2021
+
+
    GET links/article/7507 HTTP/1.1
    Host: example.com
    Accept: application/linkset+json
@@ -833,14 +905,6 @@ Internet-Draft                   Linkset                      March 2021
 
         Figure 3: Client HTTP GET request expressing preference for
                     "application/linkset+json" response
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 15]
-
-Internet-Draft                   Linkset                      March 2021
-
 
    Figure 4 shows the response to the HTTP GET request of Figure 3.  The
    set of links is serialized according to the media type "application/
@@ -885,17 +949,9 @@ Internet-Draft                   Linkset                      March 2021
 
 
 
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 16]
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 17]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
    HTTP/1.1 200 OK
@@ -903,7 +959,6 @@ Internet-Draft                   Linkset                      March 2021
    Server: Apache-Coyote/1.1
    Content-Type: application/linkset+json
    Content-Length: 802
-
    {
      "linkset": [
        {
@@ -949,9 +1004,10 @@ Internet-Draft                   Linkset                      March 2021
 
 
 
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 17]
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 18]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
 6.3.  Discovering a Link Set via the "linkset" Link Relation Type
@@ -1005,9 +1061,9 @@ Internet-Draft                   Linkset                      March 2021
 
 
 
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 18]
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 19]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
    intended as, and must not be construed to be, a catalog of available
@@ -1034,7 +1090,19 @@ Internet-Draft                   Linkset                      March 2021
    iteration of that specification, likely to be ratified as a GS1
    standard around February 2021.
 
-7.2.  Open Journal Systems (OJS)
+7.2.  FAIR Signposting Profile
+
+   The FAIR Signposting Profile is a community specification aimed at
+   improving machine navigation of scholarly objects on the web through
+   the use of typed web links pointing at e.g.  web resources that are
+   part of a specific object, persistent identifiers for the object and
+   its authors, license information pertaining to the object.  The
+   specification encourages the use of Linksets and initial
+   implementations are ongoing, for example, for the open source
+   Dataverse data repository platform that was initiated by Harvard
+   University and is meanwhile used by research institutions, worldwide.
+
+7.3.  Open Journal Systems (OJS)
 
    Open Journal Systems (OJS) is an open-source software for the
    management of peer-reviewed academic journals, and is created by the
@@ -1045,6 +1113,15 @@ Internet-Draft                   Linkset                      March 2021
 
    The OJS platform has implemented "linkset" support as an alternative
    way to provide links when there are more than a configured limit
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 20]
+
+Internet-Draft                   Linkset                        May 2021
+
+
    (they consider using about 10 as a good default, for testing purpose
    it is currently set to 8).
 
@@ -1056,15 +1133,6 @@ Internet-Draft                   Linkset                      March 2021
    Section 6.2.1 of Web Linking [RFC8288]:
 
       Relation Name: linkset
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 19]
-
-Internet-Draft                   Linkset                      March 2021
-
 
       Description: The Target IRI of a link with the "linkset" relation
       type provides a set of links, including links in which the Context
@@ -1101,6 +1169,15 @@ Internet-Draft                   Linkset                      March 2021
 
       Published specification: [[ This document ]]
 
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 21]
+
+Internet-Draft                   Linkset                        May 2021
+
+
       Applications that use this media type: This media type is not
       specific to any application, as it can be used by any application
       that wants to interchange web links.
@@ -1113,14 +1190,6 @@ Internet-Draft                   Linkset                      March 2021
          extension.
 
          Macintosh file type code(s): TEXT
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 20]
-
-Internet-Draft                   Linkset                      March 2021
-
 
       Person & email address to contact for further information: Erik
       Wilde <erik.wilde@dret.net>
@@ -1157,6 +1226,14 @@ Internet-Draft                   Linkset                      March 2021
 
       Published specification: [[ This document ]]
 
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 22]
+
+Internet-Draft                   Linkset                        May 2021
+
+
       Applications that use this media type: This media type is not
       specific to any application, as it can be used by any application
       that wants to interchange web links.
@@ -1170,13 +1247,6 @@ Internet-Draft                   Linkset                      March 2021
          extension other than this generic one.
 
          Macintosh file type code(s): TEXT
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 21]
-
-Internet-Draft                   Linkset                      March 2021
-
 
       Person & email address to contact for further information: Erik
       Wilde <erik.wilde@dret.net>
@@ -1212,6 +1282,14 @@ Internet-Draft                   Linkset                      March 2021
       be lost or can change when self-contained link representations are
       moved.  Changing the context can change the interpretation of
       links when they have no explicit anchor, or when they use relative
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 23]
+
+Internet-Draft                   Linkset                        May 2021
+
+
       URIs.  Applications may choose to ignore links that have no
       explicit anchor or that use relative URIs when these are exchanged
       in stand-alone resources.
@@ -1225,23 +1303,22 @@ Internet-Draft                   Linkset                      March 2021
       differently than cases where a resource and the links for that
       resource are provided by the same party.
 
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 22]
-
-Internet-Draft                   Linkset                      March 2021
-
-
 10.  References
 
 10.1.  Normative References
+
+   [RFC0822]  Crocker, D., "STANDARD FOR THE FORMAT OF ARPA INTERNET
+              TEXT MESSAGES", STD 11, RFC 822, DOI 10.17487/RFC0822,
+              August 1982, <https://www.rfc-editor.org/info/rfc822>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
+              10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
+              2003, <https://www.rfc-editor.org/info/rfc3629>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -1252,10 +1329,22 @@ Internet-Draft                   Linkset                      March 2021
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <https://www.rfc-editor.org/info/rfc5646>.
 
+   [RFC6690]  Shelby, Z., "Constrained RESTful Environments (CoRE) Link
+              Format", RFC 6690, DOI 10.17487/RFC6690, August 2012,
+              <https://www.rfc-editor.org/info/rfc6690>.
+
    [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
               Specifications and Registration Procedures", BCP 13,
               RFC 6838, DOI 10.17487/RFC6838, January 2013,
               <https://www.rfc-editor.org/info/rfc6838>.
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 24]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    [RFC6982]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", RFC 6982,
@@ -1280,15 +1369,6 @@ Internet-Draft                   Linkset                      March 2021
               for HTTP Header Field Parameters", RFC 8187,
               DOI 10.17487/RFC8187, September 2017,
               <https://www.rfc-editor.org/info/rfc8187>.
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 23]
-
-Internet-Draft                   Linkset                      March 2021
-
 
    [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
               Interchange Format", STD 90, RFC 8259,
@@ -1315,6 +1395,13 @@ Internet-Draft                   Linkset                      March 2021
               20140116, January 2014,
               <https://www.w3.org/TR/2014/REC-json-ld-20140116>.
 
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 25]
+
+Internet-Draft                   Linkset                        May 2021
+
+
 10.3.  URIs
 
    [1] https://www.w3.org/TR/2014/REC-json-ld-20140116/#interpreting-
@@ -1337,21 +1424,39 @@ Appendix B.  JSON-LD Context
    [W3C.REC-json-ld-20140116] section 6.8 [1], when delivering a link
    set that is rendered according to the "application/linkset+json"
    media type to a user agent, a server can convey the availability of
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 24]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    such a JSON-LD context by using a link with the relation type
    "http://www.w3.org/ns/json-ld#context" in the HTTP "Link" header.
 
    Using the latter approach to support discovery of a JSON-LD Context,
    the response to the GET request of Figure 3 against the URI of a set
    of links would be as shown in Figure 7.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 26]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    HTTP/1.1 200 OK
    Date: Mon, 12 Aug 2019 10:48:22 GMT
@@ -1361,7 +1466,6 @@ Internet-Draft                   Linkset                      March 2021
          ; rel="http://www.w3.org/ns/json-ld#context"
          ; type="application/ld+json"
    Content-Length: 846
-
    {
      "linkset": [
        {
@@ -1394,14 +1498,6 @@ Internet-Draft                   Linkset                      March 2021
            {
              "href": "https://mirror.example.com/links/article/7507",
              "type": "application/linkset"
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 25]
-
-Internet-Draft                   Linkset                      March 2021
-
-
            }
          ]
        }
@@ -1410,6 +1506,13 @@ Internet-Draft                   Linkset                      March 2021
 
       Figure 7: Using a typed link to support discovery of a JSON-LD
                         Context for a Set of Links
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 27]
+
+Internet-Draft                   Linkset                        May 2021
+
 
    In order to obtain the JSON-LD Context conveyed by the server, the
    user agent issues an HTTP GET against the link target of the link
@@ -1420,48 +1523,9 @@ Internet-Draft                   Linkset                      March 2021
    absolute URI, inspired by the same approach used for Atom [RFC4287]
    described in [RFC8288] appendix A.2 [2].
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 26]
-
-Internet-Draft                   Linkset                      March 2021
-
-
    HTTP/1.1 200 OK
    Content-Type: application/ld+json
    Content-Length: 638
-
    {
      "@context": [
        {
@@ -1501,51 +1565,35 @@ Internet-Draft                   Linkset                      March 2021
 
 
 
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 27]
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 28]
 
-Internet-Draft                   Linkset                      March 2021
+Internet-Draft                   Linkset                        May 2021
 
 
    <https://example.org/article/view/7507>
        <http://www.iana.org/assignments/relation/author>
        <https://orcid.org/0000-0002-1825-0097> .
-
    <https://example.org/article/view/7507>
        <http://www.iana.org/assignments/relation/item>
        <https://example.org/article/7507/item/1> .
-
    <https://example.org/article/7507/item/1>
        <http://purl.org/dc/terms/format>
        "application/pdf" .
-
    <https://example.org/article/view/7507>
        <http://www.iana.org/assignments/relation/item>
        <https://example.org/article/7507/item/2> .
-
    <https://example.org/article/7507/item/2>
        <http://purl.org/dc/terms/format>
        "text/csv" .
-
    <https://example.org/article/view/7507>
        <http://www.iana.org/assignments/relation/cite-as>
        <https://doi.org/10.5555/12345680> .
-
    <https://doi.org/10.5555/12345680>
        <http://purl.org/dc/terms/title>
        "A Methodology for the Emulation of Architecture" .
-
    <https://example.com/links/article/7507>
        <http://www.iana.org/assignments/relation/alternate>
        <https://mirror.example.com/links/article/7507> .
-
    <https://mirror.example.com/links/article/7507>
        <http://purl.org/dc/terms/format>
        "application/linkset" .
@@ -1560,16 +1608,6 @@ Internet-Draft                   Linkset                      March 2021
    ""_linkset"" in the "application/linkset+json" before transforming a
    link set to JSON-LD.
 
-
-
-
-
-
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 28]
-
-Internet-Draft                   Linkset                      March 2021
-
-
 Authors' Addresses
 
    Erik Wilde
@@ -1577,6 +1615,15 @@ Authors' Addresses
 
    Email: erik.wilde@dret.net
    URI:   http://dret.net/netdret/
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 29]
+
+Internet-Draft                   Linkset                        May 2021
 
 
    Herbert Van de Sompel
@@ -1621,4 +1668,13 @@ Authors' Addresses
 
 
 
-Wilde & Van de Sompel  Expires September 13, 2021              [Page 29]
+
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel   Expires December 2, 2021               [Page 30]
