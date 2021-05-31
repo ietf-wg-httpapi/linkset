@@ -559,10 +559,11 @@
                 
                 <section title="JSON Extensibility" anchor="json-extensibility">
                     <t>The extensibility of the JSON document format for representing a set of links is restricted to the extensibility 
-                        provided by <xref target="RFC8288"/>. As such, the format provides for the use of extension target attributes as discussed in 
-                        <xref target="json-target-attributes-extension"/>. However, other extensions MUST NOT be used. 
-                        This allows to unambiguously round trip between links provided in the HTTP "Link" header, 
-                        sets of links serialized according to the "application/linkset" format, and set of links serialized 
+                        provided by <xref target="RFC8288"/>. The Web linking model provides for the use of extension target attributes as discussed in 
+                        <xref target="json-target-attributes-extension"/>. Extensions based on the JSON syntax MUST NOT be used, and MUST be
+                        ignored when found in a JSON linkset document.</t>
+                    <t>This limitation of the JSON format allows to unambiguously round trip between links provided in the HTTP "Link" header, 
+                        sets of links serialized according to the "application/linkset" format, and sets of links serialized 
                         according to the "application/linkset+json" format.</t>
                     
                 </section>
