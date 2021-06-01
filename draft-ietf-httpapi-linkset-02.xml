@@ -47,7 +47,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="31" month="May" year="2021"/>
+        <date day="1" month="June" year="2021"/>
         <abstract>
            <t>This specification defines two document formats and respective media types for representing sets of links as stand-alone resources. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -570,6 +570,29 @@
                 
             </section>
         </section>
+         
+                 <section title="The &quot;profile&quot; attribute for media types to Represent Sets of Links" anchor="profile-attribute">
+            
+            <t>As a means to convey specific constraints or conventions (as per <xref target="RFC6906"/>) that apply to a link set document, 
+                the "profile" attribute MAY be used in conjunction with the media types "application/linkset" and 
+                "application/linkset+json" detailed in 
+                <xref target="linkset-native"/> and <xref target="linkset-json"/>, respectively. 
+                For example, the attribute could be used to indicate that a link set uses a specific, limited set of link relation 
+                types.</t>
+            
+            <t>The value of the "profile" attribute MUST be a non-empty list of space-separated URIs, 
+                each of which identifies specific constraints or conventions that apply to the link set document. 
+                Profile URIs SHOULD be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>.</t>
+            
+            <t>The presence of a "profile" attribute in conjunction with the "application/linkset" and 
+                "application/linkset+json" media types does not change the semantics of
+                a link set. As such, clients with and without knowledge of profile URIs can use the same representation. The 
+                profile parameter MAY be used by clients to express their 
+                preferences, and, if a client does so, a server SHOULD return a document that honors 
+                the profiles it recognizes, and MUST ignore the 
+                profiles which it does not recognize.</t>
+            
+        </section>
         
         <section title='The "linkset" Relation Type for Linking to a Set of Links' anchor="linkset-link-relation">
             <t>The target of a link with the "linkset" relation type provides a set of links, 
@@ -808,14 +831,13 @@ Connection: close
                 </t>
             </section>
             <section title="Media Type: application/linkset">
-                <section title="IANA Considerations" anchor="iana">
                     <t>The Internet media type <xref target="RFC6838"/> for a natively encoded linkset is application/linkset.</t>
                     <t>
                         <list>
                             <t>Type name: application</t>
                             <t>Subtype name: linkset</t>
                             <t>Required parameters: none</t>
-                            <t>Optional parameters: none</t>
+                            <t>Optional parameters: profile</t>
                             <t>Encoding considerations: Linksets are encoded according to the definition of <xref target="RFC8288"/>. The encoding of <xref target="RFC8288"/> is based on the general encoding rules of <xref target="RFC7230"/>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <xref target="RFC8187"/>.</t>
                             <t>Security considerations: The security considerations of [[ This document ]] apply.</t>
                             <t>Interoperability considerations: The interoperability considerations of <xref target="RFC7230"/> apply.</t>
@@ -836,7 +858,6 @@ Connection: close
                         </list>
                     </t>
                 </section>
-            </section>
             <section title="Media Type: application/linkset+json">
                 <t>The Internet media type <xref target="RFC6838"/> for a JSON-encoded linkset is application/linkset+json.</t>
                 <t>
@@ -844,7 +865,7 @@ Connection: close
                         <t>Type name: application</t>
                         <t>Subtype name: linkset+json</t>
                         <t>Required parameters: none</t>
-                        <t>Optional parameters: none</t>
+                        <t>Optional parameters: profile</t>
                         <t>Encoding considerations: The encoding considerations of <xref target="RFC8259"/> apply</t>
                         <t>Security considerations: The security considerations of [[ This document ]] apply.</t>
                         <t>Interoperability considerations: The interoperability considerations of <xref target="RFC8259"/> apply.</t>
