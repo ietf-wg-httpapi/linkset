@@ -31,7 +31,7 @@
 <?rfc toc="yes" ?>
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc category="info" ipr="trust200902" docName="draft-ietf-httpapi-linkset-03">
+<rfc category="info" ipr="trust200902" docName="draft-ietf-httpapi-linkset-03" version="3">
     <front>
         <title abbrev="Linkset">Linkset: Media Types and a Link Relation Type for Link Sets</title>
         <author initials="E." surname="Wilde" fullname="Erik Wilde">
