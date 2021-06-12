@@ -1137,9 +1137,9 @@ Content-Length: 638
             </figure>
 
         <t>Note that the JSON-LD context of <xref target="jsonld-context"/> does not handle 
-         (meta)link relations of type <spanx style="verb">"linkset"</spanx> as they are 
+         (meta)link relations of type <tt>"linkset"</tt> as they are 
          in conflict with the top-level JSON key. A workaround is to rename the top-level key
-         to <spanx style="verb">"_linkset"</spanx> in the
+         to <tt>"_linkset"</tt> in the
          "application/linkset+json" before transforming a link set to JSON-LD.</t>
         </section>
 
