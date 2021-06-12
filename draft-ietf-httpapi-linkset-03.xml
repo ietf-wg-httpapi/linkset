@@ -619,7 +619,7 @@
                <t><xref target="Request1"/> shows a client issuing an 
                    HTTP GET request against resource &lt;https://example.org/links/resource1&gt;.</t>
                
-               <figure title="Client HTTP GET request" align="center" anchor="Request1">
+               <figure title="Client HTTP GET request" anchor="Request1">
                    <artwork align="left"><![CDATA[
 GET /links/resource1 HTTP/1.1
 Host: example.org
@@ -634,7 +634,7 @@ Connection: close
              to resource &lt;https://example.org/resource1&gt;, is provided in the response body. The HTTP "Link" header field indicates the availability 
              of an alternate representation of the set of links using media type "application/linkset+json".
              </t>
-            <figure title="Response to HTTP GET includes a set of links" align="center" anchor="Response1.1">
+            <figure title="Response to HTTP GET includes a set of links" anchor="Response1.1">
                 <artwork align="left"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:35:51 GMT
@@ -684,7 +684,7 @@ Connection: close
                      In the request, the client uses an "Accept" header field to indicate it prefers a response in  the 
                      "application/linkset+json" format.
                  </t>
-                 <figure title="Client HTTP GET request expressing preference for &quot;application/linkset+json&quot; response" align="center" anchor="Request4">
+                 <figure title="Client HTTP GET request expressing preference for &quot;application/linkset+json&quot; response" anchor="Request4">
                      <artwork align="left"><![CDATA[
 GET links/resource1 HTTP/1.1
 Host: example.org
@@ -695,7 +695,7 @@ Connection: close
                  <t><xref target="Response4.1"/> shows the response to the HTTP GET request of <xref target="Request4"/>. 
                      The set of links is serialized according to the media type "application/linkset+json".
                  </t>
-                 <figure title="Response to the client's request for the set of links" align="center" anchor="Response4.1">
+                 <figure title="Response to the client's request for the set of links" anchor="Response4.1">
                      <artwork align="left"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:46:22 GMT
@@ -770,7 +770,7 @@ Content-Length: 1349
                      HTTP HEAD request against resource 
                      &lt;https://example.org/resource1&gt;.</t>
                  
-                 <figure title="Client HTTP HEAD request" align="center" anchor="Request3">
+                 <figure title="Client HTTP HEAD request" anchor="Request3">
                      <artwork align="left"><![CDATA[
 HEAD resource1 HTTP/1.1
 Host: example.org
@@ -784,7 +784,7 @@ Connection: close
                      by resource &lt;https://example.org/links/resource1&gt;, which 
                      provides a representation with media type "application/linkset+json".
                  </t>
-                 <figure title="Response to HTTP HEAD request" align="center" anchor="Response3.1">
+                 <figure title="Response to HTTP HEAD request" anchor="Response3.1">
                      <artwork align="left"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:45:54 GMT
