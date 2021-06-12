@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <!DOCTYPE rfc SYSTEM "https://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
-<!-- One method to get references from the online citation libraries.
-     There has to be one entity for each item to be referenced. 
-     An alternate method (rfc include) is described in the references. -->
-
-<!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"> 
-<!ENTITY RFC4287 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4287.xml">
-<!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml"> 
-<!ENTITY RFC6690 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6690.xml">
-<!ENTITY RFC8259 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8259.xml">
-<!ENTITY RFC8187 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8187.xml">
-<!ENTITY RFC3986 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3986.xml">
-<!ENTITY RFC6838 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6838.xml">
-<!ENTITY RFC5646 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5646.xml">
-<!ENTITY RFC8288 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8288.xml">
-<!ENTITY RFC6982 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6982.xml">
-<!ENTITY RFC5988 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
-<!ENTITY W3CJSONLD SYSTEM "http://xml.resource.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml">
-<!ENTITY I-D.nottingham-link-hint SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nottingham-link-hint.xml">
-<!ENTITY RFC6690 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6690.xml">
-<!ENTITY RFC0822 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0822.xml">
-<!ENTITY RFC3629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3629.xml">
-<!ENTITY RFC6906 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
-<!ENTITY RFC7284 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7284.xml">
-<!ENTITY HTTP SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-semantics.xml">
 ]>
 
 <?rfc compact="yes" ?>
@@ -31,7 +7,7 @@
 <?rfc toc="yes" ?>
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc category="info" ipr="trust200902" docName="draft-ietf-httpapi-linkset-03" version="3">
+<rfc category="info" ipr="trust200902" docName="draft-ietf-httpapi-linkset-03" version="3" xmlns:xi="http://www.w3.org/2001/XInclude">
     <front>
         <title abbrev="Linkset">Linkset: Media Types and a Link Relation Type for Link Sets</title>
         <author initials="E." surname="Wilde" fullname="Erik Wilde">
@@ -929,23 +905,23 @@ Connection: close
     </middle>
     <back>
         <references title="Normative References">
-&RFC2119; 
-&RFC8174; 
-&RFC8259;
-&RFC8288;
-&RFC8187;
-&RFC3986;
-&RFC6838;
-&RFC5646;
-&RFC6982;
-&RFC0822;
-&RFC3629;
-&RFC6690;
-&RFC6906;
-&RFC7284;
-&HTTP;
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8288.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8187.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6838.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6982.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.0822.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-semantics.xml"/>
 <!--
-&I-D.nottingham-link-hint;
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.nottingham-link-hint.xml"/>
 -->
             <!--
             <reference anchor="W3C.REC-html401-19991224">
@@ -969,9 +945,9 @@ Connection: close
 -->
         </references>
       <references title="Informative References">
-&W3CJSONLD;
-&RFC4287;
-&RFC5988;
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4287.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
       </references>
 
       <section title="Acknowledgements">
