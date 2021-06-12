@@ -260,7 +260,7 @@
                         type, and link target.</t>
   
                     <figure>
-                        <artwork align="left" type="JSON"><![CDATA[                          
+                        <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -271,7 +271,7 @@
       } 
     ]
 }]]>
-                        </artwork> 
+                        </sourcecode> 
                     </figure>
                     
                     <t>The following example of a JSON-serialized set of links represents two links 
@@ -279,7 +279,7 @@
                      </t>
                     
                     <figure>
-                        <artwork align="left" type="JSON"><![CDATA[
+                        <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -292,14 +292,14 @@
     ]
 }]]>                          
 
-                        </artwork> 
+                        </sourcecode> 
                     </figure>
                     
                     <t>The following example shows a set of links that represents two links, each with 
                     a different link context, link target, and relation type. 
                     One relation type is registered, the other is an extension relation type.</t>
                     <figure>
-                        <artwork align="left" type="JSON"><![CDATA[
+                        <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -315,7 +315,7 @@
       } 
     ]
 }]]>  
-                        </artwork> 
+                        </sourcecode> 
                     </figure>
                         
                 </section>
@@ -368,7 +368,7 @@
                         <t>The following example illustrates how the repeatable "hreflang" and the 
                             not repeatable "type" target attributes are represented in a link target object.</t>
                         <figure>
-                            <artwork align="left" type="JSON"><![CDATA[                              
+                            <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -382,7 +382,7 @@
       } 
     ]
 }]]>
-                            </artwork> 
+                            </sourcecode> 
                         </figure>
                         
                     </section>
@@ -418,7 +418,7 @@
                         <t>The following example illustrates how the "title*" target attribute 
                             defined by <xref target="RFC8288"/> is represented in a link target object.</t>
                         <figure>
-                            <artwork align="left" type="JSON"><![CDATA[
+                            <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -435,7 +435,7 @@
       } 
     ]
 }]]>                                
-                            </artwork> 
+                            </sourcecode> 
                         </figure>
                         <t>The above example assumes that the German title contains an umlaut character (in the native syntax it would be encoded as title*=UTF-8'de'n%c3%a4chstes%20Kapitel), 
                             which gets encoded in its unescaped form in the JSON representation. This is not shown in the above example due to the limitations of RFC publication. 
@@ -470,7 +470,7 @@
                         The last extension target attribute ("baz*") follows the naming rule of <xref target="RFC8187"/> and therefore is encoded according to the serialization described in  <xref target="linkset-json-i18n-link-parameter"/>. </t>
         
                     <figure>
-                        <artwork align="left" type="JSON"><![CDATA[
+                        <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -487,7 +487,7 @@
       } 
     ]
 }]]>                               
-                        </artwork> 
+                        </sourcecode> 
                     </figure>
                 </section>
                     
@@ -513,7 +513,7 @@
                             serialization of sets of links.</t>
                         
                         <figure>
-                            <artwork align="left" type="JSON"><![CDATA[
+                            <sourcecode type="json"><![CDATA[
 {
   "linkset":
     [ 
@@ -527,7 +527,7 @@
       } 
     ]
 }]]>                               
-                            </artwork> 
+                            </sourcecode> 
                         </figure>
                         
                         
@@ -620,10 +620,11 @@
                    HTTP GET request against resource &lt;https://example.org/links/resource1&gt;.</t>
                
                <figure title="Client HTTP GET request" anchor="Request1">
-                   <artwork align="left"><![CDATA[
+                   <artwork type="http-message"><![CDATA[
 GET /links/resource1 HTTP/1.1
 Host: example.org
 Connection: close
+
 ]]>
                    </artwork> 
                </figure>
@@ -635,7 +636,7 @@ Connection: close
              of an alternate representation of the set of links using media type "application/linkset+json".
              </t>
             <figure title="Response to HTTP GET includes a set of links" anchor="Response1.1">
-                <artwork align="left"><![CDATA[
+                <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:35:51 GMT
 Server: Apache-Coyote/1.1
@@ -673,6 +674,7 @@ Connection: close
 <https://authors.example.net/alice>
    ; rel="author"
    ; anchor="https://example.org/resource1#comment=1"
+
 ]]>
                 </artwork> 
               </figure>
@@ -685,18 +687,19 @@ Connection: close
                      "application/linkset+json" format.
                  </t>
                  <figure title="Client HTTP GET request expressing preference for &quot;application/linkset+json&quot; response" anchor="Request4">
-                     <artwork align="left"><![CDATA[
+                     <artwork type="http-message"><![CDATA[
 GET links/resource1 HTTP/1.1
 Host: example.org
 Accept: application/linkset+json
 Connection: close
+
 ]]></artwork> 
                  </figure>
                  <t><xref target="Response4.1"/> shows the response to the HTTP GET request of <xref target="Request4"/>. 
                      The set of links is serialized according to the media type "application/linkset+json".
                  </t>
                  <figure title="Response to the client's request for the set of links" anchor="Response4.1">
-                     <artwork align="left"><![CDATA[
+                     <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:46:22 GMT
 Server: Apache-Coyote/1.1
@@ -771,10 +774,11 @@ Content-Length: 1349
                      &lt;https://example.org/resource1&gt;.</t>
                  
                  <figure title="Client HTTP HEAD request" anchor="Request3">
-                     <artwork align="left"><![CDATA[
+                     <artwork type="http-message"><![CDATA[
 HEAD resource1 HTTP/1.1
 Host: example.org
 Connection: close
+
 ]]>
                      </artwork> 
                  </figure>
@@ -785,7 +789,7 @@ Connection: close
                      provides a representation with media type "application/linkset+json".
                  </t>
                  <figure title="Response to HTTP HEAD request" anchor="Response3.1">
-                     <artwork align="left"><![CDATA[
+                     <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:45:54 GMT
 Server: Apache-Coyote/1.1
@@ -795,6 +799,7 @@ Link: <https://example.org/links/resource1>
 Content-Length: 236
 Content-Type: text/html;charset=utf-8
 Connection: close
+
 ]]>
                      </artwork> 
                  </figure>
@@ -968,7 +973,7 @@ Connection: close
                 <xref target="Request4"/> against the URI of a set of links would be as shown in <xref target="contextlinkrel"/>.</t>
             
             <figure title="Using a typed link to support discovery of a JSON-LD Context for a Set of Links" anchor="contextlinkrel">
-                <artwork align="left"><![CDATA[
+                <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:48:22 GMT
 Server: Apache-Coyote/1.1
@@ -977,6 +982,7 @@ Link: <https://example.org/contexts/linkset.jsonld>
       ; rel="http://www.w3.org/ns/json-ld#context"
       ; type="application/ld+json"
 Content-Length: 846
+
 {
   "linkset": [
     {
@@ -1025,10 +1031,11 @@ Content-Length: 846
             </t>
 
             <figure title="JSON-LD Context mapping to schema.org and IANA assignments" anchor="jsonld-context">
-                <artwork align="left"><![CDATA[
+                <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Content-Type: application/ld+json
 Content-Length: 638
+
 {
   "@context": [
     {
@@ -1080,7 +1087,7 @@ Content-Length: 638
         -->
             
         <figure title="RDF serialization of the link set resulting from applying the JSON-LD context" anchor="triples">
-            <artwork align="left"><![CDATA[
+            <artwork><![CDATA[
 <https://example.org/article/view/7507>
     <http://www.iana.org/assignments/relation/author>
     <https://orcid.org/0000-0002-1825-0097> .
