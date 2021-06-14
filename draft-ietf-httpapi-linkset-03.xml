@@ -24,7 +24,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="4" month="June" year="2021"/>
+        <date day="14" month="June" year="2021"/>
         <abstract>
            <t>This specification defines two document formats and respective media types for representing sets of links as stand-alone resources. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -428,7 +428,7 @@
                "type":     "text/html",
                "hreflang": [ "en" , "de" ],
                "title":    "Next chapter",
-               "title*":   [ { "value": "nachstes Kapitel" , 
+               "title*":   [ { "value": "nächstes Kapitel" , 
                                "language" : "de" } ]
               }
         ]
@@ -438,7 +438,7 @@
                             </sourcecode> 
                         </figure>
                         <t>The above example assumes that the German title contains an umlaut character (in the native syntax it would be encoded as title*=UTF-8'de'n%c3%a4chstes%20Kapitel), 
-                            which gets encoded in its unescaped form in the JSON representation. This is not shown in the above example due to the limitations of RFC publication. 
+                            which gets encoded in its unescaped form in the JSON representation. 
                             Implementations MUST properly decode/encode internationalized target attributes that follow the model of <xref target="RFC8187"/> when transcoding between the "application/linkset" and the "application/linkset+json" formats.</t>
                     </section>
                
@@ -645,6 +645,7 @@ Content-Type: application/linkset; charset=UTF-8
 Link: <https://example.org/links/resource1> ; rel="alternate" 
 ; type="application/linkset+json"
 Connection: close
+
 <https://authors.example.net/johndoe>
    ; rel="author"
    ; type="application/rdf+xml"
@@ -707,6 +708,7 @@ Content-Type: application/linkset+json
 Link: <https://example.org/links/resource1> ; rel="alternate" 
 ; type="application/linkset"
 Content-Length: 1349
+
 {
   "linkset": [
     {
