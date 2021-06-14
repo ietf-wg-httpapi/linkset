@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rfc SYSTEM "https://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
-]>
-
+<!DOCTYPE rfc SYSTEM "rfc2629-xhtml.ent">
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <?rfc toc="yes" ?>
