@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="US-ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM "https://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
 ]>
 
@@ -961,7 +961,7 @@ Connection: close
           <t>Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Stian Soiland-Reyes, and Sarven Capadisli.</t>
       </section>
         
-        <section title="JSON-LD Context" anchor="appendix-1">
+              <section title="JSON-LD Context" anchor="appendix-1">
             <t>A set of links rendered according to the 
                JSON serialization defined in <xref target="linkset-json"/> can be interpreted 
                 as RDF triples by adding a <xref target="W3C.REC-json-ld-20140116">JSON-LD context</xref> that maps 
@@ -983,40 +983,60 @@ Content-Type: application/linkset+json
 Link: <https://example.org/contexts/linkset.jsonld>
       ; rel="http://www.w3.org/ns/json-ld#context"
       ; type="application/ld+json"
-Content-Length: 846
+Content-Length: 1349
 
 {
   "linkset": [
     {
-      "anchor": "https://example.org/article/view/7507",
+      "anchor": "https://example.org/resource1",
       "author": [
         {
-          "href": "https://orcid.org/0000-0002-1825-0097"
+          "href": "https://authors.example.net/johndoe",
+          "type": "application/rdf+xml"
         }
       ],
-      "item": [
+      "memento": [
         {
-          "href": "https://example.org/article/7507/item/1",
-          "type": "application/pdf"
+          "href": "https://example.org/resource1?version=1",
+          "type": "text/html",
+          "datetime": "Thu, 13 Jun 2019 09:34:33 GMT"
         },
         {
-          "href": "https://example.org/article/7507/item/2",
-          "type": "text/csv"
+          "href": "https://example.org/resource1?version=2",
+          "type": "text/html",
+          "datetime": "Sun, 21 Jul 2019 12:22:04 GMT"
         }
       ],
-      "cite-as": [
+      "latest-version": [
         {
-          "href": "https://doi.org/10.5555/12345680",
-          "title": "A Methodology for the Emulation of Architecture"
+          "href": "https://example.org/resource1?version=3",
+          "type": "text/html"
         }
       ]
     },
     {
-      "anchor": "https://example.com/links/article/7507",
-      "alternate": [
+      "anchor": "https://example.org/resource1?version=3",
+      "predecessor-version": [
         {
-          "href": "https://mirror.example.com/links/article/7507",
-          "type": "application/linkset"
+          "href": "https://example.org/resource1?version=2",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://example.org/resource1?version=2",
+      "predecessor-version": [
+        {
+          "href": "https://example.org/resource1?version=1",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://example.org/resource1#comment=1",
+      "author": [
+        {
+          "href": "https://authors.example.net/alice"
         }
       ]
     }
@@ -1031,11 +1051,11 @@ Content-Length: 846
                 to Dublin Core Terms. It also renders each link relation as an absolute URI, inspired by the same approach used for <xref target="RFC4287">Atom</xref> described in <xref target="RFC8288" section="A.2"/>. 
             </t>
 
-            <figure title="JSON-LD Context mapping to schema.org and IANA assignments" anchor="jsonld-context">
+            <figure title="JSON-LD Context mapping to Dublin Core Terms and IANA assignments" anchor="jsonld-context">
                 <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Content-Type: application/ld+json
-Content-Length: 638
+Content-Length: 708
 
 {
   "@context": [
@@ -1053,6 +1073,9 @@ Content-Length: 638
       },
       "type":    {
         "@id":    "http://purl.org/dc/terms/format"
+      },
+      "datetime":    {
+        "@id":    "http://purl.org/dc/terms/date"
       }
     },
     {
@@ -1089,33 +1112,45 @@ Content-Length: 638
             
         <figure title="RDF serialization of the link set resulting from applying the JSON-LD context" anchor="triples">
             <artwork><![CDATA[
-<https://example.org/article/view/7507>
-    <http://www.iana.org/assignments/relation/author>
-    <https://orcid.org/0000-0002-1825-0097> .
-<https://example.org/article/view/7507>
-    <http://www.iana.org/assignments/relation/item>
-    <https://example.org/article/7507/item/1> .
-<https://example.org/article/7507/item/1>
-    <http://purl.org/dc/terms/format>
-    "application/pdf" .
-<https://example.org/article/view/7507>
-    <http://www.iana.org/assignments/relation/item>
-    <https://example.org/article/7507/item/2> .
-<https://example.org/article/7507/item/2>
-    <http://purl.org/dc/terms/format>
-    "text/csv" .
-<https://example.org/article/view/7507>
-    <http://www.iana.org/assignments/relation/cite-as>
-    <https://doi.org/10.5555/12345680> .
-<https://doi.org/10.5555/12345680>
-    <http://purl.org/dc/terms/title>
-    "A Methodology for the Emulation of Architecture" .
-<https://example.com/links/article/7507>
-    <http://www.iana.org/assignments/relation/alternate>
-    <https://mirror.example.com/links/article/7507> .
-<https://mirror.example.com/links/article/7507>
-    <http://purl.org/dc/terms/format>
-    "application/linkset" .
+<https://authors.example.net/johndoe> 
+  <http://purl.org/dc/terms/format> 
+  "application/rdf+xml" .
+<https://example.org/resource1#comment=1>
+  <http://www.iana.org/assignments/relation/author> 
+  <https://authors.example.net/alice> .
+<https://example.org/resource1>
+  <http://www.iana.org/assignments/relation/author>
+  <https://authors.example.net/johndoe> .
+<https://example.org/resource1>
+  <http://www.iana.org/assignments/relation/latest-version>
+  <https://example.org/resource1?version=3> .
+<https://example.org/resource1>
+  <http://www.iana.org/assignments/relation/memento>
+  <https://example.org/resource1?version=1> .
+<https://example.org/resource1>
+  <http://www.iana.org/assignments/relation/memento>
+  <https://example.org/resource1?version=2> .
+<https://example.org/resource1?version=1>
+  <http://purl.org/dc/terms/date>
+  "Thu, 13 Jun 2019 09:34:33 GMT" .
+<https://example.org/resource1?version=1>
+  <http://purl.org/dc/terms/format> 
+  "text/html" .
+<https://example.org/resource1?version=2>
+  <http://purl.org/dc/terms/date>
+  "Sun, 21 Jul 2019 12:22:04 GMT" .
+<https://example.org/resource1?version=2>
+  <http://purl.org/dc/terms/format>
+  "text/html" .
+<https://example.org/resource1?version=2>
+  <http://www.iana.org/assignments/relation/predecessor-version>
+  <https://example.org/resource1?version=1> .
+<https://example.org/resource1?version=3>
+  <http://purl.org/dc/terms/format>
+  "text/html" .
+<https://example.org/resource1?version=3>
+  <http://www.iana.org/assignments/relation/predecessor-version>
+  <https://example.org/resource1?version=2> .
 ]]>
                 </artwork> 
             </figure>
