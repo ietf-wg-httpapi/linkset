@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rfc SYSTEM "rfc2629-xhtml.ent">
+<!DOCTYPE rfc SYSTEM "https://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
+]>
+
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <?rfc toc="yes" ?>
@@ -622,7 +624,6 @@
 GET /links/resource1 HTTP/1.1
 Host: example.org
 Connection: close
-
 ]]>
                    </artwork> 
                </figure>
@@ -673,7 +674,6 @@ Connection: close
 <https://authors.example.net/alice>
    ; rel="author"
    ; anchor="https://example.org/resource1#comment=1"
-
 ]]>
                 </artwork> 
               </figure>
@@ -691,7 +691,6 @@ GET links/resource1 HTTP/1.1
 Host: example.org
 Accept: application/linkset+json
 Connection: close
-
 ]]></artwork> 
                  </figure>
                  <t><xref target="Response4.1"/> shows the response to the HTTP GET request of <xref target="Request4"/>. 
@@ -778,7 +777,6 @@ Content-Length: 1349
 HEAD resource1 HTTP/1.1
 Host: example.org
 Connection: close
-
 ]]>
                      </artwork> 
                  </figure>
@@ -799,7 +797,6 @@ Link: <https://example.org/links/resource1>
 Content-Length: 236
 Content-Type: text/html;charset=utf-8
 Connection: close
-
 ]]>
                      </artwork> 
                  </figure>
