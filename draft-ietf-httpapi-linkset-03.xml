@@ -623,7 +623,6 @@
                    <artwork type="http-message"><![CDATA[
 GET /links/resource1 HTTP/1.1
 Host: example.org
-Connection: close
 ]]>
                    </artwork> 
                </figure>
@@ -643,7 +642,6 @@ Content-Length: 1023
 Content-Type: application/linkset
 Link: <https://example.org/links/resource1> ; rel="alternate" 
 ; type="application/linkset+json"
-Connection: close
 
 <https://authors.example.net/johndoe>
    ; rel="author"
@@ -690,7 +688,7 @@ Connection: close
 GET links/resource1 HTTP/1.1
 Host: example.org
 Accept: application/linkset+json
-Connection: close
+
 ]]></artwork> 
                  </figure>
                  <t><xref target="Response4.1"/> shows the response to the HTTP GET request of <xref target="Request4"/>. 
@@ -776,7 +774,6 @@ Content-Length: 1349
                      <artwork type="http-message"><![CDATA[
 HEAD resource1 HTTP/1.1
 Host: example.org
-Connection: close
 ]]>
                      </artwork> 
                  </figure>
@@ -796,7 +793,6 @@ Link: <https://example.org/links/resource1>
       ; type="application/linkset+json"
 Content-Length: 236
 Content-Type: text/html;charset=utf-8
-Connection: close
 ]]>
                      </artwork> 
                  </figure>
