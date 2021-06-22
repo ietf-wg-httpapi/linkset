@@ -45,7 +45,7 @@
                 These terms respectively correspond with "Context IRI" and "Target IRI" as used in <xref target="RFC5988"/>. Although defined as IRIs, in common scenarios they are also URIs.</t> 
             <t>In the examples provided in this document, links in the HTTP "Link" header field are shown on separate lines in order to improve readability. 
                 Note, however, that as per <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>, line breaks are not allowed in values for HTTP fields; only whitespaces and 
-                tabs are supported as seperators.
+                tabs are supported as separators.
             </t>
             <!--
             <t>Additionally, this specification uses the following terms for types of resources involved 
