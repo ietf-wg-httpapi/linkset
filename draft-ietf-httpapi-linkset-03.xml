@@ -42,7 +42,7 @@
             <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
             <t>This specification uses the terms "link context" and "link target" as defined in <xref target="RFC8288"/>.</t> 
             <t>In the examples provided in this document, links in the HTTP "Link" header field are shown on separate lines in order to improve readability. 
-                Note, however, that as per <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>, line breaks are not allowed in values for HTTP fields; only whitespaces and 
+                Note, however, that as per <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>, line breaks are deprecated in values for HTTP fields; only whitespaces and 
                 tabs are supported as separators.
             </t>
             <!--
