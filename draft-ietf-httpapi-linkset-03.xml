@@ -638,8 +638,9 @@ Date: Mon, 12 Aug 2019 10:35:51 GMT
 Server: Apache-Coyote/1.1
 Content-Length: 1023
 Content-Type: application/linkset
-Link: <https://example.org/links/resource1> ; rel="alternate" 
-; type="application/linkset+json"
+Link: <https://example.org/links/resource1>
+      ; rel="alternate" 
+      ; type="application/linkset+json"
 
 <https://authors.example.net/johndoe>
    ; rel="author"
@@ -698,8 +699,8 @@ HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:46:22 GMT
 Server: Apache-Coyote/1.1
 Content-Type: application/linkset+json
-Link: <https://example.org/links/resource1> ; rel="alternate" 
-; type="application/linkset"
+Link: <https://example.org/links/resource1>
+      ; rel="alternate" ; type="application/linkset"
 Content-Length: 1349
 
 {
