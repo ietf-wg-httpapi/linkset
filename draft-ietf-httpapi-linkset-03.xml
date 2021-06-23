@@ -925,7 +925,7 @@ Content-Type: text/html;charset=utf-8
       </references>
 
       <section title="Acknowledgements">
-          <t>Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Stian Soiland-Reyes, and Sarven Capadisli.</t>
+          <t>Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Stian Soiland-Reyes, and Sarven Capadisli.</t>
       </section>
         
               <section title="JSON-LD Context" anchor="appendix-1">
