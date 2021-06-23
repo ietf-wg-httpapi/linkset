@@ -802,7 +802,7 @@ Content-Type: text/html;charset=utf-8
         </section>
         <section title="IANA Considerations" anchor="iana-considerations">
             <section title="Link Relation Type: linkset">
-                <t>The link relation type below has been registered by IANA per <xref target="RFC8288" section="6.2.1">Web Linking</xref>:</t>
+                <t>The link relation type below should be registered by IANA per <xref target="RFC8288" section="6.2.1">Web Linking</xref>:</t>
                 <ul empty="true">
                         <li>Relation Name: linkset</li>
                         <li>Description: The link target of a link with the "linkset" relation type 
