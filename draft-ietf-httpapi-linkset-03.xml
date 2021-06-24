@@ -162,7 +162,7 @@
                     <li>For every link provided in the set of links, explicitly provide the link context  
                         using the "anchor" attribute.</li>
                     <li>For link context ("anchor" attribute) and link target 
-                        ("href" attribute), use absolute URIs (as defined in <xref target="RFC3986" section="4.3"/>). 
+                        ("href" attribute), use URI References that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>). 
                         </li>
                 </ul>
                 <t>If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
@@ -185,7 +185,7 @@
                     <li>For every link provided in the set of links, explicitly provide the link context  
                         using the "anchor" member.</li>
                     <li>For link context ("anchor" member) and link target 
-                        ("href" member), use absolute URIs (as defined in <xref target="RFC3986" section="4.3"/>).</li>
+                        ("href" member), use URI References that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>).</li>
                 </ul>                
                 <t>If these recommendations are not followed, interpretation of "application/linkset+json" will depend on which URI is used as context URI.</t>
                 <t>The "application/linkset+json" serialization is designed such that it can directly be used as the 
@@ -214,8 +214,8 @@
                         adheres to the following rules:</t>
                     <ul> 
                         <li>Each link context object MAY have an "anchor" member with a value that represents 
-                            the link context. If present, this value MUST be a URI-Reference 
-                            (<xref target="RFC3986" section="4.1"/>) and SHOULD be an absolute URI.</li>
+                            the link context. If present, this value MUST be a URI Reference 
+                            and SHOULD NOT be a relative reference as per <xref target="RFC3986" section="4.1"/>.</li>
                         <li><t>
                             For each distinct relation type that the link context has with link targets,  
                             a link context object MUST have an additional member. 
@@ -241,8 +241,8 @@
                         A link target object adheres to the following rules:</t>
                     <ul>
                         <li>Each link target object MUST have an "href" member with a value that represents 
-                            the link target. This value SHOULD be an absolute URI  
-                            as defined in <xref target="RFC3986" section="4.3"/>. Cases where the href member is present, but no value is provided 
+                            the link target. This value MUST be a URI Reference and SHOULD NOT be a relative reference  
+                            as per <xref target="RFC3986" section="4.1"/>. Cases where the href member is present, but no value is provided 
                             for it (i.e. the resource providing the set of links is the target of the link 
                             in the link target object) MUST be handled by providing an "href" member with an empty string ("href": "").</li>
                         <li>In many cases, a link target is further qualified by target attributes. 
@@ -581,8 +581,8 @@
                 in which it participates.</t>  -->
             <t>A user agent that follows a "linkset" link MUST be aware that the set of links provided by the resource that is the target of the link 
                 can contain links in which the resource that is the context of the link does not participate; it MAY decide to ignore those links.</t>
-            <t>A user agent that follows a "linkset" link and obtains links for which anchors and targets are not expressed as 
-                absolute URIs MUST determine what the context is for these links; it SHOULD ignore links for which it is unable to 
+            <t>A user agent that follows a "linkset" link and obtains links for which anchors and targets are expressed as 
+                relative references (as per <xref target="RFC3986" section="4.1"/>) MUST determine what the context is for these links; it SHOULD ignore links for which it is unable to 
                 unambiguously make that determination.</t>
             <!--
             <t>There is no constraint on the target URI of a link with the "linkset" relation type;
@@ -1008,7 +1008,7 @@ Content-Length: 1349
             <t>In order to obtain the JSON-LD Context conveyed by the server, the user agent issues an HTTP GET against the 
                 link target of the link with the "http://www.w3.org/ns/json-ld#context" relation type. The response to this GET is 
                 shown in <xref target="jsonld-context"/>. This particular JSON-LD context maps "application/linkset+json" representations of link sets 
-                to Dublin Core Terms. It also renders each link relation as an absolute URI, inspired by the same approach used for <xref target="RFC4287">Atom</xref> described in <xref target="RFC8288" section="A.2"/>. 
+                to Dublin Core Terms. It also renders each link relation as a URI Reference, inspired by the same approach used for <xref target="RFC4287">Atom</xref> described in <xref target="RFC8288" section="A.2"/>. 
             </t>
 
             <figure title="JSON-LD Context mapping to Dublin Core Terms and IANA assignments" anchor="jsonld-context">
