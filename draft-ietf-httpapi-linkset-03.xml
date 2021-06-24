@@ -562,11 +562,7 @@
             
             <t>The presence of a "profile" attribute in conjunction with the "application/linkset" and 
                 "application/linkset+json" media types does not change the semantics of
-                a link set. As such, clients with and without knowledge of profile URIs can use the same representation. The 
-                profile parameter MAY be used by clients to express their 
-                preferences, and, if a client does so, a server SHOULD return a document that honors 
-                the profiles it recognizes, and MUST ignore the 
-                profiles which it does not recognize.</t>
+                a link set. As such, clients with and without knowledge of profile URIs can use the same representation.</t>
             
         </section>
         
