@@ -137,7 +137,7 @@
                 and optional "target attributes":</t>
             <ul>
                 <li>The format defined in <xref target="linkset-native"/> is identical to the payload 
-                    of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288"/ section="3">.</li>
+                    of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288" section="3"/>.</li>
                 <li>The format defined in <xref target="linkset-json"/> is based on <xref target="RFC8259">JSON</xref>.</li>
             </ul>
             
@@ -330,7 +330,7 @@
                     </ul>
                     <t>The handling of these different types of attributes is described in the sections below.</t>
                     <section title="Target Attributes Defined by Web Linking" anchor="json-target-attributes-existing">
-                        <t><xref target="RFC8288" section="3.4.1"> defines the following target attributes that may be used to annotate links: 
+                        <t><xref target="RFC8288" section="3.4.1"/> defines the following target attributes that may be used to annotate links: 
                             "hreflang", "media", "title", "title*", and "type";  
                             these target attributes follow different occurrence and value patterns.  
                             In the JSON representation, these attributes MUST be conveyed as additional 
