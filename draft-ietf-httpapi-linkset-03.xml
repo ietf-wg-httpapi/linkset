@@ -215,10 +215,8 @@
                         adheres to the following rules:</t>
                     <ul> 
                         <li>Each link context object MAY have an "anchor" member with a value that represents 
-                            the link context. If present, this value SHOULD be an absolute URI  
-                            as defined in <xref target="RFC3986" section="4.3"/>. Cases where the anchor member is present, but no value is provided 
-                        for it (i.e. the resource providing the set of links is the link context for each link 
-                        in the link context object) MUST be handled by providing an "anchor" member with empty string ("anchor": "").</li>
+                            the link context. If present, this value MUST be a URI-Reference 
+                            (<xref target="RFC3986" section="4.1"/>) and SHOULD be an absolute URI.</li>
                         <li><t>
                             For each distinct relation type that the link context has with link targets,  
                             a link context object MUST have an additional member. 
