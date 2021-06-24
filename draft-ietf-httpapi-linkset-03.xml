@@ -137,11 +137,11 @@
                 and optional "target attributes":</t>
             <ul>
                 <li>The format defined in <xref target="linkset-native"/> is identical to the payload 
-                    of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288"/>.</li>
+                    of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288"/ section="3">.</li>
                 <li>The format defined in <xref target="linkset-json"/> is based on <xref target="RFC8259">JSON</xref>.</li>
             </ul>
             
-            <t>Note that <xref target="RFC8288"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> 
+            <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> 
                 as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for 
                 link sets defined here, inverse links SHOULD be represented as direct links using the "rel" construct and by switching the position of the resources involved 
                 in the link.</t>
@@ -174,7 +174,7 @@
             </section>
             <section title="JSON Document Format: application/linkset+json" anchor="linkset-json">
                 <t>This document format uses JSON <xref target="RFC8259"/> as the syntax to represent 
-                    a set of links. The set of links follows the abstract model defined by Web Linking <xref target="RFC8288"/>.</t> 
+                    a set of links. The set of links follows the abstract model defined by Web Linking <xref target="RFC8288" section="2"/>.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset+json".</t>
                                 
@@ -225,9 +225,9 @@
                             the link context (value of the encompassing anchor member) applies. The name 
                             of this member expresses the relation type of the link as follows:</t>
                             <ul>
-                                <li>For registered relation types <xref target="RFC8288"/>, 
+                                <li>For registered relation types (<xref target="RFC8288" section="2.1.1"/>), 
                                     the name of this member is the registered name of the relation type.</li>
-                                <li>For extension relation types <xref target="RFC8288"/>, 
+                                <li>For extension relation types (<xref target="RFC8288" section="2.1.2"/>), 
                                     the name of this member is the URI that uniquely represents the relation type.</li>
                             </ul></li>
                         <li>Even if there is only one link target object it MUST be wrapped in an array. 
@@ -319,18 +319,18 @@
                         
                     <t>A link may be further qualified by target attributes. Three types of attributes exist:</t>
                     <ul>
-                        <li>Attributes defined by the serialization of <xref target="RFC8288">Web Linking</xref>.</li>
+                        <li>Attributes defined in <xref target="RFC8288" section="3.4.1">Web Linking</xref>.</li>
                         <li>Extension attributes defined and used by communities as allowed by  
-                            <xref target="RFC8288"/>.</li> 
+                            <xref target="RFC8288" section="3.4.2"/>.</li> 
                         <li>Internationalized versions of the "title" attribute defined by <xref target="RFC8288"/> and of extension attributes
-                            allowed by <xref target="RFC8288"/>.</li>
+                            allowed by <xref target="RFC8288" section="3.4"/>.</li>
 <!--
                         <li>Attributes defined by <xref target="I-D.nottingham-link-hint">Link Hints</xref> and the associated HTTP Link Hint Registry.</li>    
 -->
                     </ul>
                     <t>The handling of these different types of attributes is described in the sections below.</t>
                     <section title="Target Attributes Defined by Web Linking" anchor="json-target-attributes-existing">
-                        <t>RFC 8288 defines the following target attributes that may be used to annotate links: 
+                        <t><xref target="RFC8288" section="3.4.1"> defines the following target attributes that may be used to annotate links: 
                             "hreflang", "media", "title", "title*", and "type";  
                             these target attributes follow different occurrence and value patterns.  
                             In the JSON representation, these attributes MUST be conveyed as additional 
@@ -383,7 +383,7 @@
                     </section>
                     <section title="Internationalized Target Attributes" anchor="linkset-json-i18n-link-parameter">
                         <t>In addition to the target attributes described in <xref target="json-target-attributes-existing"/>,  
-                            <xref target="RFC8288"/> also supports 
+                            <xref target="RFC8288" section="3.4"/> also supports 
                             attributes that follow the content model of <xref target="RFC8187"/>. 
                             In <xref target="RFC8288"/>, these target 
                             attributes are recognizable by the use of a trailing asterisk in the attribute name, 
@@ -411,7 +411,7 @@
                             </li>
                         </ul>
                         <t>The following example illustrates how the "title*" target attribute 
-                            defined by <xref target="RFC8288"/> is represented in a link target object.</t>
+                            defined by <xref target="RFC8288" section="3.4.1"/> is represented in a link target object.</t>
                         <figure>
                             <sourcecode type="json"><![CDATA[
 {
@@ -438,7 +438,7 @@
                     </section>
                
                 <section title="Extension Target Attributes" anchor="json-target-attributes-extension">
-                    <t>Extension target attributes are attributes that are not defined by <xref target="RFC8288"/>  
+                    <t>Extension target attributes are attributes that are not defined by <xref target="RFC8288" section="3.4.1"/>  
                         (as listed in <xref target="json-target-attributes-existing"/>), but are nevertheless 
                         used to qualify links. 
                         They can be defined by communities in any way deemed necessary, and it is up to them 
