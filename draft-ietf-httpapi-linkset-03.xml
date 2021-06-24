@@ -917,10 +917,6 @@ Content-Type: text/html;charset=utf-8
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
       </references>
 
-      <section title="Acknowledgements">
-          <t>Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Stian Soiland-Reyes, and Sarven Capadisli.</t>
-      </section>
-        
               <section title="JSON-LD Context" anchor="appendix-1">
             <t>A set of links rendered according to the 
                JSON serialization defined in <xref target="linkset-json"/> can be interpreted 
@@ -1144,6 +1140,10 @@ Content-Length: 708
                 <t>The OJS platform has implemented "linkset" support as an alternative way to provide links when there are more than a configured limit (they consider using about 10 as a good default, for testing purpose it is currently set to 8).</t>
             </section>
         </section>
+
+      <section title="Acknowledgements" numbered="false">
+          <t>Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Stian Soiland-Reyes, and Sarven Capadisli.</t>
+      </section>
     </back>
 </rfc>
 
