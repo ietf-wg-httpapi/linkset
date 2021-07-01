@@ -5,8 +5,8 @@
 Network Working Group                                           E. Wilde
 Internet-Draft                                                     Axway
 Intended status: Informational                          H. Van de Sompel
-Expires: 27 December 2021          Data Archiving and Networked Services
-                                                            25 June 2021
+Expires: 2 January 2022            Data Archiving and Networked Services
+                                                             1 July 2021
 
 
       Linkset: Media Types and a Link Relation Type for Link Sets
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 December 2021.
+   This Internet-Draft will expire on 2 January 2022.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 1]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 1]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 2]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 2]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 3]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 3]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    It is important to keep in mind that when providing links by means of
@@ -221,9 +221,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 4]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 4]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
 3.3.  Large Number of Links
@@ -277,9 +277,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 5]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 5]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
 4.1.  HTTP Link Document Format: application/linkset
@@ -333,9 +333,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 6]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 6]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    *  For every link provided in the set of links, explicitly provide
@@ -389,9 +389,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 7]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 7]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    *  For each distinct relation type that the link context has with
@@ -445,9 +445,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 8]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 8]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    {
@@ -501,9 +501,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021                [Page 9]
+Wilde & Van de Sompel    Expires 2 January 2022                 [Page 9]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    {
@@ -557,9 +557,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 10]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 10]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    *  "hreflang": The optional and repeatable "hreflang" target
@@ -613,9 +613,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 11]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 11]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
 4.2.4.2.  Internationalized Target Attributes
@@ -669,9 +669,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 12]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 12]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    {
@@ -725,9 +725,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 13]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 13]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    *  The value of an extension attribute MUST be represented by an
@@ -781,9 +781,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 14]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 14]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    This limitation of the JSON format allows to unambiguously round trip
@@ -837,9 +837,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 15]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 15]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    A user agent that follows a "linkset" link and obtains links for
@@ -893,9 +893,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 16]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 16]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    HTTP/1.1 200 OK
@@ -949,9 +949,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 17]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 17]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    GET links/resource1 HTTP/1.1
@@ -1005,9 +1005,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 18]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 18]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
        },
@@ -1061,9 +1061,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 19]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 19]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    HTTP/1.1 200 OK
@@ -1117,9 +1117,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 20]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 20]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
       Encoding considerations: Linksets are encoded according to the
@@ -1131,8 +1131,7 @@ Internet-Draft                   Linkset                       June 2021
       Security considerations: The security considerations of [[ This
       document ]] apply.
 
-      Interoperability considerations: The interoperability
-      considerations of [I-D.ietf-httpbis-semantics] apply.
+      Interoperability considerations: N/A
 
       Published specification: [[ This document ]]
 
@@ -1173,9 +1172,10 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 21]
+
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 21]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
       Optional parameters: profile
@@ -1229,9 +1229,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 22]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 22]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    exposed in links should be supposed to be "hidden"; instead, if these
@@ -1285,9 +1285,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 23]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 23]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    [RFC8187]  Reschke, J., "Indicating Character Encoding and Language
@@ -1330,8 +1330,8 @@ Internet-Draft                   Linkset                       June 2021
               Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-semantics-15, 30 March 2021,
-              <https://tools.ietf.org/html/draft-ietf-httpbis-semantics-
-              15>.
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              semantics-15>.
 
 11.  Informative References
 
@@ -1341,9 +1341,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 24]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 24]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    [W3C.REC-json-ld-20140116]
@@ -1397,9 +1397,9 @@ Appendix A.  JSON-LD Context
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 25]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 25]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
              "type": "application/rdf+xml"
@@ -1453,9 +1453,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 26]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 26]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
      ]
@@ -1509,9 +1509,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 27]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 27]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    HTTP/1.1 200 OK
@@ -1565,9 +1565,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 28]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 28]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    <https://authors.example.net/johndoe>
@@ -1621,9 +1621,9 @@ Internet-Draft                   Linkset                       June 2021
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 29]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 29]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
    Note that the JSON-LD context of Figure 14 does not handle (meta)link
@@ -1677,9 +1677,9 @@ B.1.  GS1
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 30]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 30]
 
-Internet-Draft                   Linkset                       June 2021
+Internet-Draft                   Linkset                       July 2021
 
 
 B.2.  FAIR Signposting Profile
@@ -1733,4 +1733,4 @@ Authors' Addresses
 
 
 
-Wilde & Van de Sompel   Expires 27 December 2021               [Page 31]
+Wilde & Van de Sompel    Expires 2 January 2022                [Page 31]

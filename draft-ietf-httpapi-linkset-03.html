@@ -10,10 +10,10 @@
 <meta content='
        This specification defines two document formats and respective media types for representing sets of links as stand-alone resources. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links. 
     ' name="description">
-<meta content="xml2rfc 3.8.0" name="generator">
+<meta content="xml2rfc 3.9.0" name="generator">
 <meta content="draft-ietf-httpapi-linkset-03" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.8.0
+  xml2rfc 3.9.0
     Python 3.6.9
     appdirs 1.4.4
     ConfigArgParse 1.2.3
@@ -30,7 +30,7 @@
     setuptools 40.6.2
     six 1.15.0
 -->
-<link href="/tmp/riB1AP6PVD.dir/draft-ietf-httpapi-linkset-03.xml" rel="alternate" type="application/rfc+xml">
+<link href="/tmp/8ieiZ6l7vQ.dir/draft-ietf-httpapi-linkset-03.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -197,6 +197,9 @@ ul.empty, .ulEmpty {
 }
 ul.empty li, .ulEmpty li {
   margin-top: 0.5em;
+}
+ul.ulBare, li.ulBare {
+  margin-left: 0em !important;
 }
 ul.compact, .ulCompact,
 ol.compact, .olCompact {
@@ -1176,11 +1179,11 @@ li > p:last-of-type {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Linkset</td>
-<td class="right">June 2021</td>
+<td class="right">July 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilde &amp; Van de Sompel</td>
-<td class="center">Expires 27 December 2021</td>
+<td class="center">Expires 2 January 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1191,12 +1194,12 @@ li > p:last-of-type {
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-06-25" class="published">25 June 2021</time>
+<time datetime="2021-07-01" class="published">1 July 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-12-27">27 December 2021</time></dd>
+<dd class="expires"><time datetime="2022-01-02">2 January 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1241,7 +1244,7 @@ li > p:last-of-type {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 December 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1269,120 +1272,120 @@ li > p:last-of-type {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<nav class="toc"><ul class="ulBare ulEmpty toc compact">
+<li class="ulBare ulEmpty toc compact" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-scenarios" class="xref">Scenarios</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1">
+<ul class="ulBare compact ulEmpty toc">
+<li class="ulBare compact ulEmpty toc" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-third-party-links" class="xref">Third-Party Links</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.2">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-challenges-writing-to-http-" class="xref">Challenges Writing to HTTP Link Header Field</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.3">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-large-number-of-links" class="xref">Large Number of Links</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-document-formats-for-sets-o" class="xref">Document Formats for Sets of Links</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1">
+<ul class="ulBare compact ulEmpty toc">
+<li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-http-link-document-format-a" class="xref">HTTP Link Document Format: application/linkset</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-json-document-format-applic" class="xref">JSON Document Format: application/linkset+json</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.1">
+<ul class="ulBare compact ulEmpty toc">
+<li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.1">
                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-set-of-links" class="xref">Set of Links</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.2">
+                  <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.2">
                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-link-context-object" class="xref">Link Context Object</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.3">
+                  <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.3">
                     <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="xref">4.2.3</a>.  <a href="#name-link-target-object" class="xref">Link Target Object</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.4">
+                  <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.4">
                     <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="xref">4.2.4</a>.  <a href="#name-link-target-attributes" class="xref">Link Target Attributes</a></p>
 </li>
-                  <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.5">
+                  <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.5">
                     <p id="section-toc.1-1.4.2.2.2.5.1"><a href="#section-4.2.5" class="xref">4.2.5</a>.  <a href="#name-json-extensibility" class="xref">JSON Extensibility</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-the-profile-attribute-for-m" class="xref">The "profile" attribute for media types to Represent Sets of Links</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-the-linkset-relation-type-f" class="xref">The "linkset" Relation Type for Linking to a Set of Links</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-examples" class="xref">Examples</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.7.2.1">
+<ul class="ulBare compact ulEmpty toc">
+<li class="ulBare compact ulEmpty toc" id="section-toc.1-1.7.2.1">
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-set-of-links-provided-as-ap" class="xref">Set of Links Provided as application/linkset</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.7.2.2">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.7.2.2">
                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-set-of-links-provided-as-app" class="xref">Set of Links Provided as application/linkset+json</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.7.2.3">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.7.2.3">
                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-discovering-a-link-set-via-" class="xref">Discovering a Link Set via the "linkset" Link Relation Type</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.8.2.1">
+<ul class="ulBare compact ulEmpty toc">
+<li class="ulBare compact ulEmpty toc" id="section-toc.1-1.8.2.1">
                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-link-relation-type-linkset" class="xref">Link Relation Type: linkset</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.8.2.2">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.8.2.2">
                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-media-type-application-link" class="xref">Media Type: application/linkset</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.8.2.3">
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.8.2.3">
                 <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-media-type-application-links" class="xref">Media Type: application/linkset+json</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-json-ld-context" class="xref">JSON-LD Context</a></p>
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-json-ld-context" class="xref">JSON-LD Context</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-implementation-status" class="xref">Implementation Status</a></p>
-<ul class="compact ulEmpty toc">
-<li class="compact ulEmpty toc" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-b.1" class="xref">B.1</a>.  <a href="#name-gs1" class="xref">GS1</a></p>
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="xref">Appendix B</a>.  <a href="#name-implementation-status" class="xref">Implementation Status</a></p>
+<ul class="ulBare compact ulEmpty toc">
+<li class="ulBare compact ulEmpty toc" id="section-toc.1-1.13.2.1">
+                <p id="section-toc.1-1.13.2.1.1"><a href="#appendix-B.1" class="xref">B.1</a>.  <a href="#name-gs1" class="xref">GS1</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.13.2.2">
-                <p id="section-toc.1-1.13.2.2.1"><a href="#section-b.2" class="xref">B.2</a>.  <a href="#name-fair-signposting-profile" class="xref">FAIR Signposting Profile</a></p>
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.13.2.2">
+                <p id="section-toc.1-1.13.2.2.1"><a href="#appendix-B.2" class="xref">B.2</a>.  <a href="#name-fair-signposting-profile" class="xref">FAIR Signposting Profile</a></p>
 </li>
-              <li class="compact ulEmpty toc" id="section-toc.1-1.13.2.3">
-                <p id="section-toc.1-1.13.2.3.1"><a href="#section-b.3" class="xref">B.3</a>.  <a href="#name-open-journal-systems-ojs" class="xref">Open Journal Systems (OJS)</a></p>
+              <li class="ulBare compact ulEmpty toc" id="section-toc.1-1.13.2.3">
+                <p id="section-toc.1-1.13.2.3.1"><a href="#appendix-B.3" class="xref">B.3</a>.  <a href="#name-open-journal-systems-ojs" class="xref">Open Journal Systems (OJS)</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="compact ulEmpty toc" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+          <li class="ulBare ulEmpty toc compact" id="section-toc.1-1.15">
+            <p id="section-toc.1-1.15.1"><a href="#appendix-D" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1405,7 +1408,7 @@ li > p:last-of-type {
 <p id="section-2-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">This specification uses the terms "link context" and "link target" as defined in <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">In the examples provided in this document, links in the HTTP "Link" header field are shown on separate lines in order to improve readability. 
-                Note, however, that as per <span><a href="https://tools.ietf.org/html/draft-ietf-httpbis-semantics-15#section-5.5" class="relref">Section 5.5</a> of [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span>, line breaks are deprecated in values for HTTP fields; only whitespaces and 
+                Note, however, that as per <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-15#section-5.5" class="relref">Section 5.5</a> of [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span>, line breaks are deprecated in values for HTTP fields; only whitespaces and 
                 tabs are supported as separators.<a href="#section-2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1473,7 +1476,7 @@ li > p:last-of-type {
                     a web server to correctly handle large HTTP response fields by specifying an upper bound 
                     for their size. But when the number of links is 
                     unpredictable, estimating a reliable upper bound is challenging.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2"><span><a href="https://tools.ietf.org/html/draft-ietf-httpbis-semantics-15#section-15" class="relref">Section 15</a> of HTTP [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span> defines error codes related to excess communication 
+<p id="section-3.3-2"><span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-15#section-15" class="relref">Section 15</a> of HTTP [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span> defines error codes related to excess communication 
                     by the user agent ("413 Request Entity Too Large" and "414 Request-URI Too Long"), but no specific
                     error codes are defined to indicate that response field content exceeds the upper bound that can 
                     be handled by the server, and thus it has been truncated.
@@ -2239,7 +2242,7 @@ Content-Type: text/html;charset=utf-8
 </li>
           <li class="ulEmpty normal" id="section-8.2-2.6">Security considerations: The security considerations of [[ This document ]] apply.<a href="#section-8.2-2.6" class="pilcrow">¶</a>
 </li>
-          <li class="ulEmpty normal" id="section-8.2-2.7">Interoperability considerations: The interoperability considerations of <span>[<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span> apply.<a href="#section-8.2-2.7" class="pilcrow">¶</a>
+          <li class="ulEmpty normal" id="section-8.2-2.7">Interoperability considerations: N/A<a href="#section-8.2-2.7" class="pilcrow">¶</a>
 </li>
           <li class="ulEmpty normal" id="section-8.2-2.8">Published specification: [[ This document ]]<a href="#section-8.2-2.8" class="pilcrow">¶</a>
 </li>
@@ -2390,7 +2393,7 @@ Content-Type: text/html;charset=utf-8
 <dd class="break"></dd>
 <dt id="I-D.ietf-httpbis-semantics">[I-D.ietf-httpbis-semantics]</dt>
       <dd>
-<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-semantics-15</span>, <time datetime="2021-03-30" class="refDate">30 March 2021</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-httpbis-semantics-15">https://tools.ietf.org/html/draft-ietf-httpbis-semantics-15</a>&gt;</span>. </dd>
+<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-semantics-15</span>, <time datetime="2021-03-30" class="refDate">30 March 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-15">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-15</a>&gt;</span>. </dd>
 <dd class="break"></dd></dl>
 </section>
 <section id="section-11">
@@ -2413,23 +2416,23 @@ Content-Type: text/html;charset=utf-8
 </dl>
 </section>
 <div id="appendix-1">
-<section id="section-appendix.a">
+<section id="appendix-A">
       <h2 id="name-json-ld-context">
-<a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-json-ld-context" class="section-name selfRef">JSON-LD Context</a>
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-json-ld-context" class="section-name selfRef">JSON-LD Context</a>
       </h2>
-<p id="section-appendix.a-1">A set of links rendered according to the 
+<p id="appendix-A-1">A set of links rendered according to the 
                JSON serialization defined in <a href="#linkset-json" class="xref">Section 4.2</a> can be interpreted 
                 as RDF triples by adding a <span><a href="#W3C.REC-json-ld-20140116" class="xref">JSON-LD context</a> [<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span> that maps 
                 the JSON keys to corresponding Linked Data terms. And, as per <span>[<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span>
         <a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/#interpreting-json-as-json-ld">section 6.8</a>, 
                 when delivering a link set that is rendered according to the "application/linkset+json" media type to a user agent, 
                 a server can convey the availability of such a JSON-LD context by using a link with the relation type 
-                "http://www.w3.org/ns/json-ld#context" in the HTTP "Link" header.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.a-2">Using the latter approach to support discovery of a JSON-LD Context, the response to the GET request of 
-                <a href="#Request4" class="xref">Figure 9</a> against the URI of a set of links would be as shown in <a href="#contextlinkrel" class="xref">Figure 13</a>.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+                "http://www.w3.org/ns/json-ld#context" in the HTTP "Link" header.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Using the latter approach to support discovery of a JSON-LD Context, the response to the GET request of 
+                <a href="#Request4" class="xref">Figure 9</a> against the URI of a set of links would be as shown in <a href="#contextlinkrel" class="xref">Figure 13</a>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <span id="name-using-a-typed-link-to-suppo"></span><div id="contextlinkrel">
 <figure id="figure-13">
-        <div class="artwork art-text alignLeft art-http-message" id="section-appendix.a-3.1">
+        <div class="artwork art-text alignLeft art-http-message" id="appendix-A-3.1">
 <pre>
 HTTP/1.1 200 OK
 Date: Mon, 12 Aug 2019 10:48:22 GMT
@@ -2503,13 +2506,13 @@ Content-Length: 1349
 <a href="#name-using-a-typed-link-to-suppo" class="selfRef">Using a typed link to support discovery of a JSON-LD Context for a Set of Links</a>
         </figcaption></figure>
 </div>
-<p id="section-appendix.a-4">In order to obtain the JSON-LD Context conveyed by the server, the user agent issues an HTTP GET against the 
+<p id="appendix-A-4">In order to obtain the JSON-LD Context conveyed by the server, the user agent issues an HTTP GET against the 
                 link target of the link with the "http://www.w3.org/ns/json-ld#context" relation type. The response to this GET is 
                 shown in <a href="#jsonld-context" class="xref">Figure 14</a>. This particular JSON-LD context maps "application/linkset+json" representations of link sets 
-                to Dublin Core Terms. It also renders each link relation as a URI Reference, inspired by the same approach used for <span><a href="#RFC4287" class="xref">Atom</a> [<a href="#RFC4287" class="xref">RFC4287</a>]</span> described in <span><a href="https://rfc-editor.org/rfc/rfc8288#appendix-A.2" class="relref">Appendix A.2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+                to Dublin Core Terms. It also renders each link relation as a URI Reference, inspired by the same approach used for <span><a href="#RFC4287" class="xref">Atom</a> [<a href="#RFC4287" class="xref">RFC4287</a>]</span> described in <span><a href="https://rfc-editor.org/rfc/rfc8288#appendix-A.2" class="relref">Appendix A.2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-json-ld-context-mapping-to-"></span><div id="jsonld-context">
 <figure id="figure-14">
-        <div class="artwork art-text alignLeft art-http-message" id="section-appendix.a-5.1">
+        <div class="artwork art-text alignLeft art-http-message" id="appendix-A-5.1">
 <pre>
 HTTP/1.1 200 OK
 Content-Type: application/ld+json
@@ -2552,12 +2555,12 @@ Content-Length: 708
 <a href="#name-json-ld-context-mapping-to-" class="selfRef">JSON-LD Context mapping to Dublin Core Terms and IANA assignments</a>
         </figcaption></figure>
 </div>
-<p id="section-appendix.a-6">Applying the JSON-LD context of <a href="#jsonld-context" class="xref">Figure 14</a> to the link set of <a href="#contextlinkrel" class="xref">Figure 13</a> 
+<p id="appendix-A-6">Applying the JSON-LD context of <a href="#jsonld-context" class="xref">Figure 14</a> to the link set of <a href="#contextlinkrel" class="xref">Figure 13</a> 
                 allows transforming the "application/linkset+json" link set to an RDF link set. <a href="#triples" class="xref">Figure 15</a> shows 
-                the latter represented by means of the "text/turtle" RDF serialization.<a href="#section-appendix.a-6" class="pilcrow">¶</a></p>
+                the latter represented by means of the "text/turtle" RDF serialization.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
 <span id="name-rdf-serialization-of-the-li"></span><div id="triples">
 <figure id="figure-15">
-        <div class="artwork art-text alignLeft" id="section-appendix.a-7.1">
+        <div class="artwork art-text alignLeft" id="appendix-A-7.1">
 <pre>
 &lt;https://authors.example.net/johndoe&gt;
   &lt;http://purl.org/dc/terms/format&gt;
@@ -2605,65 +2608,65 @@ Content-Length: 708
 <a href="#name-rdf-serialization-of-the-li" class="selfRef">RDF serialization of the link set resulting from applying the JSON-LD context</a>
         </figcaption></figure>
 </div>
-<p id="section-appendix.a-8">Note that the JSON-LD context of <a href="#jsonld-context" class="xref">Figure 14</a> does not handle 
+<p id="appendix-A-8">Note that the JSON-LD context of <a href="#jsonld-context" class="xref">Figure 14</a> does not handle 
          (meta)link relations of type <code>"linkset"</code> as they are 
          in conflict with the top-level JSON key. A workaround is to rename the top-level key
          to <code>"_linkset"</code> in the
-         "application/linkset+json" before transforming a link set to JSON-LD.<a href="#section-appendix.a-8" class="pilcrow">¶</a></p>
+         "application/linkset+json" before transforming a link set to JSON-LD.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="implementation-status">
-<section id="section-appendix.b">
+<section id="appendix-B">
       <h2 id="name-implementation-status">
-<a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-implementation-status" class="section-name selfRef">Implementation Status</a>
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-implementation-status" class="section-name selfRef">Implementation Status</a>
       </h2>
-<p id="section-appendix.b-1">This section is to be removed before publishing as an RFC.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.b-2">This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 6982 <span>[<a href="#RFC6982" class="xref">RFC6982</a>]</span>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
-<p id="section-appendix.b-3">According to RFC 6982, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">This section is to be removed before publishing as an RFC.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 6982 <span>[<a href="#RFC6982" class="xref">RFC6982</a>]</span>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">According to RFC 6982, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <div id="implementation-GS1">
-<section id="section-b.1">
-        <h2 id="name-gs1">
-<a href="#section-b.1" class="section-number selfRef">B.1. </a><a href="#name-gs1" class="section-name selfRef">GS1</a>
-        </h2>
-<p id="section-b.1-1">GS1 is a provider of barcodes (GS1 GTINs and EAN/UPC) for retail products and manages an ecology of services and standards to leverage them at a global scale. 
+<section id="appendix-B.1">
+        <h3 id="name-gs1">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-gs1" class="section-name selfRef">GS1</a>
+        </h3>
+<p id="appendix-B.1-1">GS1 is a provider of barcodes (GS1 GTINs and EAN/UPC) for retail products and manages an ecology of services and standards to leverage them at a global scale. 
                     GS1 has  indicated that it will implement this "linkset" specification as a means to allow requesting and representing links pertaining to products from various retailers. 
                     Currently, the GS1 Digital Link specification makes an informative reference
                     to version 03 of the "linkset" I-D. GS1 expresses confidence that this will become a normative reference in the
-                    next iteration of that specification, likely to be ratified as a GS1 standard around February 2021.<a href="#section-b.1-1" class="pilcrow">¶</a></p>
+                    next iteration of that specification, likely to be ratified as a GS1 standard around February 2021.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="implementation-signposting">
-<section id="section-b.2">
-        <h2 id="name-fair-signposting-profile">
-<a href="#section-b.2" class="section-number selfRef">B.2. </a><a href="#name-fair-signposting-profile" class="section-name selfRef">FAIR Signposting Profile</a>
-        </h2>
-<p id="section-b.2-1">The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
+<section id="appendix-B.2">
+        <h3 id="name-fair-signposting-profile">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-fair-signposting-profile" class="section-name selfRef">FAIR Signposting Profile</a>
+        </h3>
+<p id="appendix-B.2-1">The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
                     of scholarly objects on the web through the use of typed web links pointing at e.g. 
                     web resources that are part of a specific object, persistent identifiers for the object and its authors, 
                     license information pertaining to the object. The specification encourages the use of Linksets and 
                     initial implementations are ongoing, for example, for the open source Dataverse data repository platform 
-                    that was initiated by Harvard University and is meanwhile used by research institutions, worldwide.<a href="#section-b.2-1" class="pilcrow">¶</a></p>
+                    that was initiated by Harvard University and is meanwhile used by research institutions, worldwide.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="implementation-ojs">
-<section id="section-b.3">
-        <h2 id="name-open-journal-systems-ojs">
-<a href="#section-b.3" class="section-number selfRef">B.3. </a><a href="#name-open-journal-systems-ojs" class="section-name selfRef">Open Journal Systems (OJS)</a>
-        </h2>
-<p id="section-b.3-1">Open Journal Systems (OJS) is an open-source software for the management of peer-reviewed academic journals, and is created by the Public Knowledge Project (PKP), released under the GNU General Public License. Open Journal Systems (OJS) is a journal management and publishing system that has been developed by PKP through its federally funded efforts to expand and improve access to research.<a href="#section-b.3-1" class="pilcrow">¶</a></p>
-<p id="section-b.3-2">The OJS platform has implemented "linkset" support as an alternative way to provide links when there are more than a configured limit (they consider using about 10 as a good default, for testing purpose it is currently set to 8).<a href="#section-b.3-2" class="pilcrow">¶</a></p>
+<section id="appendix-B.3">
+        <h3 id="name-open-journal-systems-ojs">
+<a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-open-journal-systems-ojs" class="section-name selfRef">Open Journal Systems (OJS)</a>
+        </h3>
+<p id="appendix-B.3-1">Open Journal Systems (OJS) is an open-source software for the management of peer-reviewed academic journals, and is created by the Public Knowledge Project (PKP), released under the GNU General Public License. Open Journal Systems (OJS) is a journal management and publishing system that has been developed by PKP through its federally funded efforts to expand and improve access to research.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-2">The OJS platform has implemented "linkset" support as an alternative way to provide links when there are more than a configured limit (they consider using about 10 as a good default, for testing purpose it is currently set to 8).<a href="#appendix-B.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<section id="section-appendix.c">
+<section id="appendix-C">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="section-appendix.c-1">Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Stian Soiland-Reyes, and Sarven Capadisli.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Stian Soiland-Reyes, and Sarven Capadisli.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 </section>
 <div id="authors-addresses">
-<section id="section-appendix.d">
+<section id="appendix-D">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
