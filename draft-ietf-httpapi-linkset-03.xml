@@ -24,7 +24,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="1" month="July" year="2021"/>
+        <date day="3" month="July" year="2021"/>
         <abstract>
            <t>This specification defines two document formats and respective media types for representing sets of links as stand-alone resources. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -200,8 +200,6 @@
                         <li>The "linkset" member is an array in which a distinct JSON object - 
                             the "link context object" (see <xref target="linkset-json-link-context-object"/>) - 
                             MUST be used to represent links that have the same link context.</li>
-                        <li>If necessary, the "linkset" member MAY contain information in addition to link context objects, in which case 
-                            that information MUST NOT change the semantics of the links provided by those link context objects.</li>
                         <li>Even if there is only one link context object, it MUST be wrapped in an array. 
                             Members other than link context objects MUST NOT be included 
                             in this array.</li> 
