@@ -5,8 +5,8 @@
 Network Working Group                                           E. Wilde
 Internet-Draft                                                     Axway
 Intended status: Informational                          H. Van de Sompel
-Expires: 4 January 2022            Data Archiving and Networked Services
-                                                             3 July 2021
+Expires: 5 January 2022            Data Archiving and Networked Services
+                                                             4 July 2021
 
 
       Linkset: Media Types and a Link Relation Type for Link Sets
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 January 2022.
+   This Internet-Draft will expire on 5 January 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 1]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 1]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 2]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 2]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -165,7 +165,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 3]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 3]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -221,7 +221,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 4]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 4]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -277,7 +277,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 5]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 5]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -333,7 +333,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 6]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 6]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -389,7 +389,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 7]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 7]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -445,7 +445,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 8]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 8]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -501,7 +501,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                 [Page 9]
+Wilde & Van de Sompel    Expires 5 January 2022                 [Page 9]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -557,7 +557,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 10]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 10]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -613,7 +613,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 11]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 11]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -669,7 +669,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 12]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 12]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -725,7 +725,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 13]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 13]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -781,7 +781,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 14]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 14]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -837,7 +837,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 15]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 15]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -893,7 +893,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 16]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 16]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -949,7 +949,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 17]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 17]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 18]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 18]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 19]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 19]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 20]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 20]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 21]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 21]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 22]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 22]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 23]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 23]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 24]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 24]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1397,7 +1397,7 @@ Appendix A.  JSON-LD Context
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 25]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 25]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 26]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 26]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1509,7 +1509,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 27]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 27]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1565,7 +1565,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 28]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 28]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1621,7 +1621,7 @@ Internet-Draft                   Linkset                       July 2021
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 29]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 29]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1677,7 +1677,7 @@ B.1.  GS1
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 30]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 30]
 
 Internet-Draft                   Linkset                       July 2021
 
@@ -1733,4 +1733,4 @@ Authors' Addresses
 
 
 
-Wilde & Van de Sompel    Expires 4 January 2022                [Page 31]
+Wilde & Van de Sompel    Expires 5 January 2022                [Page 31]
