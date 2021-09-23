@@ -141,10 +141,7 @@
                 <li>The format defined in <xref target="linkset-json"/> is based on <xref target="RFC8259">JSON</xref>.</li>
             </ul>
             
-            <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> 
-                as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for 
-                link sets defined here, inverse links SHOULD be represented as direct links using the "rel" construct and by switching the position of the resources involved 
-                in the link.</t>
+            <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the position of the resources involved in the link.</t>
             
             <section title="HTTP Link Document Format: application/linkset" anchor="linkset-native">
                 <t>This document format is identical to the field value of the 
