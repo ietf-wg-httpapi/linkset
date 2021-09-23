@@ -136,7 +136,7 @@
                 that defines a link as consisting of a "link context", a "link relation type", a "link target", 
                 and optional "target attributes":</t>
             <ul>
-                <li>The format defined in <xref target="linkset-native"/> is identical to the payload 
+                <li>The format defined in <xref target="linkset-native"/> is identical to the field value 
                     of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288" section="3"/>.</li>
                 <li>The format defined in <xref target="linkset-json"/> is based on <xref target="RFC8259">JSON</xref>.</li>
             </ul>
@@ -147,11 +147,11 @@
                 in the link.</t>
             
             <section title="HTTP Link Document Format: application/linkset" anchor="linkset-native">
-                <t>This document format is identical to the payload of the 
+                <t>This document format is identical to the field value of the 
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
                     its ABNF production rule for "Link" and subsequent ones. 
-                    The use of non-ASCII characters in the payload of the HTTP "Link" Header field is not interoperable.</t> 
+                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
                                 
@@ -169,7 +169,7 @@
                     which URI is used as context.</t>
                  <t>It should be noted that the "application/linkset" format specified here is different than the "application/link-format" 
                     format specified in <xref target="RFC6690"/> in that the former fully matches the 
-                    payload of the HTTP "Link" header field as defined in <xref target="RFC8288" section="3"/>, whereas 
+                    field value of the HTTP "Link" header field as defined in <xref target="RFC8288" section="3"/>, whereas 
                     the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.</t>
             </section>
             <section title="JSON Document Format: application/linkset+json" anchor="linkset-json">
