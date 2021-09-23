@@ -60,8 +60,8 @@
             </list></t>
             -->
         </section>
-        <section title="Scenarios" anchor="scenarios">
-            <t>The following sections outline scenarios in which providing links by means of a standalone document instead of in an HTTP "Link" header field or as links embedded in the resource representation is advantageous or necessary.</t>
+        <section title="Use Cases and Motivation" anchor="use-cases">
+            <t>The following sections describe uses cases in which providing links by means of a standalone document instead of in an HTTP "Link" header field or as links embedded in the resource representation is advantageous or necessary.</t>
             <t>For all scenarios, links could be provided by means of a stand-alone document that is formatted according to the JSON-based serialization, the serialization aligned with the HTTP "Link" field format, or both. The former serialization is motivated by the widespread use of JSON and related tools, which suggests that handling sets of links expressed as JSON documents should be attractive to developers. The latter serialization is provided for compatibility with the existing serialization used in the HTTP "Link" field and to allow reuse of tools created to handle it.</t>
             <t>It is important to keep in mind that when providing links by means of a standalone representation, other links can still be provided using other approaches, i.e. it is possible combine various mechanisms to convey links.</t>
             <section title="Third-Party Links" anchor="third-party">
