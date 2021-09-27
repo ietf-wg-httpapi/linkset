@@ -136,7 +136,7 @@
                 that defines a link as consisting of a "link context", a "link relation type", a "link target", 
                 and optional "target attributes":</t>
             <ul>
-                <li>The format defined in <xref target="linkset-native"/> is identical to the field value 
+                <li>The format defined in <xref target="linkset-native"/> is near identical to the field value 
                     of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288" section="3"/>.</li>
                 <li>The format defined in <xref target="linkset-json"/> is based on <xref target="RFC8259">JSON</xref>.</li>
             </ul>
@@ -144,13 +144,19 @@
             <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the position of the resources involved in the link.</t>
             
             <section title="HTTP Link Document Format: application/linkset" anchor="linkset-native">
-                <t>This document format is identical to the field value of the 
+                <t>This document format is near identical to the field value of the 
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
-                    its ABNF production rule for "Link" and subsequent ones. 
+                    its ABNF production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
+                    HTTP "Link" header in that not only spaces and horizontal tabs are allowed as seperators but also new line 
+                    characters as a means to improve usability.
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
+                
+                <t>When converting an "application/linkset" document to a field value for the 
+                    HTTP "Link" header, new line characters SHOULD be removed in order to comply with 
+                    <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>.</t>
                                 
                 <t>In order to support use cases where "application/linkset" documents are re-used 
                     outside the context of an HTTP interaction,  
