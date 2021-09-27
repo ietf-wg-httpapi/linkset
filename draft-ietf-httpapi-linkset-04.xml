@@ -314,9 +314,10 @@
                 
                 <section title="Link Target Attributes" anchor="json-target-attributes">              
                         
-                    <t>A link may be further qualified by target attributes. Three types of attributes exist:</t>
+                    <t>A link may be further qualified by target attributes as defined by <xref target="RFC8288" section="2">Web Linking</xref>. 
+                        Three types of attributes exist:</t>
                     <ul>
-                        <li>Attributes defined in <xref target="RFC8288" section="3.4.1">Web Linking</xref>.</li>
+                        <li>Serialisation-defined attributes described in <xref target="RFC8288" section="3.4.1">Web Linking</xref>.</li>
                         <li>Extension attributes defined and used by communities as allowed by  
                             <xref target="RFC8288" section="3.4.2"/>.</li> 
                         <li>Internationalized versions of the "title" attribute defined by <xref target="RFC8288"/> and of extension attributes
