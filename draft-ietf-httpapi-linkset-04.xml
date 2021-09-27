@@ -199,10 +199,10 @@
                 <section title="Set of Links" anchor="linkset-in-json">
                     <t>In the JSON representation of a set of links:</t>
                     <ul>
-                        <li>A set of links MUST be represented as a JSON object which MUST have "linkset" as its sole member.</li>
+                        <li>A set of links is represented as a JSON object which MUST have "linkset" as its sole member.</li>
                         <li>The "linkset" member is an array in which a distinct JSON object - 
                             the "link context object" (see <xref target="linkset-json-link-context-object"/>) - 
-                            MUST be used to represent links that have the same link context.</li>
+                            is used to represent links that have the same link context.</li>
                         <li>Even if there is only one link context object, it MUST be wrapped in an array. 
                             Members other than link context objects MUST NOT be included 
                             in this array.</li> 
