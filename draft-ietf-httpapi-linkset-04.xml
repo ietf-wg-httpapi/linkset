@@ -203,9 +203,7 @@
                         <li>The "linkset" member is an array in which a distinct JSON object - 
                             the "link context object" (see <xref target="linkset-json-link-context-object"/>) - 
                             is used to represent links that have the same link context.</li>
-                        <li>Even if there is only one link context object, it MUST be wrapped in an array. 
-                            Members other than link context objects MUST NOT be included 
-                            in this array.</li> 
+                        <li>Even if there is only one link context object, it MUST be wrapped in an array.</li> 
                     </ul>
                 </section>
                 
@@ -231,9 +229,7 @@
                                 <li>For extension relation types (<xref target="RFC8288" section="2.1.2"/>), 
                                     the name of this member is the URI that uniquely represents the relation type.</li>
                             </ul></li>
-                        <li>Even if there is only one link target object it MUST be wrapped in an array. 
-                            Members other than link target objects MUST NOT be included 
-                            in this array.</li> 
+                        <li>Even if there is only one link target object it MUST be wrapped in an array.</li> 
                     </ul>
                 </section>
                 
@@ -532,10 +528,9 @@
             </section>
                 
                 <section title="JSON Extensibility" anchor="json-extensibility">
-                    <t>The extensibility of the JSON document format for representing a set of links is restricted to the extensibility 
-                        provided by <xref target="RFC8288"/>. The Web linking model provides for the use of extension target attributes as discussed in 
-                        <xref target="json-target-attributes-extension"/>. Extensions based on the JSON syntax MUST NOT be used, and MUST be
-                        ignored when found in a JSON linkset document.</t>
+                    <t>The Web linking model (<xref target="RFC8288"/>) provides for the use of extension target attributes as discussed in 
+                        <xref target="json-target-attributes-extension"/>. Extensions based on the JSON syntax (such as additional members of the linkset member that are not defined in this specification) SHOULD NOT be used. 
+                        In case they are used nevertheless, they MUST NOT change the semantics of the JSON members defined in this specification. Agents that consume JSON linkset documents MUST ignore such extensions.</t>
                     <t>This limitation of the JSON format allows to unambiguously round trip between links provided in the HTTP "Link" header field, 
                         sets of links serialized according to the "application/linkset" format, and sets of links serialized 
                         according to the "application/linkset+json" format.</t>
