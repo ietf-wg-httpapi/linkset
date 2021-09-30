@@ -541,24 +541,22 @@
             </section>
         </section>
          
-                 <section title="The &quot;profile&quot; attribute for media types to Represent Sets of Links" anchor="profile-attribute">
-            
-            <t>As a means to convey specific constraints or conventions (as per <xref target="RFC6906"/>) that apply to a link set document, 
-                the "profile" attribute MAY be used in conjunction with the media types "application/linkset" and 
-                "application/linkset+json" detailed in 
-                <xref target="linkset-native"/> and <xref target="linkset-json"/>, respectively. 
-                For example, the attribute could be used to indicate that a link set uses a specific, limited set of link relation 
-                types.</t>
-            
-            <t>The value of the "profile" attribute MUST be a non-empty list of space-separated URIs, 
-                each of which identifies specific constraints or conventions that apply to the link set document. 
-                Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>.</t>
-            
-            <t>The presence of a "profile" attribute in conjunction with the "application/linkset" and 
-                "application/linkset+json" media types does not change the semantics of
-                a link set. As such, clients with and without knowledge of profile URIs can use the same representation.</t>
-            
-        </section>
+    <section title='The "profile" paramter for media types to Represent Sets of Links' anchor="profile-attribute">
+        <t>As a means to convey specific constraints or conventions (as per <xref target="RFC6906"/>) that apply to a link set document, 
+            the "profile" parrameter MAY be used in conjunction with the media types "application/linkset" and 
+            "application/linkset+json" detailed in 
+            <xref target="linkset-native"/> and <xref target="linkset-json"/>, respectively. 
+            For example, the parrameter could be used to indicate that a link set uses a specific, limited set of link relation 
+            types.</t>
+        <t>The value of the "profile" parrameter MUST be a non-empty list of space-separated URIs, 
+            each of which identifies specific constraints or conventions that apply to the link set document. 
+            Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>.</t>  
+        <t>The presence of a "profile" parameter in conjunction with the "application/linkset" and 
+            "application/linkset+json" media types does not change the semantics of
+            a link set. As such, clients with and without knowledge of profile URIs can use the same representation.</t>
+        <t><xref target="profile-parameter-example"/> shows an example of using the "profile" parameter in conjunction with the 
+            "application/linkset+json" media type.</t>      
+    </section>
         
         <section title='The "linkset" Relation Type for Linking to a Set of Links' anchor="linkset-link-relation">
             <t>The target of a link with the "linkset" relation type provides a set of links, 
@@ -581,6 +579,15 @@
             <t>A user agent that follows a "linkset" link and obtains links for which anchors and targets are expressed as 
                 relative references (as per <xref target="RFC3986" section="4.1"/>) MUST determine what the context is for these links; it SHOULD ignore links for which it is unable to 
                 unambiguously make that determination.</t>
+                <t>As a means to convey specific constraints or conventions (as per <xref target="RFC6906"/>) that apply to a link set document, 
+        the "profile" attribute MAY be used in conjunction with the "linkset" link relation type. 
+        For example, the attribute could be used to indicate that a link set uses a specific, limited set of link relation 
+        types. The value of the "profile" attribute MUST be a non-empty 
+        list of space-separated URIs, each of which identifies specific constraints or conventions that apply 
+        to the link set document. Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>. 
+        <xref target="profile-attribute-example"/> shows an example of using the "profile" attribute on a link  
+        with the "linkset" relation type, making both the link set and the profile(s) to which it complies discoverable. 
+    </t>
             <!--
             <t>There is no constraint on the target URI of a link with the "linkset" relation type;
                 designing and using these URIs is left to the discretion of implementers.</t>          
@@ -601,7 +608,8 @@
   <section title="Examples" anchor="linkset-link-examples">
               <t><xref target="linkset-link-link-format"/> and <xref target="linkset-link-json-format"/>
               show examples whereby a set of links is provided as "application/linkset" and "application/linkset+json" documents, respectively.
-                  <xref target="linkset-rel-example"/> illustrates the use of the "linkset" link relation type to support discovery of sets of links.
+                  <xref target="linkset-rel-example"/> illustrates the use of the "linkset" link relation type to support discovery of sets of links and 
+                  <xref target="profile-examples"/> shows how to convey profile information pertaining to a links set.
               </t>
            <section title="Set of Links Provided as application/linkset" anchor="linkset-link-link-format">
                <t><xref target="Request1"/> shows a client issuing an 
@@ -789,6 +797,123 @@ Content-Type: text/html;charset=utf-8
                  <t><xref target="linkset-link-json-format"/> shows a client obtaining a set of links by issuing an HTTP GET on the 
                      target of the link with the "linkset" relation type, &lt;https://example.org/links/resource1&gt;.</t>
              </section>
+      
+       <section title="Link Set Profiles" anchor="profile-examples">
+          
+          <t>The examples in this section illustrate the use of the "profile" attribute for a link with the "linkset" link relation type and the "profile" attribute for a link set media type. The examples are inspired by the implementation of link sets by barcode solutions provider GS1.</t>
+          
+          <section title="Using a &quot;profile&quot; Attribute with a &quot;linkset&quot; Link" anchor="profile-attribute-example">
+              
+              <t><xref target="Request_pr_at"/> shows a client issuing an 
+                  HTTP HEAD request against product description page &lt;https://gs1.org/product/?gtin=09506000134352&gt;.</t>
+              
+              <figure title="Client HTTP HEAD request" anchor="Request_pr_at">
+                  <artwork type="http-message"><![CDATA[
+HEAD /product/?gtin=09506000134352 HTTP/1.1
+Host: gs1.org
+]]></artwork> 
+              </figure>
+              
+              
+<t><xref target="Response_pr_at"/> shows the server's response to the request of 
+    <xref target="Request_pr_at"/>, including a "linkset" link with a "profile" attribute 
+    that has the Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as its value. 
+    Dereferencing that URI yields a profile document that lists all the link relation types that 
+    a client can expect when requesting the link set made discoverable by the "linkset" link. 
+    For prosperity that profile document was saved in the Internet Archive at 
+    &lt;https://web.archive.org/web/20210927160406/https://www.gs1.org/voc/?show=linktypes&gt; 
+    on 27 September 2021.</t>
+                  
+<figure title="Response to the client's HEAD request including a &quot;profile&quot; attribute for the &quot;linkset&quot; Link" anchor="Response_pr_at">
+<artwork type="http-message"><![CDATA[
+HTTP/1.1 200 OK
+Date:  Mon, 27 Sep 2021 16:03:07 GMT
+Server: nginx
+Content-Type: text/html
+Link: https://id.gs1.org/01/9506000134352?linkType=all
+; rel="linkset"
+; type="application/linkset+json"
+; profile="https://www.gs1.org/voc/?show=linktypes"
+Content-Length: 2309
+]]>
+</artwork> 
+</figure>
+</section>
+
+<section title="Using a &quot;profile&quot; Parameter with a Link Set Media Type" anchor="profile-parameter-example">
+
+<t><xref target="Request_pr_par"/> shows a client issuing an 
+HTTP HEAD request against the link set &lt;https://id.gs1.org/01/9506000134352?linkType=all&gt; that was discovered through the HTTP interactions shown in <xref target="profile-attribute-example"/>.</t>
+
+<figure title="Client HTTP HEAD request" anchor="Request_pr_par">
+<artwork type="http-message"><![CDATA[
+HEAD /01/9506000134352?linkType=all HTTP/1.1
+Host: id.gs1.org
+]]></artwork> 
+</figure>
+                  
+
+<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in xref target="Response_pr_at"/></t>.
+                      
+<figure title="Response to the client's HEAD request including a &quot;profile&quot; parameter for the &quot;application/linkset+json&quot; media type" anchor="Response_pr_par">
+<artwork type="http-message"><![CDATA[
+HTTP/1.1 200 OK
+
+Date:  Mon, 27 Sep 2021 16:03:33 GMT
+
+Server: nginx
+
+Content-Type: application/linkset+json; profile="https://www.gs1.org/voc/?show=linktypes"
+
+Content-Length: 1645
+
+]]></artwork> 
+</figure>
+</section>
+
+<section title="Using a Link with a &quot;profile&quot; Link Relation Type" anchor="profile-link-example">
+
+<t>Note that the response <xref target="Response_pr_par"/> from the link set resource is equivalent to the response shown in <xref target="Response_pr_link"/>, which leverages the "profile" link relation type defined in <xref target="RFC6906"/>.</t>
+
+<figure title="Response to the client's HEAD request including a &quot;profile&quot; link" anchor="Response_pr_link">
+<artwork type="http-message"><![CDATA[
+HTTP/1.1 200 OK
+Date:  Mon, 27 Sep 2021 16:03:33 GMT
+Server: nginx
+Content-Type: application/linkset+json; profile="https://www.gs1.org/voc/?show=linktypes"
+Link: https://www.gs1.org/voc/?show=linktypes; rel="profile"
+Content-Length: 1645
+]]></artwork> 
+</figure>
+
+<t>A link with a "profile" link relation type as shown in <xref target="Response_pr_link"/> can also be conveyed in the link set document itself. This is illustrated by <xref target="Response_pr_linkset"/>. Following the recommendation that all links in a link set document should have an explicit anchor, such a link has the URI of the link set itself as anchor and the Profile URI as target. Multiple Profile URIs are handled by using multiple "href" members as shown in <xref target="item-links"/>.</t>
+
+<figure title="A Link Set that Declares the Profile it Complies to using a &quot;profile&quot; Link" anchor="Response_pr_linkset">
+<sourcecode type="json"><![CDATA[
+{
+  "linkset":
+    [ 
+      { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all", 
+        "profile": [
+              {"href": "https://www.gs1.org/voc/?show=linktypes"}
+        ]
+      },
+       { "anchor": "https://gs1.org/product/?gtin=09506000134352", 
+         "https://gs1.org/voc/whatsInTheBox": [
+              {"href": "https://example.com/en/packContents/GB"}
+        ]
+      }
+    ]
+}]]>
+</sourcecode> 
+                      </figure>
+                      
+                      
+          </section>
+          
+          
+      </section>
+      
         </section>
         <section title="IANA Considerations" anchor="iana-considerations">
             <section title="Link Relation Type: linkset">
