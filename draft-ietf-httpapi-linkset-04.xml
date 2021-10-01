@@ -800,17 +800,17 @@ Content-Type: text/html;charset=utf-8
       
        <section title="Link Set Profiles" anchor="profile-examples">
           
-          <t>The examples in this section illustrate the use of the "profile" attribute for a link with the "linkset" link relation type and the "profile" attribute for a link set media type. The examples are inspired by the implementation of link sets by barcode solutions provider GS1.</t>
+          <t>The examples in this section illustrate the use of the "profile" attribute for a link with the "linkset" link relation type and the "profile" attribute for a link set media type. The examples are inspired by the implementation of link sets by GS1 (the standards body behind many of the world's barcodes).</t>
           
           <section title="Using a &quot;profile&quot; Attribute with a &quot;linkset&quot; Link" anchor="profile-attribute-example">
               
               <t><xref target="Request_pr_at"/> shows a client issuing an 
-                  HTTP HEAD request against product description page &lt;https://gs1.org/product/?gtin=09506000134352&gt;.</t>
+                  HTTP HEAD request against trade item 09506000134352 at &lt;https://id.gs1.org/01/09506000134352?linkType=all&gt;.</t>
               
               <figure title="Client HTTP HEAD request" anchor="Request_pr_at">
                   <artwork type="http-message"><![CDATA[
-HEAD /product/?gtin=09506000134352 HTTP/1.1
-Host: gs1.org
+HEAD /01/09506000134352?linkType=all HTTP/1.1
+Host: id.gs1.org
 ]]></artwork> 
               </figure>
               
@@ -820,7 +820,7 @@ Host: gs1.org
     that has the Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as its value. 
     Dereferencing that URI yields a profile document that lists all the link relation types that 
     a client can expect when requesting the link set made discoverable by the "linkset" link. 
-    For prosperity that profile document was saved in the Internet Archive at 
+    For posterity that profile document was saved in the Internet Archive at
     &lt;https://web.archive.org/web/20210927160406/https://www.gs1.org/voc/?show=linktypes&gt; 
     on 27 September 2021.</t>
                   
@@ -830,7 +830,7 @@ HTTP/1.1 200 OK
 Date:  Mon, 27 Sep 2021 16:03:07 GMT
 Server: nginx
 Content-Type: text/html
-Link: https://id.gs1.org/01/9506000134352?linkType=all
+Link: https://id.gs1.org/01/9506000134352
 ; rel="linkset"
 ; type="application/linkset+json"
 ; profile="https://www.gs1.org/voc/?show=linktypes"
@@ -853,7 +853,7 @@ Host: id.gs1.org
 </figure>
                   
 
-<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in xref target="Response_pr_at"/></t>.
+<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in <xref target="Response_pr_at"/></t>.
                       
 <figure title="Response to the client's HEAD request including a &quot;profile&quot; parameter for the &quot;application/linkset+json&quot; media type" anchor="Response_pr_par">
 <artwork type="http-message"><![CDATA[
@@ -888,19 +888,17 @@ Content-Length: 1645
 
 <t>A link with a "profile" link relation type as shown in <xref target="Response_pr_link"/> can also be conveyed in the link set document itself. This is illustrated by <xref target="Response_pr_linkset"/>. Following the recommendation that all links in a link set document should have an explicit anchor, such a link has the URI of the link set itself as anchor and the Profile URI as target. Multiple Profile URIs are handled by using multiple "href" members as shown in <xref target="item-links"/>.</t>
 
-<figure title="A Link Set that Declares the Profile it Complies to using a &quot;profile&quot; Link" anchor="Response_pr_linkset">
+<figure title="A Link Set that declares the profile it complies with using a &quot;profile&quot; Link" anchor="Response_pr_linkset">
 <sourcecode type="json"><![CDATA[
 {
   "linkset":
-    [ 
-      { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all", 
+    [
+      { "anchor": "https://id.gs1.org/01/9506000134352",
         "profile": [
               {"href": "https://www.gs1.org/voc/?show=linktypes"}
-        ]
-      },
-       { "anchor": "https://gs1.org/product/?gtin=09506000134352", 
-         "https://gs1.org/voc/whatsInTheBox": [
-              {"href": "https://example.com/en/packContents/GB"}
+        ],
+       "https://gs1.org/voc/whatsInTheBox": [
+          {"href": "https://example.com/en/packContents/GB"}
         ]
       }
     ]
