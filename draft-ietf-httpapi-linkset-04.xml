@@ -853,7 +853,7 @@ Host: id.gs1.org
 </figure>
                   
 
-<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in xref target="Response_pr_at"/></t>.
+<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in xref target="Response_pr_at"/>.</t>
                       
 <figure title="Response to the client's HEAD request including a &quot;profile&quot; parameter for the &quot;application/linkset+json&quot; media type" anchor="Response_pr_par">
 <artwork type="http-message"><![CDATA[
@@ -886,7 +886,7 @@ Content-Length: 1645
 ]]></artwork> 
 </figure>
 
-<t>A link with a "profile" link relation type as shown in <xref target="Response_pr_link"/> can also be conveyed in the link set document itself. This is illustrated by <xref target="Response_pr_linkset"/>. Following the recommendation that all links in a link set document should have an explicit anchor, such a link has the URI of the link set itself as anchor and the Profile URI as target. Multiple Profile URIs are handled by using multiple "href" members as shown in <xref target="item-links"/>.</t>
+<t>A link with a "profile" link relation type as shown in <xref target="Response_pr_link"/> can also be conveyed in the link set document itself. This is illustrated by <xref target="Response_pr_linkset"/>. Following the recommendation that all links in a link set document should have an explicit anchor, such a link has the URI of the link set itself as anchor and the Profile URI as target. Multiple Profile URIs are handled by using multiple "href" members.</t>
 
 <figure title="A Link Set that Declares the Profile it Complies to using a &quot;profile&quot; Link" anchor="Response_pr_linkset">
 <sourcecode type="json"><![CDATA[
