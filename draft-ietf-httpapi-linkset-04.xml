@@ -797,12 +797,12 @@ Content-Type: text/html;charset=utf-8
       
        <section title="Link Set Profiles" anchor="profile-examples">
           
-          <t>The examples in this section illustrate the use of the "profile" attribute for a link with the "linkset" link relation type and the "profile" attribute for a link set media type. The examples are inspired by the implementation of link sets by barcode solutions provider GS1.</t>
+          <t>The examples in this section illustrate the use of the "profile" attribute for a link with the "linkset" link relation type and the "profile" attribute for a link set media type. The examples are inspired by the implementation of link sets by GS1 (the standards body behind many of the world's barcodes).</t>
           
           <section title="Using a &quot;profile&quot; Attribute with a &quot;linkset&quot; Link" anchor="profile-attribute-example">
               
               <t><xref target="Request_pr_at"/> shows a client issuing an 
-                  HTTP HEAD request against product description page &lt;https://gs1.org/product/?gtin=09506000134352&gt;.</t>
+                  HTTP HEAD request against trade item 09506000134352 at &lt;https://gs1.org/product/?gtin=09506000134352&gt;.</t>
               
               <figure title="Client HTTP HEAD request" anchor="Request_pr_at">
                   <artwork type="http-message"><![CDATA[
@@ -817,7 +817,7 @@ Host: gs1.org
     that has the Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as its value. 
     Dereferencing that URI yields a profile document that lists all the link relation types that 
     a client can expect when requesting the link set made discoverable by the "linkset" link. 
-    For prosperity that profile document was saved in the Internet Archive at 
+    For posterity that profile document was saved in the Internet Archive at 
     &lt;https://web.archive.org/web/20210927160406/https://www.gs1.org/voc/?show=linktypes&gt; 
     on 27 September 2021.</t>
                   
@@ -885,7 +885,7 @@ Content-Length: 1645
 
 <t>A link with a "profile" link relation type as shown in <xref target="Response_pr_link"/> can also be conveyed in the link set document itself. This is illustrated by <xref target="Response_pr_linkset"/>. Following the recommendation that all links in a link set document should have an explicit anchor, such a link has the URI of the link set itself as anchor and the Profile URI as target. Multiple Profile URIs are handled by using multiple "href" members.</t>
 
-<figure title="A Link Set that Declares the Profile it Complies to using a &quot;profile&quot; Link" anchor="Response_pr_linkset">
+<figure title="A Link Set that declares the profile it complies with using a &quot;profile&quot; link" anchor="Response_pr_linkset">
 <sourcecode type="json"><![CDATA[
 {
   "linkset":
