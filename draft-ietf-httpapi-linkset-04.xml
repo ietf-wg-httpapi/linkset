@@ -802,14 +802,14 @@ Content-Type: text/html;charset=utf-8
           <section title="Using a &quot;profile&quot; Attribute with a &quot;linkset&quot; Link" anchor="profile-attribute-example">
               
               <t><xref target="Request_pr_at"/> shows a client issuing an 
-                  HTTP HEAD request against trade item 09506000134352 at &lt;https://gs1.org/product/?gtin=09506000134352&gt;.</t>
+                  HTTP HEAD request against trade item 09506000134352 at &lt;https://id.gs1.org/01/9506000134352&gt;.</t>
               
-              <figure title="Client HTTP HEAD request" anchor="Request_pr_at">
-                  <artwork type="http-message"><![CDATA[
-HEAD /product/?gtin=09506000134352 HTTP/1.1
-Host: gs1.org
+<figure title="Client HTTP HEAD request" anchor="Request_pr_at">
+<artwork type="http-message"><![CDATA[
+HEAD /01/9506000134352 HTTP/1.1
+Host: id.gs1.org
 ]]></artwork> 
-              </figure>
+</figure>
               
               
 <t><xref target="Response_pr_at"/> shows the server's response to the request of 
@@ -821,18 +821,17 @@ Host: gs1.org
     &lt;https://web.archive.org/web/20210927160406/https://www.gs1.org/voc/?show=linktypes&gt; 
     on 27 September 2021.</t>
                   
-<figure title="Response to the client's HEAD request including a &quot;profile&quot; attribute for the &quot;linkset&quot; Link" anchor="Response_pr_at">
+<figure title="Response to the client's HEAD request including a &quot;profile&quot; attribute for the &quot;linkset&quot; link" anchor="Response_pr_at">
 <artwork type="http-message"><![CDATA[
-HTTP/1.1 200 OK
+HTTP/1.1 307 Temporary Redirect
 Date:  Mon, 27 Sep 2021 16:03:07 GMT
 Server: nginx
-Content-Type: text/html
 Link: https://id.gs1.org/01/9506000134352?linkType=all
 ; rel="linkset"
 ; type="application/linkset+json"
 ; profile="https://www.gs1.org/voc/?show=linktypes"
-Content-Length: 2309
-]]>
+Location: https://dalgiardino.com/risotto-rice-with-mushrooms/
+> 
 </artwork> 
 </figure>
 </section>
@@ -855,15 +854,10 @@ Host: id.gs1.org
 <figure title="Response to the client's HEAD request including a &quot;profile&quot; parameter for the &quot;application/linkset+json&quot; media type" anchor="Response_pr_par">
 <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
-
 Date:  Mon, 27 Sep 2021 16:03:33 GMT
-
 Server: nginx
-
 Content-Type: application/linkset+json; profile="https://www.gs1.org/voc/?show=linktypes"
-
-Content-Length: 1645
-
+Content-Length: 396
 ]]></artwork> 
 </figure>
 </section>
@@ -877,9 +871,9 @@ Content-Length: 1645
 HTTP/1.1 200 OK
 Date:  Mon, 27 Sep 2021 16:03:33 GMT
 Server: nginx
-Content-Type: application/linkset+json; profile="https://www.gs1.org/voc/?show=linktypes"
+Content-Type: application/linkset+json
 Link: https://www.gs1.org/voc/?show=linktypes; rel="profile"
-Content-Length: 1645
+Content-Length: 396
 ]]></artwork> 
 </figure>
 
@@ -895,7 +889,7 @@ Content-Length: 1645
               {"href": "https://www.gs1.org/voc/?show=linktypes"}
         ]
       },
-       { "anchor": "https://gs1.org/product/?gtin=09506000134352", 
+       { "anchor": "https://id.gs1.org/01/9506000134352", 
          "https://gs1.org/voc/whatsInTheBox": [
               {"href": "https://example.com/en/packContents/GB"}
         ]
