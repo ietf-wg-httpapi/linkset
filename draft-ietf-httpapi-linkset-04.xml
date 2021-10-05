@@ -1038,123 +1038,138 @@ Content-Length: 396
                 a server can convey the availability of such a JSON-LD context by using a link with the relation type 
                 "http://www.w3.org/ns/json-ld#context" in the HTTP "Link" header.</t>
             
-            <t>Using the latter approach to support discovery of a JSON-LD Context, the response to the GET request of 
-                <xref target="Request4"/> against the URI of a set of links would be as shown in <xref target="contextlinkrel"/>.</t>
+             <t><xref target="contextlinkrel"/> shows the response of an HTTP GET against the URI of a link set resource and 
+                 illustrates this approach to support discovery of a JSON-LD Context. The example is inspired by the GS1 implementation and 
+                 shows a link set that uses relation types from the GS1 vocabulary at &lt;https://www.gs1.org/voc/&gt; 
+                 that are expressed as HTTP URIs.
+          </t>
             
             <figure title="Using a typed link to support discovery of a JSON-LD Context for a Set of Links" anchor="contextlinkrel">
                 <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
-Date: Mon, 12 Aug 2019 10:48:22 GMT
+Date: Mon, 11 Oct 2021 10:48:22 GMT
 Server: Apache-Coyote/1.1
 Content-Type: application/linkset+json
 Link: <https://example.org/contexts/linkset.jsonld>
       ; rel="http://www.w3.org/ns/json-ld#context"
       ; type="application/ld+json"
-Content-Length: 1349
-
+Content-Length: 1532
 {
   "linkset": [
     {
-      "anchor": "https://example.org/resource1",
-      "author": [
+      "anchor": "https://id.gs1.org/01/09506000149301",
+      "https://gs1.org/voc/pip": [
         {
-          "href": "https://authors.example.net/johndoe",
-          "type": "application/rdf+xml"
-        }
-      ],
-      "memento": [
-        {
-          "href": "https://example.org/resource1?version=1",
+          "href": "https://example.com/en/defaultPage",
+          "hreflang": [
+            "en"
+          ],
           "type": "text/html",
-          "datetime": "Thu, 13 Jun 2019 09:34:33 GMT"
+          "title": "Product information"
         },
         {
-          "href": "https://example.org/resource1?version=2",
-          "type": "text/html",
-          "datetime": "Sun, 21 Jul 2019 12:22:04 GMT"
+          "href": "https://example.com/fr/defaultPage",
+          "hreflang": [
+            "fr"
+          ],
+          "title": "Information produit"
         }
       ],
-      "latest-version": [
+      "https://gs1.org/voc/whatsInTheBox": [
         {
-          "href": "https://example.org/resource1?version=3",
-          "type": "text/html"
+          "href": "https://example.com/en/packContents/GB",
+          "hreflang": [
+            "en"
+          ],
+          "title": "What's in the box?"
+        },
+        {
+          "href": "https://example.com/fr/packContents/FR",
+          "hreflang": [
+            "fr"
+          ],
+          "title": "Qu'y a-t-il dans la boite?"
+        },
+        {
+          "href": "https://example.com/fr/packContents/CH",
+          "hreflang": [
+            "fr"
+          ],
+          "title": "Qu'y a-t-il dans la boite?"
         }
-      ]
-    },
-    {
-      "anchor": "https://example.org/resource1?version=3",
-      "predecessor-version": [
+      ],
+      "https://gs1.org/voc/relatedVideo": [
         {
-          "href": "https://example.org/resource1?version=2",
-          "type": "text/html"
-        }
-      ]
-    },
-    {
-      "anchor": "https://example.org/resource1?version=2",
-      "predecessor-version": [
-        {
-          "href": "https://example.org/resource1?version=1",
-          "type": "text/html"
-        }
-      ]
-    },
-    {
-      "anchor": "https://example.org/resource1#comment=1",
-      "author": [
-        {
-          "href": "https://authors.example.net/alice"
+          "href": "https://video.example",
+          "hreflang": [
+            "en",
+            "fr"
+          ],
+          "title*": [
+            {
+              "value": "See it in action!",
+              "language": "en"
+            },
+            {
+              "value": "Voyez-le en action!",
+              "language": "fr"
+            }
+          ]
         }
       ]
     }
   ]
-}]]>
+}
+]]>
                 </artwork> 
             </figure>
             
             <t>In order to obtain the JSON-LD Context conveyed by the server, the user agent issues an HTTP GET against the 
                 link target of the link with the "http://www.w3.org/ns/json-ld#context" relation type. The response to this GET is 
                 shown in <xref target="jsonld-context"/>. This particular JSON-LD context maps "application/linkset+json" representations of link sets 
-                to Dublin Core Terms. It also renders each link relation as a URI Reference, inspired by the same approach used for <xref target="RFC4287">Atom</xref> described in <xref target="RFC8288" section="A.2"/>. 
+                to Dublin Core Terms. Note that the "linkset" entry in the JSON-LD context is 
+                introduced to support links with the <tt>"linkset"</tt> relation type in link sets. 
             </t>
 
-            <figure title="JSON-LD Context mapping to Dublin Core Terms and IANA assignments" anchor="jsonld-context">
+            <figure title="JSON-LD Context mapping to Dublin Core Terms" anchor="jsonld-context">
                 <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
 Content-Type: application/ld+json
-Content-Length: 708
-
+Content-Length: 658
 {
   "@context": [
     {
-      "@vocab":  "http://www.iana.org/assignments/relation/",
-      "anchor":  "@id",
-      "href":    "@id",
-      "linkset": "@graph",
-      "_linkset": "@graph",
-      "title":   {
-        "@id":    "http://purl.org/dc/terms/title"
+      "@version": 1.1,
+      "@vocab": "https://gs1.org/voc/",
+      "anchor": "@id",
+      "href": "@id",
+      "linkset": {
+        "@id": "@graph",
+        "@context": {
+          "linkset": "linkset"
+        }
       },
-      "title*":  {
-        "@id":    "http://purl.org/dc/terms/title"
+      "title": {
+        "@id": "http://purl.org/dc/terms/title"
       },
-      "type":    {
-        "@id":    "http://purl.org/dc/terms/format"
+      "title*": {
+        "@id": "http://purl.org/dc/terms/title"
       },
-      "datetime":    {
-        "@id":    "http://purl.org/dc/terms/date"
+      "type": {
+        "@id": "http://purl.org/dc/terms/format"
       }
     },
     {
       "language": "@language",
-      "value":    "@value",
+      "value": "@value",
       "hreflang": {
-        "@id":        "http://purl.org/dc/terms/language",
+        "@id": "http://purl.org/dc/terms/language",
         "@container": "@set"
       }
     }
   ]
-}]]> 
+}
+]]> 
                 </artwork> 
             </figure>
 
@@ -1163,70 +1178,75 @@ Content-Length: 708
                 allows transforming the "application/linkset+json" link set to an RDF link set. <xref target="triples"/> shows 
                 the latter represented by means of the "text/turtle" RDF serialization.</t>
             
-            <!--
-        <t>An application consuming Linkset JSON documents can apply their own context, 
-        either through a JSON-LD Processor or by merging the <spanx style="verb">"@context"</spanx> 
-        key into the Linkset JSON root object to transform the
-        <spanx style="verb">application/linkset+json</spanx> document to 
-        a <spanx style="verb">application/ld+json</spanx> document.
-        </t>
-        <t>
-        The example below shows how a content-negotiation HTTP server could
-        dynamically render linksets as RDF formats showing the interpreted 
-        triples from <xref target="contextlinkrel" />.
-        </t>               
-        -->
-            
         <figure title="RDF serialization of the link set resulting from applying the JSON-LD context" anchor="triples">
             <artwork><![CDATA[
-<https://authors.example.net/johndoe> 
-  <http://purl.org/dc/terms/format> 
-  "application/rdf+xml" .
-<https://example.org/resource1#comment=1>
-  <http://www.iana.org/assignments/relation/author> 
-  <https://authors.example.net/alice> .
-<https://example.org/resource1>
-  <http://www.iana.org/assignments/relation/author>
-  <https://authors.example.net/johndoe> .
-<https://example.org/resource1>
-  <http://www.iana.org/assignments/relation/latest-version>
-  <https://example.org/resource1?version=3> .
-<https://example.org/resource1>
-  <http://www.iana.org/assignments/relation/memento>
-  <https://example.org/resource1?version=1> .
-<https://example.org/resource1>
-  <http://www.iana.org/assignments/relation/memento>
-  <https://example.org/resource1?version=2> .
-<https://example.org/resource1?version=1>
-  <http://purl.org/dc/terms/date>
-  "Thu, 13 Jun 2019 09:34:33 GMT" .
-<https://example.org/resource1?version=1>
-  <http://purl.org/dc/terms/format> 
-  "text/html" .
-<https://example.org/resource1?version=2>
-  <http://purl.org/dc/terms/date>
-  "Sun, 21 Jul 2019 12:22:04 GMT" .
-<https://example.org/resource1?version=2>
-  <http://purl.org/dc/terms/format>
-  "text/html" .
-<https://example.org/resource1?version=2>
-  <http://www.iana.org/assignments/relation/predecessor-version>
-  <https://example.org/resource1?version=1> .
-<https://example.org/resource1?version=3>
-  <http://purl.org/dc/terms/format>
-  "text/html" .
-<https://example.org/resource1?version=3>
-  <http://www.iana.org/assignments/relation/predecessor-version>
-  <https://example.org/resource1?version=2> .
+<https://example.com/en/defaultPage> 
+	<http://purl.org/dc/terms/format> 
+	"text/html" .
+<https://example.com/en/defaultPage> 
+	<http://purl.org/dc/terms/language> 
+	"en" .
+<https://example.com/en/defaultPage> 
+	<http://purl.org/dc/terms/title>
+	"Product information" .
+<https://example.com/en/packContents/GB> 
+	<http://purl.org/dc/terms/language> 
+	"en" .
+<https://example.com/en/packContents/GB> 
+	<http://purl.org/dc/terms/title> 
+	"What's in the box?" .
+<https://example.com/fr/defaultPage> 
+	<http://purl.org/dc/terms/language> 
+	"fr" .
+<https://example.com/fr/defaultPage> 
+	<http://purl.org/dc/terms/title> 
+	"Information produit" .
+<https://example.com/fr/packContents/CH> 
+	<http://purl.org/dc/terms/language> 
+	"fr" .
+<https://example.com/fr/packContents/CH> 
+	<http://purl.org/dc/terms/title> 
+	"Qu'y a-t-il dans la boite?" .
+<https://example.com/fr/packContents/FR> 
+	<http://purl.org/dc/terms/language> 
+	"fr" .
+<https://example.com/fr/packContents/FR> 
+	<http://purl.org/dc/terms/title> 
+	"Qu'y a-t-il dans la boite?" .
+<https://id.gs1.org/01/09506000149301> 
+	<https://gs1.org/voc/pip> 
+	<https://example.com/en/defaultPage> .
+<https://id.gs1.org/01/09506000149301> 
+	<https://gs1.org/voc/pip> 
+	<https://example.com/fr/defaultPage> .
+<https://id.gs1.org/01/09506000149301> 
+	<https://gs1.org/voc/relatedVideo> 
+	<https://video.example> .
+<https://id.gs1.org/01/09506000149301> 
+	<https://gs1.org/voc/whatsInTheBox> 
+	<https://example.com/en/packContents/GB> .
+<https://id.gs1.org/01/09506000149301> 
+	<https://gs1.org/voc/whatsInTheBox> 
+	<https://example.com/fr/packContents/CH> .
+<https://id.gs1.org/01/09506000149301> 
+	<https://gs1.org/voc/whatsInTheBox> 
+	<https://example.com/fr/packContents/FR> .
+<https://video.example> 
+	<http://purl.org/dc/terms/language> 
+	"en" .
+<https://video.example> 
+	<http://purl.org/dc/terms/language> 
+	"fr" .
+<https://video.example> 
+	<http://purl.org/dc/terms/title> 
+	"See it in action!"@en .
+<https://video.example> 
+	<http://purl.org/dc/terms/title> 
+	"Voyez-le en action!"@fr .
 ]]>
                 </artwork> 
             </figure>
 
-        <t>Note that the JSON-LD context of <xref target="jsonld-context"/> does not handle 
-         (meta)link relations of type <tt>"linkset"</tt> as they are 
-         in conflict with the top-level JSON key. A workaround is to rename the top-level key
-         to <tt>"_linkset"</tt> in the
-         "application/linkset+json" before transforming a link set to JSON-LD.</t>
         </section>
         <section title="Implementation Status" anchor="implementation-status" removeInRFC="true">
             <t>This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 6982 <xref target="RFC6982"/>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.</t>
