@@ -5,8 +5,8 @@
 Network Working Group                                           E. Wilde
 Internet-Draft                                                     Axway
 Intended status: Informational                          H. Van de Sompel
-Expires: 8 April 2022              Data Archiving and Networked Services
-                                                          5 October 2021
+Expires: 9 April 2022              Data Archiving and Networked Services
+                                                          6 October 2021
 
 
       Linkset: Media Types and a Link Relation Type for Link Sets
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 April 2022.
+   This Internet-Draft will expire on 9 April 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 1]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 1]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -105,11 +105,11 @@ Table of Contents
    11. Informative References  . . . . . . . . . . . . . . . . . . .  27
    Appendix A.  JSON-LD Context  . . . . . . . . . . . . . . . . . .  27
    Appendix B.  Implementation Status  . . . . . . . . . . . . . . .  32
-     B.1.  GS1 . . . . . . . . . . . . . . . . . . . . . . . . . . .  32
+     B.1.  GS1 . . . . . . . . . . . . . . . . . . . . . . . . . . .  33
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 2]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 2]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -165,7 +165,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 3]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 3]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -221,7 +221,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 4]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 4]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -277,7 +277,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 5]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 5]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -333,7 +333,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 6]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 6]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -389,7 +389,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 7]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 7]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -445,7 +445,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 8]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 8]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -501,7 +501,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                  [Page 9]
+Wilde & Van de Sompel     Expires 9 April 2022                  [Page 9]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -557,7 +557,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 10]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 10]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -613,7 +613,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 11]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 11]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -669,7 +669,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 12]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 12]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -725,7 +725,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 13]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 13]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -781,7 +781,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 14]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 14]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -837,7 +837,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 15]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 15]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -893,7 +893,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 16]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 16]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -949,7 +949,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 17]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 17]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 18]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 18]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 19]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 19]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 20]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 20]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1173,7 +1173,7 @@ Content-Length: 396
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 21]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 21]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 22]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 22]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 23]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 23]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 24]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 24]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 25]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 25]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 26]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 26]
 
 Internet-Draft                   Linkset                    October 2021
 
@@ -1503,91 +1503,106 @@ Appendix A.  JSON-LD Context
    relation type "http://www.w3.org/ns/json-ld#context" in the HTTP
    "Link" header.
 
-   Using the latter approach to support discovery of a JSON-LD Context,
-   the response to the GET request of Figure 9 against the URI of a set
-   of links would be as shown in Figure 19.
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 27]
+
+
+
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 27]
 
 Internet-Draft                   Linkset                    October 2021
 
 
+   Figure 19 shows the response of an HTTP GET against the URI of a link
+   set resource and illustrates this approach to support discovery of a
+   JSON-LD Context.  The example is inspired by the GS1 implementation
+   and shows a link set that uses relation types from the GS1 vocabulary
+   at <https://www.gs1.org/voc/> that are expressed as HTTP URIs.
+
    HTTP/1.1 200 OK
-   Date: Mon, 12 Aug 2019 10:48:22 GMT
+   Date: Mon, 11 Oct 2021 10:48:22 GMT
    Server: Apache-Coyote/1.1
    Content-Type: application/linkset+json
    Link: <https://example.org/contexts/linkset.jsonld>
          ; rel="http://www.w3.org/ns/json-ld#context"
          ; type="application/ld+json"
-   Content-Length: 1349
-
+   Content-Length: 1532
    {
      "linkset": [
        {
-         "anchor": "https://example.org/resource1",
-         "author": [
+         "anchor": "https://id.gs1.org/01/09506000149301",
+         "https://gs1.org/voc/pip": [
            {
-             "href": "https://authors.example.net/johndoe",
-             "type": "application/rdf+xml"
-           }
-         ],
-         "memento": [
-           {
-             "href": "https://example.org/resource1?version=1",
+             "href": "https://example.com/en/defaultPage",
+             "hreflang": [
+               "en"
+             ],
              "type": "text/html",
-             "datetime": "Thu, 13 Jun 2019 09:34:33 GMT"
+             "title": "Product information"
            },
            {
-             "href": "https://example.org/resource1?version=2",
-             "type": "text/html",
-             "datetime": "Sun, 21 Jul 2019 12:22:04 GMT"
+             "href": "https://example.com/fr/defaultPage",
+             "hreflang": [
+               "fr"
+             ],
+             "title": "Information produit"
            }
          ],
-         "latest-version": [
+         "https://gs1.org/voc/whatsInTheBox": [
            {
-             "href": "https://example.org/resource1?version=3",
-             "type": "text/html"
-           }
-         ]
-       },
-       {
-         "anchor": "https://example.org/resource1?version=3",
-         "predecessor-version": [
+             "href": "https://example.com/en/packContents/GB",
+             "hreflang": [
+               "en"
+             ],
+             "title": "What's in the box?"
+           },
            {
-             "href": "https://example.org/resource1?version=2",
-             "type": "text/html"
-           }
-         ]
-       },
-       {
+             "href": "https://example.com/fr/packContents/FR",
+             "hreflang": [
+               "fr"
+             ],
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 28]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 28]
 
 Internet-Draft                   Linkset                    October 2021
 
 
-         "anchor": "https://example.org/resource1?version=2",
-         "predecessor-version": [
+             "title": "Qu'y a-t-il dans la boite?"
+           },
            {
-             "href": "https://example.org/resource1?version=1",
-             "type": "text/html"
+             "href": "https://example.com/fr/packContents/CH",
+             "hreflang": [
+               "fr"
+             ],
+             "title": "Qu'y a-t-il dans la boite?"
            }
-         ]
-       },
-       {
-         "anchor": "https://example.org/resource1#comment=1",
-         "author": [
+         ],
+         "https://gs1.org/voc/relatedVideo": [
            {
-             "href": "https://authors.example.net/alice"
+             "href": "https://video.example",
+             "hreflang": [
+               "en",
+               "fr"
+             ],
+             "title*": [
+               {
+                 "value": "See it in action!",
+                 "language": "en"
+               },
+               {
+                 "value": "Voyez-le en action!",
+                 "language": "fr"
+               }
+             ]
            }
          ]
        }
      ]
    }
+
 
       Figure 19: Using a typed link to support discovery of a JSON-LD
                          Context for a Set of Links
@@ -1597,73 +1612,59 @@ Internet-Draft                   Linkset                    October 2021
    with the "http://www.w3.org/ns/json-ld#context" relation type.  The
    response to this GET is shown in Figure 20.  This particular JSON-LD
    context maps "application/linkset+json" representations of link sets
-   to Dublin Core Terms.  It also renders each link relation as a URI
-   Reference, inspired by the same approach used for Atom [RFC4287]
-   described in Appendix A.2 of [RFC8288].
+   to Dublin Core Terms.  Note that the "linkset" entry in the JSON-LD
+   context is introduced to support links with the "linkset" relation
+   type in link sets.
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 29]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 29]
 
 Internet-Draft                   Linkset                    October 2021
 
 
    HTTP/1.1 200 OK
    Content-Type: application/ld+json
-   Content-Length: 708
-
+   Content-Length: 658
    {
      "@context": [
        {
-         "@vocab":  "http://www.iana.org/assignments/relation/",
-         "anchor":  "@id",
-         "href":    "@id",
-         "linkset": "@graph",
-         "_linkset": "@graph",
-         "title":   {
-           "@id":    "http://purl.org/dc/terms/title"
+         "@version": 1.1,
+         "@vocab": "https://gs1.org/voc/",
+         "anchor": "@id",
+         "href": "@id",
+         "linkset": {
+           "@id": "@graph",
+           "@context": {
+             "linkset": "linkset"
+           }
          },
-         "title*":  {
-           "@id":    "http://purl.org/dc/terms/title"
+         "title": {
+           "@id": "http://purl.org/dc/terms/title"
          },
-         "type":    {
-           "@id":    "http://purl.org/dc/terms/format"
+         "title*": {
+           "@id": "http://purl.org/dc/terms/title"
          },
-         "datetime":    {
-           "@id":    "http://purl.org/dc/terms/date"
+         "type": {
+           "@id": "http://purl.org/dc/terms/format"
          }
        },
        {
          "language": "@language",
-         "value":    "@value",
+         "value": "@value",
          "hreflang": {
-           "@id":        "http://purl.org/dc/terms/language",
+           "@id": "http://purl.org/dc/terms/language",
            "@container": "@set"
          }
        }
      ]
    }
 
-      Figure 20: JSON-LD Context mapping to Dublin Core Terms and IANA
-                                assignments
+
+          Figure 20: JSON-LD Context mapping to Dublin Core Terms
 
    Applying the JSON-LD context of Figure 20 to the link set of
    Figure 19 allows transforming the "application/linkset+json" link set
@@ -1676,73 +1677,86 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 30]
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 30]
 
 Internet-Draft                   Linkset                    October 2021
 
 
-   <https://authors.example.net/johndoe>
-     <http://purl.org/dc/terms/format>
-     "application/rdf+xml" .
-   <https://example.org/resource1#comment=1>
-     <http://www.iana.org/assignments/relation/author>
-     <https://authors.example.net/alice> .
-   <https://example.org/resource1>
-     <http://www.iana.org/assignments/relation/author>
-     <https://authors.example.net/johndoe> .
-   <https://example.org/resource1>
-     <http://www.iana.org/assignments/relation/latest-version>
-     <https://example.org/resource1?version=3> .
-   <https://example.org/resource1>
-     <http://www.iana.org/assignments/relation/memento>
-     <https://example.org/resource1?version=1> .
-   <https://example.org/resource1>
-     <http://www.iana.org/assignments/relation/memento>
-     <https://example.org/resource1?version=2> .
-   <https://example.org/resource1?version=1>
-     <http://purl.org/dc/terms/date>
-     "Thu, 13 Jun 2019 09:34:33 GMT" .
-   <https://example.org/resource1?version=1>
-     <http://purl.org/dc/terms/format>
-     "text/html" .
-   <https://example.org/resource1?version=2>
-     <http://purl.org/dc/terms/date>
-     "Sun, 21 Jul 2019 12:22:04 GMT" .
-   <https://example.org/resource1?version=2>
-     <http://purl.org/dc/terms/format>
-     "text/html" .
-   <https://example.org/resource1?version=2>
-     <http://www.iana.org/assignments/relation/predecessor-version>
-     <https://example.org/resource1?version=1> .
-   <https://example.org/resource1?version=3>
-     <http://purl.org/dc/terms/format>
-     "text/html" .
-   <https://example.org/resource1?version=3>
-     <http://www.iana.org/assignments/relation/predecessor-version>
-     <https://example.org/resource1?version=2> .
+   <https://example.com/en/defaultPage>
+           <http://purl.org/dc/terms/format>
+           "text/html" .
+   <https://example.com/en/defaultPage>
+           <http://purl.org/dc/terms/language>
+           "en" .
+   <https://example.com/en/defaultPage>
+           <http://purl.org/dc/terms/title>
+           "Product information" .
+   <https://example.com/en/packContents/GB>
+           <http://purl.org/dc/terms/language>
+           "en" .
+   <https://example.com/en/packContents/GB>
+           <http://purl.org/dc/terms/title>
+           "What's in the box?" .
+   <https://example.com/fr/defaultPage>
+           <http://purl.org/dc/terms/language>
+           "fr" .
+   <https://example.com/fr/defaultPage>
+           <http://purl.org/dc/terms/title>
+           "Information produit" .
+   <https://example.com/fr/packContents/CH>
+           <http://purl.org/dc/terms/language>
+           "fr" .
+   <https://example.com/fr/packContents/CH>
+           <http://purl.org/dc/terms/title>
+           "Qu'y a-t-il dans la boite?" .
+   <https://example.com/fr/packContents/FR>
+           <http://purl.org/dc/terms/language>
+           "fr" .
+   <https://example.com/fr/packContents/FR>
+           <http://purl.org/dc/terms/title>
+           "Qu'y a-t-il dans la boite?" .
+   <https://id.gs1.org/01/09506000149301>
+           <https://gs1.org/voc/pip>
+           <https://example.com/en/defaultPage> .
+   <https://id.gs1.org/01/09506000149301>
+           <https://gs1.org/voc/pip>
+           <https://example.com/fr/defaultPage> .
+   <https://id.gs1.org/01/09506000149301>
+           <https://gs1.org/voc/relatedVideo>
+           <https://video.example> .
+   <https://id.gs1.org/01/09506000149301>
+           <https://gs1.org/voc/whatsInTheBox>
+           <https://example.com/en/packContents/GB> .
+   <https://id.gs1.org/01/09506000149301>
+           <https://gs1.org/voc/whatsInTheBox>
+           <https://example.com/fr/packContents/CH> .
+
+
+
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 31]
+
+Internet-Draft                   Linkset                    October 2021
+
+
+   <https://id.gs1.org/01/09506000149301>
+           <https://gs1.org/voc/whatsInTheBox>
+           <https://example.com/fr/packContents/FR> .
+   <https://video.example>
+           <http://purl.org/dc/terms/language>
+           "en" .
+   <https://video.example>
+           <http://purl.org/dc/terms/language>
+           "fr" .
+   <https://video.example>
+           <http://purl.org/dc/terms/title>
+           "See it in action!"@en .
+   <https://video.example>
+           <http://purl.org/dc/terms/title>
+           "Voyez-le en action!"@fr .
 
 
         Figure 21: RDF serialization of the link set resulting from
                         applying the JSON-LD context
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 31]
-
-Internet-Draft                   Linkset                    October 2021
-
-
-   Note that the JSON-LD context of Figure 20 does not handle (meta)link
-   relations of type "linkset" as they are in conflict with the top-
-   level JSON key.  A workaround is to rename the top-level key to
-   "_linkset" in the "application/linkset+json" before transforming a
-   link set to JSON-LD.
 
 Appendix B.  Implementation Status
 
@@ -1768,6 +1782,18 @@ Appendix B.  Implementation Status
    It is up to the individual working groups to use this information as
    they see fit".
 
+
+
+
+
+
+
+
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 32]
+
+Internet-Draft                   Linkset                    October 2021
+
+
 B.1.  GS1
 
    GS1 is a provider of barcodes (GS1 GTINs and EAN/UPC) for retail
@@ -1780,19 +1806,6 @@ B.1.  GS1
    confidence that this will become a normative reference in the next
    iteration of that specification, likely to be ratified as a GS1
    standard around February 2021.
-
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 32]
-
-Internet-Draft                   Linkset                    October 2021
-
 
 B.2.  FAIR Signposting Profile
 
@@ -1828,6 +1841,15 @@ Acknowledgements
 
 Authors' Addresses
 
+
+
+
+
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 33]
+
+Internet-Draft                   Linkset                    October 2021
+
+
    Erik Wilde
    Axway
 
@@ -1845,4 +1867,38 @@ Authors' Addresses
 
 
 
-Wilde & Van de Sompel     Expires 8 April 2022                 [Page 33]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel     Expires 9 April 2022                 [Page 34]
