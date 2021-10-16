@@ -538,14 +538,14 @@
             </section>
         </section>
          
-    <section title='The "profile" paramter for media types to Represent Sets of Links' anchor="profile-attribute">
+    <section title='The "profile" parameter for media types to Represent Sets of Links' anchor="profile-attribute">
         <t>As a means to convey specific constraints or conventions (as per <xref target="RFC6906"/>) that apply to a link set document, 
-            the "profile" parrameter MAY be used in conjunction with the media types "application/linkset" and 
+            the "profile" parameter MAY be used in conjunction with the media types "application/linkset" and 
             "application/linkset+json" detailed in 
             <xref target="linkset-native"/> and <xref target="linkset-json"/>, respectively. 
-            For example, the parrameter could be used to indicate that a link set uses a specific, limited set of link relation 
+            For example, the parameter could be used to indicate that a link set uses a specific, limited set of link relation 
             types.</t>
-        <t>The value of the "profile" parrameter MUST be a non-empty list of space-separated URIs, 
+        <t>The value of the "profile" parameter MUST be a non-empty list of space-separated URIs, 
             each of which identifies specific constraints or conventions that apply to the link set document. 
             Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>.</t>  
         <t>The presence of a "profile" parameter in conjunction with the "application/linkset" and 
