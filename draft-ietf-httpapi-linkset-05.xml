@@ -21,7 +21,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="6" month="October" year="2021"/>
+        <date day="19" month="October" year="2021"/>
         <abstract>
            <t>This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -1252,11 +1252,11 @@ Content-Length: 658
             <t>This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 6982 <xref target="RFC6982"/>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.</t>
             <t>According to RFC 6982, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".</t>
             <section title="GS1" anchor="implementation-GS1">
-                <t>GS1 is a provider of barcodes (GS1 GTINs and EAN/UPC) for retail products and manages an ecology of services and standards to leverage them at a global scale. 
-                    GS1 has  indicated that it will implement this "linkset" specification as a means to allow requesting and representing links pertaining to products from various retailers. 
+                <t>GS1 is a provider of identifiers, most famously seen in EAN/UPC barcodes for retail and healthcare products, and manages an ecology of services and standards to leverage them at a global scale.
+                    GS1 has indicated that it will fully implement this "linkset" specification as a means to allow requesting and representing links pertaining to products, shipments, assets and locations.
                     Currently, the GS1 Digital Link specification makes an informative reference
                     to version 03 of the "linkset" I-D. GS1 expresses confidence that this will become a normative reference in the
-                    next iteration of that specification, likely to be ratified as a GS1 standard around February 2021.</t>
+                    next iteration of that specification.</t>
             </section>
             <section title="FAIR Signposting Profile" anchor="implementation-signposting">
                 <t>The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
