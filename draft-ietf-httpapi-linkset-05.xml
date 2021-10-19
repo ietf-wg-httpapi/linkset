@@ -445,7 +445,7 @@
                     <t>The JSON serialization for these target attributes MUST be  
                         as follows:</t>
                     <ul> 
-                        <li>An extension target attribute is represented as a member of the link context object with the same name of the attribute, including the * if applicable.</li>
+                        <li>An extension target attribute is represented as a member of the link target object with the same name of the attribute, including the * if applicable.</li>
                         <li>The value of an extension attribute MUST be represented by an array, even if there only is one value to be represented.</li>
                         <li>If the extension target attribute does not have a name with a trailing asterisk,  
                             then each value in that array MUST be a string that represents one value 
