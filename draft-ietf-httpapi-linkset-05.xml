@@ -162,7 +162,7 @@
                     <li>For every link provided in the set of links, explicitly provide the link context  
                         using the "anchor" attribute.</li>
                     <li>For link context ("anchor" attribute) and link target 
-                        ("href" attribute), use URI References that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>). 
+                        ("href" attribute), use URI references that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>). 
                         </li>
                 </ul>
                 <t>If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
@@ -185,7 +185,7 @@
                     <li>For every link provided in the set of links, explicitly provide the link context  
                         using the "anchor" member.</li>
                     <li>For link context ("anchor" member) and link target 
-                        ("href" member), use URI References that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>).</li>
+                        ("href" member), use URI references that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>).</li>
                 </ul>                
                 <t>If these recommendations are not followed, interpretation of "application/linkset+json" will depend on which URI is used as context URI.</t>
                 <t>The "application/linkset+json" serialization is designed such that it can directly be used as the 
@@ -210,7 +210,7 @@
                         adheres to the following rules:</t>
                     <ul> 
                         <li>Each link context object MAY have an "anchor" member with a value that represents 
-                            the link context. If present, this value MUST be a URI Reference 
+                            the link context. If present, this value MUST be a URI reference 
                             and SHOULD NOT be a relative reference as per <xref target="RFC3986" section="4.1"/>.</li>
                         <li><t>
                             For each distinct relation type that the link context has with link targets,  
@@ -235,7 +235,7 @@
                         A link target object adheres to the following rules:</t>
                     <ul>
                         <li>Each link target object MUST have an "href" member with a value that represents 
-                            the link target. This value MUST be a URI Reference and SHOULD NOT be a relative reference  
+                            the link target. This value MUST be a URI reference and SHOULD NOT be a relative reference  
                             as per <xref target="RFC3986" section="4.1"/>. Cases where the href member is present, but no value is provided 
                             for it (i.e. the resource providing the set of links is the target of the link 
                             in the link target object) MUST be handled by providing an "href" member with an empty string ("href": "").</li>
