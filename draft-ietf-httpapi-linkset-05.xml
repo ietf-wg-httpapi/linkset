@@ -144,14 +144,14 @@
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
                     its ABNF production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
-                    HTTP "Link" header in that not only spaces and horizontal tabs are allowed as seperators but also new line 
+                    HTTP "Link" header in that not only spaces and horizontal tabs are allowed as seperators but also newline 
                     characters as a means to improve usability.
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
                 
                 <t>When converting an "application/linkset" document to a field value for the 
-                    HTTP "Link" header, new line characters SHOULD be removed in order to comply with 
+                    HTTP "Link" header, newline characters SHOULD be removed in order to comply with 
                     <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>.</t>
                                 
                 <t>In order to support use cases where "application/linkset" documents are re-used 
@@ -916,7 +916,7 @@ Content-Length: 396
                             <li>Subtype name: linkset</li>
                             <li>Required parameters: none</li>
                             <li>Optional parameters: profile</li>
-                            <li>Encoding considerations: Linksets are encoded according to the definition of <xref target="RFC8288"/>. The encoding of <xref target="RFC8288"/> is based on the general encoding rules of <xref target="I-D.ietf-httpbis-semantics"/>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <xref target="RFC8187"/>.</li>
+                            <li>Encoding considerations: Linksets are encoded according to the definition of <xref target="RFC8288"/>, with the addition of allowing newline characters as whitespace characters. The encoding of <xref target="RFC8288"/> is based on the general encoding rules of <xref target="I-D.ietf-httpbis-semantics"/>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <xref target="RFC8187"/>.</li>
                             <li>Security considerations: The security considerations of [[ This document ]] apply.</li>
                             <li>Interoperability considerations: N/A</li>
                             <li>Published specification: [[ This document ]]</li>
