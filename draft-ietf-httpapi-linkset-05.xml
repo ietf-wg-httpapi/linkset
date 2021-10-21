@@ -40,8 +40,7 @@
             <t>This specification uses the terms "link context" and "link target" as defined in <xref target="RFC8288"/>.</t> 
             <t>In the examples provided in this document, links in the HTTP "Link" header field are shown on separate lines in order to improve readability. 
                 Note, however, that as per <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>, line breaks are deprecated in values for HTTP fields; only whitespaces and 
-                tabs are supported as separators.
-            </t>
+                tabs are supported as separators.</t>
             <!--
             <t>Additionally, this specification uses the following terms for types of resources involved 
                 in providing links by reference:</t> 
@@ -264,8 +263,7 @@
                     </figure>
                     
                     <t>The following example of a JSON-serialized set of links represents two links 
-                        that share link context and relation type but have different link targets.
-                     </t>
+                        that share link context and relation type but have different link targets.</t>
                     
                     <figure>
                         <sourcecode type="json"><![CDATA[
@@ -457,7 +455,7 @@
                     </ul>
                     
                     <t>The example shows a link target object with three extension target attributes. The value for each extension target attribute is an array. The two first are regular extension target attributes, with the first one ("foo") having only one value and the second one ("bar") having two.
-                        The last extension target attribute ("baz*") follows the naming rule of <xref target="RFC8187"/> and therefore is encoded according to the serialization described in  <xref target="linkset-json-i18n-link-parameter"/>. </t>
+                        The last extension target attribute ("baz*") follows the naming rule of <xref target="RFC8187"/> and therefore is encoded according to the serialization described in  <xref target="linkset-json-i18n-link-parameter"/>.</t>
         
                     <figure>
                         <sourcecode type="json"><![CDATA[
@@ -584,8 +582,7 @@
         list of space-separated URIs, each of which identifies specific constraints or conventions that apply 
         to the link set document. Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>. 
         <xref target="profile-attribute-example"/> shows an example of using the "profile" attribute on a link  
-        with the "linkset" relation type, making both the link set and the profile(s) to which it complies discoverable. 
-    </t>
+        with the "linkset" relation type, making both the link set and the profile(s) to which it complies discoverable.</t>
             <!--
             <t>There is no constraint on the target URI of a link with the "linkset" relation type;
                 designing and using these URIs is left to the discretion of implementers.</t>          
@@ -607,8 +604,7 @@
               <t><xref target="linkset-link-link-format"/> and <xref target="linkset-link-json-format"/>
               show examples whereby a set of links is provided as "application/linkset" and "application/linkset+json" documents, respectively.
                   <xref target="linkset-rel-example"/> illustrates the use of the "linkset" link relation type to support discovery of sets of links and 
-                  <xref target="profile-examples"/> shows how to convey profile information pertaining to a links set.
-              </t>
+                  <xref target="profile-examples"/> shows how to convey profile information pertaining to a links set.</t>
            <section title="Set of Links Provided as application/linkset" anchor="linkset-link-link-format">
                <t><xref target="Request1"/> shows a client issuing an 
                    HTTP GET request against resource &lt;https://example.org/links/resource1&gt;.</t>
@@ -625,8 +621,7 @@ Host: example.org
              <xref target="Request1"/>. The response contains a Content-Type header field 
              specifying that the media type of the response is "application/linkset". A set of links, revealing authorship and versioning related  
              to resource &lt;https://example.org/resource1&gt;, is provided in the response body. The HTTP "Link" header field indicates the availability 
-             of an alternate representation of the set of links using media type "application/linkset+json".
-             </t>
+             of an alternate representation of the set of links using media type "application/linkset+json".</t>
             <figure title="Response to HTTP GET includes a set of links" anchor="Response1.1">
                 <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
@@ -676,8 +671,7 @@ Link: <https://example.org/links/resource1>
                  <t><xref target="Request4"/> shows the client issuing an HTTP GET 
                      request against &lt;https://example.org/links/resource1&gt;. 
                      In the request, the client uses an "Accept" header field to indicate it prefers a response in  the 
-                     "application/linkset+json" format.
-                 </t>
+                     "application/linkset+json" format.</t>
                  <figure title="Client HTTP GET request expressing preference for &quot;application/linkset+json&quot; response" anchor="Request4">
                      <artwork type="http-message"><![CDATA[
 GET links/resource1 HTTP/1.1
@@ -687,8 +681,7 @@ Accept: application/linkset+json
 ]]></artwork> 
                  </figure>
                  <t><xref target="Response4.1"/> shows the response to the HTTP GET request of <xref target="Request4"/>. 
-                     The set of links is serialized according to the media type "application/linkset+json".
-                 </t>
+                     The set of links is serialized according to the media type "application/linkset+json".</t>
                  <figure title="Response to the client's request for the set of links" anchor="Response4.1">
                      <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
@@ -777,8 +770,7 @@ Host: example.org
                      <xref target="Request3"/>. The response contains an HTTP "Link" header field with  
                      a link that has the "linkset" relation type. It indicates that a set of links is provided 
                      by resource &lt;https://example.org/links/resource1&gt;, which 
-                     provides a representation with media type "application/linkset+json".
-                 </t>
+                     provides a representation with media type "application/linkset+json".</t>
                  <figure title="Response to HTTP HEAD request" anchor="Response3.1">
                      <artwork type="http-message"><![CDATA[
 HTTP/1.1 200 OK
@@ -929,9 +921,7 @@ Content-Length: 396
                             <li>Interoperability considerations: N/A</li>
                             <li>Published specification: [[ This document ]]</li>
                             <li>Applications that use this media type: This media type is not specific to any application, as it can be used by any application that wants to interchange web links.</li>
-                            <li><t>
-                                  Additional information:
-                                </t>
+                            <li><t>Additional information:</t>
                                 <ul empty="true">
                                     <li>Magic number(s): N/A</li>
                                     <li>File extension(s): This media type does not propose a specific extension.</li>
@@ -957,9 +947,7 @@ Content-Length: 396
                         <li>Interoperability considerations: The interoperability considerations of <xref target="RFC8259"/> apply.</li>
                         <li>Published specification: [[ This document ]]</li>
                         <li>Applications that use this media type: This media type is not specific to any application, as it can be used by any application that wants to interchange web links.</li>
-                        <li><t>
-                              Additional information:
-                            </t>
+                        <li><t>Additional information:</t>
                             <ul empty="true">
                                 <li>Magic number(s): N/A</li>
                                 <li>File extension(s): JSON documents often use ".json" as the file extension, and this media type does not propose a specific extension other than this generic one.</li>
@@ -1042,8 +1030,7 @@ Content-Length: 396
              <t><xref target="contextlinkrel"/> shows the response of an HTTP GET against the URI of a link set resource and 
                  illustrates this approach to support discovery of a JSON-LD Context. The example is inspired by the GS1 implementation and 
                  shows a link set that uses relation types from the GS1 vocabulary at &lt;https://www.gs1.org/voc/&gt; 
-                 that are expressed as HTTP URIs.
-          </t>
+                 that are expressed as HTTP URIs.</t>
             
             <figure title="Using a typed link to support discovery of a JSON-LD Context for a Set of Links" anchor="contextlinkrel">
                 <artwork type="http-message"><![CDATA[
@@ -1129,8 +1116,7 @@ Content-Length: 1532
                 link target of the link with the "http://www.w3.org/ns/json-ld#context" relation type. The response to this GET is 
                 shown in <xref target="jsonld-context"/>. This particular JSON-LD context maps "application/linkset+json" representations of link sets 
                 to Dublin Core Terms. Note that the "linkset" entry in the JSON-LD context is 
-                introduced to support links with the <tt>"linkset"</tt> relation type in link sets. 
-            </t>
+                introduced to support links with the <tt>"linkset"</tt> relation type in link sets.</t>
 
             <figure title="JSON-LD Context mapping to Dublin Core Terms" anchor="jsonld-context">
                 <artwork type="http-message"><![CDATA[
