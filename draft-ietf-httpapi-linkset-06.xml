@@ -916,7 +916,7 @@ Content-Length: 396
                             <li>Subtype name: linkset</li>
                             <li>Required parameters: none</li>
                             <li>Optional parameters: profile</li>
-                            <li>Encoding considerations: Linksets are encoded according to the definition of <xref target="RFC8288"/>, with the addition of allowing newline characters as whitespace characters. The encoding of <xref target="RFC8288"/> is based on the general encoding rules of <xref target="I-D.ietf-httpbis-semantics"/>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <xref target="RFC8187"/>.</li>
+                            <li>Encoding considerations: Linksets are encoded according to the definition of <xref target="RFC8288"/>. The encoding of <xref target="RFC8288"/> is based on the general encoding rules of <xref target="I-D.ietf-httpbis-semantics"/>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <xref target="RFC8187"/>.</li>
                             <li>Security considerations: The security considerations of [[ This document ]] apply.</li>
                             <li>Interoperability considerations: N/A</li>
                             <li>Published specification: [[ This document ]]</li>
