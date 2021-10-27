@@ -1042,6 +1042,7 @@ Link: <https://example.org/contexts/linkset.jsonld>
       ; rel="http://www.w3.org/ns/json-ld#context"
       ; type="application/ld+json"
 Content-Length: 1532
+
 {
   "linkset": [
     {
@@ -1123,6 +1124,7 @@ Content-Length: 1532
 HTTP/1.1 200 OK
 Content-Type: application/ld+json
 Content-Length: 658
+
 {
   "@context": [
     {
