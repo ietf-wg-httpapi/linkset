@@ -1013,7 +1013,6 @@ Content-Length: 396
         </references>
       <references title="Informative References">
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4287.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
       </references>
 
