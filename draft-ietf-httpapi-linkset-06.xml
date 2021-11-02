@@ -249,15 +249,14 @@
   
                     <figure>
                         <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "next": [
-              {"href": "http://example.com/foo"}
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "next": [
+        {"href": "http://example.com/foo"}
+      ]
+    } 
+  ]
 }]]>
                         </sourcecode> 
                     </figure>
@@ -267,16 +266,15 @@
                     
                     <figure>
                         <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "item": [
-              {"href": "http://example.com/foo1"},
-              {"href": "http://example.com/foo2"}
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "item": [
+        {"href": "http://example.com/foo1"},
+        {"href": "http://example.com/foo2"}
+      ]
+    } 
+  ]
 }]]>                          
 
                         </sourcecode> 
@@ -287,20 +285,19 @@
                     One relation type is registered, the other is an extension relation type.</t>
                     <figure>
                         <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "next": [
-              {"href": "http://example.com/foo1"}
-        ]
-      },
-      { "anchor": "http://example.net/boo",
-        "http://example.com/relations/baz" : [
-              {"href": "http://example.com/foo2"}
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "next": [
+        {"href": "http://example.com/foo1"}
+      ]
+    },
+    { "anchor": "http://example.net/boo",
+      "http://example.com/relations/baz" : [
+        {"href": "http://example.com/foo2"}
+      ]
+    } 
+  ]
 }]]>  
                         </sourcecode> 
                     </figure>
@@ -357,18 +354,17 @@
                             not repeatable "type" target attributes are represented in a link target object.</t>
                         <figure>
                             <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "next": [
-              {"href":     "http://example.com/foo",
-               "type":     "text/html",
-               "hreflang": [ "en" , "de" ]
-              }
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "next": [
+        { "href":     "http://example.com/foo",
+          "type":     "text/html",
+          "hreflang": [ "en" , "de" ]
+        }
+      ]
+    } 
+  ]
 }]]>
                             </sourcecode> 
                         </figure>
@@ -407,21 +403,20 @@
                             defined by <xref target="RFC8288" section="3.4.1"/> is represented in a link target object.</t>
                         <figure>
                             <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "next": [
-              {"href":     "http://example.com/foo",
-               "type":     "text/html",
-               "hreflang": [ "en" , "de" ],
-               "title":    "Next chapter",
-               "title*":   [ { "value": "nächstes Kapitel" , 
-                               "language" : "de" } ]
-              }
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "next": [
+        { "href":     "http://example.com/foo",
+          "type":     "text/html",
+          "hreflang": [ "en" , "de" ],
+          "title":    "Next chapter",
+          "title*":   [ { "value": "nächstes Kapitel" , 
+                          "language" : "de" } ]
+        }
+      ]
+    } 
+  ]
 }]]>                                
                             </sourcecode> 
                         </figure>
@@ -459,21 +454,20 @@
         
                     <figure>
                         <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "next": [
-              { "href": "http://example.com/foo",
-                "type": "text/html",
-                "foo":  [ "foovalue" ],
-                "bar":  [ "barone", "bartwo" ], 
-                "baz*": [ { "value": "bazvalue" , 
-                            "language" : "en" } ]
-              }
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "next": [
+        { "href": "http://example.com/foo",
+          "type": "text/html",
+          "foo":  [ "foovalue" ],
+          "bar":  [ "barone", "bartwo" ], 
+          "baz*": [ { "value": "bazvalue" , 
+                      "language" : "en" } ]
+        }
+      ]
+    } 
+  ]
 }]]>                               
                         </sourcecode> 
                     </figure>
@@ -502,18 +496,17 @@
                         
                         <figure>
                             <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "http://example.net/bar", 
-        "next": [
-              { "href": "http://example.com/foo",
-                "type": "text/html",
-                "allow":  [ "GET", "POST" ]]
-              }
-        ]
-      } 
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "http://example.net/bar", 
+      "next": [
+        { "href": "http://example.com/foo",
+          "type": "text/html",
+          "allow":  [ "GET", "POST" ] 
+        }
+      ]
+    } 
+  ]
 }]]>                               
                             </sourcecode> 
                         </figure>
@@ -693,59 +686,47 @@ Link: <https://example.org/links/resource1>
       ; type="application/linkset"
 Content-Length: 1349
 
-{
-  "linkset": [
-    {
-      "anchor": "https://example.org/resource1",
+{ "linkset":
+  [
+    { "anchor": "https://example.org/resource1",
       "author": [
-        {
-          "href": "https://authors.example.net/johndoe",
+        { "href": "https://authors.example.net/johndoe",
           "type": "application/rdf+xml"
         }
       ],
       "memento": [
-        {
-          "href": "https://example.org/resource1?version=1",
+        { "href": "https://example.org/resource1?version=1",
           "type": "text/html",
           "datetime": "Thu, 13 Jun 2019 09:34:33 GMT"
         },
-        {
-          "href": "https://example.org/resource1?version=2",
+        { "href": "https://example.org/resource1?version=2",
           "type": "text/html",
           "datetime": "Sun, 21 Jul 2019 12:22:04 GMT"
         }
       ],
       "latest-version": [
-        {
-          "href": "https://example.org/resource1?version=3",
+        { "href": "https://example.org/resource1?version=3",
           "type": "text/html"
         }
       ]
     },
-    {
-      "anchor": "https://example.org/resource1?version=3",
+    { "anchor": "https://example.org/resource1?version=3",
       "predecessor-version": [
-        {
-          "href": "https://example.org/resource1?version=2",
+        { "href": "https://example.org/resource1?version=2",
           "type": "text/html"
         }
       ]
     },
-    {
-      "anchor": "https://example.org/resource1?version=2",
+    { "anchor": "https://example.org/resource1?version=2",
       "predecessor-version": [
-        {
-          "href": "https://example.org/resource1?version=1",
+        { "href": "https://example.org/resource1?version=1",
           "type": "text/html"
         }
       ]
     },
-    {
-      "anchor": "https://example.org/resource1#comment=1",
+    { "anchor": "https://example.org/resource1#comment=1",
       "author": [
-        {
-          "href": "https://authors.example.net/alice"
-        }
+        { "href": "https://authors.example.net/alice"}
       ]
     }
   ]
@@ -874,20 +855,19 @@ Content-Length: 396
 
 <figure title="A Link Set that declares the profile it complies with using a &quot;profile&quot; link" anchor="Response_pr_linkset">
 <sourcecode type="json"><![CDATA[
-{
-  "linkset":
-    [ 
-      { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all", 
-        "profile": [
-              {"href": "https://www.gs1.org/voc/?show=linktypes"}
-        ]
-      },
-       { "anchor": "https://id.gs1.org/01/9506000134352", 
-         "https://gs1.org/voc/whatsInTheBox": [
-              {"href": "https://example.com/en/packContents/GB"}
-        ]
-      }
-    ]
+{ "linkset":
+  [ 
+    { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all", 
+      "profile": [
+            {"href": "https://www.gs1.org/voc/?show=linktypes"}
+      ]
+    },
+     { "anchor": "https://id.gs1.org/01/9506000134352", 
+       "https://gs1.org/voc/whatsInTheBox": [
+         {"href": "https://example.com/en/packContents/GB"}
+       ]
+    }
+  ]
 }]]>
 </sourcecode> 
                       </figure>
