@@ -5,8 +5,8 @@
 Network Working Group                                           E. Wilde
 Internet-Draft                                                     Axway
 Intended status: Informational                          H. Van de Sompel
-Expires: 24 April 2022             Data Archiving and Networked Services
-                                                         21 October 2021
+Expires: 16 May 2022               Data Archiving and Networked Services
+                                                        12 November 2021
 
 
       Linkset: Media Types and a Link Relation Type for Link Sets
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 April 2022.
+   This Internet-Draft will expire on 16 May 2022.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 1]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 1]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -63,9 +63,9 @@ Internet-Draft                   Linkset                    October 2021
    license-info) in effect on the date of publication of this document.
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.  Code Components
-   extracted from this document must include Simplified BSD License text
-   as described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Simplified BSD License.
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
 
 Table of Contents
 
@@ -98,20 +98,20 @@ Table of Contents
        7.4.3.  Using a Link with a "profile" Link Relation Type  . .  21
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  22
      8.1.  Link Relation Type: linkset . . . . . . . . . . . . . . .  22
-     8.2.  Media Type: application/linkset . . . . . . . . . . . . .  23
-     8.3.  Media Type: application/linkset+json  . . . . . . . . . .  24
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  25
+     8.2.  Media Type: application/linkset . . . . . . . . . . . . .  22
+     8.3.  Media Type: application/linkset+json  . . . . . . . . . .  23
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  24
    10. Normative References  . . . . . . . . . . . . . . . . . . . .  25
-   11. Informative References  . . . . . . . . . . . . . . . . . . .  27
+   11. Informative References  . . . . . . . . . . . . . . . . . . .  26
    Appendix A.  JSON-LD Context  . . . . . . . . . . . . . . . . . .  27
    Appendix B.  Implementation Status  . . . . . . . . . . . . . . .  32
      B.1.  GS1 . . . . . . . . . . . . . . . . . . . . . . . . . . .  33
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 2]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 2]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
      B.2.  FAIR Signposting Profile  . . . . . . . . . . . . . . . .  33
@@ -165,9 +165,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 3]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 3]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    For all scenarios, links could be provided by means of a stand-alone
@@ -221,9 +221,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 4]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 4]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
 3.2.  Challenges Writing to HTTP Link Header Field
@@ -277,9 +277,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 5]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 5]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    Note that Section 3.3 of [RFC8288] deprecates the "rev" construct
@@ -333,9 +333,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 6]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 6]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
 4.2.  JSON Document Format: application/linkset+json
@@ -389,9 +389,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 7]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 7]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
 4.2.2.  Link Context Object
@@ -445,9 +445,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 8]
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 8]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    *  In many cases, a link target is further qualified by target
@@ -459,15 +459,14 @@ Internet-Draft                   Linkset                    October 2021
    one link with its core components: link context, link relation type,
    and link target.
 
-   {
-     "linkset":
-       [
-         { "anchor": "http://example.net/bar",
-           "next": [
-                 {"href": "http://example.com/foo"}
-           ]
-         }
-       ]
+   { "linkset":
+     [
+       { "anchor": "http://example.net/bar",
+         "next": [
+           {"href": "http://example.com/foo"}
+         ]
+       }
+     ]
    }
 
                                   Figure 1
@@ -476,16 +475,15 @@ Internet-Draft                   Linkset                    October 2021
    two links that share link context and relation type but have
    different link targets.
 
-   {
-     "linkset":
-       [
-         { "anchor": "http://example.net/bar",
-           "item": [
-                 {"href": "http://example.com/foo1"},
-                 {"href": "http://example.com/foo2"}
-           ]
-         }
-       ]
+   { "linkset":
+     [
+       { "anchor": "http://example.net/bar",
+         "item": [
+           {"href": "http://example.com/foo1"},
+           {"href": "http://example.com/foo2"}
+         ]
+       }
+     ]
    }
 
                                   Figure 2
@@ -501,25 +499,26 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                 [Page 9]
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                  [Page 9]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
-   {
-     "linkset":
-       [
-         { "anchor": "http://example.net/bar",
-           "next": [
-                 {"href": "http://example.com/foo1"}
-           ]
-         },
-         { "anchor": "http://example.net/boo",
-           "http://example.com/relations/baz" : [
-                 {"href": "http://example.com/foo2"}
-           ]
-         }
-       ]
+   { "linkset":
+     [
+       { "anchor": "http://example.net/bar",
+         "next": [
+           {"href": "http://example.com/foo1"}
+         ]
+       },
+       { "anchor": "http://example.net/boo",
+         "http://example.com/relations/baz" : [
+           {"href": "http://example.com/foo2"}
+         ]
+       }
+     ]
    }
 
                                   Figure 3
@@ -551,17 +550,21 @@ Internet-Draft                   Linkset                    October 2021
    attributes MUST be conveyed as additional members of the link target
    object as follows:
 
+
+
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 10]
+
+Internet-Draft                   Linkset                   November 2021
+
+
    *  "hreflang": The optional and repeatable "hreflang" target
       attribute MUST be represented by an array (even if there only is
       one value to be represented), and each value in that array MUST be
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 10]
-
-Internet-Draft                   Linkset                    October 2021
-
-
       a string - representing one value of the "hreflang" target
       attribute for a link - which follows the same model as in the
       [RFC8288] syntax.
@@ -591,18 +594,17 @@ Internet-Draft                   Linkset                    October 2021
    the not repeatable "type" target attributes are represented in a link
    target object.
 
-   {
-     "linkset":
-       [
-         { "anchor": "http://example.net/bar",
-           "next": [
-                 {"href":     "http://example.com/foo",
-                  "type":     "text/html",
-                  "hreflang": [ "en" , "de" ]
-                 }
-           ]
-         }
-       ]
+   { "linkset":
+     [
+       { "anchor": "http://example.net/bar",
+         "next": [
+           { "href":     "http://example.com/foo",
+             "type":     "text/html",
+             "hreflang": [ "en" , "de" ]
+           }
+         ]
+       }
+     ]
    }
 
                                   Figure 4
@@ -611,11 +613,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 11]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 11]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
 4.2.4.2.  Internationalized Target Attributes
@@ -669,26 +669,25 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 12]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 12]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
-   {
-     "linkset":
-       [
-         { "anchor": "http://example.net/bar",
-           "next": [
-                 {"href":     "http://example.com/foo",
-                  "type":     "text/html",
-                  "hreflang": [ "en" , "de" ],
-                  "title":    "Next chapter",
-                  "title*":   [ { "value": "nächstes Kapitel" ,
-                                  "language" : "de" } ]
-                 }
-           ]
-         }
-       ]
+   { "linkset":
+     [
+       { "anchor": "http://example.net/bar",
+         "next": [
+           { "href":     "http://example.com/foo",
+             "type":     "text/html",
+             "hreflang": [ "en" , "de" ],
+             "title":    "Next chapter",
+             "title*":   [ { "value": "nächstes Kapitel" ,
+                             "language" : "de" } ]
+           }
+         ]
+       }
+     ]
    }
 
                                   Figure 5
@@ -721,17 +720,15 @@ Internet-Draft                   Linkset                    October 2021
       link target object with the same name of the attribute, including
       the * if applicable.
 
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 13]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    *  The value of an extension attribute MUST be represented by an
       array, even if there only is one value to be represented.
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 13]
+
+Internet-Draft                   Linkset                   November 2021
+
 
    *  If the extension target attribute does not have a name with a
       trailing asterisk, then each value in that array MUST be a string
@@ -750,21 +747,20 @@ Internet-Draft                   Linkset                    October 2021
    follows the naming rule of [RFC8187] and therefore is encoded
    according to the serialization described in Section 4.2.4.2.
 
-   {
-     "linkset":
-       [
-         { "anchor": "http://example.net/bar",
-           "next": [
-                 { "href": "http://example.com/foo",
-                   "type": "text/html",
-                   "foo":  [ "foovalue" ],
-                   "bar":  [ "barone", "bartwo" ],
-                   "baz*": [ { "value": "bazvalue" ,
-                               "language" : "en" } ]
-                 }
-           ]
-         }
-       ]
+   { "linkset":
+     [
+       { "anchor": "http://example.net/bar",
+         "next": [
+           { "href": "http://example.com/foo",
+             "type": "text/html",
+             "foo":  [ "foovalue" ],
+             "bar":  [ "barone", "bartwo" ],
+             "baz*": [ { "value": "bazvalue" ,
+                         "language" : "en" } ]
+           }
+         ]
+       }
+     ]
    }
 
                                   Figure 6
@@ -778,18 +774,17 @@ Internet-Draft                   Linkset                    October 2021
    specification.  Agents that consume JSON linkset documents MUST
    ignore such extensions.
 
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 14]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    This limitation of the JSON format allows to unambiguously round trip
    between links provided in the HTTP "Link" header field, sets of links
    serialized according to the "application/linkset" format, and sets of
    links serialized according to the "application/linkset+json" format.
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 14]
+
+Internet-Draft                   Linkset                   November 2021
+
 
 5.  The "profile" parameter for media types to Represent Sets of Links
 
@@ -837,9 +832,14 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 15]
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 15]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    A user agent that follows a "linkset" link and obtains links for
@@ -893,9 +893,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 16]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 16]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    HTTP/1.1 200 OK
@@ -949,9 +949,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 17]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 17]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    GET links/resource1 HTTP/1.1
@@ -974,67 +974,55 @@ Internet-Draft                   Linkset                    October 2021
          ; type="application/linkset"
    Content-Length: 1349
 
-   {
-     "linkset": [
-       {
-         "anchor": "https://example.org/resource1",
+   { "linkset":
+     [
+       { "anchor": "https://example.org/resource1",
          "author": [
-           {
-             "href": "https://authors.example.net/johndoe",
+           { "href": "https://authors.example.net/johndoe",
              "type": "application/rdf+xml"
            }
          ],
          "memento": [
-           {
-             "href": "https://example.org/resource1?version=1",
+           { "href": "https://example.org/resource1?version=1",
              "type": "text/html",
              "datetime": "Thu, 13 Jun 2019 09:34:33 GMT"
            },
-           {
-             "href": "https://example.org/resource1?version=2",
+           { "href": "https://example.org/resource1?version=2",
              "type": "text/html",
              "datetime": "Sun, 21 Jul 2019 12:22:04 GMT"
            }
          ],
          "latest-version": [
-           {
-             "href": "https://example.org/resource1?version=3",
+           { "href": "https://example.org/resource1?version=3",
              "type": "text/html"
            }
          ]
+       },
+       { "anchor": "https://example.org/resource1?version=3",
+         "predecessor-version": [
+           { "href": "https://example.org/resource1?version=2",
+             "type": "text/html"
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 18]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 18]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
+           }
+         ]
        },
-       {
-         "anchor": "https://example.org/resource1?version=3",
+       { "anchor": "https://example.org/resource1?version=2",
          "predecessor-version": [
-           {
-             "href": "https://example.org/resource1?version=2",
+           { "href": "https://example.org/resource1?version=1",
              "type": "text/html"
            }
          ]
        },
-       {
-         "anchor": "https://example.org/resource1?version=2",
-         "predecessor-version": [
-           {
-             "href": "https://example.org/resource1?version=1",
-             "type": "text/html"
-           }
-         ]
-       },
-       {
-         "anchor": "https://example.org/resource1#comment=1",
+       { "anchor": "https://example.org/resource1#comment=1",
          "author": [
-           {
-             "href": "https://authors.example.net/alice"
-           }
+           { "href": "https://authors.example.net/alice"}
          ]
        }
      ]
@@ -1059,13 +1047,6 @@ Internet-Draft                   Linkset                    October 2021
    provided by resource <https://example.org/links/resource1>, which
    provides a representation with media type "application/linkset+json".
 
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 19]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    HTTP/1.1 200 OK
    Date: Mon, 12 Aug 2019 10:45:54 GMT
    Server: Apache-Coyote/1.1
@@ -1077,6 +1058,13 @@ Internet-Draft                   Linkset                    October 2021
 
 
                   Figure 12: Response to HTTP HEAD request
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 19]
+
+Internet-Draft                   Linkset                   November 2021
+
 
    Section 7.2 shows a client obtaining a set of links by issuing an
    HTTP GET on the target of the link with the "linkset" relation type,
@@ -1110,18 +1098,6 @@ Internet-Draft                   Linkset                    October 2021
    <https://web.archive.org/web/20210927160406/https://www.gs1.org/
    voc/?show=linktypes> on 27 September 2021.
 
-
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 20]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    HTTP/1.1 307 Temporary Redirect
    Date:  Mon, 27 Sep 2021 16:03:07 GMT
    Server: nginx
@@ -1133,6 +1109,18 @@ Internet-Draft                   Linkset                    October 2021
 
         Figure 14: Response to the client's HEAD request including a
                  "profile" attribute for the "linkset" link
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 20]
+
+Internet-Draft                   Linkset                   November 2021
+
 
 7.4.2.  Using a "profile" Parameter with a Link Set Media Type
 
@@ -1165,19 +1153,6 @@ Content-Length: 396
    equivalent to the response shown in Figure 17, which leverages the
    "profile" link relation type defined in [RFC6906].
 
-
-
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 21]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    HTTP/1.1 200 OK
    Date:  Mon, 27 Sep 2021 16:03:33 GMT
    Server: nginx
@@ -1196,20 +1171,26 @@ Internet-Draft                   Linkset                    October 2021
    as target.  Multiple Profile URIs are handled by using multiple
    "href" members.
 
-   {
-     "linkset":
-       [
-         { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all",
-           "profile": [
-                 {"href": "https://www.gs1.org/voc/?show=linktypes"}
-           ]
-         },
-          { "anchor": "https://id.gs1.org/01/9506000134352",
-            "https://gs1.org/voc/whatsInTheBox": [
-                 {"href": "https://example.com/en/packContents/GB"}
-           ]
-         }
-       ]
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 21]
+
+Internet-Draft                   Linkset                   November 2021
+
+
+   { "linkset":
+     [
+       { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all",
+         "profile": [
+               {"href": "https://www.gs1.org/voc/?show=linktypes"}
+         ]
+       },
+        { "anchor": "https://id.gs1.org/01/9506000134352",
+          "https://gs1.org/voc/whatsInTheBox": [
+            {"href": "https://example.com/en/packContents/GB"}
+          ]
+       }
+     ]
    }
 
       Figure 18: A Link Set that declares the profile it complies with
@@ -1223,16 +1204,6 @@ Internet-Draft                   Linkset                    October 2021
    Section 6.2.1 of Web Linking [RFC8288]:
 
       Relation Name: linkset
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 22]
-
-Internet-Draft                   Linkset                    October 2021
-
 
       Description: The link target of a link with the "linkset" relation
       type provides a set of links, including links in which the link
@@ -1252,6 +1223,16 @@ Internet-Draft                   Linkset                    October 2021
       Required parameters: none
 
       Optional parameters: profile
+
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 22]
+
+Internet-Draft                   Linkset                   November 2021
+
 
       Encoding considerations: Linksets are encoded according to the
       definition of [RFC8288].  The encoding of [RFC8288] is based on
@@ -1282,14 +1263,6 @@ Internet-Draft                   Linkset                    October 2021
       Person & email address to contact for further information: Erik
       Wilde <erik.wilde@dret.net>
 
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 23]
-
-Internet-Draft                   Linkset                    October 2021
-
-
       Intended usage: COMMON
 
       Restrictions on usage: none
@@ -1308,6 +1281,14 @@ Internet-Draft                   Linkset                    October 2021
       Subtype name: linkset+json
 
       Required parameters: none
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 23]
+
+Internet-Draft                   Linkset                   November 2021
+
 
       Optional parameters: profile
 
@@ -1339,13 +1320,6 @@ Internet-Draft                   Linkset                    October 2021
       Person & email address to contact for further information: Erik
       Wilde <erik.wilde@dret.net>
 
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 24]
-
-Internet-Draft                   Linkset                    October 2021
-
-
       Intended usage: COMMON
 
       Restrictions on usage: none
@@ -1364,6 +1338,14 @@ Internet-Draft                   Linkset                    October 2021
    information (such as URIs) that can be sensitive or private.  Links
    may expose "hidden URIs" that are not supposed to be openly shared,
    and may not be sufficiently protected.  Ideally, none of the URIs
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 24]
+
+Internet-Draft                   Linkset                   November 2021
+
+
    exposed in links should be supposed to be "hidden"; instead, if these
    URIs are supposed to be limited to certain users, then technical
    measures should be put in place so that accidentally exposing them
@@ -1392,16 +1374,6 @@ Internet-Draft                   Linkset                    October 2021
 
 10.  Normative References
 
-
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 25]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -1419,6 +1391,16 @@ Internet-Draft                   Linkset                    October 2021
    [RFC8288]  Nottingham, M., "Web Linking", RFC 8288,
               DOI 10.17487/RFC8288, October 2017,
               <https://www.rfc-editor.org/info/rfc8288>.
+
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 25]
+
+Internet-Draft                   Linkset                   November 2021
+
 
    [RFC8187]  Reschke, J., "Indicating Character Encoding and Language
               for HTTP Header Field Parameters", RFC 8187,
@@ -1448,16 +1430,6 @@ Internet-Draft                   Linkset                    October 2021
               Format", RFC 6690, DOI 10.17487/RFC6690, August 2012,
               <https://www.rfc-editor.org/info/rfc6690>.
 
-
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 26]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    [RFC6906]  Wilde, E., "The 'profile' Link Relation Type", RFC 6906,
               DOI 10.17487/RFC6906, March 2013,
               <https://www.rfc-editor.org/info/rfc6906>.
@@ -1475,15 +1447,22 @@ Internet-Draft                   Linkset                    October 2021
 
 11.  Informative References
 
+
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 26]
+
+Internet-Draft                   Linkset                   November 2021
+
+
    [W3C.REC-json-ld-20140116]
               Sporny, M., Kellogg, G., and M. Lanthaler, "JSON-LD 1.0",
               World Wide Web Consortium Recommendation REC-json-ld-
               20140116, 16 January 2014,
               <https://www.w3.org/TR/2014/REC-json-ld-20140116>.
-
-   [RFC4287]  Nottingham, M., Ed. and R. Sayre, Ed., "The Atom
-              Syndication Format", RFC 4287, DOI 10.17487/RFC4287,
-              December 2005, <https://www.rfc-editor.org/info/rfc4287>.
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
               DOI 10.17487/RFC5988, October 2010,
@@ -1503,17 +1482,6 @@ Appendix A.  JSON-LD Context
    relation type "http://www.w3.org/ns/json-ld#context" in the HTTP
    "Link" header.
 
-
-
-
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 27]
-
-Internet-Draft                   Linkset                    October 2021
-
-
    Figure 19 shows the response of an HTTP GET against the URI of a link
    set resource and illustrates this approach to support discovery of a
    JSON-LD Context.  The example is inspired by the GS1 implementation
@@ -1528,6 +1496,7 @@ Internet-Draft                   Linkset                    October 2021
          ; rel="http://www.w3.org/ns/json-ld#context"
          ; type="application/ld+json"
    Content-Length: 1532
+
    {
      "linkset": [
        {
@@ -1537,6 +1506,14 @@ Internet-Draft                   Linkset                    October 2021
              "href": "https://example.com/en/defaultPage",
              "hreflang": [
                "en"
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 27]
+
+Internet-Draft                   Linkset                   November 2021
+
+
              ],
              "type": "text/html",
              "title": "Product information"
@@ -1562,14 +1539,6 @@ Internet-Draft                   Linkset                    October 2021
              "hreflang": [
                "fr"
              ],
-
-
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 28]
-
-Internet-Draft                   Linkset                    October 2021
-
-
              "title": "Qu'y a-t-il dans la boite?"
            },
            {
@@ -1593,6 +1562,14 @@ Internet-Draft                   Linkset                    October 2021
                  "language": "en"
                },
                {
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 28]
+
+Internet-Draft                   Linkset                   November 2021
+
+
                  "value": "Voyez-le en action!",
                  "language": "fr"
                }
@@ -1621,14 +1598,38 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 29]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 29]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    HTTP/1.1 200 OK
    Content-Type: application/ld+json
    Content-Length: 658
+
    {
      "@context": [
        {
@@ -1676,10 +1677,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 30]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 30]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    <https://example.com/en/defaultPage>
@@ -1733,9 +1733,9 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 31]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 31]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    <https://id.gs1.org/01/09506000149301>
@@ -1789,9 +1789,9 @@ Appendix B.  Implementation Status
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 32]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 32]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
 B.1.  GS1
@@ -1845,9 +1845,9 @@ Authors' Addresses
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 33]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 33]
 
-Internet-Draft                   Linkset                    October 2021
+Internet-Draft                   Linkset                   November 2021
 
 
    Erik Wilde
@@ -1901,4 +1901,4 @@ Internet-Draft                   Linkset                    October 2021
 
 
 
-Wilde & Van de Sompel     Expires 24 April 2022                [Page 34]
+Wilde & Van de Sompel      Expires 16 May 2022                 [Page 34]
