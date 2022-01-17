@@ -955,18 +955,18 @@ Content-Length: 396
     <back>
         <references title="Normative References">
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6838.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6982.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8187.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8288.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8187.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6838.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6982.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-semantics.xml"/>
 <!--
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.nottingham-link-hint.xml"/>
@@ -979,16 +979,6 @@ Content-Length: 396
                     <date month="June" year="2012"/>
                 </front>
                 <seriesInfo name="World Wide Web Consortium" value="Recommendation REC-css3-mediaqueries-20120619"/>
-            </reference>
--->
-            <!--
-            <reference anchor="RFC6690">
-                <front>
-                    <title>Constrained RESTful Environments (CoRE) Link Format</title>
-                    <author initials="Z." surname="Shelby" fullname="Zach Shelby"/>
-                    <date month="August" year="2012"/>
-                </front>
-                <seriesInfo name="RFC" value="6690"/>
             </reference>
 -->
         </references>
