@@ -57,9 +57,9 @@
             -->
         </section>
         <section title="Use Cases and Motivation" anchor="use-cases">
-            <t>The following sections describe uses cases in which providing links by means of a standalone document instead of in an HTTP "Link" header field or as links embedded in the resource representation is advantageous or necessary.</t>
+            <t>The following sections describe use cases in which providing links by means of a standalone document instead of in an HTTP "Link" header field or as links embedded in the resource representation is advantageous or necessary.</t>
             <t>For all scenarios, links could be provided by means of a stand-alone document that is formatted according to the JSON-based serialization, the serialization aligned with the HTTP "Link" field format, or both. The former serialization is motivated by the widespread use of JSON and related tools, which suggests that handling sets of links expressed as JSON documents should be attractive to developers. The latter serialization is provided for compatibility with the existing serialization used in the HTTP "Link" field and to allow reuse of tools created to handle it.</t>
-            <t>It is important to keep in mind that when providing links by means of a standalone representation, other links can still be provided using other approaches, i.e. it is possible combine various mechanisms to convey links.</t>
+            <t>It is important to keep in mind that when providing links by means of a standalone representation, other links can still be provided using other approaches, i.e. it is possible to combine various mechanisms to convey links.</t>
             <section title="Third-Party Links" anchor="third-party">
                 <t>In some cases it is useful that links pertaining to a resource are provided 
                     by a server other than the one that hosts the resource. For example, this allows:</t>
@@ -143,7 +143,7 @@
                 <t>This document format is near identical to the field value of the 
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
-                    its ABNF production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
+                    its ABNF <xref target="RFC5234"> production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
                     HTTP "Link" header in that not only spaces and horizontal tabs are allowed as separators but also newline 
                     characters as a means to improve usability.
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
@@ -966,6 +966,7 @@ Content-Length: 396
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-semantics.xml"/>
 <!--
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.nottingham-link-hint.xml"/>

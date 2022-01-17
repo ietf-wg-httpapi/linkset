@@ -4,26 +4,26 @@ I only have a few nits and minor comments, please address them at the same time 
 
 I have opened a github issue with the text below: https://github.com/ietf-wg-httpapi/linkset/issues/62 
 
-1. dret 
+1. dret; done
 
 
    The following sections describe uses cases in which providing links
 
 FP: s/uses/use
 
-2. dret
+2. dret; done
 
    other approaches, i.e. it is possible combine various mechanisms to
 
 FP: s/combine/to combine
 
-3. dret
+3. dret; done
 
    specifically by its ABNF production rule for "Link" and subsequent
 
  FP: Although not a strong requirement since ABNF is referenced by 8288, I suggest to add a reference to RFC 5234 to this document as well, since it appears in the text here.
 
-4. dret; add a sentence (talk about readibility)
+4. dret; add a sentence (talk about readability)
 
    as separators but also newline characters as a means to improve usability.
 
