@@ -1,0 +1,174 @@
+Reviewer: Francesca Palombini  
+
+I only have a few nits and minor comments, please address them at the same time as the Last Call comments. I also have a question to the working group, see point 18 below.
+
+I have opened a github issue with the text below: https://github.com/ietf-wg-httpapi/linkset/issues/62 
+
+1. dret 
+
+
+   The following sections describe uses cases in which providing links
+
+FP: s/uses/use
+
+2. dret
+
+   other approaches, i.e. it is possible combine various mechanisms to
+
+FP: s/combine/to combine
+
+3. dret
+
+   specifically by its ABNF production rule for "Link" and subsequent
+
+ FP: Although not a strong requirement since ABNF is referenced by 8288, I suggest to add a reference to RFC 5234 to this document as well, since it appears in the text here.
+
+4. dret; add a sentence (talk about readibility)
+
+   as separators but also newline characters as a means to improve usability.
+
+FP: I am not sure I understand how newline characters improve usability. Maybe some text could be added to explain that (or if you don't think it is necessary, I'd appreciate your answer to know what I am missing).
+ 
+
+5. dret (fine as proposed)
+
+   usability.  The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.
+
+FP: Is "interoperable" the right term here? should it not be "allowed" instead?
+
+6. dret (deflect, CDDL not used in API community, JSON schema not quite there)
+
+Section 4.2
+
+FP: It would have been nice to use CDDL (RFC 8610) to defined the structures not only in text. I usually recommend it for specifications defining JSON (or CBOR) structures, because writing that down often uncovers imprecisions and questions about the definitions that don't come up otherwise.
+
+7. dret (add formal references to the paragraph before 4.1; expand RDF at first use)
+
+   The "application/linkset+json" serialization is designed such that it can directly be used as the content of a JSON-LD serialization by adding an appropriate context.  Appendix A shows an example of a possible context that, when added to a JSON serialization, allows it to be interpreted as RDF.
+
+ 
+FP: It would be useful to add the reference to JSON-LD [W3C.REC-json-ld-20140116] that is already present in the appendix. I would also appreciate a reference to the RDF specifications. Also, the RFC editor will most likely ask you to expand those terms on first use, so I encourage you to do that already (see https://www.rfc-editor.org/materials/abbrev.expansion.txt)
+
+8. dret (change as proposed; several occurrences)
+
+Section 4.2.2
+
+FP: nit - I would use "contain" instead of "have" when talking about members in JSON objects. A couple of examples in the text:
+
+   *  Each link context object MAY have an "anchor" member with a value that represents the link context.  If present, this value MUST be
+
+...
+
+ *  For each distinct relation type that the link context has with link targets, a link context object MUST have an additional member.  This member is an array in which a distinct JSON object -
+
+9. -----
+
+
+FP: I will fw this document to the I18n directorate mailing list, to see if anybody is interested to take a look at section 4.2.4.2 during Last Call. I don't think this should have many I18n comments, since this does not define new concepts but rather defines serialization for existing ones, but if anybody with I18n expertise can take another look it can't hurt.
+
+10. hvdsomp (add a paragraph)
+
+   The Web linking model ([RFC8288]) provides for the use of extension target attributes as discussed in Section 4.2.4.3.  No other form of extensions SHOULD be used.  In case they are used nevertheless, they
+
+FP: It would be good to clarify why this is only a SHOULD and not a MUST: I expect the reason for it is that there are existing cases where other forms are in fact used. In this case, it would be good to give an example and motivate the "SHOULD".
+
+11. hvdsomp (remove)
+
+   Section 7.2 shows a client obtaining a set of links by issuing an HTTP GET on the target of the link with the "linkset" relation type, <https://example.org/links/resource1>.
+
+FP: This text in section 7.3 seems redundant to me, as the reader will have already read 7.2, and IMO this text is not really needed, so I would suggest to remove it.
+
+12. dret
+
+   voc/?show=linktypes> as was used in xref target="Response_pr_at"/>.
+
+FP: missing a "<"
+
+13. dret (should be changed to new section)
+
+   The link relation type below should be registered by IANA per Section 6.2.1 of Web Linking [RFC8288]:
+
+FP: I think this should point to Section 4.2 of 8288
+
+ 
+14. dret (sent email to list)
+
+Section 8.3 and 8.4
+
+FP: reminder to send the media type registrations to the media-types mailing list for community review (good to do during IETF Last Call).
+
+15. hvdsomp (add reference)
+
+   context maps "application/linkset+json" representations of link sets to Dublin Core Terms.  Note that the "linkset" entry in the JSON-LD
+
+FP: I would have appreciated an informative reference for Dublin Core Terms.
+
+16. hvdsomp (wait for response from phil)
+
+Appendix B.
+
+FP: Thank you for this, it is always interesting to see implementation status reports. Even if this will not make the final version of the document, may I suggest to please update it - in particular the following sentence makes me think this is outdated:
+
+  pertaining to products, shipments, assets and locations.  Currently the GS1 Digital Link specification makes an informative reference to version 03 of the "linkset" I-D.  GS1 expresses confidence that this will become a normative reference in the next iteration of that specification.
+
+17. dret (do as proposed)
+
+FP: As noted by Rich in his shepherd write up, there are two references that come up as obsoleted: 6982 -> 7942 and 5988 -> 8288. Reading how they are used, I think 5988 makes sense to stay as informative. On the other hand, 6982 should not only be replaced by 7942, but I also think it should move to informative, and will most likely be removed before publication since it is only used in Appendix B which will be removed.
+
+18. dret (email list with question)
+
+FP: Rich also brought up in the shepherd write up that he believes this document should have an "Update RFC 8288" header. While I see the benefit of having that sort of link in the document, I am not sure that it is necessary in this case. Hence I'd like to listen to the wg's opinion and hear if there has been a discussion about it.
+
+ 
+
+Rich: There were a half-dozen messages I found via https://mailarchive.ietf.org/arch/browse/httpapi/?q=draft-ietf-httpapi-linkset%208288 . Since this draft *adds* a serialization format, I thought it appropriate to reference 8288. But if people think “Updates” is really a synonym for “replaces [use this doc instead]” then it’s not correct.
+
+=================
+
+19. dret (turn email into repo issue)
+
+Reviewer: Christer Holmberg
+Review result: Ready with Issues
+
+I am the assigned Gen-ART reviewer for this draft. The General Area
+Review Team (Gen-ART) reviews all IETF documents being processed
+by the IESG for the IETF Chair.  Please treat these comments just
+like any other last call comments.
+
+For more information, please see the FAQ at
+
+<https://trac.ietf.org/trac/gen/wiki/GenArtfaq>.
+
+Summary: Technically I don't have any major issue.  However, I do have a minor
+technical, one administrative, and some editorial, comments.
+
+Major issues:
+
+20. dret (email rich and mark)
+
+Q1: The draft is intended to be published as Informational RFC. That sounds a
+little strange to me. Could you please explain what the reason is?
+
+Minor issues:
+
+21. hvdsomp (we're not defining a context so there's no defined vocabulary)
+
+Q2: The document defines the "application/linkset+json" format, and indicates
+that it can also be used for JSON-LD. What is the reason for not defining a
+separate format for JSON-LD? Separate formats ("application/json" and
+"application/ld+json") have previously been defined.
+
+Nits/editorial comments:
+
+22. dret (minor issues, Q5 makes a fair point)
+
+Q3: The document has long sentences like "One serializes links in the same
+format as used in HTTP the Link header field". Couldn't one just say "based on
+the syntax of the HTTP Link header field", or something like that?
+
+Q4: The document talks about "document format". People familiar with HTTP are
+probably familiar with that terminology, but I think it would be good to add a
+reference on first occurrence.
+
+Q5: In Section 1, you talk about serializing links as JSON objects. Should it
+be JSON strings, or something? JSON object is not a serialization.
