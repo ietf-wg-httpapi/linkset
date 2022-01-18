@@ -145,7 +145,7 @@
                     <xref target="RFC8288" section="3"/>, more specifically by  
                     its ABNF <xref target="RFC5234"> production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
                     HTTP "Link" header in that not only spaces and horizontal tabs are allowed as separators but also newline 
-                    characters as a means to improve usability.
+                    characters as a means to improve readability for humans.
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
@@ -823,7 +823,7 @@ Host: id.gs1.org
 </figure>
                   
 
-<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in xref target="Response_pr_at"/>.</t>
+<t><xref target="Response_pr_par"/> shows the server's response to the request of <xref target="Request_pr_par"/>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in &lt;xref target="Response_pr_at"/>.</t>
                       
 <figure title="Response to the client's HEAD request including a &quot;profile&quot; parameter for the &quot;application/linkset+json&quot; media type" anchor="Response_pr_par">
 <artwork type="http-message"><![CDATA[
@@ -881,7 +881,7 @@ Content-Length: 396
         </section>
         <section title="IANA Considerations" anchor="iana-considerations">
             <section title="Link Relation Type: linkset">
-                <t>The link relation type below should be registered by IANA per <xref target="RFC8288" section="6.2.1">Web Linking</xref>:</t>
+                <t>The link relation type below should be registered by IANA per <xref target="RFC8288" section="4.2">Web Linking</xref>:</t>
                 <ul empty="true">
                         <li>Relation Name: linkset</li>
                         <li>Description: The link target of a link with the "linkset" relation type 

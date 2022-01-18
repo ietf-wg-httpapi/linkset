@@ -1,4 +1,4 @@
-Reviewer: Francesca Palombini  
+Reviewer: Francesca Palombini  d
 
 I only have a few nits and minor comments, please address them at the same time as the Last Call comments. I also have a question to the working group, see point 18 below.
 
@@ -22,7 +22,7 @@ FP: s/combine/to combine
 
  FP: Although not a strong requirement since ABNF is referenced by 8288, I suggest to add a reference to RFC 5234 to this document as well, since it appears in the text here.
 
-4. dret; add a sentence (talk about readability)
+4. dret; add a sentence (talk about readability); done
 
    as separators but also newline characters as a means to improve usability.
 
@@ -73,13 +73,13 @@ FP: It would be good to clarify why this is only a SHOULD and not a MUST: I expe
 
 FP: This text in section 7.3 seems redundant to me, as the reader will have already read 7.2, and IMO this text is not really needed, so I would suggest to remove it.
 
-12. dret
+12. dret; done
 
    voc/?show=linktypes> as was used in xref target="Response_pr_at"/>.
 
 FP: missing a "<"
 
-13. dret (should be changed to new section)
+13. dret (should be changed to new section); done
 
    The link relation type below should be registered by IANA per Section 6.2.1 of Web Linking [RFC8288]:
 
