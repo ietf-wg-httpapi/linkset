@@ -1,4 +1,4 @@
-Reviewer: Francesca Palombini  d
+Reviewer: Francesca Palombini
 
 I only have a few nits and minor comments, please address them at the same time as the Last Call comments. I also have a question to the working group, see point 18 below.
 
@@ -28,26 +28,25 @@ FP: s/combine/to combine
 
 FP: I am not sure I understand how newline characters improve usability. Maybe some text could be added to explain that (or if you don't think it is necessary, I'd appreciate your answer to know what I am missing).
 
-5. dret (fine as proposed)
+5. dret (fine as proposed); done
 
    usability.  The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.
 
 FP: Is "interoperable" the right term here? should it not be "allowed" instead?
 
-6. dret (deflect, CDDL not used in API community, JSON schema not quite there)
+6. dret (deflect, CDDL not used in API community, JSON schema not quite there); done
 
 Section 4.2
 
 FP: It would have been nice to use CDDL (RFC 8610) to defined the structures not only in text. I usually recommend it for specifications defining JSON (or CBOR) structures, because writing that down often uncovers imprecisions and questions about the definitions that don't come up otherwise.
 
-7. dret (add formal references to the paragraph before 4.1; expand RDF at first use)
+7. dret (add formal references to the paragraph before 4.1; expand RDF at first use); done
 
    The "application/linkset+json" serialization is designed such that it can directly be used as the content of a JSON-LD serialization by adding an appropriate context.  Appendix A shows an example of a possible context that, when added to a JSON serialization, allows it to be interpreted as RDF.
 
- 
 FP: It would be useful to add the reference to JSON-LD [W3C.REC-json-ld-20140116] that is already present in the appendix. I would also appreciate a reference to the RDF specifications. Also, the RFC editor will most likely ask you to expand those terms on first use, so I encourage you to do that already (see https://www.rfc-editor.org/materials/abbrev.expansion.txt)
 
-8. dret (change as proposed; several occurrences)
+8. dret (change as proposed; several occurrences); done
 
 Section 4.2.2
 
@@ -85,7 +84,7 @@ FP: missing a "<"
 
 FP: I think this should point to Section 4.2 of 8288
 
-14. dret (sent email to list)
+14. dret (send email to list); done: https://mailarchive.ietf.org/arch/msg/media-types/1TztDc8NM0SepR0LZ10wNIRH4Tw/
 
 Section 8.3 and 8.4
 
@@ -105,11 +104,11 @@ FP: Thank you for this, it is always interesting to see implementation status re
 
   pertaining to products, shipments, assets and locations.  Currently the GS1 Digital Link specification makes an informative reference to version 03 of the "linkset" I-D.  GS1 expresses confidence that this will become a normative reference in the next iteration of that specification.
 
-17. dret (do as proposed)
+17. dret (do as proposed); done
 
 FP: As noted by Rich in his shepherd write up, there are two references that come up as obsoleted: 6982 -> 7942 and 5988 -> 8288. Reading how they are used, I think 5988 makes sense to stay as informative. On the other hand, 6982 should not only be replaced by 7942, but I also think it should move to informative, and will most likely be removed before publication since it is only used in Appendix B which will be removed.
 
-18. dret (email list with question)
+18. dret (email list with question); done
 
 FP: Rich also brought up in the shepherd write up that he believes this document should have an "Update RFC 8288" header. While I see the benefit of having that sort of link in the document, I am not sure that it is necessary in this case. Hence I'd like to listen to the wg's opinion and hear if there has been a discussion about it.
 
@@ -117,7 +116,7 @@ Rich: There were a half-dozen messages I found via https://mailarchive.ietf.org/
 
 =================
 
-19. dret (turn email into repo issue)
+19. dret (turn email into repo issue); done: https://github.com/ietf-wg-httpapi/linkset/issues/63
 
 Reviewer: Christer Holmberg
 Review result: Ready with Issues

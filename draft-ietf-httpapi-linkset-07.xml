@@ -146,7 +146,7 @@
                     its ABNF <xref target="RFC5234"/> production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
                     HTTP "Link" header in that not only spaces and horizontal tabs are allowed as separators but also newline 
                     characters as a means to improve readability for humans.
-                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
+                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
                 
@@ -188,14 +188,15 @@
                 </ul>                
                 <t>If these recommendations are not followed, interpretation of "application/linkset+json" will depend on which URI is used as context URI.</t>
                 <t>The "application/linkset+json" serialization is designed such that it can directly be used as the 
-                    content of a JSON-LD serialization by adding an appropriate context. 
+                    content of a JSON-LD <xref target="W3C.REC-json-ld-20140116"/> serialization by adding an appropriate context. 
                     <xref target="appendix-1"/> shows an example of a possible context that, when added to  
-                    a JSON serialization, allows it to be interpreted as RDF.</t>
+                    a JSON serialization, allows it to be interpreted as Resource Description Framework (RDF)
+                    <xref target="W3C.REC-rdf11-concepts-20140225"/> data.</t>
 
                 <section title="Set of Links" anchor="linkset-in-json">
                     <t>In the JSON representation of a set of links:</t>
                     <ul>
-                        <li>A set of links is represented as a JSON object which MUST have "linkset" as its sole member.</li>
+                        <li>A set of links is represented as a JSON object which MUST contain "linkset" as its sole member.</li>
                         <li>The "linkset" member is an array in which a distinct JSON object - 
                             the "link context object" (see <xref target="linkset-json-link-context-object"/>) - 
                             is used to represent links that have the same link context.</li>
@@ -208,12 +209,12 @@
                         are represented by a JSON object, the link context object. A link context object 
                         adheres to the following rules:</t>
                     <ul> 
-                        <li>Each link context object MAY have an "anchor" member with a value that represents 
+                        <li>Each link context object MAY contain an "anchor" member with a value that represents 
                             the link context. If present, this value MUST be a URI reference 
                             and SHOULD NOT be a relative reference as per <xref target="RFC3986" section="4.1"/>.</li>
                         <li><t>
                             For each distinct relation type that the link context has with link targets,  
-                            a link context object MUST have an additional member. 
+                            a link context object MUST contain an additional member. 
                             This member is an array in which a distinct JSON object 
                             - the "link target object" (see <xref target="linkset-json-link-target-object"/>) - 
                             MUST be used for each link target for which the relationship with 
@@ -233,7 +234,7 @@
                     <t>In the JSON representation a link target is represented by a JSON object, the link target object. 
                         A link target object adheres to the following rules:</t>
                     <ul>
-                        <li>Each link target object MUST have an "href" member with a value that represents 
+                        <li>Each link target object MUST contain an "href" member with a value that represents 
                             the link target. This value MUST be a URI reference and SHOULD NOT be a relative reference  
                             as per <xref target="RFC3986" section="4.1"/>. Cases where the href member is present, but no value is provided 
                             for it (i.e. the resource providing the set of links is the target of the link 
@@ -961,7 +962,6 @@ Content-Length: 396
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6838.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6982.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8187.xml"/>
@@ -983,8 +983,10 @@ Content-Length: 396
 -->
         </references>
       <references title="Informative References">
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
+          <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-rdf11-concepts-20140225.xml"/>
+          <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
+          <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
+          <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7942.xml"/>
       </references>
 
               <section title="JSON-LD Context" anchor="appendix-1">
@@ -1208,8 +1210,8 @@ Content-Length: 658
 
         </section>
         <section title="Implementation Status" anchor="implementation-status" removeInRFC="true">
-            <t>This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 6982 <xref target="RFC6982"/>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.</t>
-            <t>According to RFC 6982, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".</t>
+            <t>This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 7942 <xref target="RFC7942"/>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.</t>
+            <t>According to RFC 7942, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".</t>
             <section title="GS1" anchor="implementation-GS1">
                 <t>GS1 is a provider of identifiers, most famously seen in EAN/UPC barcodes for retail and healthcare products, and manages an ecology of services and standards to leverage them at a global scale.
                     GS1 has indicated that it will fully implement this "linkset" specification as a means to allow requesting and representing links pertaining to products, shipments, assets and locations.
