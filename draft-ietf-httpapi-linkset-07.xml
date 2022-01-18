@@ -143,7 +143,7 @@
                 <t>This document format is near identical to the field value of the 
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
-                    its ABNF <xref target="RFC5234"> production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
+                    its ABNF <xref target="RFC5234"/> production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
                     HTTP "Link" header in that not only spaces and horizontal tabs are allowed as separators but also newline 
                     characters as a means to improve readability for humans.
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not interoperable.</t> 
