@@ -151,7 +151,7 @@ separate format for JSON-LD? Separate formats ("application/json" and
 
 Nits/editorial comments:
 
-22. dret (minor issues, Q5 makes a fair point)
+22. dret (minor issues, Q5 makes a fair point); done
 
 Q3: The document has long sentences like "One serializes links in the same
 format as used in HTTP the Link header field". Couldn't one just say "based on
