@@ -766,8 +766,6 @@ Content-Type: text/html;charset=utf-8
 ]]>
                      </artwork> 
                  </figure>
-                 <t><xref target="linkset-link-json-format"/> shows a client obtaining a set of links by issuing an HTTP GET on the 
-                     target of the link with the "linkset" relation type, &lt;https://example.org/links/resource1&gt;.</t>
              </section>
       
        <section title="Link Set Profiles" anchor="profile-examples">
