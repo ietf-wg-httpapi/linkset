@@ -985,6 +985,13 @@ Content-Length: 396
           <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
           <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
           <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7942.xml"/>
+	  <reference anchor="DCMI-TERMS" target="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">
+              <front>
+                  <title abbrev="DCMI Terms">DCMI Metadata Terms</title>
+                  <author fullname="Dublin Core Metadata Initiative" />
+                  <date year="2020"/>
+              </front>
+          </reference>
       </references>
 
               <section title="JSON-LD Context" anchor="appendix-1">
@@ -1086,7 +1093,7 @@ Content-Length: 1532
             <t>In order to obtain the JSON-LD Context conveyed by the server, the user agent issues an HTTP GET against the 
                 link target of the link with the "http://www.w3.org/ns/json-ld#context" relation type. The response to this GET is 
                 shown in <xref target="jsonld-context"/>. This particular JSON-LD context maps "application/linkset+json" representations of link sets 
-                to Dublin Core Terms. Note that the "linkset" entry in the JSON-LD context is 
+                to Dublin Core Terms <xref target="DCMI-TERMS"/>. Note that the "linkset" entry in the JSON-LD context is 
                 introduced to support links with the <tt>"linkset"</tt> relation type in link sets.</t>
 
             <figure title="JSON-LD Context mapping to Dublin Core Terms" anchor="jsonld-context">
