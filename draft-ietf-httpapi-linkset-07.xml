@@ -1224,9 +1224,12 @@ Content-Length: 658
             <section title="GS1" anchor="implementation-GS1">
                 <t>GS1 is a provider of identifiers, most famously seen in EAN/UPC barcodes for retail and healthcare products, and manages an ecology of services and standards to leverage them at a global scale.
                     GS1 has indicated that it will fully implement this "linkset" specification as a means to allow requesting and representing links pertaining to products, shipments, assets and locations.
-                    Currently, the GS1 Digital Link specification makes an informative reference
-                    to version 03 of the "linkset" I-D. GS1 expresses confidence that this will become a normative reference in the
-                    next iteration of that specification.</t>
+                    The current GS1 Digital Link specification makes an informative reference to version 03 of the "linkset" I-D, 
+		mentions the formal adoption of that I-D by the IETF HTTPAPI Working Group, 
+			and indicates it being on track to achieve RFC status.  
+			The GS1 Digital Link specification adopts the JSON format specified by the I-D 
+			and mentions future plans to also support the Link header format as well as their respective media types, 
+			neither of which have changed since version 03.</t>
             </section>
             <section title="FAIR Signposting Profile" anchor="implementation-signposting">
                 <t>The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
