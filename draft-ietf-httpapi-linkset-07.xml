@@ -520,11 +520,15 @@
                 <section title="JSON Extensibility" anchor="json-extensibility">
                     <t>The Web linking model (<xref target="RFC8288"/>) provides for the use of extension target attributes as discussed in 
                         <xref target="json-target-attributes-extension"/>. 
-			    No other form of extensions SHOULD be used.
-                        In case they are used nevertheless, they MUST NOT change the semantics of the JSON members defined in this specification. Agents that consume JSON linkset documents MUST ignore such extensions.</t>
-                    <t>This limitation of the JSON format allows to unambiguously round trip between links provided in the HTTP "Link" header field, 
+			    No other form of extensions SHOULD be used. 
+			    This limitation of the JSON format allows to unambiguously round trip between links provided in the HTTP "Link" header field, 
                         sets of links serialized according to the "application/linkset" format, and sets of links serialized 
-                        according to the "application/linkset+json" format.</t>
+                        according to the "application/linkset+json" format.
+                        </t>
+                    <t>Cases may exist in which the use of extensions other than those of  <xref target="json-target-attributes-extension"/> may be useful. 
+		For example, when a link set publishers needs to include descriptive or technical metadata for internal consumption. 
+	      In case such extensions are used they MUST NOT change the semantics of the JSON members defined in this specification.  
+	      Agents that consume JSON linkset documents can safely ignore such extensions.</t>
                     
                 </section>
                 
