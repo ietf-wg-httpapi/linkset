@@ -970,10 +970,8 @@ Content-Length: 396
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6838.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
-            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8187.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
@@ -995,9 +993,11 @@ Content-Length: 396
         </references>
       <references title="Informative References">
           <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-rdf11-concepts-20140225.xml"/>
-          <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml4/reference.W3C.REC-json-ld-20140116.xml"/>
           <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5988.xml"/>
-          <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7942.xml"/>
+	  <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6690.xml"/>
+	  <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6906.xml"/>
+	  <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7284.xml"/>
+	  <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7942.xml"/>
 	  <reference anchor="DCMI-TERMS" target="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">
               <front>
                   <title abbrev="DCMI Terms">DCMI Metadata Terms</title>
