@@ -166,7 +166,7 @@
                 </ul>
                 <t>If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
                     which URI is used as context.</t>
-                 <t>It should be noted that the "application/linkset" format specified here is different than the "application/link-format" 
+                 <t>It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
                     format specified in <xref target="RFC6690"/> in that the former fully matches the 
                     field value of the HTTP "Link" header field as defined in <xref target="RFC8288" section="3"/>, whereas 
                     the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.</t>
@@ -428,7 +428,7 @@
 }]]>                                
                             </sourcecode> 
                         </figure>
-                        <t>The above example assumes that the German title contains an umlaut character (in the native syntax it would be encoded as title*=UTF-8'de'n%c3%a4chstes%20Kapitel), 
+                        <t>The above example assumes that the German title contains an umlaut character (in the original syntax it would be encoded as title*=UTF-8'de'n%c3%a4chstes%20Kapitel), 
                             which gets encoded in its unescaped form in the JSON representation. 
                             Implementations MUST properly decode/encode internationalized target attributes that follow the model of <xref target="RFC8187"/> when transcoding between the "application/linkset" and the "application/linkset+json" formats.</t>
                     </section>
@@ -611,7 +611,7 @@
               <t><xref target="linkset-link-link-format"/> and <xref target="linkset-link-json-format"/>
               show examples whereby a set of links is provided as "application/linkset" and "application/linkset+json" documents, respectively.
                   <xref target="linkset-rel-example"/> illustrates the use of the "linkset" link relation type to support discovery of sets of links and 
-                  <xref target="profile-examples"/> shows how to convey profile information pertaining to a links set.</t>
+                  <xref target="profile-examples"/> shows how to convey profile information pertaining to a link set.</t>
            <section title="Set of Links Provided as application/linkset" anchor="linkset-link-link-format">
                <t><xref target="Request1"/> shows a client issuing an 
                    HTTP GET request against resource &lt;https://example.org/links/resource1&gt;.</t>
@@ -902,7 +902,7 @@ Content-Length: 396
                 </ul>
             </section>
             <section title="Media Type: application/linkset">
-                    <t>The Internet media type <xref target="RFC6838"/> for a natively encoded linkset is application/linkset.</t>
+                    <t>The Internet media type <xref target="RFC6838"/> for a linkset encoded according to the definition of <xref target="RFC8288"/> is application/linkset.</t>
                     <ul empty="true">
                             <li>Type name: application</li>
                             <li>Subtype name: linkset</li>
