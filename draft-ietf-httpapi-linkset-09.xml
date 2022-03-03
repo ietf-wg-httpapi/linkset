@@ -689,7 +689,7 @@ Content-Type: application/linkset+json
 Link: <https://example.org/links/resource1>
       ; rel="alternate"
       ; type="application/linkset"
-Content-Length: 1349
+Content-Length: 1246
 
 { "linkset":
   [
