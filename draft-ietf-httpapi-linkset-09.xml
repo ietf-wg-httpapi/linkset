@@ -893,7 +893,8 @@ Content-Length: 396
         </section>
         <section title="IANA Considerations" anchor="iana-considerations">
             <section title="Link Relation Type: linkset">
-                <t>The link relation type below should be registered by IANA per <xref target="RFC8288" section="4.2">Web Linking</xref>:</t>
+                <t>The link relation type below should be registered by IANA in the Link Relation Type Registry 
+			as per <xref target="RFC8288" section="4.2">Web Linking</xref>:</t>
                 <ul empty="true">
                         <li>Relation Name: linkset</li>
                         <li>Description: The link target of a link with the "linkset" relation type 
@@ -906,7 +907,7 @@ Content-Length: 396
                     <ul empty="true">
                             <li>Type name: application</li>
                             <li>Subtype name: linkset</li>
-                            <li>Required parameters: none</li>
+                            <li>Required parameters: N/A</li>
                             <li>Optional parameters: profile</li>
                             <li>Encoding considerations: Linksets are encoded according to the definition of <xref target="RFC8288"/>. The encoding of <xref target="RFC8288"/> is based on the general encoding rules of <xref target="I-D.ietf-httpbis-semantics"/>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <xref target="RFC8187"/>.</li>
                             <li>Security considerations: The security considerations of [[ This document ]] apply.</li>
@@ -932,7 +933,7 @@ Content-Length: 396
                 <ul empty="true">
                         <li>Type name: application</li>
                         <li>Subtype name: linkset+json</li>
-                        <li>Required parameters: none</li>
+                        <li>Required parameters: N/A</li>
                         <li>Optional parameters: profile</li>
                         <li>Encoding considerations: The encoding considerations of <xref target="RFC8259"/> apply</li>
                         <li>Security considerations: The security considerations of [[ This document ]] apply.</li>
