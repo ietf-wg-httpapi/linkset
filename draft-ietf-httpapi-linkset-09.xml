@@ -842,7 +842,8 @@ Host: id.gs1.org
 HTTP/1.1 200 OK
 Date:  Mon, 27 Sep 2021 16:03:33 GMT
 Server: nginx
-Content-Type: application/linkset+json; profile="https://www.gs1.org/voc/?show=linktypes"
+Content-Type: application/linkset+json; 
+     profile="https://www.gs1.org/voc/?show=linktypes"
 Content-Length: 396
 ]]></artwork> 
 </figure>
