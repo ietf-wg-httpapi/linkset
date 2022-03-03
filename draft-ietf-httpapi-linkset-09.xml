@@ -211,7 +211,7 @@
                     <ul> 
                         <li>Each link context object MAY contain an "anchor" member with a value that represents 
                             the link context. If present, this value MUST be a URI reference 
-                            and SHOULD NOT be a relative reference as per <xref target="RFC3986" section="4.1"/>.</li>
+                            and SHOULD NOT be a relative reference as defined in <xref target="RFC3986" section="4.1"/>.</li>
                         <li><t>
                             For each distinct relation type that the link context has with link targets,  
                             a link context object MUST contain an additional member. 
@@ -236,7 +236,7 @@
                     <ul>
                         <li>Each link target object MUST contain an "href" member with a value that represents 
                             the link target. This value MUST be a URI reference and SHOULD NOT be a relative reference  
-                            as per <xref target="RFC3986" section="4.1"/>. Cases where the href member is present, but no value is provided 
+                            as defined in <xref target="RFC3986" section="4.1"/>. Cases where the href member is present, but no value is provided 
                             for it (i.e. the resource providing the set of links is the target of the link 
                             in the link target object) MUST be handled by providing an "href" member with an empty string ("href": "").</li>
                         <li>In many cases, a link target is further qualified by target attributes. 
