@@ -327,22 +327,29 @@
                             In the JSON representation, these attributes MUST be conveyed as additional 
                             members of the link target object as follows:</t>
                         <ul>
-                            <li>"hreflang": The optional and repeatable "hreflang" target attribute 
+                            <li>"hreflang": The "hreflang" target attribute, 
+				    defined as optional and repeatable by <xref target="RFC8288"/>, 
                                 MUST be represented by an array (even if there only is one value to be represented), 
                                 and each value in that array MUST be a string - representing one value 
                                 of the "hreflang" target attribute for a link - which follows the same 
                                 model as in the <xref target="RFC8288"/> syntax.</li>
-                            <li>"media": The optional and not repeatable "media" target attribute MUST be 
+                            <li>"media": The "media" target attribute, 
+				    defined as optional and not repeatable by <xref target="RFC8288"/>, MUST be 
                                 represented by a "media" member 
                                 in the link target object, and its value MUST be a string that follows the 
                                 same model as in the <xref target="RFC8288"/> syntax.</li>
-                            <li>"type": The optional and not repeatable "type" target attribute MUST be represented by a "type" member 
+                            <li>"type": The "type" target attribute, 
+				    defined as optional and not repeatable by <xref target="RFC8288"/>, 
+				    MUST be represented by a "type" member 
                                 in the link target object, and its value MUST be a string that follows the 
                                 same model as in the <xref target="RFC8288"/> syntax.</li>
-                            <li>"title": The optional and not repeatable "title" target attribute MUST be represented by a "title" 
+                            <li>"title": The "title" target attribute, 
+				    defined as optional and not repeatable by <xref target="RFC8288"/>,
+				    MUST be represented by a "title" 
                                 member in the link target object, and its value MUST be a string that follows 
                                 the same model as in the <xref target="RFC8288"/> syntax.</li>
-                            <li>"title*": The optional and not repeatable "title*" target attribute 
+                            <li>"title*": The "title*" target attribute, 
+				    defined as optional and not repeatable by <xref target="RFC8288"/>, 
                                 is motivated by character encoding 
                                 and language issues and follows the model defined in <xref target="RFC8187"/>. 
                                 The details of the JSON 
