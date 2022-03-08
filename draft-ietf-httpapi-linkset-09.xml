@@ -802,7 +802,9 @@ Host: id.gs1.org
     <xref target="Request_pr_at"/>, including a "linkset" link with a "profile" attribute 
     that has the Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as its value. 
     Dereferencing that URI yields a profile document that lists all the link relation types that 
-    a client can expect when requesting the link set made discoverable by the "linkset" link. 
+    a client can expect when requesting the link set made discoverable by the "linkset" link. The link relation types are 
+	presented in abbreviated form, e.g. &lt;gs1:activityIdeas&gt;, whereas the actual link relation type URIs are 
+	available as hyperlinks on the abbreviations, e.g. &lt;https://www.gs1.org/voc/activityIdeas&gt;.
     For posterity that profile document was saved in the Internet Archive at 
     &lt;https://web.archive.org/web/20210927160406/https://www.gs1.org/voc/?show=linktypes&gt; 
     on 27 September 2021.</t>
