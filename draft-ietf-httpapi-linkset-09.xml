@@ -33,7 +33,7 @@
     <middle>
         <section title="Introduction" anchor="introduction">
             <t>Resources on the Web often use typed Web Links <xref target="RFC8288"/>, either embedded in resource representations, for example using the &lt;link&gt; element for HTML documents, or conveyed in the HTTP "Link" header field for documents of any media type. In some cases, however, providing links in this manner is impractical or impossible and delivering a set of links as a stand-alone document is preferable.</t> 
-            <t>Therefore, this specification defines two formats for representing sets of Web Links and their attributes as stand-alone documents. One serializes links in the same format as used in HTTP the Link header field, and the other serializes links in JSON. It also defines associated media types to represent sets of links and the "linkset" relation type that supports discovery of any resource that conveys a set of links as a stand-alone document.</t>
+            <t>Therefore, this specification defines two formats for representing sets of Web Links and their attributes as stand-alone documents. One serializes links in the same format as used in the HTTP Link header field, and the other serializes links in JSON. It also defines associated media types to represent sets of links, and the "linkset" relation type that supports discovery of any resource that conveys a set of links as a stand-alone document.</t>
         </section>
         <section title="Terminology" anchor="terminology">
             <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
@@ -65,7 +65,7 @@
                     by a server other than the one that hosts the resource. For example, this allows:</t>
                 <ul>
                     <li>Providing links in which the resource is involved not just as link context but 
-                        also as link target.</li> 
+                        also as link target, with a different resource being the link context.</li> 
                     <li>Providing links pertaining to the resource that the server hosting that 
                         resource is not aware of.</li>
                     <li>External management of links pertaining to the resource in a special-purpose link
@@ -104,19 +104,19 @@
             <section title="Large Number of Links" anchor="link-volume">
                 <t>When conveying links in an HTTP "Link" header field, it is possible for the size of the HTTP 
                     response fields to become unpredictable. This can be the case when links are determined 
-                    dynamically dependent on a range of contextual factors. It is possible to statically configure 
+                    dynamically in a manner dependent on a range of contextual factors. It is possible to statically configure 
                     a web server to correctly handle large HTTP response fields by specifying an upper bound 
                     for their size. But when the number of links is 
                     unpredictable, estimating a reliable upper bound is challenging.</t>
                 <t><xref target="I-D.ietf-httpbis-semantics" section="15">HTTP</xref> defines error codes related to excess communication 
                     by the user agent ("413 Request Entity Too Large" and "414 Request-URI Too Long"), but no specific
                     error codes are defined to indicate that response field content exceeds the upper bound that can 
-                    be handled by the server, and thus it has been truncated.
+                    be handled by the server and thus has been truncated.
                     As a result, applications take counter measures aimed at controlling 
                     the size of the HTTP "Link" header field, for example by limiting the links they provide to those 
                     with select relation types, thereby limiting the value of the HTTP "Link" header field to clients. 
                     Providing links by means of a standalone document overcomes challenges related to the unpredictable 
-                    nature of the size of HTTP "Link" header fields.</t>
+                    (to the web server implementation) nature of the size of HTTP "Link" header fields.</t>
                 <!--
                 <t>In more extreme scenarios it is conceivable that the number of links to be conveyed becomes so 
                     large that even a standalone document would become too large. 
@@ -134,17 +134,17 @@
             <ul>
                 <li>The format defined in <xref target="linkset-native"/> is near identical to the field value 
                     of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288" section="3"/>.</li>
-                <li>The format defined in <xref target="linkset-json"/> is based on <xref target="RFC8259">JSON</xref>.</li>
+                <li>The format defined in <xref target="linkset-json"/> is expressed in <xref target="RFC8259">JSON</xref>.</li>
             </ul>
             
-            <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the position of the resources involved in the link.</t>
+            <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.</t>
             
             <section title="HTTP Link Document Format: application/linkset" anchor="linkset-native">
                 <t>This document format is near identical to the field value of the 
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
-                    its ABNF <xref target="RFC5234"/> production rule for "Link" and subsequent ones. It differs only from the format for field values of the 
-                    HTTP "Link" header in that not only spaces and horizontal tabs are allowed as separators but also newline 
+                    its ABNF <xref target="RFC5234"/> production rule for "Link" and subsequent ones. It differs from the format for field values of the 
+                    HTTP "Link" header only in that not only spaces and horizontal tabs are allowed as separators but also newline 
                     characters as a means to improve readability for humans.
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed.</t> 
                 
@@ -197,7 +197,7 @@
                     <t>In the JSON representation of a set of links:</t>
                     <ul>
                         <li>A set of links is represented in JSON as an object which MUST contain "linkset" as its sole member.</li>
-                        <li>The "linkset" member is an array in which a distinct JSON object - 
+                        <li>The value of the "linkset" member is an array in which a distinct JSON object - 
                             the "link context object" (see <xref target="linkset-json-link-context-object"/>) - 
                             is used to represent links that have the same link context.</li>
                         <li>Even if there is only one link context object, it MUST be wrapped in an array.</li> 
@@ -215,7 +215,7 @@
                         <li><t>
                             For each distinct relation type that the link context has with link targets,  
                             a link context object MUST contain an additional member. 
-                            This member is an array in which a distinct JSON object 
+                            The value of this member is an array in which a distinct JSON object 
                             - the "link target object" (see <xref target="linkset-json-link-target-object"/>) - 
                             MUST be used for each link target for which the relationship with 
                             the link context (value of the encompassing anchor member) applies. The name 
@@ -238,7 +238,7 @@
                             the link target. This value MUST be a URI reference and SHOULD NOT be a relative reference  
                             as defined in <xref target="RFC3986" section="4.1"/>. Cases where the href member is present, but no value is provided 
                             for it (i.e. the resource providing the set of links is the target of the link 
-                            in the link target object) MUST be handled by providing an "href" member with an empty string ("href": "").</li>
+                            in the link target object) MUST be handled by providing an "href" member with an empty string as its value ("href": "").</li>
                         <li>In many cases, a link target is further qualified by target attributes. 
                             Various types of attributes exist and they are conveyed as additional members of the link target object 
                             as detailed in <xref target="json-target-attributes"/>.</li>
@@ -329,7 +329,7 @@
                         <ul>
                             <li>"hreflang": The "hreflang" target attribute, 
 				    defined as optional and repeatable by <xref target="RFC8288"/>, 
-                                MUST be represented by an array (even if there only is one value to be represented), 
+                                MUST be represented by an "hreflang" member, and its value MUST be an array (even if there only is one value to be represented), 
                                 and each value in that array MUST be a string - representing one value 
                                 of the "hreflang" target attribute for a link - which follows the same 
                                 model as in the <xref target="RFC8288"/> syntax.</li>
@@ -528,12 +528,12 @@
                     <t>The Web linking model (<xref target="RFC8288"/>) provides for the use of extension target attributes as discussed in 
                         <xref target="json-target-attributes-extension"/>. 
 			    The use of other forms of extensions is NOT RECOMMENDED. 
-			    This limitation of the JSON format allows to unambiguously round trip between links provided in the HTTP "Link" header field, 
+			    Limiting the JSON format in this way allows to unambiguously round trip between links provided in the HTTP "Link" header field, 
                         sets of links serialized according to the "application/linkset" format, and sets of links serialized 
                         according to the "application/linkset+json" format.
                         </t>
                     <t>Cases may exist in which the use of extensions other than those of  <xref target="json-target-attributes-extension"/> may be useful. 
-		For example, when a link set publishers needs to include descriptive or technical metadata for internal consumption. 
+		For example, when a link set publisher needs to include descriptive or technical metadata for internal consumption. 
 	      In case such extensions are used they MUST NOT change the semantics of the JSON members defined in this specification.  
 	      Agents that consume JSON linkset documents can safely ignore such extensions.</t>
                     
