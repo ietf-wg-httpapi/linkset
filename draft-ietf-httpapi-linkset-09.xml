@@ -151,7 +151,7 @@
                 <t>The assigned media type for this format is "application/linkset".</t>
                 
                 <t>When converting an "application/linkset" document to a field value for the 
-                    HTTP "Link" header, newline characters SHOULD be removed in order to comply with 
+                    HTTP "Link" header, newline characters SHOULD be removed or SHOULD be replaced by white space (SP) in order to comply with 
                     <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>.</t>
                                 
                 <t>In order to support use cases where "application/linkset" documents are re-used 
@@ -252,9 +252,9 @@
                         <sourcecode type="json"><![CDATA[
 { "linkset":
   [ 
-    { "anchor": "http://example.net/bar", 
+    { "anchor": "https://example.net/bar", 
       "next": [
-        {"href": "http://example.com/foo"}
+        {"href": "https://example.com/foo"}
       ]
     } 
   ]
@@ -269,10 +269,10 @@
                         <sourcecode type="json"><![CDATA[
 { "linkset":
   [ 
-    { "anchor": "http://example.net/bar", 
+    { "anchor": "https://example.net/bar", 
       "item": [
-        {"href": "http://example.com/foo1"},
-        {"href": "http://example.com/foo2"}
+        {"href": "https://example.com/foo1"},
+        {"href": "https://example.com/foo2"}
       ]
     } 
   ]
@@ -288,14 +288,14 @@
                         <sourcecode type="json"><![CDATA[
 { "linkset":
   [ 
-    { "anchor": "http://example.net/bar", 
+    { "anchor": "https://example.net/bar", 
       "next": [
-        {"href": "http://example.com/foo1"}
+        {"href": "https://example.com/foo1"}
       ]
     },
-    { "anchor": "http://example.net/boo",
-      "http://example.com/relations/baz" : [
-        {"href": "http://example.com/foo2"}
+    { "anchor": "https://example.net/boo",
+      "https://example.com/relations/baz" : [
+        {"href": "https://example.com/foo2"}
       ]
     } 
   ]
@@ -364,9 +364,9 @@
                             <sourcecode type="json"><![CDATA[
 { "linkset":
   [ 
-    { "anchor": "http://example.net/bar", 
+    { "anchor": "https://example.net/bar", 
       "next": [
-        { "href":     "http://example.com/foo",
+        { "href":     "https://example.com/foo",
           "type":     "text/html",
           "hreflang": [ "en" , "de" ]
         }
@@ -413,9 +413,9 @@
                             <sourcecode type="json"><![CDATA[
 { "linkset":
   [ 
-    { "anchor": "http://example.net/bar", 
+    { "anchor": "https://example.net/bar", 
       "next": [
-        { "href":     "http://example.com/foo",
+        { "href":     "https://example.com/foo",
           "type":     "text/html",
           "hreflang": [ "en" , "de" ],
           "title":    "Next chapter",
@@ -464,9 +464,9 @@
                         <sourcecode type="json"><![CDATA[
 { "linkset":
   [ 
-    { "anchor": "http://example.net/bar", 
+    { "anchor": "https://example.net/bar", 
       "next": [
-        { "href": "http://example.com/foo",
+        { "href": "https://example.com/foo",
           "type": "text/html",
           "foo":  [ "foovalue" ],
           "bar":  [ "barone", "bartwo" ], 
@@ -818,7 +818,7 @@ Link: https://id.gs1.org/01/9506000134352?linkType=all
 ; rel="linkset"
 ; type="application/linkset+json"
 ; profile="https://www.gs1.org/voc/?show=linktypes"
-Location: https://dalgiardino.com/risotto-rice-with-mushrooms/
+Location: https://example.com/risotto-rice-with-mushrooms/
 ]]>
 </artwork> 
 </figure>
@@ -959,7 +959,7 @@ Content-Length: 396
             </section>
         </section>
         <section title="Security Considerations" anchor="security-considerations">
-            <t>The security considerations of Web Linking <xref target="RFC8288"/> apply, as long as they are not specifically discussing the risks of exposing information in HTTP header fields.</t>
+            <t>The security considerations of <xref target="RFC3986" section="7"/> apply, as well as those of Web Linking <xref target="RFC8288"/> as long as the latter are not specifically discussing the risks of exposing information in HTTP header fields.</t>
             <t>In general, links may cause information leakage when they expose information (such as URIs) that can be sensitive or private. Links may expose "hidden URIs" that are not supposed to be openly shared, and may not be sufficiently protected. Ideally, none of the URIs exposed in links should be supposed to be "hidden"; instead, if these URIs are supposed to be limited to certain users, then technical measures should be put in place so that accidentally exposing them does not cause any harm.</t>
             <t>For the specific mechanisms defined in this specification, two security considerations should be taken into account:</t>
             <ul>
