@@ -364,15 +364,14 @@ Internet-Draft                   Linkset                      March 2022
    context URI.
 
    The "application/linkset+json" serialization allows for OPTIONAL
-   support of a JSON-LD [W3C.REC-json-ld-20140116] serialization.  This
-   can be achieved by adding an appropriate context to the "application/
-   linkset+json" serialization using the approach described in section
-   6.8 (https://www.w3.org/TR/2014/REC-json-ld-20140116/#interpreting-
-   json-as-json-ld).  Communities of practice can decide which context
-   best meets their application needs.  Appendix A shows an example of a
-   possible context that, when added to a JSON serialization, allows it
-   to be interpreted as Resource Description Framework (RDF)
-   [W3C.REC-rdf11-concepts-20140225] data.
+   support of a JSON-LD serialization.  This can be achieved by adding
+   an appropriate context to the "application/linkset+json"
+   serialization using the approach described in Section 6.8. of
+   [W3C.REC-json-ld-20140116].  Communities of practice can decide which
+   context best meets their application needs.  Appendix A shows an
+   example of a possible context that, when added to a JSON
+   serialization, allows it to be interpreted as Resource Description
+   Framework (RDF) [W3C.REC-rdf11-concepts-20140225] data.
 
 4.2.1.  Set of Links
 
@@ -385,7 +384,8 @@ Internet-Draft                   Linkset                      March 2022
       JSON object - the "link context object" (see Section 4.2.2) - is
       used to represent links that have the same link context.
 
-
+   *  Even if there is only one link context object, it MUST be wrapped
+      in an array.
 
 
 
@@ -393,9 +393,6 @@ Wilde & Van de Sompel   Expires 14 September 2022               [Page 7]
 
 Internet-Draft                   Linkset                      March 2022
 
-
-   *  Even if there is only one link context object, it MUST be wrapped
-      in an array.
 
 4.2.2.  Link Context Object
 
@@ -442,6 +439,9 @@ Internet-Draft                   Linkset                      March 2022
       set of links is the target of the link in the link target object)
       MUST be handled by providing an "href" member with an empty string
       as its value ("href": "").
+
+
+
 
 
 
