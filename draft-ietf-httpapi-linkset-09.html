@@ -1,0 +1,2919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>Linkset: Media Types and a Link Relation Type for Link Sets</title>
+<meta content="Erik Wilde" name="author">
+<meta content="Herbert Van de Sompel" name="author">
+<meta content='
+       This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links. 
+    ' name="description">
+<meta content="xml2rfc 3.12.2" name="generator">
+<meta content="draft-ietf-httpapi-linkset-09" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.12.2
+    Python 3.6.9
+    appdirs 1.4.4
+    ConfigArgParse 1.2.3
+    google-i18n-address 2.4.0
+    html5lib 1.1
+    intervaltree 3.1.0
+    Jinja2 2.11.2
+    kitchen 1.2.6
+    lxml 4.5.2
+    pycountry 20.7.3
+    pyflakes 2.2.0
+    PyYAML 5.3.1
+    requests 2.24.0
+    setuptools 40.6.2
+    six 1.15.0
+-->
+<link href="/tmp/IqIFN3ZAJS.dir/draft-ietf-httpapi-linkset-09.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">/*
+
+  NOTE: Changes at the bottom of this file overrides some earlier settings.
+
+  Once the style has stabilized and has been adopted as an official RFC style,
+  this can be consolidated so that style settings occur only in one place, but
+  for now the contents of this file consists first of the initial CSS work as
+  provided to the RFC Formatter (xml2rfc) work, followed by itemized and
+  commented changes found necssary during the development of the v3
+  formatters.
+
+*/
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans'); /* Sans-serif */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif'); /* Serif (print) */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono'); /* Monospace */
+
+@viewport {
+  zoom: 1.0;
+  width: extend-to-zoom;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+/* general and mobile first */
+html {
+}
+body {
+  max-width: 90%;
+  margin: 1.5em auto;
+  color: #222;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+.ears {
+  display: none;
+}
+
+/* headings */
+#title, h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+  font-weight: bold;
+  line-height: 1.3;
+}
+#title {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 0.5em 0;
+  padding: 1em 0 0.5em;
+}
+.author {
+  padding-bottom: 4px;
+}
+h1 {
+  font-size: 26px;
+  margin: 1em 0;
+}
+h2 {
+  font-size: 22px;
+  margin-top: -20px;  /* provide offset for in-page anchors */
+  padding-top: 33px;
+}
+h3 {
+  font-size: 18px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h4 {
+  font-size: 16px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h5, h6 {
+  font-size: 14px;
+}
+#n-copyright-notice {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+/* general structure */
+p {
+  padding: 0;
+  margin: 0 0 1em 0;
+  text-align: left;
+}
+div, span {
+  position: relative;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+.alignCenter.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 1em 2em;
+}
+ol ol, ul ul, ol ul, ul ol {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+ul.ulBare, li.ulBare {
+  margin-left: 0em !important;
+}
+ul.compact, .ulCompact,
+ol.compact, .olCompact {
+  line-height: 100%;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+/* 
+dl.nohang > dt {
+  float: none;
+}
+*/
+dl > dd {
+  margin-bottom: .8em;
+  min-height: 1.3em;
+}
+dl.compact > dd, .dlCompact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+/* links */
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #22e; /* Arlen: WCAG 2019 */
+}
+a[href]:hover {
+  background-color: #f2f2f2;
+}
+figcaption a[href],
+a[href].selfRef {
+  color: #222;
+}
+/* XXX probably not this:
+a.selfRef:hover {
+  background-color: transparent;
+  cursor: default;
+} */
+
+/* Figures */
+tt, code, pre, code {
+  background-color: #f9f9f9;
+  font-family: 'Roboto Mono', monospace;
+}
+pre {
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 1em;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption {
+  font-style: italic;
+  margin: 0 0 1em 0;
+}
+@media screen {
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    max-width: calc(100% - 22px);
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 1.2em 2em;
+}
+blockquote {
+  background-color: #f9f9f9;
+  color: #111; /* Arlen: WCAG 2019 */
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5em 0.75em;
+}
+th {
+  text-align: left;
+  background-color: #e9e9e9;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f5f5f5;
+}
+table caption {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+table p {
+  /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
+     be allowed within tables more generally, it would be far better to select on a class. */
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  color: #666; /* Arlen: AHDJ 2019 */
+  text-decoration: none;
+  visibility: hidden;
+  user-select: none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+@media screen {
+  aside:hover > a.pilcrow,
+  p:hover > a.pilcrow,
+  blockquote:hover > a.pilcrow,
+  div:hover > a.pilcrow,
+  li:hover > a.pilcrow,
+  pre:hover > a.pilcrow {
+    visibility: visible;
+  }
+  a.pilcrow:hover {
+    background-color: transparent;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.bcp14 {
+  font-variant: small-caps;
+}
+
+.role {
+  font-variant: all-small-caps;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: 0.9em;
+}
+#identifiers dt {
+  width: 3em;
+  clear: left;
+}
+#identifiers dd {
+  float: left;
+  margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    float: none;
+  }
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #666; /* Arlen: WCAG 2019 */
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc  {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+nav.toc ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+nav.toc li {
+  line-height: 1.3em;
+  margin: 0.75em 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 7em;
+}
+.references dd {
+  margin-left: 8em;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+.index ul {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+.index ul ul {
+  margin: 0;
+}
+.index li {
+  margin: 0;
+  text-indent: -2em;
+  padding-left: 2em;
+  padding-bottom: 5px;
+}
+.indexIndex {
+  margin: 0.5em 0 1em;
+}
+.index a {
+  font-weight: 700;
+}
+/* make the index two-column on all but the smallest screens */
+@media (min-width: 600px) {
+  .index ul {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+  }
+  .index ul ul {
+    -moz-column-count: 1;
+    -moz-column-gap: 0;
+  }
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+
+/* temporary notes */
+.rfcEditorRemove::before {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  padding: 0.2em;
+  content: "The RFC Editor will remove this note";
+  color: #9e2a00; /* Arlen: WCAG 2019 */
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+}
+.rfcEditorRemove {
+  position: relative;
+  padding-top: 1.8em;
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  border-radius: 3px;
+}
+.cref {
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 1023px) {
+  body {
+    padding-top: 2em;
+  }
+  #title {
+    padding: 1em 0;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: -18px;  /* provide offset for in-page anchors */
+    padding-top: 38px;
+  }
+  #identifiers dd {
+    max-width: 60%;
+  }
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    border-bottom: 1px solid #ccc;
+  }
+  #toc h2 {
+    margin: -1px 0 0 0;
+    padding: 4px 0 4px 6px;
+    padding-right: 1em;
+    min-width: 190px;
+    font-size: 1.1em;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 6px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 1024px) {
+  body {
+    max-width: 724px;
+    margin: 42px auto;
+    padding-left: 1.5em;
+    padding-right: 29em;
+  }
+  #toc {
+    position: fixed;
+    top: 42px;
+    right: 42px;
+    width: 25%;
+    margin: 0;
+    padding: 0 1em;
+    z-index: 1;
+  }
+  #toc h2 {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 0;
+    overflow: auto;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre {
+    page-break-inside: avoid;
+  }
+  figure {
+    overflow: scroll;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  h2+*, h3+*, h4+*, h5+*, h6+* {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+/* This is commented out here, as the string-set: doesn't
+   pass W3C validation currently */
+/*
+.ears thead .left {
+  string-set: ears-top-left content();
+}
+
+.ears thead .center {
+  string-set: ears-top-center content();
+}
+
+.ears thead .right {
+  string-set: ears-top-right content();
+}
+
+.ears tfoot .left {
+  string-set: ears-bottom-left content();
+}
+
+.ears tfoot .center {
+  string-set: ears-bottom-center content();
+}
+
+.ears tfoot .right {
+  string-set: ears-bottom-right content();
+}
+*/
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+  /* The follwing is commented out here, but set appropriately by in code, as
+     the content depends on the document */
+  /*
+  @top-left {
+    content: 'Internet-Draft';
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-left {
+    content: string(ears-top-left);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-center {
+    content: string(ears-top-center);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-right {
+    content: string(ears-top-right);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @bottom-left {
+    content: string(ears-bottom-left);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-center {
+    content: string(ears-bottom-center);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-right {
+      content: '[Page ' counter(page) ']';
+      vertical-align: top;
+      border-top: solid 1px #ccc;
+  }
+  */
+
+}
+
+/* Changes introduced to fix issues found during implementation */
+/* Make sure links are clickable even if overlapped by following H* */
+a {
+  z-index: 2;
+}
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Leave room in document info to show Internet-Draft on one line */
+#identifiers dt {
+  width: 8em;
+}
+
+/* Don't waste quite as much whitespace between label and value in doc info */
+#identifiers dd {
+  margin-left: 1em;
+}
+
+/* Give floating toc a background color (needed when it's a div inside section */
+#toc {
+  background-color: white;
+}
+
+/* Make the collapsed ToC header render white on gray also when it's a link */
+@media screen and (max-width: 1023px) {
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+}
+
+/* Give the bottom of the ToC some whitespace */
+@media screen and (min-width: 1024px) {
+  #toc {
+    padding: 0 0 1em 1em;
+  }
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* prevent monospace from becoming overly large */
+tt, code, pre, code {
+  font-size: 95%;
+}
+
+/* Fix the height/width aspect for ascii art*/
+pre.sourcecode,
+.art-text pre {
+  line-height: 1.12;
+}
+
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin-right: 0.5em;
+}
+
+/* Fix the dl styling to match the RFC 7992 attributes */
+dl > dt,
+dl.dlParallel > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+
+/* Provide styling for table cell text alignment */
+table td.text-left,
+table th.text-left {
+  text-align: left;
+}
+table td.text-center,
+table th.text-center {
+  text-align: center;
+}
+table td.text-right,
+table th.text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact informatio look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 30em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Provide table alignment support.  We can't use the alignX classes above
+   since they do unwanted things with caption and other styling. */
+table.right {
+ margin-left: auto;
+ margin-right: 0;
+}
+table.center {
+ margin-left: auto;
+ margin-right: auto;
+}
+table.left {
+ margin-left: 0;
+ margin-right: auto;
+}
+
+/* Give the table caption label the same styling as the figcaption */
+caption a[href] {
+  color: #222;
+}
+
+@media print {
+  .toplink {
+    display: none;
+  }
+
+  /* avoid overwriting the top border line with the ToC header */
+  #toc {
+    padding-top: 1px;
+  }
+
+  /* Avoid page breaks inside dl and author address entries */
+  .vcard {
+    page-break-inside: avoid;
+  }
+
+}
+/* Tweak the bcp14 keyword presentation */
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+/* Tweak the invisible space above H* in order not to overlay links in text above */
+ h2 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 31px;
+ }
+ h3 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+ h4 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+/* Float artwork pilcrow to the right */
+@media screen {
+  .artwork a.pilcrow {
+    display: block;
+    line-height: 0.7;
+    margin-top: 0.15em;
+  }
+}
+/* Make pilcrows on dd visible */
+@media screen {
+  dd:hover > a.pilcrow {
+    visibility: visible;
+  }
+}
+/* Make the placement of figcaption match that of a table's caption
+   by removing the figure's added bottom margin */
+.alignLeft.art-text,
+.alignCenter.art-text,
+.alignRight.art-text {
+   margin-bottom: 0;
+}
+.alignLeft,
+.alignCenter,
+.alignRight {
+  margin: 1em 0 0 0;
+}
+/* In print, the pilcrow won't show on hover, so prevent it from taking up space,
+   possibly even requiring a new line */
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+/* Styling for the external metadata */
+div#external-metadata {
+  background-color: #eee;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  display: none;
+}
+div#internal-metadata {
+  padding: 0.5em;                       /* to match the external-metadata padding */
+}
+/* Styling for title RFC Number */
+h1#rfcnum {
+  clear: both;
+  margin: 0 0 -1em;
+  padding: 1em 0 0 0;
+}
+/* Make .olPercent look the same as <ol><li> */
+dl.olPercent > dd {
+  margin-bottom: 0.25em;
+  min-height: initial;
+}
+/* Give aside some styling to set it apart */
+aside {
+  border-left: 1px solid #ddd;
+  margin: 1em 0 1em 2em;
+  padding: 0.2em 2em;
+}
+aside > dl,
+aside > ol,
+aside > ul,
+aside > table,
+aside > p {
+  margin-bottom: 0.5em;
+}
+/* Additional page break settings */
+@media print {
+  figcaption, table caption {
+    page-break-before: avoid;
+  }
+}
+/* Font size adjustments for print */
+@media print {
+  body  { font-size: 10pt;      line-height: normal; max-width: 96%; }
+  h1    { font-size: 1.72em;    padding-top: 1.5em; } /* 1*1.2*1.2*1.2 */
+  h2    { font-size: 1.44em;    padding-top: 1.5em; } /* 1*1.2*1.2 */
+  h3    { font-size: 1.2em;     padding-top: 1.5em; } /* 1*1.2 */
+  h4    { font-size: 1em;       padding-top: 1.5em; }
+  h5, h6 { font-size: 1em;      margin: initial; padding: 0.5em 0 0.3em; }
+}
+/* Sourcecode margin in print, when there's no pilcrow */
+@media print {
+  .artwork,
+  .sourcecode {
+    margin-bottom: 1em;
+  }
+}
+/* Avoid narrow tables forcing too narrow table captions, which may render badly */
+table {
+  min-width: 20em;
+}
+/* ol type a */
+ol.type-a { list-style-type: lower-alpha; }
+ol.type-A { list-style-type: upper-alpha; }
+ol.type-i { list-style-type: lower-roman; }
+ol.type-I { list-style-type: lower-roman; }
+/* Apply the print table and row borders in general, on request from the RPC,
+and increase the contrast between border and odd row background sligthtly */
+table {
+  border: 1px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f8f8f8;
+}
+/* Use style rules to govern display of the TOC. */
+@media screen and (max-width: 1023px) {
+  #toc nav { display: none; }
+  #toc.active nav { display: block; }
+}
+/* Add support for keepWithNext */
+.keepWithNext {
+  break-after: avoid-page;
+  break-after: avoid-page;
+}
+/* Add support for keepWithPrevious */
+.keepWithPrevious {
+  break-before: avoid-page;
+}
+/* Change the approach to avoiding breaks inside artwork etc. */
+figure, pre, table, .artwork, .sourcecode  {
+  break-before: auto;
+  break-after: auto;
+}
+/* Avoid breaks between <dt> and <dd> */
+dl {
+  break-before: auto;
+  break-inside: auto;
+}
+dt {
+  break-before: auto;
+  break-after: avoid-page;
+}
+dd {
+  break-before: avoid-page;
+  break-after: auto;
+  orphans: 3;
+  widows: 3
+}
+span.break, dd.break {
+  margin-bottom: 0;
+  min-height: 0;
+  break-before: auto;
+  break-inside: auto;
+  break-after: auto;
+}
+/* Undo break-before ToC */
+@media print {
+  #toc {
+    break-before: auto;
+  }
+}
+/* Text in compact lists should not get extra bottim margin space,
+   since that would makes the list not compact */
+ul.compact p, .ulCompact p,
+ol.compact p, .olCompact p {
+ margin: 0;
+}
+/* But the list as a whole needs the extra space at the end */
+section ul.compact,
+section .ulCompact,
+section ol.compact,
+section .olCompact {
+  margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+}
+/* The tt and code background above interferes with for instance table cell
+   backgrounds.  Changed to something a bit more selective. */
+tt, code {
+  background-color: transparent;
+}
+p tt, p code, li tt, li code {
+  background-color: #f8f8f8;
+}
+/* Tweak the pre margin -- 0px doesn't come out well */
+pre {
+   margin-top: 0.5px;
+}
+/* Tweak the comact list text */
+ul.compact, .ulCompact,
+ol.compact, .olCompact,
+dl.compact, .dlCompact {
+  line-height: normal;
+}
+/* Don't add top margin for nested lists */
+li > ul, li > ol, li > dl,
+dd > ul, dd > ol, dd > dl,
+dl > dd > dl {
+  margin-top: initial;
+}
+/* Elements that should not be rendered on the same line as a <dt> */
+/* This should match the element list in writer.text.TextWriter.render_dl() */
+dd > div.artwork:first-child,
+dd > aside:first-child,
+dd > figure:first-child,
+dd > ol:first-child,
+dd > div:first-child > pre.sourcecode,
+dd > table:first-child,
+dd > ul:first-child {
+  clear: left;
+}
+/* fix for weird browser behaviour when <dd/> is empty */
+dt+dd:empty::before{
+  content: "\00a0";
+}
+/* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+li > p {
+  margin-bottom: 0.5em
+}
+/* Don't let p margin spill out from inside list items */
+li > p:last-of-type {
+  margin-bottom: 0;
+}
+</style>
+<link href="rfc-local.css" rel="stylesheet" type="text/css">
+<script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+</head>
+<body>
+<script src="metadata.min.js"></script>
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">Linkset</td>
+<td class="right">March 2022</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Wilde &amp; Van de Sompel</td>
+<td class="center">Expires 14 September 2022</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">Network Working Group</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2022-03-13" class="published">13 March 2022</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Standards Track</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2022-09-14">14 September 2022</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">E. Wilde</div>
+<div class="org">Axway</div>
+</div>
+<div class="author">
+      <div class="author-name">H. Van de Sompel</div>
+<div class="org">Data Archiving and Networked Services</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">Linkset: Media Types and a Link Relation Type for Link Sets</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note" id="section-note.1">
+      <h2 id="name-note-to-readers">
+<a href="#name-note-to-readers" class="section-name selfRef">Note to Readers</a>
+      </h2>
+<p id="section-note.1-1">Please discuss this draft on the "Building Blocks for HTTP APIs" mailing list (<span><a href="https://www.ietf.org/mailman/listinfo/httpapi">https://www.ietf.org/mailman/listinfo/httpapi</a></span>).<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Online access to all versions and files is available on GitHub (<span><a href="https://github.com/ietf-wg-httpapi/linkset">https://github.com/ietf-wg-httpapi/linkset</a></span>).<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 14 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2022 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-use-cases-and-motivation" class="xref">Use Cases and Motivation</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-third-party-links" class="xref">Third-Party Links</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-challenges-writing-to-http-" class="xref">Challenges Writing to HTTP Link Header Field</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-large-number-of-links" class="xref">Large Number of Links</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-document-formats-for-sets-o" class="xref">Document Formats for Sets of Links</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-http-link-document-format-a" class="xref">HTTP Link Document Format: application/linkset</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-json-document-format-applic" class="xref">JSON Document Format: application/linkset+json</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-set-of-links" class="xref">Set of Links</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+                    <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-link-context-object" class="xref">Link Context Object</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+                    <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="xref">4.2.3</a>.  <a href="#name-link-target-object" class="xref">Link Target Object</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+                    <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="xref">4.2.4</a>.  <a href="#name-link-target-attributes" class="xref">Link Target Attributes</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.5">
+                    <p id="section-toc.1-1.4.2.2.2.5.1"><a href="#section-4.2.5" class="xref">4.2.5</a>.  <a href="#name-json-extensibility" class="xref">JSON Extensibility</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-the-profile-parameter-for-m" class="xref">The "profile" parameter for media types to Represent Sets of Links</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-the-linkset-relation-type-f" class="xref">The "linkset" Relation Type for Linking to a Set of Links</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-examples" class="xref">Examples</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-set-of-links-provided-as-ap" class="xref">Set of Links Provided as application/linkset</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-set-of-links-provided-as-app" class="xref">Set of Links Provided as application/linkset+json</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-discovering-a-link-set-via-" class="xref">Discovering a Link Set via the "linkset" Link Relation Type</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-link-set-profiles" class="xref">Link Set Profiles</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4.2.1">
+                    <p id="section-toc.1-1.7.2.4.2.1.1"><a href="#section-7.4.1" class="xref">7.4.1</a>.  <a href="#name-using-a-profile-attribute-w" class="xref">Using a "profile" Attribute with a "linkset" Link</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4.2.2">
+                    <p id="section-toc.1-1.7.2.4.2.2.1"><a href="#section-7.4.2" class="xref">7.4.2</a>.  <a href="#name-using-a-profile-parameter-w" class="xref">Using a "profile" Parameter with a Link Set Media Type</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4.2.3">
+                    <p id="section-toc.1-1.7.2.4.2.3.1"><a href="#section-7.4.3" class="xref">7.4.3</a>.  <a href="#name-using-a-link-with-a-profile" class="xref">Using a Link with a "profile" Link Relation Type</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-link-relation-type-linkset" class="xref">Link Relation Type: linkset</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-media-type-application-link" class="xref">Media Type: application/linkset</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-media-type-application-links" class="xref">Media Type: application/linkset+json</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-normative-references" class="xref">Normative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-informative-references" class="xref">Informative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-json-ld-context" class="xref">JSON-LD Context</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="xref">Appendix B</a>.  <a href="#name-implementation-status" class="xref">Implementation Status</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
+                <p id="section-toc.1-1.13.2.1.1"><a href="#appendix-B.1" class="xref">B.1</a>.  <a href="#name-gs1" class="xref">GS1</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
+                <p id="section-toc.1-1.13.2.2.1"><a href="#appendix-B.2" class="xref">B.2</a>.  <a href="#name-fair-signposting-profile" class="xref">FAIR Signposting Profile</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.3">
+                <p id="section-toc.1-1.13.2.3.1"><a href="#appendix-B.3" class="xref">B.3</a>.  <a href="#name-open-journal-systems-ojs" class="xref">Open Journal Systems (OJS)</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+            <p id="section-toc.1-1.15.1"><a href="#appendix-D" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">Resources on the Web often use typed Web Links <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, either embedded in resource representations, for example using the &lt;link&gt; element for HTML documents, or conveyed in the HTTP "Link" header field for documents of any media type. In some cases, however, providing links in this manner is impractical or impossible and delivering a set of links as a stand-alone document is preferable.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Therefore, this specification defines two formats for representing sets of Web Links and their attributes as stand-alone documents. One serializes links in the same format as used in the HTTP Link header field, and the other serializes links in JSON. It also defines associated media types to represent sets of links, and the "linkset" relation type that supports discovery of any resource that conveys a set of links as a stand-alone document.<a href="#section-1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="terminology">
+<section id="section-2">
+      <h2 id="name-terminology">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+      </h2>
+<p id="section-2-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">This specification uses the terms "link context" and "link target" as defined in <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">In the examples provided in this document, links in the HTTP "Link" header field are shown on separate lines in order to improve readability. 
+                Note, however, that as per <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-5.5" class="relref">Section 5.5</a> of [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span>, line breaks are deprecated in values for HTTP fields; only whitespaces and 
+                tabs are supported as separators.<a href="#section-2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="use-cases">
+<section id="section-3">
+      <h2 id="name-use-cases-and-motivation">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-use-cases-and-motivation" class="section-name selfRef">Use Cases and Motivation</a>
+      </h2>
+<p id="section-3-1">The following sections describe use cases in which providing links by means of a standalone document instead of in an HTTP "Link" header field or as links embedded in the resource representation is advantageous or necessary.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">For all scenarios, links could be provided by means of a stand-alone document that is formatted according to the JSON-based serialization, the serialization aligned with the HTTP "Link" field format, or both. The former serialization is motivated by the widespread use of JSON and related tools, which suggests that handling sets of links expressed as JSON documents should be attractive to developers. The latter serialization is provided for compatibility with the existing serialization used in the HTTP "Link" field and to allow reuse of tools created to handle it.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">It is important to keep in mind that when providing links by means of a standalone representation, other links can still be provided using other approaches, i.e. it is possible to combine various mechanisms to convey links.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<div id="third-party">
+<section id="section-3.1">
+        <h3 id="name-third-party-links">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-third-party-links" class="section-name selfRef">Third-Party Links</a>
+        </h3>
+<p id="section-3.1-1">In some cases it is useful that links pertaining to a resource are provided 
+                    by a server other than the one that hosts the resource. For example, this allows:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.1-2.1">Providing links in which the resource is involved not just as link context but 
+                        also as link target, with a different resource being the link context.<a href="#section-3.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.1-2.2">Providing links pertaining to the resource that the server hosting that 
+                        resource is not aware of.<a href="#section-3.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.1-2.3">External management of links pertaining to the resource in a special-purpose link
+                        management service.<a href="#section-3.1-2.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-3.1-3">In such cases, links pertaining to a resource can be provided by another, specific resource. 
+                    That specific resource may be managed by the same or by another custodian as the resource to which the links pertain. 
+                    For clients intent on consuming links provided in that manner, it would be beneficial if the following conditions were met:<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.1-4.1">Links are provided in a document that uses a well-defined media type.<a href="#section-3.1-4.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.1-4.2">The resource to which the provided links pertain is able to link to the resource that provides these links using a well-known 
+                    link relation type.<a href="#section-3.1-4.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-3.1-5">These requirements are addressed in this specification through the definition of two media types and a link relation type, respectively.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="header-writing">
+<section id="section-3.2">
+        <h3 id="name-challenges-writing-to-http-">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-challenges-writing-to-http-" class="section-name selfRef">Challenges Writing to HTTP Link Header Field</a>
+        </h3>
+<p id="section-3.2-1">In some cases, it is not straightforward to write links to the HTTP "Link" header field
+                    from an application. This can, for example, be the case because not all 
+                    required link information is available to the application or because the 
+                    application does not have the capability to directly write HTTP fields. 
+                    In such cases, providing links by means of a standalone document can be a solution. 
+                    Making the resource that provides these links discoverable can be achieved by means of a 
+                    typed link.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="link-volume">
+<section id="section-3.3">
+        <h3 id="name-large-number-of-links">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-large-number-of-links" class="section-name selfRef">Large Number of Links</a>
+        </h3>
+<p id="section-3.3-1">When conveying links in an HTTP "Link" header field, it is possible for the size of the HTTP 
+                    response fields to become unpredictable. This can be the case when links are determined 
+                    dynamically in a manner dependent on a range of contextual factors. It is possible to statically configure 
+                    a web server to correctly handle large HTTP response fields by specifying an upper bound 
+                    for their size. But when the number of links is 
+                    unpredictable, estimating a reliable upper bound is challenging.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2"><span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-15" class="relref">Section 15</a> of HTTP [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span> defines error codes related to excess communication 
+                    by the user agent ("413 Request Entity Too Large" and "414 Request-URI Too Long"), but no specific
+                    error codes are defined to indicate that response field content exceeds the upper bound that can 
+                    be handled by the server and thus has been truncated.
+                    As a result, applications take counter measures aimed at controlling 
+                    the size of the HTTP "Link" header field, for example by limiting the links they provide to those 
+                    with select relation types, thereby limiting the value of the HTTP "Link" header field to clients. 
+                    Providing links by means of a standalone document overcomes challenges related to the unpredictable 
+                    (to the web server implementation) nature of the size of HTTP "Link" header fields.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="linkset-formats">
+<section id="section-4">
+      <h2 id="name-document-formats-for-sets-o">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-document-formats-for-sets-o" class="section-name selfRef">Document Formats for Sets of Links</a>
+      </h2>
+<p id="section-4-1">This section specifies two document formats to convey a set of links. Both are based on the abstract model  
+                specified in <span><a href="https://rfc-editor.org/rfc/rfc8288#section-2" class="relref">Section 2</a> of Web Linking [<a href="#RFC8288" class="xref">RFC8288</a>]</span> 
+                that defines a link as consisting of a "link context", a "link relation type", a "link target", 
+                and optional "target attributes":<a href="#section-4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-2.1">The format defined in <a href="#linkset-native" class="xref">Section 4.1</a> is near identical to the field value 
+                    of the HTTP "Link" header field as specified in Web Linking <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3" class="relref">Section 3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-4-2.2">The format defined in <a href="#linkset-json" class="xref">Section 4.2</a> is expressed in <span><a href="#RFC8259" class="xref">JSON</a> [<a href="#RFC8259" class="xref">RFC8259</a>]</span>.<a href="#section-4-2.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-4-3">Note that <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> deprecates the "rev" construct that was provided by <span>[<a href="#RFC5988" class="xref">RFC5988</a>]</span> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<div id="linkset-native">
+<section id="section-4.1">
+        <h3 id="name-http-link-document-format-a">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-http-link-document-format-a" class="section-name selfRef">HTTP Link Document Format: application/linkset</a>
+        </h3>
+<p id="section-4.1-1">This document format is near identical to the field value of the 
+                    HTTP "Link" header field as defined in 
+                    <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3" class="relref">Section 3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>, more specifically by  
+                    its ABNF <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span> production rule for "Link" and subsequent ones. It differs from the format for field values of the 
+                    HTTP "Link" header only in that not only spaces and horizontal tabs are allowed as separators but also newline 
+                    characters as a means to improve readability for humans.
+                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">The assigned media type for this format is "application/linkset".<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">When converting an "application/linkset" document to a field value for the 
+                    HTTP "Link" header, newline characters SHOULD be removed or SHOULD be replaced by white space (SP) in order to comply with 
+                    <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-5.5" class="relref">Section 5.5</a> of [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span>.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">In order to support use cases where "application/linkset" documents are re-used 
+                    outside the context of an HTTP interaction,  
+                    it is RECOMMENDED to make them self-contained by adhering to the following guidelines:<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.1-5.1">For every link provided in the set of links, explicitly provide the link context  
+                        using the "anchor" attribute.<a href="#section-4.1-5.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.1-5.2">For link context ("anchor" attribute) and link target 
+                        ("href" attribute), use URI references that are not relative references (as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>).<a href="#section-4.1-5.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-4.1-6">If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
+                    which URI is used as context.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
+<p id="section-4.1-7">It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
+                    format specified in <span>[<a href="#RFC6690" class="xref">RFC6690</a>]</span> in that the former fully matches the 
+                    field value of the HTTP "Link" header field as defined in <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3" class="relref">Section 3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>, whereas 
+                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="linkset-json">
+<section id="section-4.2">
+        <h3 id="name-json-document-format-applic">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-json-document-format-applic" class="section-name selfRef">JSON Document Format: application/linkset+json</a>
+        </h3>
+<p id="section-4.2-1">This document format uses JSON <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> as the syntax to represent 
+                    a set of links. The set of links follows the abstract model defined by Web Linking <span><a href="https://rfc-editor.org/rfc/rfc8288#section-2" class="relref">Section 2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">The assigned media type for this format is "application/linkset+json".<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">In order to support use cases where "application/linkset+json" documents are re-used 
+                    outside the context of an HTTP interaction,  
+                    it is RECOMMENDED to make them self-contained by adhering to the following guidelines:<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2-4.1">For every link provided in the set of links, explicitly provide the link context  
+                        using the "anchor" member.<a href="#section-4.2-4.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-4.2-4.2">For link context ("anchor" member) and link target 
+                        ("href" member), use URI references that are not relative references (as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>).<a href="#section-4.2-4.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-4.2-5">If these recommendations are not followed, interpretation of "application/linkset+json" will depend on which URI is used as context URI.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2-6">The "application/linkset+json" serialization allows for OPTIONAL support of a JSON-LD <span>[<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span> serialization.
+ This can be achieved by adding an appropriate context to the "application/linkset+json" serialization using the approach described in 
+                    <a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/#interpreting-json-as-json-ld">section 6.8</a>.
+                    Communities of practice can decide which context best meets their application needs.  
+ <a href="#appendix-1" class="xref">Appendix A</a> shows an example of a possible context that, when added to a JSON serialization, 
+ allows it to be interpreted as Resource Description Framework (RDF) <span>[<a href="#W3C.REC-rdf11-concepts-20140225" class="xref">W3C.REC-rdf11-concepts-20140225</a>]</span> data.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+<div id="linkset-in-json">
+<section id="section-4.2.1">
+          <h4 id="name-set-of-links">
+<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-set-of-links" class="section-name selfRef">Set of Links</a>
+          </h4>
+<p id="section-4.2.1-1">In the JSON representation of a set of links:<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.1-2.1">A set of links is represented in JSON as an object which MUST contain "linkset" as its sole member.<a href="#section-4.2.1-2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-4.2.1-2.2">The value of the "linkset" member is an array in which a distinct JSON object - 
+                            the "link context object" (see <a href="#linkset-json-link-context-object" class="xref">Section 4.2.2</a>) - 
+                            is used to represent links that have the same link context.<a href="#section-4.2.1-2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-4.2.1-2.3">Even if there is only one link context object, it MUST be wrapped in an array.<a href="#section-4.2.1-2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+</section>
+</div>
+<div id="linkset-json-link-context-object">
+<section id="section-4.2.2">
+          <h4 id="name-link-context-object">
+<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-link-context-object" class="section-name selfRef">Link Context Object</a>
+          </h4>
+<p id="section-4.2.2-1">In the JSON representation one or more links that have the same link context  
+                        are represented by a JSON object, the link context object. A link context object 
+                        adheres to the following rules:<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.2-2.1">Each link context object MAY contain an "anchor" member with a value that represents 
+                            the link context. If present, this value MUST be a URI reference 
+                            and SHOULD NOT be a relative reference as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>.<a href="#section-4.2.2-2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-4.2.2-2.2">
+              <p id="section-4.2.2-2.2.1">
+                            For each distinct relation type that the link context has with link targets,  
+                            a link context object MUST contain an additional member. 
+                            The value of this member is an array in which a distinct JSON object 
+                            - the "link target object" (see <a href="#linkset-json-link-target-object" class="xref">Section 4.2.3</a>) - 
+                            MUST be used for each link target for which the relationship with 
+                            the link context (value of the encompassing anchor member) applies. The name 
+                            of this member expresses the relation type of the link as follows:<a href="#section-4.2.2-2.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.2-2.2.2.1">For registered relation types (<span><a href="https://rfc-editor.org/rfc/rfc8288#section-2.1.1" class="relref">Section 2.1.1</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>), 
+                                    the name of this member is the registered name of the relation type.<a href="#section-4.2.2-2.2.2.1" class="pilcrow">¶</a>
+</li>
+                <li class="normal" id="section-4.2.2-2.2.2.2">For extension relation types (<span><a href="https://rfc-editor.org/rfc/rfc8288#section-2.1.2" class="relref">Section 2.1.2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>), 
+                                    the name of this member is the URI that uniquely represents the relation type.<a href="#section-4.2.2-2.2.2.2" class="pilcrow">¶</a>
+</li>
+              </ul>
+</li>
+            <li class="normal" id="section-4.2.2-2.3">Even if there is only one link target object it MUST be wrapped in an array.<a href="#section-4.2.2-2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+</section>
+</div>
+<div id="linkset-json-link-target-object">
+<section id="section-4.2.3">
+          <h4 id="name-link-target-object">
+<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-link-target-object" class="section-name selfRef">Link Target Object</a>
+          </h4>
+<p id="section-4.2.3-1">In the JSON representation a link target is represented by a JSON object, the link target object. 
+                        A link target object adheres to the following rules:<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.3-2.1">Each link target object MUST contain an "href" member with a value that represents 
+                            the link target. This value MUST be a URI reference and SHOULD NOT be a relative reference  
+                            as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>. Cases where the href member is present, but no value is provided 
+                            for it (i.e. the resource providing the set of links is the target of the link 
+                            in the link target object) MUST be handled by providing an "href" member with an empty string as its value ("href": "").<a href="#section-4.2.3-2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-4.2.3-2.2">In many cases, a link target is further qualified by target attributes. 
+                            Various types of attributes exist and they are conveyed as additional members of the link target object 
+                            as detailed in <a href="#json-target-attributes" class="xref">Section 4.2.4</a>.<a href="#section-4.2.3-2.2" class="pilcrow">¶</a>
+</li>
+          </ul>
+<p id="section-4.2.3-3">The following example of a JSON-serialized set of links represents one
+                        link with its core components: link context, link relation
+                        type, and link target.<a href="#section-4.2.3-3" class="pilcrow">¶</a></p>
+<figure id="figure-1">
+            <div id="section-4.2.3-4.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://example.net/bar",
+      "next": [
+        {"href": "https://example.com/foo"}
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a></figcaption></figure>
+<p id="section-4.2.3-5">The following example of a JSON-serialized set of links represents two links 
+                        that share link context and relation type but have different link targets.<a href="#section-4.2.3-5" class="pilcrow">¶</a></p>
+<figure id="figure-2">
+            <div id="section-4.2.3-6.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://example.net/bar",
+      "item": [
+        {"href": "https://example.com/foo1"},
+        {"href": "https://example.com/foo2"}
+      ]
+    }
+  ]
+}
+
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a></figcaption></figure>
+<p id="section-4.2.3-7">The following example shows a set of links that represents two links, each with 
+                    a different link context, link target, and relation type. 
+                    One relation type is registered, the other is an extension relation type.<a href="#section-4.2.3-7" class="pilcrow">¶</a></p>
+<figure id="figure-3">
+            <div id="section-4.2.3-8.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://example.net/bar",
+      "next": [
+        {"href": "https://example.com/foo1"}
+      ]
+    },
+    { "anchor": "https://example.net/boo",
+      "https://example.com/relations/baz" : [
+        {"href": "https://example.com/foo2"}
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a></figcaption></figure>
+</section>
+</div>
+<div id="json-target-attributes">
+<section id="section-4.2.4">
+          <h4 id="name-link-target-attributes">
+<a href="#section-4.2.4" class="section-number selfRef">4.2.4. </a><a href="#name-link-target-attributes" class="section-name selfRef">Link Target Attributes</a>
+          </h4>
+<p id="section-4.2.4-1">A link may be further qualified by target attributes as defined by <span><a href="https://rfc-editor.org/rfc/rfc8288#section-2" class="relref">Section 2</a> of Web Linking [<a href="#RFC8288" class="xref">RFC8288</a>]</span>. 
+                        Three types of attributes exist:<a href="#section-4.2.4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.4-2.1">Serialisation-defined attributes described in <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4.1" class="relref">Section 3.4.1</a> of Web Linking [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4.2.4-2.1" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-4.2.4-2.2">Extension attributes defined and used by communities as allowed by  
+                            <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4.2" class="relref">Section 3.4.2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4.2.4-2.2" class="pilcrow">¶</a>
+</li>
+            <li class="normal" id="section-4.2.4-2.3">Internationalized versions of the "title" attribute defined by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> and of extension attributes
+                            allowed by <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4" class="relref">Section 3.4</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4.2.4-2.3" class="pilcrow">¶</a>
+</li>
+            </ul>
+<p id="section-4.2.4-3">The handling of these different types of attributes is described in the sections below.<a href="#section-4.2.4-3" class="pilcrow">¶</a></p>
+<div id="json-target-attributes-existing">
+<section id="section-4.2.4.1">
+            <h5 id="name-target-attributes-defined-b">
+<a href="#section-4.2.4.1" class="section-number selfRef">4.2.4.1. </a><a href="#name-target-attributes-defined-b" class="section-name selfRef">Target Attributes Defined by Web Linking</a>
+            </h5>
+<p id="section-4.2.4.1-1"><span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4.1" class="relref">Section 3.4.1</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> defines the following target attributes that may be used to annotate links: 
+                            "hreflang", "media", "title", "title*", and "type";  
+                            these target attributes follow different occurrence and value patterns.  
+                            In the JSON representation, these attributes MUST be conveyed as additional 
+                            members of the link target object as follows:<a href="#section-4.2.4.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.4.1-2.1">"hreflang": The "hreflang" target attribute, 
+     defined as optional and repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, 
+                                MUST be represented by an "hreflang" member, and its value MUST be an array (even if there only is one value to be represented), 
+                                and each value in that array MUST be a string - representing one value 
+                                of the "hreflang" target attribute for a link - which follows the same 
+                                model as in the <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> syntax.<a href="#section-4.2.4.1-2.1" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.1-2.2">"media": The "media" target attribute, 
+     defined as optional and not repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, MUST be 
+                                represented by a "media" member 
+                                in the link target object, and its value MUST be a string that follows the 
+                                same model as in the <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> syntax.<a href="#section-4.2.4.1-2.2" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.1-2.3">"type": The "type" target attribute, 
+     defined as optional and not repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, 
+     MUST be represented by a "type" member 
+                                in the link target object, and its value MUST be a string that follows the 
+                                same model as in the <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> syntax.<a href="#section-4.2.4.1-2.3" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.1-2.4">"title": The "title" target attribute, 
+     defined as optional and not repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>,
+     MUST be represented by a "title" 
+                                member in the link target object, and its value MUST be a string that follows 
+                                the same model as in the <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> syntax.<a href="#section-4.2.4.1-2.4" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.1-2.5">"title*": The "title*" target attribute, 
+     defined as optional and not repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, 
+                                is motivated by character encoding 
+                                and language issues and follows the model defined in <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span>. 
+                                The details of the JSON 
+                                representation that applies to title* are described in 
+                                <a href="#linkset-json-i18n-link-parameter" class="xref">Section 4.2.4.2</a>.<a href="#section-4.2.4.1-2.5" class="pilcrow">¶</a>
+</li>
+            </ul>
+<p id="section-4.2.4.1-3">The following example illustrates how the repeatable "hreflang" and the 
+                            not repeatable "type" target attributes are represented in a link target object.<a href="#section-4.2.4.1-3" class="pilcrow">¶</a></p>
+<figure id="figure-4">
+              <div id="section-4.2.4.1-4.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://example.net/bar",
+      "next": [
+        { "href":     "https://example.com/foo",
+          "type":     "text/html",
+          "hreflang": [ "en" , "de" ]
+        }
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a></figcaption></figure>
+</section>
+</div>
+<div id="linkset-json-i18n-link-parameter">
+<section id="section-4.2.4.2">
+            <h5 id="name-internationalized-target-at">
+<a href="#section-4.2.4.2" class="section-number selfRef">4.2.4.2. </a><a href="#name-internationalized-target-at" class="section-name selfRef">Internationalized Target Attributes</a>
+            </h5>
+<p id="section-4.2.4.2-1">In addition to the target attributes described in <a href="#json-target-attributes-existing" class="xref">Section 4.2.4.1</a>,  
+                            <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4" class="relref">Section 3.4</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> also supports 
+                            attributes that follow the content model of <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span>. 
+                            In <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, these target 
+                            attributes are recognizable by the use of a trailing asterisk in the attribute name, 
+                            such as "title*". 
+                            The content model of <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span> uses a string-based microsyntax 
+                            that represents the character encoding, an optional language tag,
+                            and the escaped attribute value encoded according to the specified character encoding.<a href="#section-4.2.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.4.2-2">The JSON serialization for these target attributes MUST be  
+                            as follows:<a href="#section-4.2.4.2-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.4.2-3.1">An internationalized target attribute is represented as a member of the link context object with 
+                                the same name (including the *) of the attribute.<a href="#section-4.2.4.2-3.1" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.2-3.2">The character encoding information   
+                                as prescribed by <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span> is not preserved; instead, the 
+                                content of the internationalized attribute is represented in the character encoding used for the JSON set of links.<a href="#section-4.2.4.2-3.2" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.2-3.3">The value of the internationalized target attribute is an 
+                                array that contains one or more JSON objects. The name of one member 
+                                of such JSON object is "value" 
+                                and its value is the actual content (in its unescaped version) of the internationalized target attribute, i.e. the 
+                                value of the attribute from which 
+                                the encoding and language information are removed. 
+                                The name of another, optional, member of such JSON object is "language" and 
+                                its value is the language tag <span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span> 
+                                for the language in which the attribute content is conveyed.<a href="#section-4.2.4.2-3.3" class="pilcrow">¶</a>
+</li>
+            </ul>
+<p id="section-4.2.4.2-4">The following example illustrates how the "title*" target attribute 
+                            defined by <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4.1" class="relref">Section 3.4.1</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> is represented in a link target object.<a href="#section-4.2.4.2-4" class="pilcrow">¶</a></p>
+<figure id="figure-5">
+              <div id="section-4.2.4.2-5.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://example.net/bar",
+      "next": [
+        { "href":     "https://example.com/foo",
+          "type":     "text/html",
+          "hreflang": [ "en" , "de" ],
+          "title":    "Next chapter",
+          "title*":   [ { "value": "nächstes Kapitel" ,
+                          "language" : "de" } ]
+        }
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a></figcaption></figure>
+<p id="section-4.2.4.2-6">The above example assumes that the German title contains an umlaut character (in the original syntax it would be encoded as title*=UTF-8'de'n%c3%a4chstes%20Kapitel), 
+                            which gets encoded in its unescaped form in the JSON representation. 
+                            Implementations MUST properly decode/encode internationalized target attributes that follow the model of <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span> when transcoding between the "application/linkset" and the "application/linkset+json" formats.<a href="#section-4.2.4.2-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="json-target-attributes-extension">
+<section id="section-4.2.4.3">
+            <h5 id="name-extension-target-attributes">
+<a href="#section-4.2.4.3" class="section-number selfRef">4.2.4.3. </a><a href="#name-extension-target-attributes" class="section-name selfRef">Extension Target Attributes</a>
+            </h5>
+<p id="section-4.2.4.3-1">Extension target attributes are attributes that are not defined by <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.4.1" class="relref">Section 3.4.1</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>  
+                        (as listed in <a href="#json-target-attributes-existing" class="xref">Section 4.2.4.1</a>), but are nevertheless 
+                        used to qualify links. 
+                        They can be defined by communities in any way deemed necessary, and it is up to them 
+                        to make sure their usage is understood by target applications. 
+                        However, lacking standardization, there is no interoperable 
+                        understanding of these extension attributes. One important consequence is that 
+                        their cardinality is unknown to generic applications. Therefore, in the JSON serialization, 
+                        all extension target attributes are treated as repeatable.<a href="#section-4.2.4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.4.3-2">The JSON serialization for these target attributes MUST be  
+                        as follows:<a href="#section-4.2.4.3-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.4.3-3.1">An extension target attribute is represented as a member of the link target object with the same name of the attribute, including the * if applicable.<a href="#section-4.2.4.3-3.1" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.3-3.2">The value of an extension attribute MUST be represented by an array, even if there only is one value to be represented.<a href="#section-4.2.4.3-3.2" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.3-3.3">If the extension target attribute does not have a name with a trailing asterisk,  
+                            then each value in that array MUST be a string that represents one value 
+                            of the attribute.<a href="#section-4.2.4.3-3.3" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-4.2.4.3-3.4">If the extension attribute has a name with a trailing asterisk 
+                            (it follows the content model of <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span>),  
+                            then each value in that array MUST be a JSON object. The value of each such JSON object  
+                            MUST be structured as described in <a href="#linkset-json-i18n-link-parameter" class="xref">Section 4.2.4.2</a>.<a href="#section-4.2.4.3-3.4" class="pilcrow">¶</a>
+</li>
+            </ul>
+<p id="section-4.2.4.3-4">The example shows a link target object with three extension target attributes. The value for each extension target attribute is an array. The two first are regular extension target attributes, with the first one ("foo") having only one value and the second one ("bar") having two.
+                        The last extension target attribute ("baz*") follows the naming rule of <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span> and therefore is encoded according to the serialization described in  <a href="#linkset-json-i18n-link-parameter" class="xref">Section 4.2.4.2</a>.<a href="#section-4.2.4.3-4" class="pilcrow">¶</a></p>
+<figure id="figure-6">
+              <div id="section-4.2.4.3-5.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://example.net/bar",
+      "next": [
+        { "href": "https://example.com/foo",
+          "type": "text/html",
+          "foo":  [ "foovalue" ],
+          "bar":  [ "barone", "bartwo" ],
+          "baz*": [ { "value": "bazvalue" ,
+                      "language" : "en" } ]
+        }
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a></figcaption></figure>
+</section>
+</div>
+</section>
+</div>
+<div id="json-extensibility">
+<section id="section-4.2.5">
+          <h4 id="name-json-extensibility">
+<a href="#section-4.2.5" class="section-number selfRef">4.2.5. </a><a href="#name-json-extensibility" class="section-name selfRef">JSON Extensibility</a>
+          </h4>
+<p id="section-4.2.5-1">The Web linking model (<span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>) provides for the use of extension target attributes as discussed in 
+                        <a href="#json-target-attributes-extension" class="xref">Section 4.2.4.3</a>. 
+     The use of other forms of extensions is NOT RECOMMENDED. 
+     Limiting the JSON format in this way allows to unambiguously round trip between links provided in the HTTP "Link" header field, 
+                        sets of links serialized according to the "application/linkset" format, and sets of links serialized 
+                        according to the "application/linkset+json" format.<a href="#section-4.2.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.5-2">Cases may exist in which the use of extensions other than those of  <a href="#json-target-attributes-extension" class="xref">Section 4.2.4.3</a> may be useful. 
+ For example, when a link set publisher needs to include descriptive or technical metadata for internal consumption. 
+       In case such extensions are used they MUST NOT change the semantics of the JSON members defined in this specification.  
+       Agents that consume JSON linkset documents can safely ignore such extensions.<a href="#section-4.2.5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="profile-attribute">
+<section id="section-5">
+      <h2 id="name-the-profile-parameter-for-m">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-the-profile-parameter-for-m" class="section-name selfRef">The "profile" parameter for media types to Represent Sets of Links</a>
+      </h2>
+<p id="section-5-1">As a means to convey specific constraints or conventions (as per <span>[<a href="#RFC6906" class="xref">RFC6906</a>]</span>) that apply to a link set document, 
+            the "profile" parameter MAY be used in conjunction with the media types "application/linkset" and 
+            "application/linkset+json" detailed in 
+            <a href="#linkset-native" class="xref">Section 4.1</a> and <a href="#linkset-json" class="xref">Section 4.2</a>, respectively. 
+            For example, the parameter could be used to indicate that a link set uses a specific, limited set of link relation 
+            types.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">The value of the "profile" parameter MUST be a non-empty list of space-separated URIs, 
+            each of which identifies specific constraints or conventions that apply to the link set document. 
+            Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <span>[<a href="#RFC7284" class="xref">RFC7284</a>]</span>.<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-3">The presence of a "profile" parameter in conjunction with the "application/linkset" and 
+            "application/linkset+json" media types does not change the semantics of
+            a link set. As such, clients with and without knowledge of profile URIs can use the same representation.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4"><a href="#profile-parameter-example" class="xref">Section 7.4.2</a> shows an example of using the "profile" parameter in conjunction with the 
+            "application/linkset+json" media type.<a href="#section-5-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="linkset-link-relation">
+<section id="section-6">
+      <h2 id="name-the-linkset-relation-type-f">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-the-linkset-relation-type-f" class="section-name selfRef">The "linkset" Relation Type for Linking to a Set of Links</a>
+      </h2>
+<p id="section-6-1">The target of a link with the "linkset" relation type provides a set of links, 
+                including links in which the resource that is the link context participates.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">A link with the "linkset" relation type MAY be provided in the header field and/or 
+                the body of a resource's representation. It may also be discovered by other means, such as through
+                client-side information.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">A resource MAY provide more than one link with a "linkset" relation type. 
+                Multiple such links can refer to the same set of links expressed using different 
+                media types, or to different sets of links, potentially provided by different third-party services.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4">The set of links provided by the resource that is the target of a "linkset" link may contain links in which the 
+     resource that is the context of the "linkset" link does not participate.  User agents MUST process each link 
+     in the link set independently, including processing of link context and link target, and MAY ignore links from 
+     the link set in which the context of the "linkset" link does not participate.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">A user agent that follows a "linkset" link and obtains links for which anchors and targets are expressed as 
+                relative references (as per <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>) MUST determine what the context is for these links; it SHOULD ignore links for which it is unable to 
+                unambiguously make that determination.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">As a means to convey specific constraints or conventions (as per <span>[<a href="#RFC6906" class="xref">RFC6906</a>]</span>) that apply to a link set document, 
+        the "profile" attribute MAY be used in conjunction with the "linkset" link relation type. 
+        For example, the attribute could be used to indicate that a link set uses a specific, limited set of link relation 
+        types. The value of the "profile" attribute MUST be a non-empty 
+        list of space-separated URIs, each of which identifies specific constraints or conventions that apply 
+        to the link set document. Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <span>[<a href="#RFC7284" class="xref">RFC7284</a>]</span>. 
+        <a href="#profile-attribute-example" class="xref">Section 7.4.1</a> shows an example of using the "profile" attribute on a link  
+        with the "linkset" relation type, making both the link set and the profile(s) to which it complies discoverable.<a href="#section-6-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="linkset-link-examples">
+<section id="section-7">
+      <h2 id="name-examples">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+      </h2>
+<p id="section-7-1"><a href="#linkset-link-link-format" class="xref">Section 7.1</a> and <a href="#linkset-link-json-format" class="xref">Section 7.2</a>
+              show examples whereby a set of links is provided as "application/linkset" and "application/linkset+json" documents, respectively.
+                  <a href="#linkset-rel-example" class="xref">Section 7.3</a> illustrates the use of the "linkset" link relation type to support discovery of sets of links and 
+                  <a href="#profile-examples" class="xref">Section 7.4</a> shows how to convey profile information pertaining to a link set.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<div id="linkset-link-link-format">
+<section id="section-7.1">
+        <h3 id="name-set-of-links-provided-as-ap">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-set-of-links-provided-as-ap" class="section-name selfRef">Set of Links Provided as application/linkset</a>
+        </h3>
+<p id="section-7.1-1"><a href="#Request1" class="xref">Figure 7</a> shows a client issuing an 
+                   HTTP GET request against resource &lt;https://example.org/links/resource1&gt;.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<span id="name-client-http-get-request"></span><div id="Request1">
+<figure id="figure-7">
+          <div class="alignLeft art-http-message art-text artwork" id="section-7.1-2.1">
+<pre>
+GET /links/resource1 HTTP/1.1
+Host: example.org
+
+</pre>
+</div>
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
+<a href="#name-client-http-get-request" class="selfRef">Client HTTP GET request</a>
+          </figcaption></figure>
+</div>
+<p id="section-7.1-3"><a href="#Response1.1" class="xref">Figure 8</a> shows the response to the GET request of 
+             <a href="#Request1" class="xref">Figure 7</a>. The response contains a Content-Type header field 
+             specifying that the media type of the response is "application/linkset". A set of links, revealing authorship and versioning related  
+             to resource &lt;https://example.org/resource1&gt;, is provided in the response body. The HTTP "Link" header field indicates the availability 
+             of an alternate representation of the set of links using media type "application/linkset+json".<a href="#section-7.1-3" class="pilcrow">¶</a></p>
+<span id="name-response-to-http-get-includ"></span><div id="Response1.1">
+<figure id="figure-8">
+          <div class="alignLeft art-http-message art-text artwork" id="section-7.1-4.1">
+<pre>
+HTTP/1.1 200 OK
+Date: Mon, 12 Aug 2019 10:35:51 GMT
+Server: Apache-Coyote/1.1
+Content-Length: 1023
+Content-Type: application/linkset
+Link: &lt;https://example.org/links/resource1&gt;
+      ; rel="alternate"
+      ; type="application/linkset+json"
+
+&lt;https://authors.example.net/johndoe&gt;
+   ; rel="author"
+   ; type="application/rdf+xml"
+   ; anchor="https://example.org/resource1",
+&lt;https://example.org/resource1?version=3&gt;
+   ; rel="latest-version"
+   ; type="text/html"
+   ; anchor="https://example.org/resource1",
+&lt;https://example.org/resource1?version=2&gt;
+   ; rel="predecessor-version"
+   ; type="text/html"
+   ; anchor="https://example.org/resource1?version=3",
+&lt;https://example.org/resource1?version=1&gt;
+   ; rel="predecessor-version"
+   ; type="text/html"
+   ; anchor="https://example.org/resource1?version=2",
+&lt;https://example.org/resource1?version=1&gt;
+   ; rel="memento"
+   ; type="text/html"
+   ; datetime="Thu, 13 Jun 2019 09:34:33 GMT"
+   ; anchor="https://example.org/resource1",
+&lt;https://example.org/resource1?version=2&gt;
+   ; rel="memento"
+   ; type="text/html"
+   ; datetime="Sun, 21 Jul 2019 12:22:04 GMT"
+   ; anchor="https://example.org/resource1",
+&lt;https://authors.example.net/alice&gt;
+   ; rel="author"
+   ; anchor="https://example.org/resource1#comment=1"
+
+</pre>
+</div>
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
+<a href="#name-response-to-http-get-includ" class="selfRef">Response to HTTP GET includes a set of links</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="linkset-link-json-format">
+<section id="section-7.2">
+        <h3 id="name-set-of-links-provided-as-app">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-set-of-links-provided-as-app" class="section-name selfRef">Set of Links Provided as application/linkset+json</a>
+        </h3>
+<p id="section-7.2-1"><a href="#Request4" class="xref">Figure 9</a> shows the client issuing an HTTP GET 
+                     request against &lt;https://example.org/links/resource1&gt;. 
+                     In the request, the client uses an "Accept" header field to indicate it prefers a response in  the 
+                     "application/linkset+json" format.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<span id="name-client-http-get-request-exp"></span><div id="Request4">
+<figure id="figure-9">
+          <div class="alignLeft art-http-message art-text artwork" id="section-7.2-2.1">
+<pre>
+GET links/resource1 HTTP/1.1
+Host: example.org
+Accept: application/linkset+json
+
+</pre>
+</div>
+<figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
+<a href="#name-client-http-get-request-exp" class="selfRef">Client HTTP GET request expressing preference for "application/linkset+json" response</a>
+          </figcaption></figure>
+</div>
+<p id="section-7.2-3"><a href="#Response4.1" class="xref">Figure 10</a> shows the response to the HTTP GET request of <a href="#Request4" class="xref">Figure 9</a>. 
+                     The set of links is serialized according to the media type "application/linkset+json".<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+<span id="name-response-to-the-clients-req"></span><div id="Response4.1">
+<figure id="figure-10">
+          <div class="alignLeft art-http-message art-text artwork" id="section-7.2-4.1">
+<pre>
+HTTP/1.1 200 OK
+Date: Mon, 12 Aug 2019 10:46:22 GMT
+Server: Apache-Coyote/1.1
+Content-Type: application/linkset+json
+Link: &lt;https://example.org/links/resource1&gt;
+      ; rel="alternate"
+      ; type="application/linkset"
+Content-Length: 1246
+
+{ "linkset":
+  [
+    { "anchor": "https://example.org/resource1",
+      "author": [
+        { "href": "https://authors.example.net/johndoe",
+          "type": "application/rdf+xml"
+        }
+      ],
+      "memento": [
+        { "href": "https://example.org/resource1?version=1",
+          "type": "text/html",
+          "datetime": "Thu, 13 Jun 2019 09:34:33 GMT"
+        },
+        { "href": "https://example.org/resource1?version=2",
+          "type": "text/html",
+          "datetime": "Sun, 21 Jul 2019 12:22:04 GMT"
+        }
+      ],
+      "latest-version": [
+        { "href": "https://example.org/resource1?version=3",
+          "type": "text/html"
+        }
+      ]
+    },
+    { "anchor": "https://example.org/resource1?version=3",
+      "predecessor-version": [
+        { "href": "https://example.org/resource1?version=2",
+          "type": "text/html"
+        }
+      ]
+    },
+    { "anchor": "https://example.org/resource1?version=2",
+      "predecessor-version": [
+        { "href": "https://example.org/resource1?version=1",
+          "type": "text/html"
+        }
+      ]
+    },
+    { "anchor": "https://example.org/resource1#comment=1",
+      "author": [
+        { "href": "https://authors.example.net/alice"}
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
+<a href="#name-response-to-the-clients-req" class="selfRef">Response to the client's request for the set of links</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="linkset-rel-example">
+<section id="section-7.3">
+        <h3 id="name-discovering-a-link-set-via-">
+<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-discovering-a-link-set-via-" class="section-name selfRef">Discovering a Link Set via the "linkset" Link Relation Type</a>
+        </h3>
+<p id="section-7.3-1"><a href="#Request3" class="xref">Figure 11</a> shows a client issuing an 
+                     HTTP HEAD request against resource 
+                     &lt;https://example.org/resource1&gt;.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+<span id="name-client-http-head-request"></span><div id="Request3">
+<figure id="figure-11">
+          <div class="alignLeft art-http-message art-text artwork" id="section-7.3-2.1">
+<pre>
+HEAD resource1 HTTP/1.1
+Host: example.org
+
+</pre>
+</div>
+<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
+<a href="#name-client-http-head-request" class="selfRef">Client HTTP HEAD request</a>
+          </figcaption></figure>
+</div>
+<p id="section-7.3-3"><a href="#Response3.1" class="xref">Figure 12</a> shows the response to the HEAD request of 
+                     <a href="#Request3" class="xref">Figure 11</a>. The response contains an HTTP "Link" header field with  
+                     a link that has the "linkset" relation type. It indicates that a set of links is provided 
+                     by resource &lt;https://example.org/links/resource1&gt;, which 
+                     provides a representation with media type "application/linkset+json".<a href="#section-7.3-3" class="pilcrow">¶</a></p>
+<span id="name-response-to-http-head-reque"></span><div id="Response3.1">
+<figure id="figure-12">
+          <div class="alignLeft art-http-message art-text artwork" id="section-7.3-4.1">
+<pre>
+HTTP/1.1 200 OK
+Date: Mon, 12 Aug 2019 10:45:54 GMT
+Server: Apache-Coyote/1.1
+Link: &lt;https://example.org/links/resource1&gt;
+      ; rel="linkset"
+      ; type="application/linkset+json"
+Content-Length: 236
+Content-Type: text/html;charset=utf-8
+
+</pre>
+</div>
+<figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
+<a href="#name-response-to-http-head-reque" class="selfRef">Response to HTTP HEAD request</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="profile-examples">
+<section id="section-7.4">
+        <h3 id="name-link-set-profiles">
+<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-link-set-profiles" class="section-name selfRef">Link Set Profiles</a>
+        </h3>
+<p id="section-7.4-1">The examples in this section illustrate the use of the "profile" attribute for a link with the "linkset" link relation type and the "profile" attribute for a link set media type. The examples are inspired by the implementation of link sets by GS1 (the standards body behind many of the world's barcodes).<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+<div id="profile-attribute-example">
+<section id="section-7.4.1">
+          <h4 id="name-using-a-profile-attribute-w">
+<a href="#section-7.4.1" class="section-number selfRef">7.4.1. </a><a href="#name-using-a-profile-attribute-w" class="section-name selfRef">Using a "profile" Attribute with a "linkset" Link</a>
+          </h4>
+<p id="section-7.4.1-1"><a href="#Request_pr_at" class="xref">Figure 13</a> shows a client issuing an 
+                  HTTP HEAD request against trade item 09506000134352 at &lt;https://id.gs1.org/01/9506000134352&gt;.<a href="#section-7.4.1-1" class="pilcrow">¶</a></p>
+<span id="name-client-http-head-request-2"></span><div id="Request_pr_at">
+<figure id="figure-13">
+            <div class="alignLeft art-http-message art-text artwork" id="section-7.4.1-2.1">
+<pre>
+HEAD /01/9506000134352 HTTP/1.1
+Host: id.gs1.org
+</pre>
+</div>
+<figcaption><a href="#figure-13" class="selfRef">Figure 13</a>:
+<a href="#name-client-http-head-request-2" class="selfRef">Client HTTP HEAD request</a>
+            </figcaption></figure>
+</div>
+<p id="section-7.4.1-3"><a href="#Response_pr_at" class="xref">Figure 14</a> shows the server's response to the request of 
+    <a href="#Request_pr_at" class="xref">Figure 13</a>, including a "linkset" link with a "profile" attribute 
+    that has the Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as its value. 
+    Dereferencing that URI yields a profile document that lists all the link relation types that 
+    a client can expect when requesting the link set made discoverable by the "linkset" link. The link relation types are 
+ presented in abbreviated form, e.g. &lt;gs1:activityIdeas&gt;, whereas the actual link relation type URIs are 
+ available as hyperlinks on the abbreviations, e.g. &lt;https://www.gs1.org/voc/activityIdeas&gt;.
+    For posterity that profile document was saved in the Internet Archive at 
+    &lt;https://web.archive.org/web/20210927160406/https://www.gs1.org/voc/?show=linktypes&gt; 
+    on 27 September 2021.<a href="#section-7.4.1-3" class="pilcrow">¶</a></p>
+<span id="name-response-to-the-clients-hea"></span><div id="Response_pr_at">
+<figure id="figure-14">
+            <div class="alignLeft art-http-message art-text artwork" id="section-7.4.1-4.1">
+<pre>
+HTTP/1.1 307 Temporary Redirect
+Date:  Mon, 27 Sep 2021 16:03:07 GMT
+Server: nginx
+Link: https://id.gs1.org/01/9506000134352?linkType=all
+; rel="linkset"
+; type="application/linkset+json"
+; profile="https://www.gs1.org/voc/?show=linktypes"
+Location: https://example.com/risotto-rice-with-mushrooms/
+
+</pre>
+</div>
+<figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
+<a href="#name-response-to-the-clients-hea" class="selfRef">Response to the client's HEAD request including a "profile" attribute for the "linkset" link</a>
+            </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="profile-parameter-example">
+<section id="section-7.4.2">
+          <h4 id="name-using-a-profile-parameter-w">
+<a href="#section-7.4.2" class="section-number selfRef">7.4.2. </a><a href="#name-using-a-profile-parameter-w" class="section-name selfRef">Using a "profile" Parameter with a Link Set Media Type</a>
+          </h4>
+<p id="section-7.4.2-1"><a href="#Request_pr_par" class="xref">Figure 15</a> shows a client issuing an 
+HTTP HEAD request against the link set &lt;https://id.gs1.org/01/9506000134352?linkType=all&gt; that was discovered through the HTTP interactions shown in <a href="#profile-attribute-example" class="xref">Section 7.4.1</a>.<a href="#section-7.4.2-1" class="pilcrow">¶</a></p>
+<span id="name-client-http-head-request-3"></span><div id="Request_pr_par">
+<figure id="figure-15">
+            <div class="alignLeft art-http-message art-text artwork" id="section-7.4.2-2.1">
+<pre>
+HEAD /01/9506000134352?linkType=all HTTP/1.1
+Host: id.gs1.org
+</pre>
+</div>
+<figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
+<a href="#name-client-http-head-request-3" class="selfRef">Client HTTP HEAD request</a>
+            </figcaption></figure>
+</div>
+<p id="section-7.4.2-3"><a href="#Response_pr_par" class="xref">Figure 16</a> shows the server's response to the request of <a href="#Request_pr_par" class="xref">Figure 15</a>. Note the "profile" parameter for the application/linkset+json media type, which has as value the same Profile URI &lt;https://www.gs1.org/voc/?show=linktypes&gt; as was used in &lt;xref target="Response_pr_at"/&gt;.<a href="#section-7.4.2-3" class="pilcrow">¶</a></p>
+<span id="name-response-to-the-clients-head"></span><div id="Response_pr_par">
+<figure id="figure-16">
+            <div class="alignLeft art-http-message art-text artwork" id="section-7.4.2-4.1">
+<pre>
+HTTP/1.1 200 OK
+Date:  Mon, 27 Sep 2021 16:03:33 GMT
+Server: nginx
+Content-Type: application/linkset+json;
+     profile="https://www.gs1.org/voc/?show=linktypes"
+Content-Length: 396
+</pre>
+</div>
+<figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
+<a href="#name-response-to-the-clients-head" class="selfRef">Response to the client's HEAD request including a "profile" parameter for the "application/linkset+json" media type</a>
+            </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="profile-link-example">
+<section id="section-7.4.3">
+          <h4 id="name-using-a-link-with-a-profile">
+<a href="#section-7.4.3" class="section-number selfRef">7.4.3. </a><a href="#name-using-a-link-with-a-profile" class="section-name selfRef">Using a Link with a "profile" Link Relation Type</a>
+          </h4>
+<p id="section-7.4.3-1">Note that the response <a href="#Response_pr_par" class="xref">Figure 16</a> from the link set resource is equivalent to the response shown in <a href="#Response_pr_link" class="xref">Figure 17</a>, which leverages the "profile" link relation type defined in <span>[<a href="#RFC6906" class="xref">RFC6906</a>]</span>.<a href="#section-7.4.3-1" class="pilcrow">¶</a></p>
+<span id="name-response-to-the-clients-head-"></span><div id="Response_pr_link">
+<figure id="figure-17">
+            <div class="alignLeft art-http-message art-text artwork" id="section-7.4.3-2.1">
+<pre>
+HTTP/1.1 200 OK
+Date:  Mon, 27 Sep 2021 16:03:33 GMT
+Server: nginx
+Content-Type: application/linkset+json
+Link: https://www.gs1.org/voc/?show=linktypes; rel="profile"
+Content-Length: 396
+</pre>
+</div>
+<figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
+<a href="#name-response-to-the-clients-head-" class="selfRef">Response to the client's HEAD request including a "profile" link</a>
+            </figcaption></figure>
+</div>
+<p id="section-7.4.3-3">A link with a "profile" link relation type as shown in <a href="#Response_pr_link" class="xref">Figure 17</a> can also be conveyed in the link set document itself. This is illustrated by <a href="#Response_pr_linkset" class="xref">Figure 18</a>. Following the recommendation that all links in a link set document should have an explicit anchor, such a link has the URI of the link set itself as anchor and the Profile URI as target. Multiple Profile URIs are handled by using multiple "href" members.<a href="#section-7.4.3-3" class="pilcrow">¶</a></p>
+<span id="name-a-link-set-that-declares-th"></span><div id="Response_pr_linkset">
+<figure id="figure-18">
+            <div id="section-7.4.3-4.1">
+<pre class="lang-json sourcecode">
+{ "linkset":
+  [
+    { "anchor": "https://id.gs1.org/01/9506000134352?linkType=all",
+      "profile": [
+            {"href": "https://www.gs1.org/voc/?show=linktypes"}
+      ]
+    },
+     { "anchor": "https://id.gs1.org/01/9506000134352",
+       "https://gs1.org/voc/whatsInTheBox": [
+         {"href": "https://example.com/en/packContents/GB"}
+       ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-18" class="selfRef">Figure 18</a>:
+<a href="#name-a-link-set-that-declares-th" class="selfRef">A Link Set that declares the profile it complies with using a "profile" link</a>
+            </figcaption></figure>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-8">
+      <h2 id="name-iana-considerations">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<section id="section-8.1">
+        <h3 id="name-link-relation-type-linkset">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-link-relation-type-linkset" class="section-name selfRef">Link Relation Type: linkset</a>
+        </h3>
+<p id="section-8.1-1">The link relation type below should be registered by IANA in the Link Relation Type Registry 
+ as per <span><a href="https://rfc-editor.org/rfc/rfc8288#section-4.2" class="relref">Section 4.2</a> of Web Linking [<a href="#RFC8288" class="xref">RFC8288</a>]</span>:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.1-2.1">Relation Name: linkset<a href="#section-8.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.1-2.2">Description: The link target of a link with the "linkset" relation type 
+                            provides a set of links, including links in which the link context of the link participates.<a href="#section-8.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.1-2.3">Reference: [[ This document ]]<a href="#section-8.1-2.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="section-8.2">
+        <h3 id="name-media-type-application-link">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-media-type-application-link" class="section-name selfRef">Media Type: application/linkset</a>
+        </h3>
+<p id="section-8.2-1">The Internet media type <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span> for a linkset encoded according to the definition of <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> is application/linkset.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.2-2.1">Type name: application<a href="#section-8.2-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.2">Subtype name: linkset<a href="#section-8.2-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.3">Required parameters: N/A<a href="#section-8.2-2.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.4">Optional parameters: profile<a href="#section-8.2-2.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.5">Encoding considerations: Linksets are encoded according to the definition of <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>. The encoding of <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> is based on the general encoding rules of <span>[<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span>, with the addition of allowing indicating character encoding and language for specific parameters as defined by <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span>.<a href="#section-8.2-2.5" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.6">Security considerations: The security considerations of [[ This document ]] apply.<a href="#section-8.2-2.6" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.7">Interoperability considerations: N/A<a href="#section-8.2-2.7" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.8">Published specification: [[ This document ]]<a href="#section-8.2-2.8" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.9">Applications that use this media type: This media type is not specific to any application, as it can be used by any application that wants to interchange web links.<a href="#section-8.2-2.9" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.10">
+            <p id="section-8.2-2.10.1">Additional information:<a href="#section-8.2-2.10.1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.2-2.10.2.1">Magic number(s): N/A<a href="#section-8.2-2.10.2.1" class="pilcrow">¶</a>
+</li>
+              <li class="normal ulEmpty" id="section-8.2-2.10.2.2">File extension(s): This media type does not propose a specific extension.<a href="#section-8.2-2.10.2.2" class="pilcrow">¶</a>
+</li>
+              <li class="normal ulEmpty" id="section-8.2-2.10.2.3">Macintosh file type code(s): TEXT<a href="#section-8.2-2.10.2.3" class="pilcrow">¶</a>
+</li>
+            </ul>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.11">Person &amp; email address to contact for further information: Erik Wilde &lt;erik.wilde@dret.net&gt;<a href="#section-8.2-2.11" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.12">Intended usage: COMMON<a href="#section-8.2-2.12" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.13">Restrictions on usage: none<a href="#section-8.2-2.13" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.14">Author: Erik Wilde &lt;erik.wilde@dret.net&gt;<a href="#section-8.2-2.14" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.2-2.15">Change controller: IETF<a href="#section-8.2-2.15" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+<section id="section-8.3">
+        <h3 id="name-media-type-application-links">
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-media-type-application-links" class="section-name selfRef">Media Type: application/linkset+json</a>
+        </h3>
+<p id="section-8.3-1">The Internet media type <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span> for a JSON-encoded linkset is application/linkset+json.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.3-2.1">Type name: application<a href="#section-8.3-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.2">Subtype name: linkset+json<a href="#section-8.3-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.3">Required parameters: N/A<a href="#section-8.3-2.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.4">Optional parameters: profile<a href="#section-8.3-2.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.5">Encoding considerations: The encoding considerations of <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> apply<a href="#section-8.3-2.5" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.6">Security considerations: The security considerations of [[ This document ]] apply.<a href="#section-8.3-2.6" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.7">Interoperability considerations: The interoperability considerations of <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> apply.<a href="#section-8.3-2.7" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.8">Published specification: [[ This document ]]<a href="#section-8.3-2.8" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.9">Applications that use this media type: This media type is not specific to any application, as it can be used by any application that wants to interchange web links.<a href="#section-8.3-2.9" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.10">
+            <p id="section-8.3-2.10.1">Additional information:<a href="#section-8.3-2.10.1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.3-2.10.2.1">Magic number(s): N/A<a href="#section-8.3-2.10.2.1" class="pilcrow">¶</a>
+</li>
+              <li class="normal ulEmpty" id="section-8.3-2.10.2.2">File extension(s): JSON documents often use ".json" as the file extension, and this media type does not propose a specific extension other than this generic one.<a href="#section-8.3-2.10.2.2" class="pilcrow">¶</a>
+</li>
+              <li class="normal ulEmpty" id="section-8.3-2.10.2.3">Macintosh file type code(s): TEXT<a href="#section-8.3-2.10.2.3" class="pilcrow">¶</a>
+</li>
+            </ul>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.11">Person &amp; email address to contact for further information: Erik Wilde &lt;erik.wilde@dret.net&gt;<a href="#section-8.3-2.11" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.12">Intended usage: COMMON<a href="#section-8.3-2.12" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.13">Restrictions on usage: none<a href="#section-8.3-2.13" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.14">Author: Erik Wilde &lt;erik.wilde@dret.net&gt;<a href="#section-8.3-2.14" class="pilcrow">¶</a>
+</li>
+          <li class="normal ulEmpty" id="section-8.3-2.15">Change controller: IETF<a href="#section-8.3-2.15" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-9">
+      <h2 id="name-security-considerations">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-9-1">The security considerations of <span><a href="https://rfc-editor.org/rfc/rfc3986#section-7" class="relref">Section 7</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span> apply, as well as those of Web Linking <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> as long as the latter are not specifically discussing the risks of exposing information in HTTP header fields.<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-9-2">In general, links may cause information leakage when they expose information (such as URIs) that can be sensitive or private. Links may expose "hidden URIs" that are not supposed to be openly shared, and may not be sufficiently protected. Ideally, none of the URIs exposed in links should be supposed to be "hidden"; instead, if these URIs are supposed to be limited to certain users, then technical measures should be put in place so that accidentally exposing them does not cause any harm.<a href="#section-9-2" class="pilcrow">¶</a></p>
+<p id="section-9-3">For the specific mechanisms defined in this specification, two security considerations should be taken into account:<a href="#section-9-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-9-4.1">The Web Linking model always has an "implicit context", which is the resource of the HTTP interaction. This original context can be lost or can change when self-contained link representations are moved. Changing the context can change the interpretation of links when they have no explicit anchor, or when they use relative URIs. Applications may choose to ignore links that have no explicit anchor or that use relative URIs when these are exchanged in stand-alone resources.<a href="#section-9-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-9-4.2">The model introduced in this specification supports "3rd party links", where one party can provide links that have another party's resource as an anchor. Depending on the link semantics and the application context, it is important to verify that there is sufficient trust in that 3rd party to allow it to provide these links. Applications may choose to treat 3rd party links differently than cases where a resource and the links for that resource are provided by the same party.<a href="#section-9-4.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+</section>
+</div>
+<section id="section-10">
+      <h2 id="name-normative-references">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+      </h2>
+<dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+      <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3986">[RFC3986]</dt>
+      <dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5234">[RFC5234]</dt>
+      <dd>
+<span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5646">[RFC5646]</dt>
+      <dd>
+<span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.REC-json-ld-20140116">[W3C.REC-json-ld-20140116]</dt>
+      <dd>
+<span class="refAuthor">Sporny, M.</span>, <span class="refAuthor">Kellogg, G.</span>, and <span class="refAuthor">M. Lanthaler</span>, <span class="refTitle">"JSON-LD 1.0"</span>, <span class="seriesInfo">World Wide Web Consortium Recommendation REC-json-ld-20140116</span>, <time datetime="2014-01-16" class="refDate">16 January 2014</time>, <span>&lt;<a href="https://www.w3.org/TR/2014/REC-json-ld-20140116">https://www.w3.org/TR/2014/REC-json-ld-20140116</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6838">[RFC6838]</dt>
+      <dd>
+<span class="refAuthor">Freed, N.</span>, <span class="refAuthor">Klensin, J.</span>, and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6838">https://www.rfc-editor.org/info/rfc6838</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+      <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8187">[RFC8187]</dt>
+      <dd>
+<span class="refAuthor">Reschke, J.</span>, <span class="refTitle">"Indicating Character Encoding and Language for HTTP Header Field Parameters"</span>, <span class="seriesInfo">RFC 8187</span>, <span class="seriesInfo">DOI 10.17487/RFC8187</span>, <time datetime="2017-09" class="refDate">September 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8187">https://www.rfc-editor.org/info/rfc8187</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8259">[RFC8259]</dt>
+      <dd>
+<span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8288">[RFC8288]</dt>
+      <dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Web Linking"</span>, <span class="seriesInfo">RFC 8288</span>, <span class="seriesInfo">DOI 10.17487/RFC8288</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8288">https://www.rfc-editor.org/info/rfc8288</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-httpbis-semantics">[I-D.ietf-httpbis-semantics]</dt>
+      <dd>
+<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-semantics-19</span>, <time datetime="2021-09-12" class="refDate">12 September 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19</a>&gt;</span>. </dd>
+<dd class="break"></dd></dl>
+</section>
+<section id="section-11">
+      <h2 id="name-informative-references">
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+      </h2>
+<dl class="references">
+<dt id="W3C.REC-rdf11-concepts-20140225">[W3C.REC-rdf11-concepts-20140225]</dt>
+      <dd>
+<span class="refAuthor">Cyganiak, R.</span>, <span class="refAuthor">Wood, D.</span>, and <span class="refAuthor">M. Lanthaler</span>, <span class="refTitle">"RDF 1.1 Concepts and Abstract Syntax"</span>, <span class="seriesInfo">World Wide Web Consortium Recommendation REC-rdf11-concepts-20140225</span>, <time datetime="2014-02-25" class="refDate">25 February 2014</time>, <span>&lt;<a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225">https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5988">[RFC5988]</dt>
+      <dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Web Linking"</span>, <span class="seriesInfo">RFC 5988</span>, <span class="seriesInfo">DOI 10.17487/RFC5988</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5988">https://www.rfc-editor.org/info/rfc5988</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6690">[RFC6690]</dt>
+      <dd>
+<span class="refAuthor">Shelby, Z.</span>, <span class="refTitle">"Constrained RESTful Environments (CoRE) Link Format"</span>, <span class="seriesInfo">RFC 6690</span>, <span class="seriesInfo">DOI 10.17487/RFC6690</span>, <time datetime="2012-08" class="refDate">August 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6690">https://www.rfc-editor.org/info/rfc6690</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6906">[RFC6906]</dt>
+      <dd>
+<span class="refAuthor">Wilde, E.</span>, <span class="refTitle">"The 'profile' Link Relation Type"</span>, <span class="seriesInfo">RFC 6906</span>, <span class="seriesInfo">DOI 10.17487/RFC6906</span>, <time datetime="2013-03" class="refDate">March 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6906">https://www.rfc-editor.org/info/rfc6906</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7284">[RFC7284]</dt>
+      <dd>
+<span class="refAuthor">Lanthaler, M.</span>, <span class="refTitle">"The Profile URI Registry"</span>, <span class="seriesInfo">RFC 7284</span>, <span class="seriesInfo">DOI 10.17487/RFC7284</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7284">https://www.rfc-editor.org/info/rfc7284</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7942">[RFC7942]</dt>
+      <dd>
+<span class="refAuthor">Sheffer, Y.</span> and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"Improving Awareness of Running Code: The Implementation Status Section"</span>, <span class="seriesInfo">BCP 205</span>, <span class="seriesInfo">RFC 7942</span>, <span class="seriesInfo">DOI 10.17487/RFC7942</span>, <time datetime="2016-07" class="refDate">July 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7942">https://www.rfc-editor.org/info/rfc7942</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="DCMI-TERMS">[DCMI-TERMS]</dt>
+    <dd>
+<span class="refAuthor">Initiative, D. C. M.</span>, <span class="refTitle">"DCMI Metadata Terms"</span>, <time datetime="2020" class="refDate">2020</time>, <span>&lt;<a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<div id="appendix-1">
+<section id="appendix-A">
+      <h2 id="name-json-ld-context">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-json-ld-context" class="section-name selfRef">JSON-LD Context</a>
+      </h2>
+<p id="appendix-A-1">A set of links rendered according to the 
+               JSON serialization defined in <a href="#linkset-json" class="xref">Section 4.2</a> can be interpreted 
+                as RDF triples by adding a <span><a href="#W3C.REC-json-ld-20140116" class="xref">JSON-LD context</a> [<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span> that maps 
+                the JSON keys to corresponding Linked Data terms. And, as per <span>[<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span>
+        <a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/#interpreting-json-as-json-ld">section 6.8</a>, 
+                when delivering a link set that is rendered according to the "application/linkset+json" media type to a user agent, 
+                a server can convey the availability of such a JSON-LD context by using a link with the relation type 
+                "http://www.w3.org/ns/json-ld#context" in the HTTP "Link" header.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2"><a href="#contextlinkrel" class="xref">Figure 19</a> shows the response of an HTTP GET against the URI of a link set resource and 
+                 illustrates this approach to support discovery of a JSON-LD Context. The example is inspired by the GS1 implementation and 
+                 shows a link set that uses relation types from the GS1 vocabulary at &lt;https://www.gs1.org/voc/&gt; 
+                 that are expressed as HTTP URIs.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<span id="name-using-a-typed-link-to-suppo"></span><div id="contextlinkrel">
+<figure id="figure-19">
+        <div class="alignLeft art-http-message art-text artwork" id="appendix-A-3.1">
+<pre>
+HTTP/1.1 200 OK
+Date: Mon, 11 Oct 2021 10:48:22 GMT
+Server: Apache-Coyote/1.1
+Content-Type: application/linkset+json
+Link: &lt;https://example.org/contexts/linkset.jsonld&gt;
+      ; rel="http://www.w3.org/ns/json-ld#context"
+      ; type="application/ld+json"
+Content-Length: 1532
+
+{
+  "linkset": [
+    {
+      "anchor": "https://id.gs1.org/01/09506000149301",
+      "https://gs1.org/voc/pip": [
+        {
+          "href": "https://example.com/en/defaultPage",
+          "hreflang": [
+            "en"
+          ],
+          "type": "text/html",
+          "title": "Product information"
+        },
+        {
+          "href": "https://example.com/fr/defaultPage",
+          "hreflang": [
+            "fr"
+          ],
+          "title": "Information produit"
+        }
+      ],
+      "https://gs1.org/voc/whatsInTheBox": [
+        {
+          "href": "https://example.com/en/packContents/GB",
+          "hreflang": [
+            "en"
+          ],
+          "title": "What's in the box?"
+        },
+        {
+          "href": "https://example.com/fr/packContents/FR",
+          "hreflang": [
+            "fr"
+          ],
+          "title": "Qu'y a-t-il dans la boite?"
+        },
+        {
+          "href": "https://example.com/fr/packContents/CH",
+          "hreflang": [
+            "fr"
+          ],
+          "title": "Qu'y a-t-il dans la boite?"
+        }
+      ],
+      "https://gs1.org/voc/relatedVideo": [
+        {
+          "href": "https://video.example",
+          "hreflang": [
+            "en",
+            "fr"
+          ],
+          "title*": [
+            {
+              "value": "See it in action!",
+              "language": "en"
+            },
+            {
+              "value": "Voyez-le en action!",
+              "language": "fr"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+</pre>
+</div>
+<figcaption><a href="#figure-19" class="selfRef">Figure 19</a>:
+<a href="#name-using-a-typed-link-to-suppo" class="selfRef">Using a typed link to support discovery of a JSON-LD Context for a Set of Links</a>
+        </figcaption></figure>
+</div>
+<p id="appendix-A-4">In order to obtain the JSON-LD Context conveyed by the server, the user agent issues an HTTP GET against the 
+                link target of the link with the "http://www.w3.org/ns/json-ld#context" relation type. The response to this GET is 
+                shown in <a href="#jsonld-context" class="xref">Figure 20</a>. This particular JSON-LD context maps "application/linkset+json" representations of link sets 
+                to Dublin Core Terms <span>[<a href="#DCMI-TERMS" class="xref">DCMI-TERMS</a>]</span>. Note that the "linkset" entry in the JSON-LD context is 
+                introduced to support links with the <code>"linkset"</code> relation type in link sets.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<span id="name-json-ld-context-mapping-to-"></span><div id="jsonld-context">
+<figure id="figure-20">
+        <div class="alignLeft art-http-message art-text artwork" id="appendix-A-5.1">
+<pre>
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+Content-Length: 658
+
+{
+  "@context": [
+    {
+      "@version": 1.1,
+      "@vocab": "https://gs1.org/voc/",
+      "anchor": "@id",
+      "href": "@id",
+      "linkset": {
+        "@id": "@graph",
+        "@context": {
+          "linkset": "linkset"
+        }
+      },
+      "title": {
+        "@id": "http://purl.org/dc/terms/title"
+      },
+      "title*": {
+        "@id": "http://purl.org/dc/terms/title"
+      },
+      "type": {
+        "@id": "http://purl.org/dc/terms/format"
+      }
+    },
+    {
+      "language": "@language",
+      "value": "@value",
+      "hreflang": {
+        "@id": "http://purl.org/dc/terms/language",
+        "@container": "@set"
+      }
+    }
+  ]
+}
+
+</pre>
+</div>
+<figcaption><a href="#figure-20" class="selfRef">Figure 20</a>:
+<a href="#name-json-ld-context-mapping-to-" class="selfRef">JSON-LD Context mapping to Dublin Core Terms</a>
+        </figcaption></figure>
+</div>
+<p id="appendix-A-6">Applying the JSON-LD context of <a href="#jsonld-context" class="xref">Figure 20</a> to the link set of <a href="#contextlinkrel" class="xref">Figure 19</a> 
+                allows transforming the "application/linkset+json" link set to an RDF link set. <a href="#triples" class="xref">Figure 21</a> shows 
+                the latter represented by means of the "text/turtle" RDF serialization.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<span id="name-rdf-serialization-of-the-li"></span><div id="triples">
+<figure id="figure-21">
+        <div class="alignLeft art-text artwork" id="appendix-A-7.1">
+<pre>
+&lt;https://example.com/en/defaultPage&gt;
+        &lt;http://purl.org/dc/terms/format&gt;
+        "text/html" .
+&lt;https://example.com/en/defaultPage&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "en" .
+&lt;https://example.com/en/defaultPage&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "Product information" .
+&lt;https://example.com/en/packContents/GB&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "en" .
+&lt;https://example.com/en/packContents/GB&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "What's in the box?" .
+&lt;https://example.com/fr/defaultPage&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "fr" .
+&lt;https://example.com/fr/defaultPage&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "Information produit" .
+&lt;https://example.com/fr/packContents/CH&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "fr" .
+&lt;https://example.com/fr/packContents/CH&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "Qu'y a-t-il dans la boite?" .
+&lt;https://example.com/fr/packContents/FR&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "fr" .
+&lt;https://example.com/fr/packContents/FR&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "Qu'y a-t-il dans la boite?" .
+&lt;https://id.gs1.org/01/09506000149301&gt;
+        &lt;https://gs1.org/voc/pip&gt;
+        &lt;https://example.com/en/defaultPage&gt; .
+&lt;https://id.gs1.org/01/09506000149301&gt;
+        &lt;https://gs1.org/voc/pip&gt;
+        &lt;https://example.com/fr/defaultPage&gt; .
+&lt;https://id.gs1.org/01/09506000149301&gt;
+        &lt;https://gs1.org/voc/relatedVideo&gt;
+        &lt;https://video.example&gt; .
+&lt;https://id.gs1.org/01/09506000149301&gt;
+        &lt;https://gs1.org/voc/whatsInTheBox&gt;
+        &lt;https://example.com/en/packContents/GB&gt; .
+&lt;https://id.gs1.org/01/09506000149301&gt;
+        &lt;https://gs1.org/voc/whatsInTheBox&gt;
+        &lt;https://example.com/fr/packContents/CH&gt; .
+&lt;https://id.gs1.org/01/09506000149301&gt;
+        &lt;https://gs1.org/voc/whatsInTheBox&gt;
+        &lt;https://example.com/fr/packContents/FR&gt; .
+&lt;https://video.example&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "en" .
+&lt;https://video.example&gt;
+        &lt;http://purl.org/dc/terms/language&gt;
+        "fr" .
+&lt;https://video.example&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "See it in action!"@en .
+&lt;https://video.example&gt;
+        &lt;http://purl.org/dc/terms/title&gt;
+        "Voyez-le en action!"@fr .
+
+</pre>
+</div>
+<figcaption><a href="#figure-21" class="selfRef">Figure 21</a>:
+<a href="#name-rdf-serialization-of-the-li" class="selfRef">RDF serialization of the link set resulting from applying the JSON-LD context</a>
+        </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="implementation-status">
+<section id="appendix-B">
+      <h2 id="name-implementation-status">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-implementation-status" class="section-name selfRef">Implementation Status</a>
+      </h2>
+<p id="appendix-B-1">This section is to be removed before publishing as an RFC.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">This section records the status of known implementations of the protocol defined by this specification at the time of posting of this Internet-Draft, and is based on a proposal described in RFC 7942 <span>[<a href="#RFC7942" class="xref">RFC7942</a>]</span>. The description of implementations in this section is intended to assist the IETF in its decision processes in progressing drafts to RFCs. Please note that the listing of any individual implementation here does not imply endorsement by the IETF. Furthermore, no effort has been spent to verify the information presented here that was supplied by IETF contributors. This is not intended as, and must not be construed to be, a catalog of available implementations or their features. Readers are advised to note that other implementations may exist.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">According to RFC 7942, "this will allow reviewers and working groups to assign due consideration to documents that have the benefit of running code, which may serve as evidence of valuable experimentation and feedback that have made the implemented protocols more mature. It is up to the individual working groups to use this information as they see fit".<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+<div id="implementation-GS1">
+<section id="appendix-B.1">
+        <h3 id="name-gs1">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-gs1" class="section-name selfRef">GS1</a>
+        </h3>
+<p id="appendix-B.1-1">GS1 is a provider of identifiers, most famously seen in EAN/UPC barcodes for retail and healthcare products, and manages an ecology of services and standards to leverage them at a global scale.
+                    GS1 has indicated that it will fully implement this "linkset" specification as a means to allow requesting and representing links pertaining to products, shipments, assets and locations.
+                    The current GS1 Digital Link specification makes an informative reference to version 03 of the "linkset" I-D, 
+ mentions the formal adoption of that I-D by the IETF HTTPAPI Working Group, 
+ and indicates it being on track to achieve RFC status.  
+ The GS1 Digital Link specification adopts the JSON format specified by the I-D 
+ and mentions future plans to also support the Link header format as well as their respective media types, 
+ neither of which have changed since version 03.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="implementation-signposting">
+<section id="appendix-B.2">
+        <h3 id="name-fair-signposting-profile">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-fair-signposting-profile" class="section-name selfRef">FAIR Signposting Profile</a>
+        </h3>
+<p id="appendix-B.2-1">The FAIR Signposting Profile is a community specification aimed at improving machine navigation 
+                    of scholarly objects on the web through the use of typed web links pointing at e.g. 
+                    web resources that are part of a specific object, persistent identifiers for the object and its authors, 
+                    license information pertaining to the object. The specification encourages the use of Linksets and 
+                    initial implementations are ongoing, for example, for the open source Dataverse data repository platform 
+                    that was initiated by Harvard University and is meanwhile used by research institutions, worldwide.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="implementation-ojs">
+<section id="appendix-B.3">
+        <h3 id="name-open-journal-systems-ojs">
+<a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-open-journal-systems-ojs" class="section-name selfRef">Open Journal Systems (OJS)</a>
+        </h3>
+<p id="appendix-B.3-1">Open Journal Systems (OJS) is an open-source software for the management of peer-reviewed academic journals, and is created by the Public Knowledge Project (PKP), released under the GNU General Public License. Open Journal Systems (OJS) is a journal management and publishing system that has been developed by PKP through its federally funded efforts to expand and improve access to research.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-2">The OJS platform has implemented "linkset" support as an alternative way to provide links when there are more than a configured limit (they consider using about 10 as a good default, for testing purpose it is currently set to 8).<a href="#appendix-B.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<section id="appendix-C">
+      <h2 id="name-acknowledgements">
+<a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+      </h2>
+<p id="appendix-C-1">Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Rob Sanderson, Stian Soiland-Reyes, and Sarven Capadisli.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+</section>
+<div id="authors-addresses">
+<section id="appendix-D">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Erik Wilde</span></div>
+<div dir="auto" class="left"><span class="org">Axway</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:erik.wilde@dret.net" class="email">erik.wilde@dret.net</a>
+</div>
+<div class="url">
+<span>URI:</span>
+<a href="http://dret.net/netdret/" class="url">http://dret.net/netdret/</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Herbert Van de Sompel</span></div>
+<div dir="auto" class="left"><span class="org">Data Archiving and Networked Services</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:herbert.van.de.sompel@dans.knaw.nl" class="email">herbert.van.de.sompel@dans.knaw.nl</a>
+</div>
+<div class="url">
+<span>URI:</span>
+<a href="https://orcid.org/0000-0002-0715-6126" class="url">https://orcid.org/0000-0002-0715-6126</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
