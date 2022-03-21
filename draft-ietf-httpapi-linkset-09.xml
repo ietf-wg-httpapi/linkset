@@ -21,7 +21,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="13" month="March" year="2022"/>
+        <date day="21" month="March" year="2022"/>
         <abstract>
            <t>This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -151,7 +151,7 @@
                 <t>The assigned media type for this format is "application/linkset".</t>
                 
                 <t>When converting an "application/linkset" document to a field value for the 
-                    HTTP "Link" header, newline characters SHOULD be removed or SHOULD be replaced by white space (SP) in order to comply with 
+                    HTTP "Link" header, newline characters MUST be removed or MUST be replaced by white space (SP) in order to comply with 
                     <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>.</t>
                                 
                 <t>In order to support use cases where "application/linkset" documents are re-used 
@@ -551,7 +551,8 @@
             For example, the parameter could be used to indicate that a link set uses a specific, limited set of link relation 
             types.</t>
         <t>The value of the "profile" parameter MUST be a non-empty list of space-separated URIs, 
-            each of which identifies specific constraints or conventions that apply to the link set document. 
+            each of which identifies specific constraints or conventions that apply to the link set document. When providing multiple 
+	    profile URIs, care should be taken that the corresponding profiles are not conflicting.
             Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <xref target="RFC7284"/>.</t>  
         <t>The presence of a "profile" parameter in conjunction with the "application/linkset" and 
             "application/linkset+json" media types does not change the semantics of
