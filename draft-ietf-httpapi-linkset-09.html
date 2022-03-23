@@ -30,7 +30,7 @@
     setuptools 40.6.2
     six 1.15.0
 -->
-<link href="/tmp/v3ClQwVDMW.dir/draft-ietf-httpapi-linkset-09.xml" rel="alternate" type="application/rfc+xml">
+<link href="/tmp/pOkLSE1z1p.dir/draft-ietf-httpapi-linkset-09.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -1189,7 +1189,7 @@ li > p:last-of-type {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilde &amp; Van de Sompel</td>
-<td class="center">Expires 14 September 2022</td>
+<td class="center">Expires 24 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1200,12 +1200,12 @@ li > p:last-of-type {
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-13" class="published">13 March 2022</time>
+<time datetime="2022-03-23" class="published">23 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-14">14 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-24">24 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1250,7 +1250,7 @@ li > p:last-of-type {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1525,7 +1525,31 @@ li > p:last-of-type {
         <li class="normal" id="section-4-2.2">The format defined in <a href="#linkset-json" class="xref">Section 4.2</a> is expressed in <span><a href="#RFC8259" class="xref">JSON</a> [<a href="#RFC8259" class="xref">RFC8259</a>]</span>.<a href="#section-4-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-4-3">Note that <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> deprecates the "rev" construct that was provided by <span>[<a href="#RFC5988" class="xref">RFC5988</a>]</span> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-3">Links provided in the HTTP Link header are intended to be used in the context of an HTTP interaction and contextual information 
+    that is available during an interaction is used to correctly interpret them. 
+    Links provided in link sets, however, can be re-used outside of an HTTP interaction, when no such contextual information is available. 
+    As a result, implementers of link sets should strive to make them self-contained by following the recommendations provided below.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">For links provided in the HTTP Link header that have no anchor or that use relative references, 
+ the URI of the resource that delivers the links provides the contextual information that is needed for their 
+ correct interpretation. In order to support use cases where link set documents are re-used outside the context 
+ of an HTTP interaction, it is RECOMMENDED to make them self-contained by adhering to the following guidelines:<a href="#section-4-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-5.1">For every link provided in the set of links, explicitly provide the link context  
+                        using the "anchor" attribute.<a href="#section-4-5.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-4-5.2">For link context ("anchor" attribute) and link target ("href" attribute), use URI references that are not relative references (as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>).<a href="#section-4-5.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-4-6">If these recommendations are not followed, interpretation of links in link set documents will depend on which URI is used as context.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">For a "title" attribute provided on a link in the HTTP Link header, the language in which the title is expressed is provided by 
+ the Content-Language header of the HTTP interaction with the resource that delivers the links. 
+ This does not apply to "title" attributes provided for links in link set documents because that would constrain 
+ all links in a link set to having a single title language and would not support determining title languages when 
+ a link set is used outside of an HTTP interaction. In order to support use cases where link set documents are 
+ re-used outside the context of an HTTP interaction, it is RECOMMENDED to make them self-contained by using the 
+ "title*" attribute instead of the "title" attribute because "title*" allows expressing the title language as part of its value. 
+ If this recommendation is not followed, accurately determining the language of titles provided on links in link set documents will not be possible.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-8">Note also that <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> deprecates the "rev" construct that was provided by <span>[<a href="#RFC5988" class="xref">RFC5988</a>]</span> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.<a href="#section-4-8" class="pilcrow">¶</a></p>
 <div id="linkset-native">
 <section id="section-4.1">
         <h3 id="name-http-link-document-format-a">
@@ -1540,25 +1564,15 @@ li > p:last-of-type {
                     The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2">The assigned media type for this format is "application/linkset".<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1-3">When converting an "application/linkset" document to a field value for the 
-                    HTTP "Link" header, newline characters SHOULD be removed or SHOULD be replaced by white space (SP) in order to comply with 
+                    HTTP "Link" header, newline characters MUST be removed or MUST be replaced by white space (SP) in order to comply with 
                     <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-5.5" class="relref">Section 5.5</a> of [<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>]</span>.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
-<p id="section-4.1-4">In order to support use cases where "application/linkset" documents are re-used 
-                    outside the context of an HTTP interaction,  
-                    it is RECOMMENDED to make them self-contained by adhering to the following guidelines:<a href="#section-4.1-4" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.1-5.1">For every link provided in the set of links, explicitly provide the link context  
-                        using the "anchor" attribute.<a href="#section-4.1-5.1" class="pilcrow">¶</a>
-</li>
-          <li class="normal" id="section-4.1-5.2">For link context ("anchor" attribute) and link target 
-                        ("href" attribute), use URI references that are not relative references (as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>).<a href="#section-4.1-5.2" class="pilcrow">¶</a>
-</li>
-        </ul>
-<p id="section-4.1-6">If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
-                    which URI is used as context.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
-<p id="section-4.1-7">It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
+<p id="section-4.1-4">Implementers of "application/linkset" link sets should strive to make them self-contained 
+    by following the recommendations regarding their use outside the context of an HTTP interaction provided in 
+ <a href="#linkset-formats" class="xref">Section 4</a>.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<p id="section-4.1-5">It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
                     format specified in <span>[<a href="#RFC6690" class="xref">RFC6690</a>]</span> in that the former fully matches the 
                     field value of the HTTP "Link" header field as defined in <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3" class="relref">Section 3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>, whereas 
-                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="linkset-json">
@@ -1569,24 +1583,15 @@ li > p:last-of-type {
 <p id="section-4.2-1">This document format uses JSON <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> as the syntax to represent 
                     a set of links. The set of links follows the abstract model defined by Web Linking <span><a href="https://rfc-editor.org/rfc/rfc8288#section-2" class="relref">Section 2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <p id="section-4.2-2">The assigned media type for this format is "application/linkset+json".<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">In order to support use cases where "application/linkset+json" documents are re-used 
-                    outside the context of an HTTP interaction,  
-                    it is RECOMMENDED to make them self-contained by adhering to the following guidelines:<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.2-4.1">For every link provided in the set of links, explicitly provide the link context  
-                        using the "anchor" member.<a href="#section-4.2-4.1" class="pilcrow">¶</a>
-</li>
-          <li class="normal" id="section-4.2-4.2">For link context ("anchor" member) and link target 
-                        ("href" member), use URI references that are not relative references (as defined in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>).<a href="#section-4.2-4.2" class="pilcrow">¶</a>
-</li>
-        </ul>
-<p id="section-4.2-5">If these recommendations are not followed, interpretation of "application/linkset+json" will depend on which URI is used as context URI.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
-<p id="section-4.2-6">The "application/linkset+json" serialization allows for OPTIONAL support of a JSON-LD  serialization.
+<p id="section-4.2-3">Implementers of "application/linkset+json" link sets should strive to make them self-contained 
+ by following the recommendations regarding their use outside the context of an HTTP interaction 
+ provided in <a href="#linkset-formats" class="xref">Section 4</a>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">The "application/linkset+json" serialization allows for OPTIONAL support of a JSON-LD  serialization.
  This can be achieved by adding an appropriate context to the "application/linkset+json" serialization using the approach described in 
                     Section 6.8. of <span>[<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span>.
                     Communities of practice can decide which context best meets their application needs.  
  <a href="#appendix-1" class="xref">Appendix A</a> shows an example of a possible context that, when added to a JSON serialization, 
- allows it to be interpreted as Resource Description Framework (RDF) <span>[<a href="#W3C.REC-rdf11-concepts-20140225" class="xref">W3C.REC-rdf11-concepts-20140225</a>]</span> data.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+ allows it to be interpreted as Resource Description Framework (RDF) <span>[<a href="#W3C.REC-rdf11-concepts-20140225" class="xref">W3C.REC-rdf11-concepts-20140225</a>]</span> data.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 <div id="linkset-in-json">
 <section id="section-4.2.1">
           <h4 id="name-set-of-links">
@@ -1961,7 +1966,8 @@ li > p:last-of-type {
             For example, the parameter could be used to indicate that a link set uses a specific, limited set of link relation 
             types.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">The value of the "profile" parameter MUST be a non-empty list of space-separated URIs, 
-            each of which identifies specific constraints or conventions that apply to the link set document. 
+            each of which identifies specific constraints or conventions that apply to the link set document. When providing multiple 
+     profile URIs, care should be taken that the corresponding profiles are not conflicting.
             Profile URIs MAY be registered in the IANA Profile URI Registry in the manner specified by <span>[<a href="#RFC7284" class="xref">RFC7284</a>]</span>.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">The presence of a "profile" parameter in conjunction with the "application/linkset" and 
             "application/linkset+json" media types does not change the semantics of
