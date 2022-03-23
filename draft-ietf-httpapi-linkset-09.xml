@@ -21,7 +21,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="21" month="March" year="2022"/>
+        <date day="23" month="March" year="2022"/>
         <abstract>
            <t>This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -137,7 +137,33 @@
                 <li>The format defined in <xref target="linkset-json"/> is expressed in <xref target="RFC8259">JSON</xref>.</li>
             </ul>
             
-            <t>Note that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.</t>
+           <t>Links provided in the HTTP Link header are intended to be used in the context of an HTTP interaction and contextual information 
+		   that is available during an interaction is used to correctly interpret them. 
+		   Links provided in link sets, however, can be re-used outside of an HTTP interaction, when no such contextual information is available. 
+		   As a result, implementers of link sets should strive to make them self-contained by following the recommendations provided below.</t>
+
+                <t>For links provided in the HTTP Link header that have no anchor or that use relative references, 
+			the URI of the resource that delivers the links provides the contextual information that is needed for their 
+			correct interpretation. In order to support use cases where link set documents are re-used outside the context 
+			of an HTTP interaction, it is RECOMMENDED to make them self-contained by adhering to the following guidelines:</t>
+                <ul>
+                    <li>For every link provided in the set of links, explicitly provide the link context  
+                        using the "anchor" attribute.</li>
+                    <li>For link context ("anchor" attribute) and link target ("href" attribute), use URI references that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>). 
+                    </li>
+                </ul>
+                <t>If these recommendations are not followed, interpretation of links in link set documents will depend on which URI is used as context.</t>
+
+<t>For a "title" attribute provided on a link in the HTTP Link header, the language in which the title is expressed is provided by 
+	the Content-Language header of the HTTP interaction with the resource that delivers the links. 
+	This does not apply to "title" attributes provided for links in link set documents because that would constrain 
+	all links in a link set to having a single title language and would not support determining title languages when 
+	a link set is used outside of an HTTP interaction. In order to support use cases where link set documents are 
+	re-used outside the context of an HTTP interaction, it is RECOMMENDED to make them self-contained by using the 
+	"title*" attribute instead of the "title" attribute because "title*" allows expressing the title language as part of its value. 
+	If this recommendation is not followed, accurately determining the language of titles provided on links in link set documents will not be possible.</t>
+
+<t>Note also that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.</t>
             
             <section title="HTTP Link Document Format: application/linkset" anchor="linkset-native">
                 <t>This document format is near identical to the field value of the 
@@ -154,39 +180,26 @@
                     HTTP "Link" header, newline characters MUST be removed or MUST be replaced by white space (SP) in order to comply with 
                     <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>.</t>
                                 
-                <t>In order to support use cases where "application/linkset" documents are re-used 
-                    outside the context of an HTTP interaction,  
-                    it is RECOMMENDED to make them self-contained by adhering to the following guidelines:</t>
-                <ul>
-                    <li>For every link provided in the set of links, explicitly provide the link context  
-                        using the "anchor" attribute.</li>
-                    <li>For link context ("anchor" attribute) and link target 
-                        ("href" attribute), use URI references that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>). 
-                        </li>
-                </ul>
-                <t>If these recommendations are not followed, interpretation of links in "application/linkset" documents will depend on 
-                    which URI is used as context.</t>
+		<t>Implementers of "application/linkset" link sets should strive to make them self-contained 
+		   by following the recommendations regarding their use outside the context of an HTTP interaction provided in 
+			<xref target="linkset-formats"/>.</t>
+		    
                  <t>It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
                     format specified in <xref target="RFC6690"/> in that the former fully matches the 
                     field value of the HTTP "Link" header field as defined in <xref target="RFC8288" section="3"/>, whereas 
                     the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.</t>
             </section>
+		
             <section title="JSON Document Format: application/linkset+json" anchor="linkset-json">
                 <t>This document format uses JSON <xref target="RFC8259"/> as the syntax to represent 
                     a set of links. The set of links follows the abstract model defined by Web Linking <xref target="RFC8288" section="2"/>.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset+json".</t>
                                 
-                <t>In order to support use cases where "application/linkset+json" documents are re-used 
-                    outside the context of an HTTP interaction,  
-                    it is RECOMMENDED to make them self-contained by adhering to the following guidelines:</t>
-                <ul>
-                    <li>For every link provided in the set of links, explicitly provide the link context  
-                        using the "anchor" member.</li>
-                    <li>For link context ("anchor" member) and link target 
-                        ("href" member), use URI references that are not relative references (as defined in <xref target="RFC3986" section="4.1"/>).</li>
-                </ul>                
-                <t>If these recommendations are not followed, interpretation of "application/linkset+json" will depend on which URI is used as context URI.</t>
+		<t>Implementers of "application/linkset+json" link sets should strive to make them self-contained 
+			by following the recommendations regarding their use outside the context of an HTTP interaction 
+			provided in <xref target="linkset-formats"/>.</t>
+		    
                 <t>The "application/linkset+json" serialization allows for OPTIONAL support of a JSON-LD  serialization.
 		This can be achieved by adding an appropriate context to the "application/linkset+json" serialization using the approach described in 
                     Section 6.8. of <xref target="W3C.REC-json-ld-20140116"/>.
