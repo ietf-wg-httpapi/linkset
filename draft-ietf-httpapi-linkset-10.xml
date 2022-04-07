@@ -921,7 +921,8 @@ Content-Length: 396
                 </ul>
             </section>
             <section title="Media Type: application/linkset">
-                    <t>The Internet media type <xref target="RFC6838"/> for a linkset encoded according to the definition of <xref target="RFC8288"/> is application/linkset.</t>
+                    <t>The Internet media type application/linkset for a linkset encoded as described in <xref target="linkset-native"/> 
+		       should be registered by IANA in the Media Type Registry as per <xref target="RFC6838"/>.</t>
                     <ul empty="true">
                             <li>Type name: application</li>
                             <li>Subtype name: linkset</li>
@@ -947,7 +948,8 @@ Content-Length: 396
                     </ul>
                 </section>
             <section title="Media Type: application/linkset+json">
-                <t>The Internet media type <xref target="RFC6838"/> for a JSON-encoded linkset is application/linkset+json.</t>
+                <t>The Internet media type application/linkset+json for a linkset encoded as described in <xref target="linkset-json"/> 
+		   should be registered by IANA in the Media Type Registry as per <xref target="RFC6838"/>.</t>
                 <ul empty="true">
                         <li>Type name: application</li>
                         <li>Subtype name: linkset+json</li>
