@@ -140,7 +140,7 @@
            <t>Links provided in the HTTP Link header are intended to be used in the context of an HTTP interaction and contextual information 
 		   that is available during an interaction is used to correctly interpret them. 
 		   Links provided in link sets, however, can be re-used outside of an HTTP interaction, when no such contextual information is available. 
-		   As a result, implementers of link sets should strive to make them self-contained by adhering to the following the recommendations.</t>
+		   As a result, implementers of link sets should strive to make them self-contained by adhering to the following recommendations.</t>
 
                 <t>For links provided in the HTTP Link header that have no anchor or that use relative references, 
 			the URI of the resource that delivers the links provides the contextual information that is needed for their 
@@ -1279,4 +1279,4 @@ Content-Length: 658
           <t>Thanks for comments and suggestions provided by Phil Archer, Dominique Guinard, Mark Nottingham, Julian Reschke, Rob Sanderson, Stian Soiland-Reyes, and Sarven Capadisli.</t>
       </section>
     </back>
-</rfc>
+</rfc>a
