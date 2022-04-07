@@ -37,7 +37,7 @@
         </section>
         <section title="Terminology" anchor="terminology">
             <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.</t>
-            <t>This specification uses the terms "link context" and "link target" as defined in <xref target="RFC8288"/>.</t> 
+            <t>This specification uses the terms "link context" and "link target" in the same manner as <xref target="RFC8288"/>.</t> 
             <t>In the examples provided in this document, links in the HTTP "Link" header field are shown on separate lines in order to improve readability. 
                 Note, however, that as per <xref target="I-D.ietf-httpbis-semantics" section="5.5"/>, line breaks are deprecated in values for HTTP fields; only whitespaces and 
                 tabs are supported as separators.</t>
@@ -132,15 +132,15 @@
                 that defines a link as consisting of a "link context", a "link relation type", a "link target", 
                 and optional "target attributes":</t>
             <ul>
-                <li>The format defined in <xref target="linkset-native"/> is near identical to the field value 
-                    of the HTTP "Link" header field as specified in Web Linking <xref target="RFC8288" section="3"/>.</li>
+                <li>The format defined in <xref target="linkset-native"/> is nearly identical to the field value 
+                    of the HTTP "Link" header field as specified in <xref target="RFC8288" section="3"/>.</li>
                 <li>The format defined in <xref target="linkset-json"/> is expressed in <xref target="RFC8259">JSON</xref>.</li>
             </ul>
             
            <t>Links provided in the HTTP Link header are intended to be used in the context of an HTTP interaction and contextual information 
 		   that is available during an interaction is used to correctly interpret them. 
 		   Links provided in link sets, however, can be re-used outside of an HTTP interaction, when no such contextual information is available. 
-		   As a result, implementers of link sets should strive to make them self-contained by following the recommendations provided below.</t>
+		   As a result, implementers of link sets should strive to make them self-contained by adhering to the following the recommendations.</t>
 
                 <t>For links provided in the HTTP Link header that have no anchor or that use relative references, 
 			the URI of the resource that delivers the links provides the contextual information that is needed for their 
@@ -166,7 +166,7 @@
 <t>Note also that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.</t>
             
             <section title="HTTP Link Document Format: application/linkset" anchor="linkset-native">
-                <t>This document format is near identical to the field value of the 
+                <t>This document format is nearly identical to the field value of the 
                     HTTP "Link" header field as defined in 
                     <xref target="RFC8288" section="3"/>, more specifically by  
                     its ABNF <xref target="RFC5234"/> production rule for "Link" and subsequent ones. It differs from the format for field values of the 
@@ -406,7 +406,7 @@
                             as follows:</t>
                         <ul>    
                             <li>An internationalized target attribute is represented as a member of the link context object with 
-                                the same name (including the *) of the attribute.</li>
+                                the same name (including the *) as the attribute.</li>
                             <li>The character encoding information   
                                 as prescribed by <xref target="RFC8187"/> is not preserved; instead, the 
                                 content of the internationalized attribute is represented in the character encoding used for the JSON set of links.</li>
@@ -460,7 +460,7 @@
                     <t>The JSON serialization for these target attributes MUST be  
                         as follows:</t>
                     <ul> 
-                        <li>An extension target attribute is represented as a member of the link target object with the same name of the attribute, including the * if applicable.</li>
+                        <li>An extension target attribute is represented as a member of the link target object with the same name as the attribute, including the * if applicable.</li>
                         <li>The value of an extension attribute MUST be represented by an array, even if there only is one value to be represented.</li>
                         <li>If the extension target attribute does not have a name with a trailing asterisk,  
                             then each value in that array MUST be a string that represents one value 
@@ -1036,7 +1036,7 @@ Content-Length: 396
                 a server can convey the availability of such a JSON-LD context by using a link with the relation type 
                 "http://www.w3.org/ns/json-ld#context" in the HTTP "Link" header.</t>
             
-             <t><xref target="contextlinkrel"/> shows the response of an HTTP GET against the URI of a link set resource and 
+             <t><xref target="contextlinkrel"/> shows the response to an HTTP GET against the URI of a link set resource and 
                  illustrates this approach to support discovery of a JSON-LD Context. The example is inspired by the GS1 implementation and 
                  shows a link set that uses relation types from the GS1 vocabulary at &lt;https://www.gs1.org/voc/&gt; 
                  that are expressed as HTTP URIs.</t>
