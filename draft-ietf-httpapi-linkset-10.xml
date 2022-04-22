@@ -187,7 +187,7 @@
                  <t>It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
                     format specified in <xref target="RFC6690"/> in that the former fully matches the 
                     field value of the HTTP "Link" header field as defined in <xref target="RFC8288" section="3"/>, whereas 
-                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.</t>
+                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments (CoRE).</t>
             </section>
 		
             <section title="JSON Document Format: application/linkset+json" anchor="linkset-json">
