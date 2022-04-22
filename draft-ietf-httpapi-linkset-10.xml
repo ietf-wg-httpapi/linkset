@@ -409,7 +409,7 @@
                                 the same name (including the *) as the attribute.</li>
                             <li>The character encoding information   
                                 as prescribed by <xref target="RFC8187"/> is not preserved; instead, the 
-                                content of the internationalized attribute is represented in the character encoding used for the JSON set of links.</li>
+                                content of the internationalized attribute is represented as a JSON string in the character encoding used for the JSON linkset.</li>
                             <li>The value of the internationalized target attribute is an 
                                 array that contains one or more JSON objects. The name of one member 
                                 of such JSON object is "value" 
