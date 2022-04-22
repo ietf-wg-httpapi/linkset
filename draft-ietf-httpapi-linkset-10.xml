@@ -343,10 +343,9 @@
                         <ul>
                             <li>"hreflang": The "hreflang" target attribute, 
 				    defined as optional and repeatable by <xref target="RFC8288"/>, 
-                                MUST be represented by an "hreflang" member, and its value MUST be an array (even if there only is one value to be represented), 
-                                and each value in that array MUST be a string - representing one value 
-                                of the "hreflang" target attribute for a link - which follows the same 
-                                model as in the <xref target="RFC8288"/> syntax.</li>
+                                MUST be represented by an "hreflang" member, and its value MUST be an array (even if there only is one value to be represented). 
+                                Each value in that array MUST be string containing 
+                                a well-formed language tag <xref target="BCP47"/> following the same model as in <xref target="RFC8288"/>.</li>
                             <li>"media": The "media" target attribute, 
 				    defined as optional and not repeatable by <xref target="RFC8288"/>, MUST be 
                                 represented by a "media" member 
@@ -997,6 +996,7 @@ Content-Length: 396
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8187.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8288.xml"/>
+            <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml-rfcsubseries/reference.BCP.0047.xml"/>
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-semantics.xml"/>
 <!--
             <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.nottingham-link-hint.xml"/>
