@@ -21,7 +21,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="7" month="April" year="2022"/>
+        <date day="26" month="April" year="2022"/>
         <abstract>
            <t>This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -195,6 +195,9 @@
                     a set of links. The set of links follows the abstract model defined by Web Linking <xref target="RFC8288" section="2"/>.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset+json".</t>
+		    
+		<t>In the interests of interoperability "application/linkset+json" link sets MUST be encoded using UTF-8 as per 
+			<xref target="RFC8259" section="8.1"/>.</t>
                                 
 		<t>Implementers of "application/linkset+json" link sets should strive to make them self-contained 
 			by following the recommendations regarding their use outside the context of an HTTP interaction 
@@ -360,8 +363,7 @@
                             <li>"title": The "title" target attribute, 
 				    defined as optional and not repeatable by <xref target="RFC8288"/>,
 				    MUST be represented by a "title" 
-                                member in the link target object, and its value MUST be a string that follows 
-                                the same model as in the <xref target="RFC8288"/> syntax.</li>
+                                member in the link target object, and its value MUST be a JSON string.</li>
                             <li>"title*": The "title*" target attribute, 
 				    defined as optional and not repeatable by <xref target="RFC8288"/>, 
                                 is motivated by character encoding 
@@ -409,7 +411,7 @@
                                 the same name (including the *) as the attribute.</li>
                             <li>The character encoding information   
                                 as prescribed by <xref target="RFC8187"/> is not preserved; instead, the 
-                                content of the internationalized attribute is represented in the character encoding used for the JSON set of links.</li>
+                                content of the internationalized attribute is represented as a JSON string.</li>
                             <li>The value of the internationalized target attribute is an 
                                 array that contains one or more JSON objects. The name of one member 
                                 of such JSON object is "value" 
@@ -463,7 +465,7 @@
                         <li>An extension target attribute is represented as a member of the link target object with the same name as the attribute, including the * if applicable.</li>
                         <li>The value of an extension attribute MUST be represented by an array, even if there only is one value to be represented.</li>
                         <li>If the extension target attribute does not have a name with a trailing asterisk,  
-                            then each value in that array MUST be a string that represents one value 
+                            then each value in that array MUST be a JSON string that represents one value 
                             of the attribute.</li>
                         <li>If the extension attribute has a name with a trailing asterisk 
                             (it follows the content model of <xref target="RFC8187"/>),  
