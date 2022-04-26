@@ -172,7 +172,8 @@
                     its ABNF <xref target="RFC5234"/> production rule for "Link" and subsequent ones. It differs from the format for field values of the 
                     HTTP "Link" header only in that not only spaces and horizontal tabs are allowed as separators but also newline 
                     characters as a means to improve readability for humans.
-                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed.</t> 
+                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed, 
+			and as such is also not allowed in "application/linkset" link sets.</t> 
                 
                 <t>The assigned media type for this format is "application/linkset".</t>
                 
