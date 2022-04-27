@@ -21,7 +21,7 @@
                 <uri>https://orcid.org/0000-0002-0715-6126</uri>
             </address>
         </author>
-        <date day="26" month="April" year="2022"/>
+        <date day="27" month="April" year="2022"/>
         <abstract>
            <t>This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links.</t>
         </abstract>
@@ -160,7 +160,8 @@
 	all links in a link set to having a single title language and would not support determining title languages when 
 	a link set is used outside of an HTTP interaction. In order to support use cases where link set documents are 
 	re-used outside the context of an HTTP interaction, it is RECOMMENDED to make them self-contained by using the 
-	"title*" attribute instead of the "title" attribute because "title*" allows expressing the title language as part of its value. 
+	"title*" attribute instead of the "title" attribute because "title*" allows expressing the title language as part of its value by means of a language tag. 
+	With this regard, note that language tags are matched case-insensitively (see <xref target="RFC5646" section="2.1.1"/>).
 	If this recommendation is not followed, accurately determining the language of titles provided on links in link set documents will not be possible.</t>
 
 <t>Note also that <xref target="RFC8288" section="3.3"/> deprecates the "rev" construct that was provided by <xref target="RFC5988"/> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.</t>
