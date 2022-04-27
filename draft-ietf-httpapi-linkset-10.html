@@ -10,10 +10,10 @@
 <meta content='
        This specification defines two formats and respective media types for representing sets of links as stand-alone documents. One format is JSON-based, the other aligned with the format for representing links in the HTTP "Link" header field. This specification also introduces a link relation type to support discovery of sets of links. 
     ' name="description">
-<meta content="xml2rfc 3.12.2" name="generator">
+<meta content="xml2rfc 3.12.4" name="generator">
 <meta content="draft-ietf-httpapi-linkset-10" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.2
+  xml2rfc 3.12.4
     Python 3.6.9
     appdirs 1.4.4
     ConfigArgParse 1.2.3
@@ -23,6 +23,7 @@
     Jinja2 2.11.2
     kitchen 1.2.6
     lxml 4.5.2
+    MarkupSafe 2.0.1
     pycountry 20.7.3
     pyflakes 2.2.0
     PyYAML 5.3.1
@@ -30,7 +31,7 @@
     setuptools 40.6.2
     six 1.15.0
 -->
-<link href="/tmp/RDtwaj9aFy.dir/draft-ietf-httpapi-linkset-10.xml" rel="alternate" type="application/rfc+xml">
+<link href="/tmp/COoutMHvvI.dir/draft-ietf-httpapi-linkset-10.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -1189,7 +1190,7 @@ li > p:last-of-type {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wilde &amp; Van de Sompel</td>
-<td class="center">Expires 9 October 2022</td>
+<td class="center">Expires 29 October 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1200,12 +1201,12 @@ li > p:last-of-type {
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-04-07" class="published">7 April 2022</time>
+<time datetime="2022-04-27" class="published">27 April 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-10-09">9 October 2022</time></dd>
+<dd class="expires"><time datetime="2022-10-29">29 October 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1250,7 +1251,7 @@ li > p:last-of-type {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 October 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 October 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1528,7 +1529,7 @@ li > p:last-of-type {
 <p id="section-4-3">Links provided in the HTTP Link header are intended to be used in the context of an HTTP interaction and contextual information 
     that is available during an interaction is used to correctly interpret them. 
     Links provided in link sets, however, can be re-used outside of an HTTP interaction, when no such contextual information is available. 
-    As a result, implementers of link sets should strive to make them self-contained by adhering to the following the recommendations.<a href="#section-4-3" class="pilcrow">¶</a></p>
+    As a result, implementers of link sets should strive to make them self-contained by adhering to the following recommendations.<a href="#section-4-3" class="pilcrow">¶</a></p>
 <p id="section-4-4">For links provided in the HTTP Link header that have no anchor or that use relative references, 
  the URI of the resource that delivers the links provides the contextual information that is needed for their 
  correct interpretation. In order to support use cases where link set documents are re-used outside the context 
@@ -1547,7 +1548,8 @@ li > p:last-of-type {
  all links in a link set to having a single title language and would not support determining title languages when 
  a link set is used outside of an HTTP interaction. In order to support use cases where link set documents are 
  re-used outside the context of an HTTP interaction, it is RECOMMENDED to make them self-contained by using the 
- "title*" attribute instead of the "title" attribute because "title*" allows expressing the title language as part of its value. 
+ "title*" attribute instead of the "title" attribute because "title*" allows expressing the title language as part of its value by means of a language tag. 
+ With this regard, note that language tags are matched case-insensitively (see <span><a href="https://rfc-editor.org/rfc/rfc5646#section-2.1.1" class="relref">Section 2.1.1</a> of [<a href="#RFC5646" class="xref">RFC5646</a>]</span>).
  If this recommendation is not followed, accurately determining the language of titles provided on links in link set documents will not be possible.<a href="#section-4-7" class="pilcrow">¶</a></p>
 <p id="section-4-8">Note also that <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span> deprecates the "rev" construct that was provided by <span>[<a href="#RFC5988" class="xref">RFC5988</a>]</span> as a means to express links with a directionality that is the inverse of direct links that use the "rel" construct. In both serializations for link sets defined here, inverse links may be represented as direct links using the "rel" construct and by switching the roles of the resources involved in the link.<a href="#section-4-8" class="pilcrow">¶</a></p>
 <div id="linkset-native">
@@ -1561,7 +1563,8 @@ li > p:last-of-type {
                     its ABNF <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span> production rule for "Link" and subsequent ones. It differs from the format for field values of the 
                     HTTP "Link" header only in that not only spaces and horizontal tabs are allowed as separators but also newline 
                     characters as a means to improve readability for humans.
-                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+                    The use of non-ASCII characters in the field value of the HTTP "Link" Header field is not allowed, 
+ and as such is also not allowed in "application/linkset" link sets.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2">The assigned media type for this format is "application/linkset".<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1-3">When converting an "application/linkset" document to a field value for the 
                     HTTP "Link" header, newline characters MUST be removed or MUST be replaced by white space (SP) in order to comply with 
@@ -1572,7 +1575,7 @@ li > p:last-of-type {
 <p id="section-4.1-5">It should be noted that the "application/linkset" format specified here is different from the "application/link-format" 
                     format specified in <span>[<a href="#RFC6690" class="xref">RFC6690</a>]</span> in that the former fully matches the 
                     field value of the HTTP "Link" header field as defined in <span><a href="https://rfc-editor.org/rfc/rfc8288#section-3" class="relref">Section 3</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>, whereas 
-                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
+                    the latter introduces constraints on that definition to meet requirements for Constrained RESTful Environments (CoRE).<a href="#section-4.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="linkset-json">
@@ -1583,15 +1586,17 @@ li > p:last-of-type {
 <p id="section-4.2-1">This document format uses JSON <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> as the syntax to represent 
                     a set of links. The set of links follows the abstract model defined by Web Linking <span><a href="https://rfc-editor.org/rfc/rfc8288#section-2" class="relref">Section 2</a> of [<a href="#RFC8288" class="xref">RFC8288</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <p id="section-4.2-2">The assigned media type for this format is "application/linkset+json".<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">Implementers of "application/linkset+json" link sets should strive to make them self-contained 
+<p id="section-4.2-3">In the interests of interoperability "application/linkset+json" link sets MUST be encoded using UTF-8 as per 
+ <span><a href="https://rfc-editor.org/rfc/rfc8259#section-8.1" class="relref">Section 8.1</a> of [<a href="#RFC8259" class="xref">RFC8259</a>]</span>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">Implementers of "application/linkset+json" link sets should strive to make them self-contained 
  by following the recommendations regarding their use outside the context of an HTTP interaction 
- provided in <a href="#linkset-formats" class="xref">Section 4</a>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<p id="section-4.2-4">The "application/linkset+json" serialization allows for OPTIONAL support of a JSON-LD  serialization.
+ provided in <a href="#linkset-formats" class="xref">Section 4</a>.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-5">The "application/linkset+json" serialization allows for OPTIONAL support of a JSON-LD  serialization.
  This can be achieved by adding an appropriate context to the "application/linkset+json" serialization using the approach described in 
                     Section 6.8. of <span>[<a href="#W3C.REC-json-ld-20140116" class="xref">W3C.REC-json-ld-20140116</a>]</span>.
                     Communities of practice can decide which context best meets their application needs.  
  <a href="#appendix-1" class="xref">Appendix A</a> shows an example of a possible context that, when added to a JSON serialization, 
- allows it to be interpreted as Resource Description Framework (RDF) <span>[<a href="#W3C.REC-rdf11-concepts-20140225" class="xref">W3C.REC-rdf11-concepts-20140225</a>]</span> data.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+ allows it to be interpreted as Resource Description Framework (RDF) <span>[<a href="#W3C.REC-rdf11-concepts-20140225" class="xref">W3C.REC-rdf11-concepts-20140225</a>]</span> data.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <div id="linkset-in-json">
 <section id="section-4.2.1">
           <h4 id="name-set-of-links">
@@ -1778,8 +1783,7 @@ li > p:last-of-type {
               <li class="normal" id="section-4.2.4.1-2.4">"title": The "title" target attribute, 
      defined as optional and not repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>,
      MUST be represented by a "title" 
-                                member in the link target object, and its value MUST be a string that follows 
-                                the same model as in the <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> syntax.<a href="#section-4.2.4.1-2.4" class="pilcrow">¶</a>
+                                member in the link target object, and its value MUST be a JSON string.<a href="#section-4.2.4.1-2.4" class="pilcrow">¶</a>
 </li>
               <li class="normal" id="section-4.2.4.1-2.5">"title*": The "title*" target attribute, 
      defined as optional and not repeatable by <span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span>, 
@@ -1834,7 +1838,7 @@ li > p:last-of-type {
 </li>
               <li class="normal" id="section-4.2.4.2-3.2">The character encoding information   
                                 as prescribed by <span>[<a href="#RFC8187" class="xref">RFC8187</a>]</span> is not preserved; instead, the 
-                                content of the internationalized attribute is represented in the character encoding used for the JSON set of links.<a href="#section-4.2.4.2-3.2" class="pilcrow">¶</a>
+                                content of the internationalized attribute is represented as a JSON string.<a href="#section-4.2.4.2-3.2" class="pilcrow">¶</a>
 </li>
               <li class="normal" id="section-4.2.4.2-3.3">The value of the internationalized target attribute is an 
                                 array that contains one or more JSON objects. The name of one member 
@@ -1897,7 +1901,7 @@ li > p:last-of-type {
               <li class="normal" id="section-4.2.4.3-3.2">The value of an extension attribute MUST be represented by an array, even if there only is one value to be represented.<a href="#section-4.2.4.3-3.2" class="pilcrow">¶</a>
 </li>
               <li class="normal" id="section-4.2.4.3-3.3">If the extension target attribute does not have a name with a trailing asterisk,  
-                            then each value in that array MUST be a string that represents one value 
+                            then each value in that array MUST be a JSON string that represents one value 
                             of the attribute.<a href="#section-4.2.4.3-3.3" class="pilcrow">¶</a>
 </li>
               <li class="normal" id="section-4.2.4.3-3.4">If the extension attribute has a name with a trailing asterisk 
