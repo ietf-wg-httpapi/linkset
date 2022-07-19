@@ -1,0 +1,578 @@
+Subject: AUTH48: RFC-to-be 9264 <draft-ietf-httpapi-linkset-10> for your review
+From: rfc-editor@rfc-editor.org
+Date: 2022-07-12, 22:41
+To: erik.wilde@dret.net, herbert.van.de.sompel@dans.knaw.nl
+CC: rfc-editor@rfc-editor.org, httpapi-ads@ietf.org, httpapi-chairs@ietf.org, rsalz@akamai.com, francesca.palombini@ericsson.com, auth48archive@rfc-editor.org
+
+Authors,
+
+While reviewing this document during AUTH48, please resolve (as necessary) the following questions, which are also in the XML file.
+
+1) <!-- [rfced] Authors' Addresses:  We try to avoid using "http://" 
+in RFCs unless they are used as specific examples of non-secure HTTP. 
+Changing "http://dret.net/netdret/" to "https://dret.net/netdret/" 
+yields "Warning: Potential Security Risk Ahead" (Firefox) or "This 
+Connection Is Not Private" (Safari).  It appears that the requested
+domain name does not match the server's certificate. Should this URL 
+be updated to use "https://"?
+
+Original:
+ URI:   http://dret.net/netdret/ -->
+
+
+2) <!-- [rfced] Please provide any keywords (beyond those that appear in the
+title) for use on <https://www.rfc-editor.org/search>. -->
+
+
+3) <!-- [rfced] Sections 1 and subsequent:  There are eight instances of
+'"linkset" relation type' in running text in this document, but only
+the last instance (in Appendix A) uses the "<tt>" element to set it
+off with a different font in the .html and .pdf outputs.  For
+consistency of style, would you like to use "<tt>" around the other
+seven instances? -->
+
+
+4) <!-- [rfced] Section 3.3:  Section 15 of RFC 9110 (the published
+version of draft-ietf-httpbis-semantics) uses different wording for
+error codes 413 and 414 - "413 (Content Too Large)" and "414 (URI
+Too Long)", respectively. We have updated the following to match. 
+
+Original:
+ Section 15 of HTTP [I-D.ietf-httpbis-semantics] defines error codes
+ related to excess communication by the user agent ("413 Request
+ Entity Too Large" and "414 Request-URI Too Long"), but no specific
+ error codes are defined to indicate that response field content
+ exceeds the upper bound that can be handled by the server and thus
+ has been truncated. 
+
+Current:
+ Section 15 of "HTTP Semantics" [RFC9110] defines error codes related
+ to excess communication by the user agent ("413 Content Too Large"
+ and "414 URI Too Long"), but no specific error codes are defined to
+ indicate that response field content exceeds the upper bound that can
+ be handled by the server and thus has been truncated.  
+
+-->
+
+
+5) <!-- [rfced] Section 4.1:  In the following, does "ones" refer to subsequent ABNF rules?
+
+Original:
+ This document format is nearly identical to the field value of the
+ HTTP "Link" header field as defined in Section 3 of [RFC8288], more
+ specifically by its ABNF [RFC5234] production rule for "Link" and
+ subsequent ones. 
+
+Perhaps:
+ This document format is nearly identical to the field value of the
+ HTTP "Link" header field as defined in Section 3 of [RFC8288], more
+ specifically by its ABNF [RFC5234] production rule for "Link" and
+ its subsequent rules. 
+-->
+
+
+6) <!-- [rfced] As Figures 7 through 21 have titles, would you like to
+provide titles for Figures 1 through 6?  If yes, please specify.
+
+Original:
+ Figure 1
+ Figure 2
+ Figure 3
+ Figure 4
+ Figure 5
+ Figure 6
+ Figure 7: Client HTTP GET request
+ Figure 8: Response to HTTP GET includes a set of links
+ etc. -->
+
+
+7) <!-- [rfced] Section 4.2.5:  "allows to" does not parse.  We updated
+this sentence as follows.  If this does not preserve your intended
+meaning, please provide clarifying text.
+
+Original:
+ Limiting the JSON format in
+ this way allows to unambiguously round trip between links provided in
+ the HTTP "Link" header field, sets of links serialized according to
+ the "application/linkset" format, and sets of links serialized
+ according to the "application/linkset+json" format.
+
+Currently:
+ Limiting the JSON format in
+ this way allows unambiguous round trips between links provided in the
+ HTTP "Link" header field, sets of links serialized according to the
+ "application/linkset" format, and sets of links serialized according
+ to the "application/linkset+json" format. -->
+
+
+8) <!-- [rfced] Sections 7.1 and subsequent:  We changed
+<artwork type="http-message"' to '<sourcecode type="http-message"'
+per <https://www.rfc-editor.org/materials/sourcecode-types.txt>.
+Please let us know any concerns.
+
+Also, should Figure 19 in Appendix A be
+'<sourcecode type="http-message"' as well? -->
+
+
+9) <!-- [rfced] Figure 14:  Would you like the ";" (semicolon) lines to
+be indented per Figures 8, 10, 12, and 19?  We ask because Figure 14
+appears to be an outlier as far as the indentation (or lack thereof)
+goes.
+
+Original:
+ HTTP/1.1 307 Temporary Redirect
+ Date:  Mon, 27 Sep 2021 16:03:07 GMT
+ Server: nginx
+ Link: https://id.gs1.org/01/9506000134352?linkType=all
+ ; rel="linkset"
+ ; type="application/linkset+json"
+ ; profile="https://www.gs1.org/voc/?show=linktypes"
+ Location: https://example.com/risotto-rice-with-mushrooms/
+
+Possibly:
+ HTTP/1.1 307 Temporary Redirect
+ Date:  Mon, 27 Sep 2021 16:03:07 GMT
+ Server: nginx
+ Link: <https://id.gs1.org/01/9506000134352?linkType=all>
+       ; rel="linkset"
+       ; type="application/linkset+json"
+       ; profile="https://www.gs1.org/voc/?show=linktypes"
+ Location: https://example.com/risotto-rice-with-mushrooms/ -->
+
+
+10) <!-- [rfced] Section 7.4.2:  We changed
+"used in <xref target="Response_pr_at"/>" to "used in Figure 14".
+Please let us know any concerns.
+
+Original:
+ Note the "profile" parameter for the application/linkset+json media
+ type, which has as value the same Profile URI <https://www.gs1.org/
+ voc/?show=linktypes> as was used in <xref target="Response_pr_at"/>.
+
+Currently:
+ Note the "profile" parameter for the "application/linkset+json" media
+ type, which has as its value the same profile URI
+ <https://www.gs1.org/voc/?show=linktypes> as was used in Figure 14. -->
+
+
+11) <!-- [rfced] Figure 17:  Should the '; rel="profile"' be on a
+separate line and indented, per the other examples in this document?
+
+Original:
+ Link: https://www.gs1.org/voc/?show=linktypes; rel="profile"
+
+Possibly:
+ Link: <https://www.gs1.org/voc/?show=linktypes>
+       ; rel="profile" -->
+
+
+12) <!-- [rfced] Section 8.2:  These sentences do not parse well.  If the
+suggested text is not correct, please clarify.
+Note:  We will also ask IANA to update
+<https://www.iana.org/assignments/media-types/application/linkset>
+so that it matches the updated version of this document.
+
+Original:
+ Encoding considerations: Linksets are encoded according to the
+ definition of [RFC8288].  The encoding of [RFC8288] is based on
+ the general encoding rules of [I-D.ietf-httpbis-semantics], with
+ the addition of allowing indicating character encoding and
+ language for specific parameters as defined by [RFC8187].
+
+Suggested:
+ Encoding considerations:  Linksets are encoded according to the
+    definitions provided in [RFC8288].  The encoding discussed in
+    [RFC8288] is based on the general encoding rules specified by
+    HTTP [RFC9110] and allows specific parameters to be extended 
+    by the indication of character encoding and language as
+    defined by [RFC8187].
+-->
+
+
+13) <!-- [rfced] Normative References, [W3C.REC-json-ld-20140116]: According 
+to <https://www.w3.org/TR/2014/REC-json-ld-20140116/>, "W3C Recommendation 
+16 January 2014 superseded 03 November 2020" (which is odd, because the 
+latest published version at <https://www.w3.org/TR/json-ld/> is dated 
+July 2020).
+
+If the information in Section 6.1 of <https://www.w3.org/TR/json-ld/> 
+(JSON-LD 1.1) is still applicable to the citations in this document that 
+point to Section 6.8 of the 2014 (JSON-LD 1.0) version, may we update as 
+suggested?
+
+Current (Section 4.2, Normative References, and Appendix A):
+
+ This can be achieved by adding
+ an appropriate context to the "application/linkset+json"
+ serialization using the approach described in Section 6.8 of
+ [W3C.REC-json-ld-20140116]. 
+...
+   [W3C.REC-json-ld-20140116]
+              Sporny, M., Ed., Kellogg, G., Ed., and M. Lanthaler, Ed.,
+              "JSON-LD 1.0", W3C Recommendation REC-json-ld-20140116,
+              January 2014,
+              <https://www.w3.org/TR/2014/REC-json-ld-20140116>.
+...
+ A set of links rendered according to the JSON serialization defined
+ in Section 4.2 can be interpreted as RDF triples by adding a JSON-LD
+ context [W3C.REC-json-ld-20140116] that maps the JSON keys to
+ corresponding Linked Data terms.  And, as per Section 6.8 of
+ [W3C.REC-json-ld-20140116], when delivering a link set that is
+ rendered according to the "application/linkset+json" media type to a
+ user agent, a server can convey the availability of such a JSON-LD
+ context by using a link with the relation type
+ "https://www.w3.org/ns/json-ld#context" in the HTTP "Link" header
+ field.
+
+Suggested:
+
+ This can be achieved by adding
+ an appropriate context to the "application/linkset+json"
+ serialization using the approach described in Section 6.1 of
+ [W3C.REC-json-ld].
+...
+ [W3C.REC-json-ld]
+            Sporny, M., Ed., Kellogg, G., Ed., and M. Lanthaler, Ed., 
+            "JSON-LD 1.1: A JSON-based Serialization for Linked Data", 
+            W3C Consortium Recommendation REC-json-ld, July 2020,
+            <https://www.w3.org/TR/json-ld/>.
+...
+ A set of links rendered according to the JSON serialization defined
+ in Section 4.2 can be interpreted as RDF triples by adding a JSON-LD
+ context [W3C.REC-json-ld] that maps the JSON keys to corresponding
+ Linked Data terms.  And, as per Section 6.1 of [W3C.REC-json-ld],
+ when delivering a link set that is rendered according to the
+ "application/linkset+json" media type to a user agent, a server can
+ convey the availability of such a JSON-LD context by using a link
+ with the relation type "https://www.w3.org/ns/json-ld#context" in
+ the HTTP "Link" header field. 
+-->
+
+
+14) <!-- [rfced] Informative References:  Because the in-text citation
+for [W3C.REC-rdf11-concepts-20140225] in Section 4.2 is general in
+nature, we changed the URL so that the latest version will always be
+retrieved.  Please let us know any objections.
+
+Original (Section 4.2 and Informative References):
+ Appendix A shows an
+ example of a possible context that, when added to a JSON
+ serialization, allows it to be interpreted as Resource Description
+ Framework (RDF) [W3C.REC-rdf11-concepts-20140225] data.
+...
+ [W3C.REC-rdf11-concepts-20140225]
+            Cyganiak, R., Wood, D., and M. Lanthaler, "RDF 1.1
+            Concepts and Abstract Syntax", World Wide Web Consortium
+            Recommendation REC-rdf11-concepts-20140225, 25 February
+            2014,
+            <https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225>.
+
+Currently:
+ Appendix A shows an
+ example of a possible context that, when added to a JSON
+ serialization, allows it to be interpreted as Resource Description
+ Framework (RDF) data [W3C.REC-rdf11-concepts].
+...
+   [W3C.REC-rdf11-concepts]
+              Cyganiak, R., Ed., Wood, D., Ed., and M. Lanthaler, Ed.,
+              "RDF 1.1 Concepts and Abstract Syntax", W3C Consortium
+              Recommendation REC-rdf11-concepts, February 2014,
+              <https://www.w3.org/TR/rdf11-concepts/>.
+-->
+
+
+15) <!-- [rfced] Informative References:  After removing Appendix B
+("Implementation Status"), RFC 7942 ("Improving Awareness of Running
+Code: The Implementation Status Section") was no longer cited
+anywhere in this document.  We removed the reference listing
+accordingly.  Please let us know any concerns. -->
+
+
+16) <!-- [rfced] Appendix A:  As <http://www.w3.org/ns/json-ld#context>
+redirects to <https://www.w3.org/ns/json-ld#context>, we changed 
+the in-text instances of "http://" to "https://" in the text and in
+Figure 19 accordingly.  Please let us know if these updates are
+incorrect (i.e., is there a particular reason that this document
+uses "http://" instead of "https://"?).
+
+Original:
+ And, as per
+ [W3C.REC-json-ld-20140116] section 6.8 (https://www.w3.org/TR/2014/
+ REC-json-ld-20140116/#interpreting-json-as-json-ld), when delivering
+ a link set that is rendered according to the "application/
+ linkset+json" media type to a user agent, a server can convey the
+ availability of such a JSON-LD context by using a link with the
+ relation type "http://www.w3.org/ns/json-ld#context" in the HTTP
+ "Link" header.
+...
+ In order to obtain the JSON-LD Context conveyed by the server, the
+ user agent issues an HTTP GET against the link target of the link
+ with the "http://www.w3.org/ns/json-ld#context" relation type.
+... 
+ rel="http://www.w3.org/ns/json-ld#context"
+
+Currently:
+ And, as per Section 6.8 of
+ [W3C.REC-json-ld-20140116], when delivering a link set that is
+ rendered according to the "application/linkset+json" media type to a
+ user agent, a server can convey the availability of such a JSON-LD
+ context by using a link with the relation type
+ "<https://www.w3.org/ns/json-ld#context>" in the HTTP "Link" header
+ field.
+...
+ In order to obtain the JSON-LD Context conveyed by the server, the
+ user agent issues an HTTP GET against the link target of the link
+ with the "<https://www.w3.org/ns/json-ld#context>" relation type.
+...
+ rel="https://www.w3.org/ns/json-ld#context" -->
+
+
+17) <!-- [rfced] Appendix A:
+
+a) We see that the <http://purl.org> entries redirect to
+<https://www.dublincore.org> pages (which we see are fairly long in
+length and would have to be broken across lines if used in the
+figures).  We try to avoid using "http://" in RFCs if the URLs/URIs
+redirect to "https://" pages, unless they are used as specific examples
+of non-secure HTTP.
+
+Should this topic be further explained in this section, or does the
+citation for [DCMI-TERMS] in the paragraph after Figure 19 clarify
+this topic sufficiently?
+
+b) We also see that
+<https://id.gs1.org/01/09506000149301> redirects to
+<https://www.gs1.org/industries/retail/2D-barcodes>.  Please let us
+know if any updates are needed regarding this URL. -->
+
+
+18) <!-- [rfced] Please review the "Inclusive Language" portion of the
+online Style Guide at
+<https://www.rfc-editor.org/styleguide/part2/#inclusive_language>,
+and let us know if any changes are needed. -->
+
+
+19) <!-- [rfced] Please let us know if any changes are needed for the
+following:
+
+a) The following terms were used inconsistently in this document.
+We chose to use the latter forms.  Please let us know any objections.
+
+ anchor member / "anchor" member
+
+ header / header field 
+   (when discussing fields rather than the entire header)
+
+ href member / "href" member
+
+ Link: https://...   /   Link: <https://...>
+   (Per published RFCs.  We could not find any instances of
+    "Link:" lines that did not have bracketed URLs.)
+
+ Profile URI / profile URI (used generally in running text)
+   (per post-6000 published RFCs)
+
+ Web linking model / Web Linking model
+
+b) The following terms appear to be used inconsistently in this
+document.  Please let us know which form is preferred.
+
+ HTTP "Link" header field / HTTP Link header field*
+
+ * As RFC 8288 uses the latter form (i.e., HTTP Link header field),
+   we suggest removing the quotes.
+
+ JSON-LD context / JSON-LD Context (running text in Appendix A)
+   (We see that usage in
+    <https://www.w3.org/TR/2014/REC-json-ld-20140116/> is inconsistent
+    as well.  No precedent in published RFCs.)
+
+ Web Links (Section 1) / web links (Section 8) -->
+
+
+Thank you.
+
+RFC Editor/lb/jm
+
+
+On 7/12/22 3:37 PM, rfc-editor@rfc-editor.org wrote:
+
+*****IMPORTANT*****
+
+Updated 2022/07/12
+
+RFC Author(s):
+--------------
+
+Instructions for Completing AUTH48
+
+Your document has now entered AUTH48.  Once it has been reviewed and 
+approved by you and all coauthors, it will be published as an RFC.  
+If an author is no longer available, there are several remedies 
+available as listed in the FAQ (https://www.rfc-editor.org/faq/).
+
+You and you coauthors are responsible for engaging other parties 
+(e.g., Contributors or Working Group) as necessary before providing 
+your approval.
+
+Planning your review 
+---------------------
+
+Please review the following aspects of your document:
+
+*  RFC Editor questions
+
+   Please review and resolve any questions raised by the RFC Editor 
+   that have been included in the XML file as comments marked as 
+   follows:
+
+   <!-- [rfced] ... -->
+
+   These questions will also be sent in a subsequent email.
+
+*  Changes submitted by coauthors 
+
+   Please ensure that you review any changes submitted by your 
+   coauthors.  We assume that if you do not speak up that you 
+   agree to changes submitted by your coauthors.
+
+*  Content 
+
+   Please review the full content of the document, as this cannot 
+   change once the RFC is published.  Please pay particular attention to:
+   - IANA considerations updates (if applicable)
+   - contact information
+   - references
+
+*  Copyright notices and legends
+
+   Please review the copyright notice and legends as defined in
+   RFC 5378 and the Trust Legal Provisions 
+   (TLP – https://trustee.ietf.org/license-info/).
+
+*  Semantic markup
+
+   Please review the markup in the XML file to ensure that elements of  
+   content are correctly tagged.  For example, ensure that <sourcecode> 
+   and <artwork> are set correctly.  See details at 
+   <https://authors.ietf.org/rfcxml-vocabulary>.
+
+*  Formatted output
+
+   Please review the PDF, HTML, and TXT files to ensure that the 
+   formatted output, as generated from the markup in the XML file, is 
+   reasonable.  Please note that the TXT will have formatting 
+   limitations compared to the PDF and HTML.
+
+
+Submitting changes
+------------------
+
+To submit changes, please reply to this email using ‘REPLY ALL’ as all 
+the parties CCed on this message need to see your changes. The parties 
+include:
+
+   *  your coauthors
+   
+   *  rfc-editor@rfc-editor.org (the RPC team)
+
+   *  other document participants, depending on the stream (e.g., 
+      IETF Stream participants are your working group chairs, the 
+      responsible ADs, and the document shepherd).
+     
+   *  auth48archive@rfc-editor.org, which is a new archival mailing list 
+      to preserve AUTH48 conversations; it is not an active discussion 
+      list:
+     
+     *  More info:
+        https://mailarchive.ietf.org/arch/msg/ietf-announce/yb6lpIGh-4Q9l2USxIAe6P8O4Zc
+     
+     *  The archive itself:
+        https://mailarchive.ietf.org/arch/browse/auth48archive/
+
+     *  Note: If only absolutely necessary, you may temporarily opt out 
+        of the archiving of messages (e.g., to discuss a sensitive matter).
+        If needed, please add a note at the top of the message that you 
+        have dropped the address. When the discussion is concluded, 
+        auth48archive@rfc-editor.org will be re-added to the CC list and 
+        its addition will be noted at the top of the message. 
+
+You may submit your changes in one of two ways:
+
+An update to the provided XML file
+ — OR —
+An explicit list of changes in this format
+
+Section # (or indicate Global)
+
+OLD:
+old text
+
+NEW:
+new text
+
+You do not need to reply with both an updated XML file and an explicit 
+list of changes, as either form is sufficient.
+
+We will ask a stream manager to review and approve any changes that seem
+beyond editorial in nature, e.g., addition of new text, deletion of text, 
+and technical changes.  Information about stream managers can be found in 
+the FAQ.  Editorial changes do not require approval from a stream manager.
+
+
+Approving for publication
+--------------------------
+
+To approve your RFC for publication, please reply to this email stating
+that you approve this RFC for publication.  Please use ‘REPLY ALL’,
+as all the parties CCed on this message need to see your approval.
+
+
+Files 
+-----
+
+The files are available here:
+   https://www.rfc-editor.org/authors/rfc9264.xml
+   https://www.rfc-editor.org/authors/rfc9264.html
+   https://www.rfc-editor.org/authors/rfc9264.pdf
+   https://www.rfc-editor.org/authors/rfc9264.txt
+
+Diff file of the text:
+   https://www.rfc-editor.org/authors/rfc9264-diff.html
+   https://www.rfc-editor.org/authors/rfc9264-rfcdiff.html (side by side)
+
+Diff of the XML: 
+   https://www.rfc-editor.org/authors/rfc9264-xmldiff1.html
+
+The following files are provided to facilitate creation of your own 
+diff files of the XML.  
+
+Initial XMLv3 created using XMLv2 as input:
+   https://www.rfc-editor.org/authors/rfc9264.original.v2v3.xml 
+
+XMLv3 file that is a best effort to capture v3-related format updates 
+only: 
+   https://www.rfc-editor.org/authors/rfc9264.form.xml
+
+
+Tracking progress
+-----------------
+
+The details of the AUTH48 status of your document are here:
+   https://www.rfc-editor.org/auth48/rfc9264
+
+Please let us know if you have any questions.  
+
+Thank you for your cooperation,
+
+RFC Editor
+
+--------------------------------------
+RFC9264 (draft-ietf-httpapi-linkset-10)
+
+Title            : Linkset: Media Types and a Link Relation Type for Link Sets
+Author(s)        : E. Wilde, H. Van de Sompel
+WG Chair(s)      : Darrel Miller, Rich Salz
+Area Director(s) : Murray Kucherawy, Francesca Palombini
+
+
